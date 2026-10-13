@@ -58,6 +58,8 @@ namespace Maze
             puffMesh = BlobMesh(16, 10); // explosion puffs (a mesh, not CreatePrimitive: its SphereCollider is stripped on iOS)
             var gf = new GameObject("GunFx"); gf.transform.SetParent(transform, false);
             gf.AddComponent<GunFx>().Init(cube);
+            var vk = new GameObject("VfxKit"); vk.transform.SetParent(transform, false);
+            vk.AddComponent<VfxKit>().Init();   // hazard VFX (acid, gas, fire, slag, lasers)
             scorchMat = Mats.Fade(Color.white, ProcTex.Scorch());
 
             var lg = new GameObject("BoomLight");
@@ -393,6 +395,7 @@ namespace Maze
         {
             debris.Clear(); sparks.Clear(); smoke.Clear(); goo.Clear(); splats.Clear();
             GunFx.I.ClearAll();
+            if (VfxKit.I != null) VfxKit.I.ClearAll();
             pendingSplats.Clear();
             foreach (var s in scorches) Destroy(s);
             scorches.Clear();

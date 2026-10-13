@@ -90,6 +90,12 @@ namespace Maze
             foreach (var kv in MazeMap.marks)
             {
                 if (!Look.TryGetValue(kv.Key, out var l)) continue;
+                if (VfxKit.I != null && (kv.Key == 'a' || kv.Key == '*' || kv.Key == 'f'))
+                {   // acid pools, molten slag and fire get real surfaces (one per letter, cells merge into blobs)
+                    var v = VfxKit.I.Cells(root, kv.Value, kv.Key == 'a' ? VfxKit.AcidPool : kv.Key == '*' ? VfxKit.Slag : VfxKit.Char);
+                    if (v != null) surfaces.Add(v);
+                    continue;
+                }
                 bool small = "RH$!QFIKG%".IndexOf(kv.Key) >= 0;
                 var go = new GameObject("Cells_" + kv.Key); go.transform.SetParent(root, false);
                 go.AddComponent<MeshFilter>().sharedMesh = ZoneCells.Quads(kv.Value, l.y, small ? 0.45f : 0f);
@@ -108,8 +114,11 @@ namespace Maze
             }
         }
         readonly List<Material> belts = new();
+        readonly List<VfxPool> surfaces = new();
+        public override void End() { foreach (var v in surfaces) v.Kill(); surfaces.Clear(); base.End(); }
         public override void Tick(float dt)
         {
+            foreach (var v in surfaces) v.Ambient(dt);   // bubbles, flames, embers, smoke
             foreach (var m in belts) { var o = m.GetTextureOffset("_BaseMap"); o.y -= dt * CellFloors.BeltSpeed * CellFloors.BeltDir / MazeMap.C; m.SetTextureOffset("_BaseMap", o); }
         }
         static Texture2D chev;
@@ -364,7 +373,7 @@ namespace Maze
     // walking and bullets (the grid cell becomes '|'); touching it costs 25 HP and a 3 m shove; enemies 8 RH + shove.
     public class CellFences : ZoneHazard
     {
-        class Fence { public List<Vector2Int> cells = new(); public Material m; public bool on; }
+        class Fence { public List<Vector2Int> cells = new(); public Material m; public bool on; public VfxFence vfx; }
         readonly List<Fence> fences = new();
         float t; public float OnSec = 5f, OffSec = 3f; float hitCd;
         public string Mode = "cycle";   // cycle | on | off (TOGGLE from the floor script)
@@ -381,6 +390,11 @@ namespace Maze
                     var q = st.Pop(); f.cells.Add(q);
                     foreach (var n in new[] { q + Vector2Int.up, q + Vector2Int.down, q + Vector2Int.left, q + Vector2Int.right })
                         if (n.x >= 0 && n.y >= 0 && n.x < MazeMap.W && n.y < MazeMap.H && MazeMap.tag[n.y, n.x] == '|' && seen.Add(n)) st.Push(n);
+                }
+                if (VfxKit.I != null)
+                {   // posts with emitters, three beams and a floor glow strip (was a flat red slab)
+                    f.vfx = VfxKit.I.Fence(root, f.cells, new Color(1f, 0.12f, 0.2f));
+                    fences.Add(f); continue;
                 }
                 var go = new GameObject("Fence"); go.transform.SetParent(root, false);
                 var mesh = new Mesh(); var v = new List<Vector3>(); var tri = new List<int>();
@@ -414,7 +428,8 @@ namespace Maze
                     if (on) foreach (var c in f.cells) Zap(MazeMap.Center(c.x, c.y));
                 }
                 float a = on ? 0.65f : flicker ? (Mathf.PingPong(t * 14, 1) > 0.5f ? 0.5f : 0.05f) : 0.05f;
-                f.m.SetColor("_BaseColor", new Color(1f, 0.2f, 0.33f, a));
+                if (f.vfx != null) f.vfx.Set(on ? 1f : flicker ? (Random.value < 0.45f ? 0.7f : 0f) : 0f, on, dt);
+                else f.m.SetColor("_BaseColor", new Color(1f, 0.2f, 0.33f, a));
                 if (on) foreach (var c in f.cells) Touch(MazeMap.Center(c.x, c.y));
             }
         }

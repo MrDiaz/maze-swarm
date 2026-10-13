@@ -115,20 +115,28 @@ namespace Maze
             public static void Clear() { foreach (var x in live) { if (x.tr != null) { x.tr.gameObject.SetActive(false); pool.Push(x); } } live.Clear(); }
         }
 
-        class Puddle { public Vector2 p; public float r, t, dps; public Transform tr; public Material m; }
+        class Puddle { public Vector2 p; public float r, t, dps, age; public VfxPool v; }
         static readonly List<Puddle> puddles = new(); static float puddleTick;
         public static void AcidPuddle(Vector2 at, float r, float sec, float dps)
         {
             if (Sim) { puddles.Add(new Puddle { p = at, r = r, t = sec, dps = dps }); return; }
-            var go = new GameObject("Acid"); go.AddComponent<MeshFilter>().sharedMesh = ZoneHazard.Disc;
-            var mr = go.AddComponent<MeshRenderer>(); var m = Mats.Glow(new Color(0.55f, 1f, 0.2f, 0.55f)); mr.sharedMaterial = m; mr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-            go.transform.position = MazeMap.ToWorld(at, 0.045f); go.transform.localScale = Vector3.one * r;
-            puddles.Add(new Puddle { p = at, r = r, t = sec, dps = dps, tr = go.transform, m = m });
+            VfxPool v = null;
+            if (VfxKit.I != null)
+            {
+                v = VfxKit.I.Pool(null, at, r, VfxKit.Acid, 0.035f + puddles.Count % 8 * 0.001f);   // tiny y steps: overlapping puddles don't z-fight
+                v.SetLife(0);
+                if (r >= 1.3f) VfxKit.I.Splash(MazeMap.ToWorld(at, 0f), VfxKit.AcidSplash, r);   // (the toxic elite's 1 m trail drips quietly)
+            }
+            puddles.Add(new Puddle { p = at, r = r, t = sec, dps = dps, v = v });
         }
 
         public static void TickGlobal(float dt)
         {
-            for (int i = Clouds.Count - 1; i >= 0; i--) { var c = Clouds[i]; c.t -= dt; if (c.t <= 0) Clouds.RemoveAt(i); else Clouds[i] = c; }
+            for (int i = Clouds.Count - 1; i >= 0; i--)
+            {
+                var c = Clouds[i]; c.t -= dt; if (c.t <= 0) { Clouds.RemoveAt(i); continue; } Clouds[i] = c;
+                if (!Sim && VfxKit.I != null) VfxKit.I.Gas(MazeMap.ToWorld(c.p, 0f), 3.4f, dt, Mathf.Clamp01(c.t / 2.5f));   // thins out over the last 2.5 s
+            }
             FlushSplits(G.swarm);
             Tele.TickAll(dt);
             bool hit = (puddleTick -= dt) <= 0; if (hit) puddleTick = 0.5f;
@@ -137,12 +145,16 @@ namespace Maze
                 if (i >= puddles.Count) continue;
                 var p = puddles[i]; p.t -= dt;
                 if (hit && G.player.dashT <= 0 && G.mods["acid_walker"] == 0 && (G.player.p - p.p).magnitude < p.r) G.HurtPlayer(ZoneCells.Hp(G, p.dps) * 0.5f);
-                if (p.m != null) p.m.SetColor("_BaseColor", new Color(0.55f, 1f, 0.2f, 0.55f * Mathf.Clamp01(p.t)));
-                if (p.t <= 0) { if (p.tr != null) Object.Destroy(p.tr.gameObject); puddles.RemoveAt(i); }
+                if (p.v != null)
+                {   // spreads in over 0.35 s, shrinks away over the last 1.5 s
+                    p.age += dt; p.v.SetLife(Mathf.Pow(Mathf.Min(Mathf.Clamp01(p.age / 0.35f), Mathf.Clamp01(p.t / 1.5f)), 0.6f));
+                    if (p.t > 0.8f && p.r >= 1.3f) p.v.Ambient(dt);
+                }
+                if (p.t <= 0) { p.v?.Kill(); puddles.RemoveAt(i); }
             }
         }
 
-        public static void Reset() { Tele.Clear(); foreach (var p in puddles) if (p.tr != null) Object.Destroy(p.tr.gameObject); puddles.Clear(); }
+        public static void Reset() { Tele.Clear(); foreach (var p in puddles) p.v?.Kill(); puddles.Clear(); }
 
         // ---- per enemy. spd / target may be changed; true = it moved itself this frame (skip the walk)
         public static bool Pre(Swarm s, Enemy e, Player pl, float dist, float dt, ref float spd, ref Vector2 target)
@@ -442,7 +454,7 @@ namespace Maze
             {   // the puff, every 15 s
                 e.revealT = 15f;
                 Clouds.Add((e.p, 8f));
-                if (!Sim) for (int k = 0; k < 3; k++) Fx.I.Smoke(MazeMap.ToWorld(e.p + Random.insideUnitCircle * 2f, 0.5f), 10, new Color(0.66f, 0.79f, 0.29f), 2.5f, 6f, 1.6f, 0.4f);
+                if (!Sim && VfxKit.I != null) for (int k = 0; k < 10; k++) VfxKit.I.Gas(MazeMap.ToWorld(e.p, 0f), 3.4f, 0.1f);   // the puff (the cloud keeps itself going in TickGlobal)
             }
             if ((e.aiCd -= dt) > 0 || e.spawnT < 1 || dist > 12) return;
             e.aiCd = 4f; var at = pl.p + pl.vel * 0.8f; float dmg = U(e, 5);
