@@ -59,10 +59,12 @@ namespace Maze
                 if (x == null)
                 {
                     var go = new GameObject("EnemyTele"); x = new Tele { tr = go.transform };
-                    go.AddComponent<MeshFilter>(); var mr = go.AddComponent<MeshRenderer>(); x.m = Mats.Glow(Color.red); mr.sharedMaterial = x.m;
+                    go.AddComponent<MeshFilter>(); var mr = go.AddComponent<MeshRenderer>(); x.m = (VfxKit.I != null ? VfxKit.I.TeleMat() : null) ?? Mats.Glow(Color.red); mr.sharedMaterial = x.m;
                     mr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                 }
-                x.tr.GetComponent<MeshFilter>().sharedMesh = mesh; x.tr.gameObject.SetActive(true); return x;
+                x.tr.GetComponent<MeshFilter>().sharedMesh = mesh; x.tr.gameObject.SetActive(true);
+                x.m.SetFloat("_Shape", mesh == quad ? 1 : mesh == Fx.Ring ? 2 : 0);   // VfxTele: lane, thin ring (old look), circle
+                return x;
             }
             public static void TickAll(float dt)
             {
@@ -70,6 +72,7 @@ namespace Maze
                 {
                     if (i >= live.Count) continue;   // a callback ended the run (cleared the list)
                     var x = live[i]; x.t += dt; float k = x.life > 0 ? x.t / x.life : 1;
+                    x.m.SetFloat("_Progress", Mathf.Clamp01(k));   // VfxTele fill sweeps in toward impact
                     x.m.SetColor("_BaseColor", new Color(x.c.r, x.c.g, x.c.b, x.c.a * (0.35f + 0.55f * k) * (Mathf.PingPong(x.t * 8, 1) > 0.3f || k > 0.7f ? 1 : 0.6f)));
                     if (x.t < x.life) continue;
                     live.RemoveAt(i); x.tr.gameObject.SetActive(false); pool.Push(x);

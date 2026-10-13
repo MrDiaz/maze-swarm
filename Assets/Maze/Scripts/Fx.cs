@@ -59,7 +59,7 @@ namespace Maze
             var gf = new GameObject("GunFx"); gf.transform.SetParent(transform, false);
             gf.AddComponent<GunFx>().Init(cube);
             var vk = new GameObject("VfxKit"); vk.transform.SetParent(transform, false);
-            vk.AddComponent<VfxKit>().Init();   // hazard VFX (acid, gas, fire, slag, lasers)
+            vk.AddComponent<VfxKit>().Init();   // hazard VFX (acid, gas, fire, slag, lasers), sparks, smoke, explosions, warnings
             scorchMat = Mats.Fade(Color.white, ProcTex.Scorch());
 
             var lg = new GameObject("BoomLight");
@@ -184,8 +184,9 @@ namespace Maze
             }
         }
         public void Debris(Vector3 p, int n, Color c, float speed, float life, float size, float up = 4f) => Emit(debris, p, n, c, speed, life, size, up);
-        public void Sparks(Vector3 p, int n, Color c, float speed, float life, float size, float up = 4f) => Emit(sparks, p, n, c, speed, life, size, up);
-        public void Smoke(Vector3 p, int n, Color c, float speed, float life, float size, float up = 1f) => Emit(smoke, p, n, c, speed, life, size, up);
+        // sparks and smoke draw as glowing streaks and soft puffs (VfxKit) when it is there; cubes otherwise
+        public void Sparks(Vector3 p, int n, Color c, float speed, float life, float size, float up = 4f) { if (VfxKit.I != null) VfxKit.I.FxSparks(p, n, c, speed, life, size, up); else Emit(sparks, p, n, c, speed, life, size, up); }
+        public void Smoke(Vector3 p, int n, Color c, float speed, float life, float size, float up = 1f) { if (VfxKit.I != null) VfxKit.I.FxSmoke(p, n, c, speed, life, size, up); else Emit(smoke, p, n, c, speed, life, size, up); }
 
         // ---- goo (the Drone's death and hits)
         static Color GooCol(float r)
@@ -359,14 +360,16 @@ namespace Maze
         public void Boom(Vector3 p, float R)
         {
             var b = new BoomFx { p = p, R = R };
-            for (int i = 0; i < 9; i++)
+            bool kit = VfxKit.I != null;   // the kit draws the fireball, flash, sparks and smoke; the ring, scorch, debris and light stay
+            if (kit) VfxKit.I.Explosion(p, R);
+            for (int i = 0; !kit && i < 9; i++)
             {
                 var (tr, m) = GetPuff();
                 float a = Random.value * Mathf.PI * 2, d = Random.value * R * 0.3f;
                 b.puffs.Add((tr, m, new Vector3(Mathf.Cos(a) * d, 0.5f + Random.value * 1.1f, Mathf.Sin(a) * d), R * (0.16f + Random.value * 0.14f), Random.value * 0.08f, 1f + Random.value * 2f, FireCols[i % FireCols.Length]));
                 tr.localScale = Vector3.one * 0.01f;
             }
-            var core = GetPuff(); b.core = core.Item1; b.coreMat = core.Item2; b.core.position = p + Vector3.up * 0.9f;
+            if (!kit) { var core = GetPuff(); b.core = core.Item1; b.coreMat = core.Item2; b.core.position = p + Vector3.up * 0.9f; }
             var rg = new GameObject("Shockwave");
             rg.transform.SetParent(transform, false);
             rg.AddComponent<MeshFilter>().sharedMesh = ring;
@@ -386,8 +389,11 @@ namespace Maze
 
             Debris(p + Vector3.up * 0.8f, 18, new Color(0.7f, 0.15f, 0.12f), 9, 2.6f, 0.17f, 9);
             Debris(p + Vector3.up * 0.8f, 8, new Color(0.16f, 0.16f, 0.18f), 7, 2.6f, 0.13f, 8);
-            Sparks(p + Vector3.up, 26, new Color(1f, 0.75f, 0.29f), 12, 0.45f, 0.09f, 7);
-            Smoke(p + Vector3.up * 1.2f, 14, new Color(0.46f, 0.47f, 0.5f), 2.5f, 2.2f, 0.45f, 2);
+            if (!kit)
+            {
+                Sparks(p + Vector3.up, 26, new Color(1f, 0.75f, 0.29f), 12, 0.45f, 0.09f, 7);
+                Smoke(p + Vector3.up * 1.2f, 14, new Color(0.46f, 0.47f, 0.5f), 2.5f, 2.2f, 0.45f, 2);
+            }
             boomLight.transform.position = p + Vector3.up * 2; boomLight.intensity = 30f;
         }
 
@@ -407,7 +413,7 @@ namespace Maze
         void FinishBoom(BoomFx b)
         {
             foreach (var p in b.puffs) { p.tr.gameObject.SetActive(false); puffPool.Push((p.tr, p.m)); }
-            b.core.gameObject.SetActive(false); puffPool.Push((b.core, b.coreMat));
+            if (b.core != null) { b.core.gameObject.SetActive(false); puffPool.Push((b.core, b.coreMat)); }
             Destroy(b.ring.gameObject); Destroy(b.ringMat);
         }
 
@@ -436,8 +442,11 @@ namespace Maze
                     p.tr.localScale = Vector3.one * Mathf.Max(0.01f, p.s * (0.4f + k) * 2f);
                     SetCol(p.m, p.c, 0.9f * (1 - lt / 0.5f));
                 }
-                b.core.localScale = Vector3.one * Mathf.Max(0.01f, R * 0.6f * (1 - t / 0.25f));
-                SetCol(b.coreMat, new Color(1f, 0.94f, 0.69f), 1 - t / 0.25f);
+                if (b.core != null)
+                {
+                    b.core.localScale = Vector3.one * Mathf.Max(0.01f, R * 0.6f * (1 - t / 0.25f));
+                    SetCol(b.coreMat, new Color(1f, 0.94f, 0.69f), 1 - t / 0.25f);
+                }
                 b.ring.localScale = Vector3.one * R * Mathf.Min(1, t / 0.25f) * 1.05f;
                 SetCol(b.ringMat, new Color(1f, 0.76f, 0.48f), 0.85f * (1 - t / 0.45f));
                 if (t > 0.65f) { FinishBoom(b); booms.RemoveAt(i); }

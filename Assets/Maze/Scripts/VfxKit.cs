@@ -8,6 +8,8 @@ namespace Maze
     // glow strips (Maze/VfxBeam), and one pooled particle system per sprite (Maze/VfxParticle): smoke and fire flipbooks
     // (8x8 at 2048), sparks, embers, glows, bubbles, droplets. Textures live in Resources/Fx/Vfx. Built once by Fx.Init.
     // Preview of the intended look: https://claude.ai/artifact/NGxReqCqH7Tqro7u9c6eBZ (same maths, same textures).
+    // Batch 2: Fx.Sparks / Fx.Smoke draw here instead of cubes (FxSparks, FxSmoke), explosions (Explosion: fireball flipbook, flash,
+    // sparks, embers, smoke), and the attack-warning material (TeleMat, shader Maze/VfxTele).
     public class VfxKit : MonoBehaviour
     {
         public static VfxKit I;
@@ -24,8 +26,8 @@ namespace Maze
 
 
         Texture2D noise;
-        Shader poolSh, beamSh;
-        public ParticleSystem smoke, fire, spark, ember, glow, bubble, drop;
+        Shader poolSh, beamSh, teleSh;
+        public ParticleSystem smoke, fire, spark, ember, glow, bubble, drop, blast;
         static Mesh beamMesh;
 
         public void Init()
@@ -44,7 +46,20 @@ namespace Maze
             bubble = Make("VfxBubble", partSh, Tex("bubble"), false, 160, 0f, 1, 0, new AnimationCurve(new Keyframe(0, 0.1f), new Keyframe(0.3f, 0.6f), new Keyframe(1, 1f)), Fade(0.1f, 0.88f));
             drop   = Make("VfxDrop", partSh, Tex("droplet"), false, 160, 1.8f, 1, 0, Curve(1f, 0.4f), Fade(0.05f, 0.8f));
             var sr = spark.GetComponent<ParticleSystemRenderer>(); sr.renderMode = ParticleSystemRenderMode.Stretch; sr.velocityScale = 0.06f; sr.lengthScale = 2.2f;
-            Drag(smoke, 1.2f); Drag(ember, 0.4f);
+            // fireballs: the smoke flipbook drawn additive and masked by its own alpha, coloured white-hot to orange to dark red over life
+            blast  = Make("VfxBlast", partSh, Tex("smoke_8x8"), true, 120, 0f, 8, 0.3f, new AnimationCurve(new Keyframe(0, 0.4f, 0, 1.8f), new Keyframe(1, 1f, 0, 0)), Fade(0.05f, 0.45f));
+            var bg = new Gradient();
+            bg.SetKeys(new[] { new GradientColorKey(C(1f, 0.78f, 0.45f), 0), new GradientColorKey(C(1f, 0.58f, 0.16f), 0.08f), new GradientColorKey(C(1f, 0.42f, 0.16f), 0.4f),
+                               new GradientColorKey(C(0.75f, 0.2f, 0.05f), 0.42f), new GradientColorKey(C(0.15f, 0.02f, 0.05f), 1f) },
+                       new[] { new GradientAlphaKey(0, 0), new GradientAlphaKey(1, 0.05f), new GradientAlphaKey(1, 0.45f), new GradientAlphaKey(0, 1) });
+            var bcol = blast.colorOverLifetime; bcol.color = bg;
+            var bm = blast.GetComponent<ParticleSystemRenderer>().sharedMaterial; bm.SetFloat("_MulTexAlpha", 1); bm.SetFloat("_FloorFade", 0.9f); bm.SetFloat("_Gain", 3f);   // additive sums ~3x dimmer in a Linear project than in the gamma preview
+            spark.GetComponent<ParticleSystemRenderer>().sharedMaterial.SetFloat("_Gain", 1.8f);   // kill / crit streaks read dim in Linear
+            smoke.GetComponent<ParticleSystemRenderer>().sharedMaterial.SetFloat("_FloorFade", 0.6f);   // big sprites fade into the floor
+            fire.GetComponent<ParticleSystemRenderer>().sharedMaterial.SetFloat("_FloorFade", 0.12f);
+            glow.GetComponent<ParticleSystemRenderer>().sharedMaterial.SetFloat("_FloorFade", 0.5f);
+            Drag(smoke, 1.2f); Drag(ember, 0.4f); Drag(blast, 5f);
+            teleSh = Shader.Find("Maze/VfxTele"); if (teleSh == null) Debug.LogError("Maze: VfxTele shader missing");
             var dc = drop.collision; dc.enabled = true; dc.type = ParticleSystemCollisionType.Planes; dc.SetPlane(0, transform); dc.bounce = 0f; dc.dampen = 1f; dc.lifetimeLoss = 0.5f;
         }
 
@@ -90,7 +105,7 @@ namespace Maze
             return ps;
         }
 
-        public void ClearAll() { foreach (var ps in new[] { smoke, fire, spark, ember, glow, bubble, drop }) if (ps != null) ps.Clear(); }
+        public void ClearAll() { foreach (var ps in new[] { smoke, fire, spark, ember, glow, bubble, drop, blast }) if (ps != null) ps.Clear(); }
 
         static float R(float a, float b) => Random.Range(a, b);
         static Vector2 Disc(float r) => Random.insideUnitCircle * r;
@@ -117,6 +132,45 @@ namespace Maze
         }
         public void Flash(Vector3 at, float size, Color c, float life = 0.35f) => One(glow, at, Vector3.zero, size, life, c);
         public void Puff(Vector3 at, Vector3 vel, float size, float life, Color c) => One(smoke, at, vel, size, life, c);
+
+        // ================================================================ batch 2: shared sparks, smoke, explosions, warnings
+        // Fx.Sparks with the same arguments (spread, colour, speed, life, cube size): glowing streaks instead of cubes, a small flash for big bursts
+        public void FxSparks(Vector3 at, int n, Color c, float speed, float life, float size, float up)
+        {
+            float s = Mathf.Clamp(size * 3f, 0.16f, 0.42f); c.a = 1;
+            for (int i = 0; i < n; i++)
+            {
+                float a = R(0, Mathf.PI * 2), sp = speed * R(0.3f, 1f);
+                One(spark, at, new Vector3(Mathf.Cos(a) * sp, R(0.3f, 1f) * up, Mathf.Sin(a) * sp), s * R(0.7f, 1.1f), life * R(0.6f, 1f), c);
+            }
+            if (n >= 8) One(glow, at, Vector3.zero, 0.8f + speed * 0.15f, 0.14f, new Color(c.r, c.g, c.b, 0.55f));
+        }
+        // Fx.Smoke with the same arguments: soft billowing puffs (dust, steam, smoke), fewer and larger than the cubes were
+        public void FxSmoke(Vector3 at, int n, Color c, float speed, float life, float size, float up)
+        {
+            int m = Mathf.Max(1, Mathf.CeilToInt(n * 0.6f)); float s = size * 3.5f + 0.3f; c.a = 0.5f;
+            for (int i = 0; i < m; i++)
+            {
+                float a = R(0, Mathf.PI * 2), sp = speed * R(0.3f, 1f) * 0.8f;
+                One(smoke, at + new Vector3(0, 0.2f, 0), new Vector3(Mathf.Cos(a) * sp, R(0.3f, 1f) * up, Mathf.Sin(a) * sp), s * R(0.8f, 1.2f), life * 1.5f + 0.3f, c);
+            }
+        }
+        // a fireball: hot blasts that swell and darken, a flash, sparks, embers, a column of smoke (R = blast radius in metres, at = floor point)
+        public void Explosion(Vector3 at, float r)
+        {
+            for (int i = 0; i < 12; i++)
+            {
+                var d = Disc(r * 0.3f); float s = R(3f, 6f) * r / 2.5f;
+                One(blast, at + new Vector3(d.x, R(1.3f, 1.9f), d.y), new Vector3(d.x * s, R(1f, 3f), d.y * s), r * 1.25f, R(0.5f, 0.8f), new Color(1, 1, 1, 0.8f));
+            }
+            One(glow, at + Vector3.up, Vector3.zero, r * 2f, 0.22f, new Color(1f, 0.7f, 0.4f, 0.45f));
+            One(glow, at + Vector3.up * 1.6f, Vector3.zero, r * 2.6f, 0.6f, new Color(1f, 0.45f, 0.12f, 0.3f));
+            for (int i = 0; i < 30; i++) { float a = R(0, Mathf.PI * 2), s = R(6f, 13f); One(spark, at + Vector3.up, new Vector3(Mathf.Cos(a) * s, R(2f, 9f), Mathf.Sin(a) * s), 0.32f, R(0.3f, 0.6f), new Color(1f, 0.75f, 0.35f, 1f)); }
+            for (int i = 0; i < 14; i++) One(ember, at + new Vector3(R(-1f, 1f), 1f, R(-1f, 1f)), new Vector3(R(-3f, 3f), R(3f, 6f), R(-3f, 3f)), 0.15f, R(1f, 1.8f), new Color(1f, 0.6f, 0.2f, 1f));
+            for (int i = 0; i < 8; i++) { var d = Disc(r * 0.35f); One(smoke, at + new Vector3(d.x, R(1f, 1.8f), d.y), new Vector3(d.x * 0.6f, R(1f, 2f), d.y * 0.6f), r * 1.5f, R(2f, 2.8f), new Color(0.24f, 0.23f, 0.23f, 0.6f)); }
+        }
+        // the attack-warning material for EnemyAI.Tele (keeps the _BaseColor name the Tele code sets)
+        public Material TeleMat() => teleSh != null ? new Material(teleSh) { name = "VfxTele" } : null;
 
         // ================================================================ continuous emitters (call every frame with dt)
         // poison gas cloud (spore pods, toxic vents): churning low cloud with a darker core and drifting motes
