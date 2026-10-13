@@ -303,6 +303,7 @@ namespace Maze
                         boss = swarm.Spawn(at, compWave, bt); boss.p = at;
                         boss.boss = true; boss.scale *= 1.55f; boss.r *= 1.55f; boss.hp *= 14f; boss.maxHp = boss.hp; boss.damage *= 1.5f;
                     }
+                    if (boss != null) RunMusic.Duck();   // the boss intro
                     toSpawn = 999; break;   // a steady trickle until the boss falls
             }
             if (goal == Goal.Escape || goal == Goal.Hold) MazeMap.FlowTo(goalAt, goalField);
@@ -522,6 +523,7 @@ namespace Maze
         // the goal's done: what's left of the swarm bursts, then the cache
         void GoalDone(string banner)
         {
+            RunMusic.FloorEnd(); if (goal == Goal.Boss) RunMusic.Duck();
             hud.ShowBanner(banner);
             instantXp = true; foreach (var e in swarm.enemies.ToArray()) if (!e.dead) KillEnemy(e); instantXp = false;
             foreach (var o in orbs) GainXpQuiet(o.value); ClearOrbs();

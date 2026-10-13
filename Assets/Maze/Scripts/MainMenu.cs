@@ -44,10 +44,11 @@ namespace Maze
         public void SetCanvasVisible(bool on) { if (canvas != null) canvas.enabled = on; } // map select covers the menu
         public bool Visible => canvas != null && canvas.enabled;
         public bool Dropping => dropT >= 0; bool podFall;
+        public bool HatchOpen => dropT < 0 || dropT >= 1.05f;   // (the drop's blast doors part at 1.05 s)
 
         public void Init(Game g)
         {
-            MenuAudio.Init(this);
+            MenuAudio.Init(this); RunMusic.Init(g);
             game = g;
             canvas = Holo.MakeCanvas(transform, "MenuCanvas", 10);
             canvasRt = (RectTransform)canvas.transform;

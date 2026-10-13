@@ -1,0 +1,13 @@
+{
+ "out_dir": "/Volumes/T7 Shield/Projects/Maze Swarm/Sounds/Cryo",
+ "cues": [
+  {
+   "id": "amb_cryo_station",
+   "seconds": 30,
+   "takes": 2,
+   "loop": true,
+   "where": "Cryo Station room bed under the music, ~25%",
+   "prompt": "Frozen sci-fi research station interior ambience, cold wind whistling through vents, distant creaking ice and metal contracting, low refrigeration hum, occasional faint dripping and electrical ticks, seamless loop, no music"
+  }
+ ]
+}

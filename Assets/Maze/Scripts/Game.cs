@@ -682,7 +682,7 @@ namespace Maze
             }
             if (run && !lastBreathUsed && player.hp >= player.maxHp * 0.35f && dmg >= player.hp)
             {
-                lastBreathUsed = true; lastBreathT = 1.2f; player.hp = 1; player.hurtT = 0.25f;
+                lastBreathUsed = true; lastBreathT = 1.2f; player.hp = 1; player.hurtT = 0.25f; RunMusic.Duck();
                 foreach (var e in swarm.enemies) { var d = e.p - player.p; if (e.dead || e.boss || d.magnitude > 4f) continue; e.k += d.normalized * 8f; if (e.type.name == "grunt") e.frozen = Mathf.Max(e.frozen, 0.8f); }
                 Feel.Flash(new Color(1f, 0.6f, 0.6f), 0.45f, 0.1f, 0.45f); Feel.Dip(0.4f, 0.5f, exempt: true); Feel.Shake(0.2f, 0.3f, heroHit: true); Haptics.Heavy();
                 hud.ShowBanner("LAST BREATH"); Chain.Hit(); return;

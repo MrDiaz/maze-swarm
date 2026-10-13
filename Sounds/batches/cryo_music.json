@@ -1,0 +1,7 @@
+{
+  "out_dir": "/Volumes/T7 Shield/Projects/Maze Swarm/Sounds/Cryo",
+  "cues": [
+    {"id": "mus_cryo", "kind": "music", "seconds": 90, "takes": 2,
+     "prompt": "Cold tense sci-fi exploration music for a frozen research station overrun by alien swarms, low analog synth pads, slow steady pulse, sparse icy metallic textures and distant chimes, subtle sub bass, restrained and uneasy, not loud, 90 bpm, instrumental, seamless loop"}
+  ]
+}

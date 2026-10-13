@@ -326,7 +326,7 @@ namespace Maze.EditorTools
             {
                 if (!(AssetImporter.GetAtPath(AssetDatabase.GUIDToAssetPath(guid)) is AudioImporter ai)) continue;
                 string an = System.IO.Path.GetFileNameWithoutExtension(ai.assetPath);
-                if (an == "mus_menu" || an == "amb_bridge")
+                if (an == "mus_menu" || an == "amb_bridge" || an == "mus_run_cryo" || an == "amb_cryo_station")
                 {   // the title music and the bridge bed: stereo seamless loops, Vorbis kept compressed in memory
                     ai.forceToMono = false; ai.loadInBackground = true;
                     var ls = ai.defaultSampleSettings; ls.loadType = AudioClipLoadType.CompressedInMemory; ls.compressionFormat = AudioCompressionFormat.Vorbis; ls.quality = 0.7f;
