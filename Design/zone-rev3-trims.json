@@ -1,0 +1,94 @@
+{
+ "note": "Value-only trims on rev3 signature floors (2026-10-12 22:10Z): moments, hints and cues kept. Applied by Tools/zones_gen.py after zone-rev3.json.",
+ "trims": [
+  {
+   "zone": "cargo-port",
+   "floor": 3,
+   "do": "STRIKE",
+   "match": {
+    "aim": "J"
+   },
+   "set": {
+    "count": 1,
+    "interval": 4,
+    "for": 10
+   }
+  },
+  {
+   "zone": "relay-spire",
+   "floor": 3,
+   "do": "SPAWN",
+   "match": {
+    "enemy": "Lancer"
+   },
+   "when_every": 15,
+   "set": {
+    "count": 1
+   }
+  },
+  {
+   "zone": "cargo-port",
+   "floor": 4,
+   "do": "STRIKE",
+   "match": {
+    "count": 3
+   },
+   "set": {
+    "count": 2
+   }
+  },
+  {
+   "zone": "cargo-port",
+   "floor": 4,
+   "do": "STRIKE",
+   "match": {
+    "count": 2,
+    "leaves": "container"
+   },
+   "when_from": 10,
+   "set": {
+    "count": 1
+   }
+  },
+  {
+   "zone": "relay-spire",
+   "floor": 2,
+   "do": "STRIKE",
+   "match": {
+    "aim": "g"
+   },
+   "set": {
+    "count": 2,
+    "interval": 4,
+    "for": 15
+   }
+  },
+  {
+   "zone": "relay-spire",
+   "floor": 2,
+   "do": "STRIKE",
+   "match": {
+    "interval": 4,
+    "skin": "lightning",
+    "count": 3
+   },
+   "set": {
+    "count": 2
+   }
+  },
+  {
+   "zone": "relay-spire",
+   "floor": 3,
+   "do": "STRIKE",
+   "match": {
+    "skin": "lightning",
+    "count": 3,
+    "interval": 6
+   },
+   "set": {
+    "count": 2,
+    "interval": 8
+   }
+  }
+ ]
+}

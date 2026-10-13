@@ -1,0 +1,11 @@
+Use your image generation tool to generate ONE image (do not write code to draw it).
+STYLE (one consistent icon family): game UI icons for a mobile sci-fi shooter whose menus are blue holographic panels on a dropship bridge (see the attached menu screenshot for mood and palette). Bold, simple, chunky, centered symbols that read instantly at 64 px on a phone. Clean semi-flat painted rendering with a light bevel and soft inner shading, crisp silhouettes, slight cyan/blue glow. No text, no letters, no numbers, no frames, no card borders, no backgrounds behind the symbols, no drop-shadow on the floor. IMPORTANT: every icon has a clean, thin, dark navy-blue (#0d1b2e) outline around its entire outer silhouette, so the white metal parts never touch the white background directly.
+LAYOUT: a single square 1024x1024 image arranged as a 2x2 grid of four separate icons. Each icon is centered in its own quadrant (512x512) and takes up about 60-65% of the quadrant, with generous empty padding; nothing touches or crosses the quadrant lines or the image edges. Do NOT draw grid lines or dividers. Background everywhere is plain flat pure white (#FFFFFF), no gradient, no vignette, no texture. All four icons share the same rendering style, line weight, lighting from the top-left and the same scale.
+PALETTE: white and light grey metal with cyan and electric-blue glow accents.
+ICONS (top-left, top-right, bottom-left, bottom-right):
+1. RANGE: a circular targeting crosshair reticle with four bold arrows pointing outward from it in the four directions (expanding reach).
+2. CRITICAL: a targeting crosshair reticle with a bright jagged star-burst explosion flash at its center (critical hit), the burst in white and hot cyan.
+3. SHOVE: a bold forward-pushing concussive impact wave: three concentric curved arcs (like a chunky sound-wave shape) blasting to the right from a solid fist-like impact point, conveying knockback.
+4. MAX HP: a solid white-metal heart with a bold glowing cyan upward arrow overlapping its lower-right corner.
+
+Each of the four icons must be a clearly different, instantly readable symbol. Generate the image once; you do not need to copy or save it anywhere, just reply "done" when it is generated.

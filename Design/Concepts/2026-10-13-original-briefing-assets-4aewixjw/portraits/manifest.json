@@ -1,0 +1,85 @@
+{
+  "source": "/workspace/scratch/920969c68c03/generated_images/exec-c3967dd4-1985-4916-9df2-f7dfdeb0c7cc.png",
+  "source_sha256": "890fd3d96dca62000959430ac84e67719f53cd63694fcefb9248db197b3804ad",
+  "source_size": [
+    1672,
+    941
+  ],
+  "also_inspected": "exec-6813dac1-caf3-4473-ae33-efc9e48483af.png",
+  "selection_reason": "Approved two-column design provides larger hero raster and fewer overlapping interface elements. Earlier three-column concept was inspected but not combined.",
+  "method": "Deterministic crop and manually traced polygon alpha mask. Supersampled edge alpha; no RGB retouching, synthesis, inpainting, upscaling, or hidden-pixel reconstruction.",
+  "limitations": [
+    "Only one existing hero, Iron Vanguard, is present in these sources. Assets are views of the same hero, not invented additional characters.",
+    "Minigun continues beyond the right source frame and remains clipped.",
+    "Lower torso is occluded by Abilities panel at source y=572, so cutout has a straight boundary there.",
+    "The large weapon silhouette remains visible over the panel; its native lower edge is retained to the available frame extent.",
+    "Head and armor crops are intentionally cropped at collar/chest; full shoulders and body are not present in those crops.",
+    "Mask is hand-traced, antialiased, and may retain a very thin source-colored fringe. No original edge colors were repainted."
+  ],
+  "assets": [
+    {
+      "file": "iron-vanguard-hero-cutout.png",
+      "description": "Original hero and weapon silhouette; native-size transparent PNG",
+      "size": [
+        550,
+        479
+      ],
+      "mode": "RGBA",
+      "source_crop_box_xyxy": [
+        1122,
+        151,
+        1672,
+        630
+      ],
+      "sha256": "20d3277351001c2e3789815831b7a050d9b628b74b35980a8a5e342eb2177be7"
+    },
+    {
+      "file": "iron-vanguard-source-head-crop.png",
+      "description": "Head and collar source crop; original opaque background and thin panel border retained",
+      "size": [
+        129,
+        150
+      ],
+      "mode": "RGBA",
+      "source_crop_box_xyxy": [
+        1381,
+        151,
+        1510,
+        301
+      ],
+      "sha256": "66d1a599b99e7ab1b5aa78977cd75adc93b83bfc4cfa7ab7c45476cbbc513cc9"
+    },
+    {
+      "file": "iron-vanguard-head-cutout.png",
+      "description": "Transparent head and collar crop; flat lower crop boundary",
+      "size": [
+        138,
+        150
+      ],
+      "mode": "RGBA",
+      "source_crop_box_xyxy": [
+        1377,
+        151,
+        1515,
+        301
+      ],
+      "sha256": "d9829ea201c2177a6e33d6498be1955f7186bce802f1293710c57e4d3d8488bf"
+    },
+    {
+      "file": "iron-vanguard-armor-portrait.png",
+      "description": "Clean transparent head and chest crop; same original RGB and traced alpha",
+      "size": [
+        250,
+        280
+      ],
+      "mode": "RGBA",
+      "source_crop_box_xyxy": [
+        1377,
+        151,
+        1627,
+        431
+      ],
+      "sha256": "d4dbd6d5b614ce6a56cab82246b32d450b872f3aac36e24804cabd9aed54908c"
+    }
+  ]
+}

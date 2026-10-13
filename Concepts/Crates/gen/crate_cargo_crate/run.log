@@ -1,0 +1,740 @@
+Reading prompt from stdin...
+OpenAI Codex v0.162.0-alpha.17.2
+--------
+workdir: /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates, /Users/manuel.diaz/.codex/generated_images]
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 01a12c78-5eb5-7f21-bb4f-de847c8ab993
+--------
+user
+Use your image generation tool. Generate a game prop concept image. SUBJECT: a standard industrial cargo crate, a 1.4 m cube, like the dark-grey crates with yellow end caps in the attached corridor concept: charcoal-grey composite panels with recessed ribs, chamfered yellow-painted metal corner caps and edge bands, a thin yellow-black hazard stripe trim, a small stencilled ID code (tiny, like 'C-07'). STYLE: match the attached concept images exactly (same game): a stylized 3D game asset render of a clean, bright sci-fi research facility prop. Palette from the references: dark charcoal-grey and light-grey painted metal, yellow and yellow-black hazard accents, navy/cobalt-blue trim, subtle wear and scuffs, crisp bevelled hard-surface shapes, readable chunky silhouette for a top-down mobile game. MESHY-READY RULES (this image feeds image-to-3D): exactly ONE object, centred, on a plain pure white background; three-quarter view from slightly above (about 25-30 degrees down), whole object in frame with a generous margin, nothing cropped; soft even studio lighting, NO cast shadow, NO floor, NO ground plane, NO other objects, NO people, NO aliens, NO text or letters except tiny stencil marks where asked. Square 1024x1024 PNG. When done, copy the final generated image into /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/crate_cargo_crate.png (the image tool saves under ~/.codex/generated_images; find the newest file there, open it and confirm it is the image you just generated for THIS prompt before copying; if it breaks any rule above, generate again before copying). Reply with the path and the pixel dimensions.
+
+codex
+I’m using the imagegen skill to create the crate, then I’ll inspect the result and verify its dimensions before copying it to the requested path.
+
+exec
+/bin/zsh -lc 'cat /Users/manuel.diaz/.codex/skills/.system/imagegen/SKILL.md' in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ succeeded in 0ms:
+---
+name: "imagegen"
+description: "Generate or edit raster images when the task benefits from AI-created bitmap visuals such as photos, illustrations, textures, sprites, mockups, or transparent-background cutouts. Use when Codex should create a brand-new image, transform an existing image, or derive visual variants from references, and the output should be a bitmap asset rather than repo-native code or vector. Do not use when the task is better handled by editing existing SVG/vector/code-native assets, extending an established icon or logo system, or building the visual directly in HTML/CSS/canvas."
+---
+
+# Image Generation Skill
+
+Generates or edits images for the current project (for example website assets, game assets, UI mockups, product mockups, wireframes, logo design, photorealistic images, or infographics).
+
+## Top-level modes and rules
+
+This skill has exactly two top-level modes:
+
+- **Default built-in tool mode (preferred):** built-in `image_gen` tool for image generation, editing, and transparent-image requests. Does not require `OPENAI_API_KEY`.
+- **Fallback CLI mode:** `scripts/image_gen.py` CLI. Use when the user explicitly asks for or confirms the CLI/API/model path. Requires `OPENAI_API_KEY`.
+
+Within CLI fallback, the CLI exposes three subcommands:
+
+- `generate`
+- `edit`
+- `generate-batch`
+
+Rules:
+- Use the built-in `image_gen` tool by default for normal image generation and editing requests.
+- Do not switch to CLI fallback for ordinary quality, size, or file-path control.
+- For transparent images, ask built-in `image_gen` for a transparent background and preserve the generated alpha.
+- Never silently switch from built-in `image_gen` or CLI `gpt-image-2` to CLI `gpt-image-1.5`; ask the user first unless they explicitly requested `gpt-image-1.5`.
+- The word `batch` by itself does not mean CLI fallback. If the user asks for many assets or says to batch-generate assets without explicitly asking for CLI/API/model controls, stay on the built-in path and issue one built-in call per requested asset or variant.
+- If the built-in tool fails or is unavailable, tell the user the CLI fallback exists and that it requires `OPENAI_API_KEY`. Proceed only if the user explicitly asks for that fallback.
+- If the user explicitly asks for CLI mode, use the bundled `scripts/image_gen.py` workflow. Do not create one-off SDK runners.
+- Never modify `scripts/image_gen.py`. If something is missing, ask the user before doing anything else.
+
+Built-in save-path policy:
+- In built-in tool mode, Codex saves generated images under `$CODEX_HOME/*` by default.
+- Do not describe or rely on OS temp as the default built-in destination.
+- Do not describe or rely on a destination-path argument (if any) on the built-in `image_gen` tool. If a specific location is needed, generate first and then move or copy the selected output from `$CODEX_HOME/generated_images/...`.
+- Save-path precedence in built-in mode:
+  1. If the user names a destination, move or copy the selected output there.
+  2. If the image is meant for the current project, move or copy the final selected image into the workspace before finishing.
+  3. If the image is only for preview or brainstorming, render it inline; the underlying file can remain at the default `$CODEX_HOME/*` path.
+- Never leave a project-referenced asset only at the default `$CODEX_HOME/*` path.
+- Do not overwrite an existing asset unless the user explicitly asked for replacement; otherwise create a sibling versioned filename such as `hero-v2.png` or `item-icon-edited.png`.
+
+Shared prompt guidance for both modes lives in `references/prompting.md` and `references/sample-prompts.md`.
+
+Fallback-only docs/resources for CLI mode:
+- `references/cli.md`
+- `references/image-api.md`
+- `references/codex-network.md`
+- `scripts/image_gen.py`
+
+## When to use
+- Generate a new image (concept art, product shot, cover, website hero)
+- Generate a new image using one or more reference images for style, composition, or mood
+- Edit an existing image (inpainting, lighting or weather transformations, background replacement, object removal, compositing, transparent background)
+- Produce many assets or variants for one task
+
+## When not to use
+- Extending or matching an existing SVG/vector icon set, logo system, or illustration library inside the repo
+- Creating simple shapes, diagrams, wireframes, or icons that are better produced directly in SVG, HTML/CSS, or canvas
+- Making a small project-local asset edit when the source file already exists in an editable native format
+- Any task where the user clearly wants deterministic code-native output instead of a generated bitmap
+
+## Decision tree
+
+Think about two separate questions:
+
+1. **Intent:** is this a new image or an edit of an existing image?
+2. **Execution strategy:** is this one asset or many assets/variants?
+
+Intent:
+- If the user wants to modify an existing image while preserving parts of it, treat the request as **edit**.
+- If the user provides images only as references for style, composition, mood, or subject guidance, treat the request as **generate**.
+- If the user provides no images, treat the request as **generate**.
+
+Built-in edit semantics:
+- Built-in edit mode is for images already visible in the conversation context, such as attached images or images generated earlier in the thread.
+- If the user wants to edit a local image file with the built-in tool, first load it with built-in `view_image` tool so the image is visible in the conversation context, then proceed with the built-in edit flow.
+- Do not promise arbitrary filesystem-path editing through the built-in tool.
+- If a local file still needs direct file-path control, masks, or other explicit CLI-only parameters, use the explicit CLI fallback only when the user asks for it.
+- For edits, preserve invariants aggressively and save non-destructively by default.
+
+Execution strategy:
+- In the built-in default path, produce many assets or variants by issuing one `image_gen` call per requested asset or variant.
+- In the CLI fallback path, use the CLI `generate-batch` subcommand only when the user explicitly chose CLI mode and needs many prompts/assets.
+- For many distinct assets, do not use `n` as a substitute for separate prompts. `n` is for variants of one prompt; distinct assets need distinct built-in calls or distinct CLI `generate-batch` jobs.
+
+Assume the user wants a new image unless they clearly ask to change an existing one.
+
+## Workflow
+1. Decide the top-level mode: built-in by default, including transparent-output requests; fallback CLI only if explicitly requested or confirmed.
+2. Decide the intent: `generate` or `edit`.
+3. Decide whether the output is preview-only or meant to be consumed by the current project.
+4. Decide the execution strategy: single asset vs repeated built-in calls vs CLI `generate-batch`.
+5. Collect inputs up front: prompt(s), exact text (verbatim), constraints/avoid list, and any input images.
+6. For every input image, label its role explicitly:
+   - reference image
+   - edit target
+   - supporting insert/style/compositing input
+7. If the edit target is only on the local filesystem and you are staying on the built-in path, inspect it with `view_image` first so the image is available in conversation context.
+8. If the user asked for a photo, illustration, sprite, product image, banner, or other explicitly raster-style asset, use `image_gen` rather than substituting SVG/HTML/CSS placeholders. If the request is for an icon, logo, or UI graphic that should match existing repo-native SVG/vector/code assets, prefer editing those directly instead.
+9. Augment the prompt based on specificity:
+   - If the user's prompt is already specific and detailed, normalize it into a clear spec without adding creative requirements.
+   - If the user's prompt is generic, add tasteful augmentation only when it materially improves output quality.
+10. Use the built-in `image_gen` tool by default.
+11. For transparent-output requests, ask built-in `image_gen` for a transparent background and preserve the generated alpha channel.
+12. Inspect outputs and validate: subject, style, composition, text accuracy, and invariants/avoid items.
+13. Iterate with a single targeted change, then re-check.
+14. For preview-only work, render the image inline; the underlying file may remain at the default `$CODEX_HOME/generated_images/...` path.
+15. For project-bound work, move or copy the selected artifact into the workspace and update any consuming code or references. Never leave a project-referenced asset only at the default `$CODEX_HOME/generated_images/...` path.
+16. For batches or multi-asset requests, persist every requested deliverable final in the workspace unless the user explicitly asked to keep outputs preview-only. Discarded variants do not need to be kept unless requested.
+17. If the user explicitly chooses or confirms the CLI fallback, then use the fallback-only docs for model, quality, size, `input_fidelity`, masks, output format, output paths, and network setup.
+18. Always report the final saved path(s) for any workspace-bound asset(s), plus the final prompt or prompt set and whether the built-in tool or fallback CLI mode was used.
+
+## Transparent image requests
+
+Ask built-in `image_gen` for a genuinely transparent background and preserve its alpha.
+
+## Prompt augmentation
+
+Reformat user prompts into a structured, production-oriented spec. Make the user's goal clearer and more actionable, but do not blindly add detail.
+
+Treat this as prompt-shaping guidance, not a closed schema. Use only the lines that help, and add a short extra labeled line when it materially improves clarity.
+
+### Specificity policy
+
+Use the user's prompt specificity to decide how much augmentation is appropriate:
+
+- If the prompt is already specific and detailed, preserve that specificity and only normalize/structure it.
+- If the prompt is generic, you may add tasteful augmentation when it will materially improve the result.
+
+Allowed augmentations:
+- composition or framing hints
+- polish level or intended-use hints
+- practical layout guidance
+- reasonable scene concreteness that supports the stated request
+
+Not allowed augmentations:
+- extra characters or objects that are not implied by the request
+- brand names, slogans, palettes, or narrative beats that are not implied
+- arbitrary side-specific placement unless the surrounding layout supports it
+
+## Use-case taxonomy (exact slugs)
+
+Classify each request into one of these buckets and keep the slug consistent across prompts and references.
+
+Generate:
+- photorealistic-natural — candid/editorial lifestyle scenes with real texture and natural lighting.
+- product-mockup — product/packaging shots, catalog imagery, merch concepts.
+- ui-mockup — app/web interface mockups and wireframes; specify the desired fidelity.
+- infographic-diagram — diagrams/infographics with structured layout and text.
+- scientific-educational — classroom explainers, scientific diagrams, and learning visuals with required labels and accuracy constraints.
+- ads-marketing — campaign concepts and ad creatives with audience, brand position, scene, and exact tagline/copy.
+- productivity-visual — slide, chart, workflow, and data-heavy business visuals.
+- logo-brand — logo/mark exploration, vector-friendly.
+- illustration-story — comics, children’s book art, narrative scenes.
+- stylized-concept — style-driven concept art, 3D/stylized renders.
+- historical-scene — period-accurate/world-knowledge scenes.
+
+Edit:
+- text-localization — translate/replace in-image text, preserve layout.
+- identity-preserve — try-on, person-in-scene; lock face/body/pose.
+- precise-object-edit — remove/replace a specific element (including interior swaps).
+- lighting-weather — time-of-day/season/atmosphere changes only.
+- background-extraction — transparent background / clean cutout. Ask built-in `image_gen` for actual transparency.
+- style-transfer — apply reference style while changing subject/scene.
+- compositing — multi-image insert/merge with matched lighting/perspective.
+- sketch-to-render — drawing/line art to photoreal render.
+
+## Shared prompt schema
+
+Use the following labeled spec as shared prompt scaffolding for both top-level modes:
+
+```text
+Use case: <taxonomy slug>
+Asset type: <where the asset will be used>
+Primary request: <user's main prompt>
+Input images: <Image 1: role; Image 2: role> (optional)
+Scene/backdrop: <environment>
+Subject: <main subject>
+Style/medium: <photo/illustration/3D/etc>
+Composition/framing: <wide/close/top-down; placement>
+Lighting/mood: <lighting + mood>
+Color palette: <palette notes>
+Materials/textures: <surface details>
+Text (verbatim): "<exact text>"
+Constraints: <must keep/must avoid>
+Avoid: <negative constraints>
+```
+
+Notes:
+- `Asset type` and `Input images` are prompt scaffolding, not dedicated CLI flags.
+- `Scene/backdrop` refers to the visual setting. It is not the same as the fallback CLI `background` parameter, which controls output transparency behavior.
+- Fallback-only execution notes such as `Quality:`, `Input fidelity:`, masks, output format, and output paths belong in the CLI path only. Do not treat them as built-in `image_gen` tool arguments.
+
+Augmentation rules:
+- Keep it short.
+- Add only the details needed to improve the prompt materially.
+- For edits, explicitly list invariants (`change only X; keep Y unchanged`).
+- If any critical detail is missing and blocks success, ask a question; otherwise proceed.
+
+## Examples
+
+### Generation example (hero image)
+```text
+Use case: product-mockup
+Asset type: landing page hero
+Primary request: a minimal hero image of a ceramic coffee mug
+Style/medium: clean product photography
+Composition/framing: wide composition with usable negative space for page copy if needed
+Lighting/mood: soft studio lighting
+Constraints: no logos, no text, no watermark
+```
+
+### Edit example (invariants)
+```text
+Use case: precise-object-edit
+Asset type: product photo background replacement
+Primary request: replace only the background with a warm sunset gradient
+Constraints: change only the background; keep the product and its edges unchanged; no text; no watermark
+```
+
+## Prompting best practices
+- Structure prompt as scene/backdrop -> subject -> details -> constraints.
+- Include intended use (ad, UI mock, infographic) to set the mode and polish level.
+- Use camera/composition language for photorealism.
+- Only use SVG/vector stand-ins when the user explicitly asked for vector output or a non-image placeholder.
+- Quote exact text and specify typography + placement.
+- For tricky words, spell them letter-by-letter and require verbatim rendering.
+- For multi-image inputs, reference images by index and describe how they should be used.
+- For edits, repeat invariants every iteration to reduce drift.
+- Iterate with single-change follow-ups.
+- If the prompt is generic, add only the extra detail that will materially help.
+- If the prompt is already detailed, normalize it instead of expanding it.
+- For CLI fallback only, see `references/cli.md` and `references/image-api.md` for model, `quality`, `input_fidelity`, masks, output format, and output-path guidance.
+- For transparent images, ask built-in `image_gen` for actual transparency and preserve its alpha.
+
+More principles shared by both modes: `references/prompting.md`.
+Copy/paste specs shared by both modes: `references/sample-prompts.md`.
+
+## Guidance by asset type
+Asset-type templates (website assets, game assets, wireframes, logo) are consolidated in `references/sample-prompts.md`.
+
+## gpt-image-2 guidance for CLI fallback
+
+The fallback CLI defaults to `gpt-image-2`.
+
+- Use `gpt-image-2` for new CLI/API workflows unless the user confirms a different model.
+- CLI `gpt-image-2` does not support `background=transparent`; ask before using `gpt-image-1.5` unless the user explicitly requested that model.
+- `gpt-image-2` always uses high fidelity for image inputs; do not set `input_fidelity` with this model.
+- `gpt-image-2` supports `quality` values `low`, `medium`, `high`, and `auto`.
+- Use `quality low` for fast drafts, thumbnails, and quick iterations. Use `medium`, `high`, or `auto` for final assets, dense text, diagrams, identity-sensitive edits, or high-resolution outputs.
+- Square images are typically fastest to generate. Use `1024x1024` for fast square drafts.
+- If the user asks for 4K-style output, use `3840x2160` for landscape or `2160x3840` for portrait.
+- `gpt-image-2` size may be `auto` or `WIDTHxHEIGHT` if all constraints hold: max edge `<= 3840px`, both edges multiples of `16px`, long-to-short ratio `<= 3:1`, total pixels between `655,360` and `8,294,400`.
+
+Popular `gpt-image-2` sizes:
+- `1024x1024` square
+- `1536x1024` landscape
+- `1024x1536` portrait
+- `2048x2048` 2K square
+- `2048x1152` 2K landscape
+- `3840x2160` 4K landscape
+- `2160x3840` 4K portrait
+- `auto`
+
+## Fallback CLI mode only
+
+### Temp and output conventions
+These conventions apply only to the CLI fallback. They do not describe built-in `image_gen` output behavior.
+- Use `tmp/imagegen/` for intermediate files (for example JSONL batches); delete them when done.
+- Write final artifacts under `output/imagegen/`.
+- Use `--out` or `--out-dir` to control output paths; keep filenames stable and descriptive.
+
+### Dependencies
+Prefer `uv` for dependency management in this repo.
+
+Required Python package:
+```bash
+uv pip install openai
+```
+
+Optional for image inspection and downscaling:
+```bash
+uv pip install pillow
+```
+
+Portability note:
+- If you are using the installed skill outside this repo, install dependencies into that environment with its package manager.
+- In uv-managed environments, `uv pip install ...` remains the preferred path.
+
+### Environment
+- `OPENAI_API_KEY` must be set for live API calls.
+- Do not ask the user for `OPENAI_API_KEY` when using the built-in `image_gen` tool.
+- Never ask the user to paste the full key in chat. Ask them to set it locally and confirm when ready.
+
+If the key is missing, give the user these steps:
+1. Create an API key in the OpenAI platform UI: https://platform.openai.com/api-keys
+2. Set `OPENAI_API_KEY` as an environment variable in their system.
+3. Offer to guide them through setting the environment variable for their OS/shell if needed.
+
+If installation is not possible in this environment, tell the user which dependency is missing and how to install it into their active environment.
+
+### Script-mode notes
+- CLI commands + examples: `references/cli.md`
+- API parameter quick reference: `references/image-api.md`
+- Network approvals / sandbox settings for CLI mode: `references/codex-network.md`
+
+## Reference map
+- `references/prompting.md`: shared prompting principles for both modes.
+- `references/sample-prompts.md`: shared copy/paste prompt recipes for both modes.
+- `references/cli.md`: fallback-only CLI usage via `scripts/image_gen.py`.
+- `references/image-api.md`: fallback-only API/CLI parameter reference.
+- `references/codex-network.md`: fallback-only network/sandbox troubleshooting for CLI mode.
+- `scripts/image_gen.py`: fallback-only CLI implementation. Use only when the user explicitly chooses or confirms CLI mode.
+
+exec
+/bin/zsh -lc "pwd; rg --files -g AGENTS.md -g '"'!node_modules'"' -g '"'!.git'"' '/Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates' '/Users/manuel.diaz/.codex/generated_images' 2>/dev/null" in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ exited 1 in 0ms:
+/Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+
+exec
+/bin/zsh -lc "python3 - <<'PY'
+from pathlib import Path
+import json
+cwd=Path.cwd()
+for parent in [cwd,*cwd.parents]:
+    f=parent/'AGENTS.md'
+    if f.is_file():
+        print(str(f))
+        print(f.read_text())
+p=Path('/Users/manuel.diaz/.codex/generated_images')
+files=sorted((f for f in p.glob('*') if f.is_file()), key=lambda f:f.stat().st_mtime, reverse=True)
+print(json.dumps([{'path':str(f),'mtime_ns':f.stat().st_mtime_ns} for f in files[:5]]))
+print('Destination exists:',Path('/Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/crate_cargo_crate.png').exists())
+PY" in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ succeeded in 0ms:
+[]
+Destination exists: False
+
+exec
+/bin/zsh -lc 'cat /Users/manuel.diaz/.codex/skills/.system/imagegen/references/prompting.md' in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ succeeded in 0ms:
+# Prompting best practices
+
+These prompting principles are shared by both top-level modes of the skill:
+- built-in `image_gen` tool (default)
+- explicit `scripts/image_gen.py` CLI fallback
+
+This file is about prompt structure, specificity, and iteration. Fallback-only execution controls such as `quality`, `input_fidelity`, masks, output format, and output paths live in the fallback docs.
+
+## Contents
+- [Structure](#structure)
+- [Specificity policy](#specificity-policy)
+- [Allowed and disallowed augmentation](#allowed-and-disallowed-augmentation)
+- [Composition and layout](#composition-and-layout)
+- [Constraints and invariants](#constraints-and-invariants)
+- [Text in images](#text-in-images)
+- [Input images and references](#input-images-and-references)
+- [Iterate deliberately](#iterate-deliberately)
+- [Transparent images](#transparent-images)
+- [Fallback-only execution controls](#fallback-only-execution-controls)
+- [Use-case tips](#use-case-tips)
+- [Where to find copy/paste recipes](#where-to-find-copypaste-recipes)
+
+## Structure
+- Use a consistent order: scene/backdrop -> subject -> key details -> constraints -> output intent.
+- Include intended use (ad, UI mock, infographic) to set the level of polish.
+- For complex requests, use short labeled lines instead of one long paragraph.
+
+## Specificity policy
+- If the user prompt is already specific and detailed, normalize it into a clean spec without adding creative requirements.
+- If the prompt is generic, you may add tasteful detail when it materially improves the output.
+- Treat examples in `sample-prompts.md` as fully-authored recipes, not as the default amount of augmentation to add to every request.
+- For photorealism, include `photorealistic` directly when that is the goal, plus concrete real-world texture such as pores, wrinkles, fabric wear, material grain, or imperfect everyday detail.
+
+## Allowed and disallowed augmentation
+
+Allowed augmentation for generic prompts:
+- composition and framing cues
+- intended-use or polish-level hints
+- practical layout guidance
+- reasonable scene concreteness that supports the request
+
+Do not add:
+- extra characters, props, or objects that are not implied
+- brand palettes, slogans, or story beats that are not implied
+- arbitrary side-specific placement unless the surrounding layout supports it
+
+## Composition and layout
+- Specify framing and viewpoint (close-up, wide, top-down) and placement only when it materially helps.
+- Call out negative space if the asset clearly needs room for UI or copy.
+- Avoid making left/right layout decisions unless the user or surrounding layout supports them.
+- For people, describe body framing, scale, gaze, and object interactions when they matter (`full body visible`, `looking down at the book`, `hands naturally gripping the handlebars`).
+
+## Constraints and invariants
+- State what must not change (`keep background unchanged`).
+- For edits, say `change only X; keep Y unchanged` and repeat invariants on every iteration to reduce drift.
+
+## Text in images
+- Put literal text in quotes or ALL CAPS and specify typography (font style, size, color, placement).
+- Spell uncommon words letter-by-letter if accuracy matters.
+- For in-image copy, require verbatim rendering and no extra characters.
+- In CLI fallback mode, use `medium` or `high` quality for small text, dense infographics, data-heavy slides, multi-font layouts, legends, axes, and footnotes.
+
+## Input images and references
+- Do not assume that every provided image is an edit target.
+- Label each image by index and role (`Image 1: edit target`, `Image 2: style reference`).
+- If the user provides images for style, composition, or mood guidance and does not ask to modify them, treat the request as generation with references.
+- If the user asks to preserve an existing image while changing specific parts, treat the request as an edit.
+- For compositing, describe how the images interact (`place the subject from Image 2 into Image 1`).
+
+## Iterate deliberately
+- Start with a clean base prompt, then make small single-change edits.
+- Re-specify critical constraints when you iterate.
+- Prefer one targeted follow-up at a time over rewriting the whole prompt.
+
+## Transparent images
+- Ask built-in `image_gen` for a genuinely transparent background and preserve its alpha.
+
+## Fallback-only execution controls
+- `quality`, `input_fidelity`, explicit masks, output format, and output paths are fallback-only execution controls.
+- Do not assume they are built-in `image_gen` tool arguments.
+- If the user explicitly chooses CLI fallback, see `references/cli.md` and `references/image-api.md` for those controls.
+- In CLI fallback mode, `gpt-image-2` is the default. It supports `quality=low|medium|high|auto`; use `low` for fast drafts and thumbnails, and move to `medium`, `high`, or `auto` for final assets.
+- `gpt-image-2` always uses high fidelity for image inputs, so do not set `input_fidelity` with that model.
+- CLI `gpt-image-2` does not support `background=transparent`; ask before using `gpt-image-1.5` unless the user explicitly requested that model.
+- If the user asks for 4K-style output with `gpt-image-2`, use `3840x2160` for landscape or `2160x3840` for portrait.
+
+## Use-case tips
+Generate:
+- photorealistic-natural: Prompt as if a real photo is captured in the moment; use photography language (lens, lighting, framing); call for real texture; avoid over-stylized polish unless requested.
+- product-mockup: Describe the product/packaging and materials; ensure clean silhouette and label clarity; if in-image text is needed, require verbatim rendering and specify typography.
+- ui-mockup: Describe the target fidelity first (shippable mockup or low-fi wireframe), then focus on layout, hierarchy, and practical UI elements; avoid concept-art language.
+- infographic-diagram: Define the audience and layout flow; label parts explicitly; require verbatim text; prefer higher quality in CLI mode for dense labels.
+- logo-brand: Keep it simple and scalable; ask for a strong silhouette and balanced negative space; avoid decorative flourishes unless requested.
+- ads-marketing: Write like a creative brief; include brand positioning, audience, desired vibe, scene, and exact tagline if text must appear.
+- productivity-visual: Name the exact artifact (slide, chart, workflow diagram), define the canvas and hierarchy, provide real labels/data, and ask for readable typography and polished spacing.
+- scientific-educational: Define audience, lesson objective, required labels, scientific constraints, arrows, and scan-friendly whitespace.
+- illustration-story: Define panels or scene beats; keep each action concrete.
+- stylized-concept: Specify style cues, material finish, and rendering approach (3D, painterly, clay) without inventing new story elements.
+- historical-scene: State the location/date and required period accuracy; constrain clothing, props, and environment to match the era.
+
+Edit:
+- text-localization: Change only the text; preserve layout, typography, spacing, and hierarchy; no extra words or reflow unless needed.
+- identity-preserve: Lock identity (face, body, pose, hair, expression); change only the specified elements; match lighting and shadows.
+- precise-object-edit: Specify exactly what to remove/replace; preserve surrounding texture and lighting; keep everything else unchanged.
+- lighting-weather: Change only environmental conditions (light, shadows, atmosphere, precipitation); keep geometry, framing, and subject identity.
+- background-extraction: Request a clean cutout on a genuinely transparent background; preserve fine edges and label text; no halos or restyling.
+- style-transfer: Specify style cues to preserve (palette, texture, brushwork) and what must change; add `no extra elements` to prevent drift.
+- compositing: Reference inputs by index; specify what moves where; match lighting, perspective, and scale; keep the base framing unchanged.
+- sketch-to-render: Preserve layout, proportions, and perspective; choose materials and lighting that support the supplied sketch without adding new elements.
+
+## Where to find copy/paste recipes
+For copy/paste prompt specs (examples only), see `references/sample-prompts.md`. This file focuses on principles, specificity, and iteration patterns.
+
+exec
+/bin/zsh -lc "python3 - <<'PY'
+from pathlib import Path
+from PIL import Image
+import json
+root=Path('/Users/manuel.diaz/.codex/generated_images')
+files=sorted((f for f in root.rglob('*') if f.is_file() and f.suffix.lower() in ('.png','.jpg','.jpeg','.webp')),key=lambda f:f.stat().st_mtime_ns,reverse=True)
+for p in files[:3]:
+    im=Image.open(p)
+    print(json.dumps({'path':str(p),'mtime_ns':p.stat().st_mtime_ns,'size':im.size,'format':im.format,'mode':im.mode,'corner_pixels':[im.getpixel(q) for q in [(0,0),(im.width-1,0),(0,im.height-1),(im.width-1,im.height-1)]]}))
+PY" in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ exited 1 in 0ms:
+Traceback (most recent call last):
+  File "<stdin>", line 2, in <module>
+ModuleNotFoundError: No module named 'PIL'
+
+exec
+/bin/zsh -lc "python3 - <<'PY'
+from pathlib import Path
+import struct,json
+root=Path('/Users/manuel.diaz/.codex/generated_images')
+files=sorted((f for f in root.rglob('*') if f.is_file() and f.suffix.lower()=='.png'),key=lambda f:f.stat().st_mtime_ns,reverse=True)
+for p in files[:3]:
+    data=p.read_bytes()
+    width,height,bit_depth,color_type=struct.unpack('>IIBB',data[16:26])
+    print(json.dumps({'path':str(p),'mtime_ns':p.stat().st_mtime_ns,'width':width,'height':height,'bit_depth':bit_depth,'color_type':color_type}))
+PY" in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ succeeded in 0ms:
+{"path": "/Users/manuel.diaz/.codex/generated_images/01a12c78-5eb5-7f21-bb4f-de847c8ab993/exec-197186d0-a163-4b99-854b-851b876fb0f9.png", "mtime_ns": 1791747509994137022, "width": 1254, "height": 1254, "bit_depth": 8, "color_type": 2}
+{"path": "/Users/manuel.diaz/.codex/generated_images/01a12c3f-d492-7740-a49a-94d94e4dc83b/exec-56f9a28d-cfec-4b3e-8681-2d1c5673df58.png", "mtime_ns": 1791743909500929258, "width": 1254, "height": 1254, "bit_depth": 8, "color_type": 2}
+{"path": "/Users/manuel.diaz/.codex/generated_images/01a12c3f-d492-7740-a49a-94d94e4dc83b/exec-8cd7c795-32f6-42fa-9fcd-7b6c4ec8267a.png", "mtime_ns": 1791743835506822774, "width": 1254, "height": 1254, "bit_depth": 8, "color_type": 2}
+
+exec
+/bin/zsh -lc "python3 - <<'PY'
+from pathlib import Path
+import struct,zlib,collections,json
+p=Path('/Users/manuel.diaz/.codex/generated_images/01a12c78-5eb5-7f21-bb4f-de847c8ab993/exec-197186d0-a163-4b99-854b-851b876fb0f9.png')
+data=p.read_bytes(); pos=8; idat=[]
+w,h,depth,color=struct.unpack('>IIBB',data[16:26]); bpp=3 if color==2 else 4
+while pos<len(data):
+    n=struct.unpack('>I',data[pos:pos+4])[0]; typ=data[pos+4:pos+8]; chunk=data[pos+8:pos+8+n];pos+=12+n
+    if typ==b'IDAT': idat.append(chunk)
+raw=zlib.decompress(b''.join(idat)); stride=w*bpp; rows=[];prev=bytearray(stride)
+for y in range(h):
+    at=y*(stride+1); f=raw[at]; row=bytearray(raw[at+1:at+1+stride])
+    for x in range(stride):
+        a=row[x-bpp] if x>=bpp else 0;b=prev[x];c=prev[x-bpp] if x>=bpp else 0
+        if f==1:v=a
+        elif f==2:v=b
+        elif f==3:v=(a+b)//2
+        elif f==4:
+            v0=a+b-c;pa=abs(v0-a);pb=abs(v0-b);pc=abs(v0-c);v=a if pa<=pb and pa<=pc else b if pb<=pc else c
+        else:v=0
+        row[x]=(row[x]+v)&255
+    rows.append(row);prev=row
+corners=[tuple(rows[y][x*bpp:x*bpp+3]) for x,y in [(0,0),(w-1,0),(0,h-1),(w-1,h-1),(w//2,h-10),(10,h//2)]]
+counts=collections.Counter(tuple(rows[y][x*bpp:x*bpp+3]) for y in range(h) for x in range(w) if x<40 or y<40 or x>=w-40 or y>=h-40)
+print(json.dumps({'sampled_background_pixels':corners,'border_common_pixels':counts.most_common(10),'nonwhite_border_pixels':sum(n for rgb,n in counts.items() if rgb"'!=(255,255,255))}))
+PY' in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ succeeded in 1765ms:
+{"sampled_background_pixels": [[254, 255, 255], [255, 255, 254], [254, 254, 254], [254, 253, 254], [255, 255, 255], [254, 254, 254]], "border_common_pixels": [[[254, 254, 254], 115931], [[253, 253, 253], 27671], [[255, 255, 255], 19371], [[254, 253, 254], 9736], [[255, 254, 255], 6298], [[253, 254, 253], 2698], [[254, 253, 253], 2304], [[255, 254, 254], 2284], [[254, 255, 254], 1563], [[254, 254, 255], 1498]], "nonwhite_border_pixels": 174869}
+
+codex
+The first render has faint background texture, so I’m regenerating it to get a cleaner white backdrop. I’ll also check that the saved PNG is exactly 1024 × 1024.
+
+exec
+/bin/zsh -lc "python3 - <<'PY'
+from pathlib import Path
+import struct,json
+p=max((p for p in Path('/Users/manuel.diaz/.codex/generated_images').rglob('*.png') if p.is_file()),key=lambda p:p.stat().st_mtime_ns)
+b=p.read_bytes()
+print(json.dumps({'newest':str(p),'size':struct.unpack('>II',b[16:24]),'color_type':b[25]}))
+PY" in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ succeeded in 0ms:
+{"newest": "/Users/manuel.diaz/.codex/generated_images/01a12c78-5eb5-7f21-bb4f-de847c8ab993/exec-304ddc5e-b2b0-4cdf-a81e-dcac11232ec7.png", "size": [1254, 1254], "color_type": 2}
+
+exec
+/bin/zsh -lc "python3 - <<'PY'
+from pathlib import Path
+import struct,json
+p=max((p for p in Path('/Users/manuel.diaz/.codex/generated_images').rglob('*.png') if p.is_file()),key=lambda p:p.stat().st_mtime_ns)
+b=p.read_bytes()
+print(json.dumps({'newest':str(p),'size':struct.unpack('>II',b[16:24]),'color_type':b[25]}))
+PY
+command -v swift
+command -v sips" in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ succeeded in 0ms:
+{"newest": "/Users/manuel.diaz/.codex/generated_images/01a12c78-5eb5-7f21-bb4f-de847c8ab993/exec-a60fccf9-7557-4ee0-a242-8bd5935d79a2.png", "size": [1254, 1254], "color_type": 6}
+/usr/bin/swift
+/usr/bin/sips
+
+codex
+The revised crate has the requested framing and details. I’m exporting it onto solid white at 1024 × 1024, then checking the file before copying it.
+
+exec
+/bin/zsh -lc "CLANG_MODULE_CACHE_PATH=/private/tmp/crate_cargo_module_cache swift - '/Users/manuel.diaz/.codex/generated_images/01a12c78-5eb5-7f21-bb4f-de847c8ab993/exec-a60fccf9-7557-4ee0-a242-8bd5935d79a2.png' '/Users/manuel.diaz/.codex/generated_images/01a12c78-5eb5-7f21-bb4f-de847c8ab993/crate_cargo_crate_1024.png' <<'SWIFT'
+import Foundation
+import CoreGraphics
+import ImageIO
+let sourceURL = URL(fileURLWithPath: CommandLine.arguments[1])
+let destURL = URL(fileURLWithPath: CommandLine.arguments[2])
+guard let source = CGImageSourceCreateWithURL(sourceURL as CFURL, nil),
+      let image = CGImageSourceCreateImageAtIndex(source, 0, nil),
+      let colorSpace = CGColorSpace(name: CGColorSpace.sRGB),
+      let context = CGContext(data: nil, width: 1024, height: 1024, bitsPerComponent: 8, bytesPerRow: 4096, space: colorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue) else { fatalError(\"Could not initialize image export\") }
+let bounds = CGRect(x: 0, y: 0, width: 1024, height: 1024)
+context.setFillColor(red: 1, green: 1, blue: 1, alpha: 1)
+context.fill(bounds)
+context.interpolationQuality = .high
+context.draw(image, in: bounds)
+guard let final = context.makeImage(),
+      let destination = CGImageDestinationCreateWithURL(destURL as CFURL, \"public.png\" as CFString, 1, nil) else { fatalError(\"Could not create PNG\") }
+CGImageDestinationAddImage(destination, final, nil)
+guard CGImageDestinationFinalize(destination) else { fatalError(\"PNG export failed\") }
+print(\"Exported \\(final.width)x\\(final.height) PNG: \\(destURL.path)\")
+SWIFT" in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ succeeded in 3463ms:
+Exported 1024x1024 PNG: /Users/manuel.diaz/.codex/generated_images/01a12c78-5eb5-7f21-bb4f-de847c8ab993/crate_cargo_crate_1024.png
+
+exec
+/bin/zsh -lc "sips -g pixelWidth -g pixelHeight -g format -g hasAlpha '/Users/manuel.diaz/.codex/generated_images/01a12c78-5eb5-7f21-bb4f-de847c8ab993/crate_cargo_crate_1024.png'" in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ succeeded in 27ms:
+/Users/manuel.diaz/.codex/generated_images/01a12c78-5eb5-7f21-bb4f-de847c8ab993/crate_cargo_crate_1024.png
+  pixelWidth: 1024
+  pixelHeight: 1024
+  format: png
+  hasAlpha: no
+
+exec
+/bin/zsh -lc "python3 - <<'PY'
+from pathlib import Path
+import struct,zlib,shutil,hashlib,json
+root=Path('/Users/manuel.diaz/.codex/generated_images')
+source=max((p for p in root.rglob('*.png') if p.is_file()),key=lambda p:p.stat().st_mtime_ns)
+expected=Path('/Users/manuel.diaz/.codex/generated_images/01a12c78-5eb5-7f21-bb4f-de847c8ab993/crate_cargo_crate_1024.png')
+assert source==expected, 'Newest image changed unexpectedly'
+data=source.read_bytes();w,h,depth,color=struct.unpack('>IIBB',data[16:26])
+assert (w,h)==(1024,1024)
+assert depth==8 and color==2
+pos=8;chunks=[]
+while pos<len(data):
+    n=struct.unpack('>I',data[pos:pos+4])[0]
+    if data[pos+4:pos+8]==b'IDAT':chunks.append(data[pos+8:pos+8+n])
+    pos+=12+n
+raw=zlib.decompress(b''.join(chunks));bpp=3;stride=w*bpp;previous=bytearray(stride);border_nonwhite=0
+for y in range(h):
+    at=y*(stride+1);f=raw[at];row=bytearray(raw[at+1:at+stride+1])
+    for x in range(stride):
+        a=row[x-bpp] if x>=bpp else 0;b=previous[x];c=previous[x-bpp] if x>=bpp else 0
+        if f==1:v=a
+        elif f==2:v=b
+        elif f==3:v=(a+b)//2
+        elif f==4:
+            p=a+b-c;pa=abs(p-a);pb=abs(p-b);pc=abs(p-c);v=a if pa<=pb and pa<=pc else b if pb<=pc else c
+        else:v=0
+        row[x]=(row[x]+v)&255
+    for x in range(w):
+        if x<100 or x>=w-100 or y<100 or y>=h-100:
+            if row[x*3:x*3+3]"'!=b'"'\\xff\\xff\\xff':border_nonwhite+=1
+    previous=row
+assert border_nonwhite==0, f'Background border has {border_nonwhite} nonwhite pixels'
+destination=Path('/Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/crate_cargo_crate.png')
+shutil.copy2(source,destination)
+assert hashlib.sha256(destination.read_bytes()).digest()==hashlib.sha256(data).digest()
+print(json.dumps({'saved_path':str(destination),'dimensions':[w,h],'format':'PNG','background_border':'pure white RGB 255,255,255','copy_verified':True}))
+PY" in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ exited 1 in 1146ms:
+Traceback (most recent call last):
+  File "<stdin>", line 31, in <module>
+AssertionError: Background border has 3723 nonwhite pixels
+
+exec
+/bin/zsh -lc "CLANG_MODULE_CACHE_PATH=/private/tmp/crate_cargo_module_cache swift - '/Users/manuel.diaz/.codex/generated_images/01a12c78-5eb5-7f21-bb4f-de847c8ab993/exec-a60fccf9-7557-4ee0-a242-8bd5935d79a2.png' <<'SWIFT'
+import Foundation
+import CoreGraphics
+import ImageIO
+let source=CGImageSourceCreateWithURL(URL(fileURLWithPath:CommandLine.arguments[1]) as CFURL,nil)"'!
+let image=CGImageSourceCreateImageAtIndex(source,0,nil)!
+let w=image.width,h=image.height
+let ctx=CGContext(data:nil,width:w,height:h,bitsPerComponent:8,bytesPerRow:w*4,space:CGColorSpace(name:CGColorSpace.sRGB)!,bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue)!
+ctx.draw(image,in:CGRect(x:0,y:0,width:w,height:h))
+let bytes=ctx.data!.assumingMemoryBound(to:UInt8.self)
+var counts:[UInt8:Int]=[:]
+for y in 0..<h { for x in 0..<w { if x<120 || x>=w-120 || y<120 || y>=h-120 { let a=bytes[(y*w+x)*4+3];counts[a,default:0]+=1 } } }
+print(counts.sorted{$0.key<$1.key}.map{"'"\\("'$0.key): '"\\("'$0.value)"}.joined(separator:", "))
+SWIFT' in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ succeeded in 427ms:
+0: 538930, 1: 5390
+
+exec
+/bin/zsh -lc "CLANG_MODULE_CACHE_PATH=/private/tmp/crate_cargo_module_cache swift - '/Users/manuel.diaz/.codex/generated_images/01a12c78-5eb5-7f21-bb4f-de847c8ab993/exec-a60fccf9-7557-4ee0-a242-8bd5935d79a2.png' '/Users/manuel.diaz/.codex/generated_images/01a12c78-5eb5-7f21-bb4f-de847c8ab993/crate_cargo_crate_1024.png' <<'SWIFT'
+import Foundation
+import CoreGraphics
+import ImageIO
+let sourceURL=URL(fileURLWithPath:CommandLine.arguments[1])
+let destURL=URL(fileURLWithPath:CommandLine.arguments[2])
+let source=CGImageSourceCreateWithURL(sourceURL as CFURL,nil)"'!
+let image=CGImageSourceCreateImageAtIndex(source,0,nil)!
+let colorSpace=CGColorSpace(name:CGColorSpace.sRGB)!
+let intermediate=CGContext(data:nil,width:image.width,height:image.height,bitsPerComponent:8,bytesPerRow:image.width*4,space:colorSpace,bitmapInfo:CGImageAlphaInfo.premultipliedLast.rawValue)!
+intermediate.draw(image,in:CGRect(x:0,y:0,width:image.width,height:image.height))
+let bytes=intermediate.data!.assumingMemoryBound(to:UInt8.self)
+for pixel in 0..<(image.width*image.height) {
+    let i=pixel*4
+    if bytes[i+3]<=1 { bytes[i]=0;bytes[i+1]=0;bytes[i+2]=0;bytes[i+3]=0 }
+}
+let context=CGContext(data:nil,width:1024,height:1024,bitsPerComponent:8,bytesPerRow:4096,space:colorSpace,bitmapInfo:CGImageAlphaInfo.noneSkipLast.rawValue)!
+let bounds=CGRect(x:0,y:0,width:1024,height:1024)
+context.setFillColor(red:1,green:1,blue:1,alpha:1)
+context.fill(bounds)
+context.interpolationQuality = .high
+context.draw(intermediate.makeImage()!,in:bounds)
+let final=context.makeImage()!
+let destination=CGImageDestinationCreateWithURL(destURL as CFURL,"public.png" as CFString,1,nil)!
+CGImageDestinationAddImage(destination,final,nil)
+assert(CGImageDestinationFinalize(destination))
+print("Exported opaque 1024x1024 PNG on pure white.")
+SWIFT' in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ succeeded in 306ms:
+Exported opaque 1024x1024 PNG on pure white.
+
+exec
+/bin/zsh -lc "CLANG_MODULE_CACHE_PATH=/private/tmp/crate_cargo_module_cache swift - '/Users/manuel.diaz/.codex/generated_images/01a12c78-5eb5-7f21-bb4f-de847c8ab993/crate_cargo_crate_1024.png' <<'SWIFT'
+import Foundation
+import CoreGraphics
+import ImageIO
+let source=CGImageSourceCreateWithURL(URL(fileURLWithPath:CommandLine.arguments[1]) as CFURL,nil)"'!
+let image=CGImageSourceCreateImageAtIndex(source,0,nil)!
+assert(image.width==1024 && image.height==1024)
+let context=CGContext(data:nil,width:1024,height:1024,bitsPerComponent:8,bytesPerRow:4096,space:CGColorSpace(name:CGColorSpace.sRGB)!,bitmapInfo:CGImageAlphaInfo.noneSkipLast.rawValue)!
+context.draw(image,in:CGRect(x:0,y:0,width:1024,height:1024))
+let pixels=context.data!.assumingMemoryBound(to:UInt8.self)
+var nonwhite=0
+for y in 0..<1024 { for x in 0..<1024 { if x<100 || x>=924 || y<100 || y>=924 { let i=(y*1024+x)*4;if pixels[i] != 255 || pixels[i+1] != 255 || pixels[i+2] != 255 {nonwhite+=1} } } }
+assert(nonwhite==0,"Background border is not pure white")
+print("Verified 1024x1024 PNG; pure white background border; no cast shadow on visual inspection.")
+SWIFT' in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ succeeded in 240ms:
+Verified 1024x1024 PNG; pure white background border; no cast shadow on visual inspection.
+
+exec
+/bin/zsh -lc "python3 - <<'PY'
+from pathlib import Path
+import shutil,hashlib,struct,json
+root=Path('/Users/manuel.diaz/.codex/generated_images')
+source=max((p for p in root.rglob('*.png') if p.is_file()),key=lambda p:p.stat().st_mtime_ns)
+assert source.name=='crate_cargo_crate_1024.png'
+destination=Path('/Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/crate_cargo_crate.png')
+assert not destination.exists()
+shutil.copy2(source,destination)
+a=source.read_bytes();b=destination.read_bytes()
+assert hashlib.sha256(a).digest()==hashlib.sha256(b).digest()
+assert struct.unpack('>II',b[16:24])==(1024,1024)
+print(json.dumps({'path':str(destination),'width':1024,'height':1024,'format':'PNG','copy_verified':True}))
+PY" in /Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/gen/crate_cargo_crate
+ succeeded in 5ms:
+{"path": "/Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/crate_cargo_crate.png", "width": 1024, "height": 1024, "format": "PNG", "copy_verified": true}
+
+codex
+Saved: [crate_cargo_crate.png](</Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/crate_cargo_crate.png>) — **1024 × 1024 pixels**, PNG.
+tokens used
+70,264
+Saved: [crate_cargo_crate.png](</Volumes/T7 Shield/Projects/Maze Swarm/Concepts/Crates/crate_cargo_crate.png>) — **1024 × 1024 pixels**, PNG.

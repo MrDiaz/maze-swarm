@@ -1,0 +1,6 @@
+<linker>
+  <!-- GameObject.CreatePrimitive adds a MeshCollider (then removed); keep the class so it doesn't log an error -->
+  <assembly fullname="UnityEngine.PhysicsModule">
+    <type fullname="UnityEngine.MeshCollider" preserve="all"/>
+  </assembly>
+</linker>

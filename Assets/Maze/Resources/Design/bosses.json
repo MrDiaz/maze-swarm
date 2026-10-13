@@ -1,0 +1,3884 @@
+{
+ "bosses": [
+  {
+   "id": "razorback",
+   "name": "Razorback",
+   "type": "boss",
+   "zone": "evac-deck",
+   "hp": 120,
+   "size": 1.5,
+   "speed": 1.2,
+   "biomass": 30,
+   "contactDamage": 15,
+   "look": {
+    "baseModel": "leaper",
+    "scale": 2.2,
+    "tint": "#8f1d1d",
+    "extra": "bone-white crest #e8e0d0 with emissive edge, red eye glow, screech pitched down 30%"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "chainPounce",
+       "interval": 6,
+       "charges": 2,
+       "chainGapSec": 0.6,
+       "damage": 26,
+       "knockback": 2,
+       "telegraph": {
+        "shape": "lane",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0.3,
+        "size": {
+         "width": 2.4,
+         "length": 12
+        },
+        "notes": "second arrow appears 0.6 s after the first; both track then lock"
+       },
+       "crateHit": {
+        "breaksCrates": true,
+        "stunSec": 2.5,
+        "damageTakenMult": 1.5
+       },
+       "counter": "Sidestep the first arrow, then the second; stand in front of a crate stack so a pounce ends in it."
+      }
+     ],
+     "mapRules": [
+      "A pounce that ends in a crate (C) breaks that stack (cells become floor) and stuns Razorback 2.5 s at +50% damage taken.",
+      "Captured turrets always target Razorback (floor 5 script).",
+      "Fence posts idle in this phase."
+     ]
+    },
+    {
+     "fromPct": 0.6,
+     "attacks": [
+      {
+       "id": "chainPounce",
+       "interval": 6,
+       "charges": 3,
+       "chainGapSec": 0.6,
+       "damage": 26,
+       "knockback": 2,
+       "telegraph": {
+        "shape": "lane",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0.3,
+        "size": {
+         "width": 2.4,
+         "length": 12
+        }
+       },
+       "counter": "Dash across the third arrow, not along it."
+      },
+      {
+       "id": "callPack",
+       "interval": 12,
+       "spawn": {
+        "leaper": 2
+       },
+       "telegraphSec": 1.0,
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 1.5
+        }
+       },
+       "counter": "Kill the pair on the ice-free lanes before the next chain."
+      }
+     ],
+     "mapRules": [
+      "The four fence posts start cycling (5 s on / 3 s off, floor 5 script).",
+      "A pounce that crosses a live fence stops at the fence: stun 3 s and 8 RH."
+     ]
+    },
+    {
+     "fromPct": 0.25,
+     "speed": 1.4,
+     "attacks": [
+      {
+       "id": "chainPounce",
+       "interval": 5,
+       "charges": 3,
+       "chainGapSec": 0.6,
+       "damage": 26,
+       "knockback": 2,
+       "telegraph": {
+        "shape": "lane",
+        "color": "red",
+        "growSec": 0.7,
+        "lockSec": 0.3,
+        "size": {
+         "width": 2.4,
+         "length": 12
+        },
+        "notes": "enraged: arrows lock 0.3 s sooner"
+       },
+       "counter": "Move on the first flicker; keep a fence between you and it."
+      },
+      {
+       "id": "tailSwipe",
+       "trigger": "afterLanding",
+       "damage": 20,
+       "telegraph": {
+        "shape": "cone",
+        "color": "red",
+        "growSec": 0.6,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 120,
+         "radius": 4
+        }
+       },
+       "counter": "Never stand where it lands; dash out of the cone, then punish."
+      }
+     ],
+     "mapRules": [
+      "Crate and fence stuns still apply."
+     ]
+    }
+   ],
+   "onDeath": {
+    "screech": true,
+    "leapersFleeSec": 3,
+    "radius": 0,
+    "damage": 0
+   },
+   "rewards": {
+    "epicCardChoice": true,
+    "extraGear": 1,
+    "powerupChestChance": 0.3,
+    "note": "Zone boss: Sentry Drone joins the drop pool on first clear; featured-hero shards per roster."
+   }
+  },
+  {
+   "id": "slagback",
+   "name": "Slagback",
+   "type": "boss",
+   "zone": "kessler-refinery",
+   "hp": 160,
+   "size": 2.0,
+   "speed": 0.7,
+   "biomass": 35,
+   "contactDamage": 20,
+   "frontArmour": {
+    "arcDeg": 120,
+    "damageTaken": 0.15
+   },
+   "look": {
+    "baseModel": "carapace-look",
+    "scale": 2.4,
+    "tint": "#1d1d1f",
+    "extra": "glowing orange cracks #ff6a1a (emissive), ember particles, sparks when bullets hit the front; glows white while armour is stripped"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "charge",
+       "interval": 7,
+       "charges": 2,
+       "damage": 30,
+       "knockback": 3,
+       "recoverSec": 1.5,
+       "telegraph": {
+        "shape": "lane",
+        "color": "yellow",
+        "growSec": 0.9,
+        "lockSec": 0,
+        "size": {
+         "width": 3,
+         "length": 16
+        }
+       },
+       "counter": "Stand with a slag pool or a falling press behind you and sidestep the lane; shoot its back while it recovers."
+      }
+     ],
+     "mapRules": [
+      "Dunk: a charge that ends in slag (*) deals 24 RH (15% max HP), ignites it 4 s (2 RH/s) and strips the front armour for 6 s. Bosses never die in slag.",
+      "A charge through a 'y' press cell while that press falls stuns it 3 s.",
+      "Presses run on the floor 5 script (every 4 s, alternating halves)."
+     ]
+    },
+    {
+     "fromPct": 0.6,
+     "attacks": [
+      {
+       "id": "charge",
+       "interval": 7,
+       "charges": 2,
+       "damage": 30,
+       "knockback": 3,
+       "recoverSec": 1.5,
+       "telegraph": {
+        "shape": "lane",
+        "color": "yellow",
+        "growSec": 0.9,
+        "lockSec": 0,
+        "size": {
+         "width": 3,
+         "length": 16
+        }
+       },
+       "counter": "Same baits; the presses are faster now, so time the bait to the 2 s beat."
+      },
+      {
+       "id": "slagTrail",
+       "trigger": "whileMoving",
+       "effect": {
+        "seed": "fire",
+        "at": "path",
+        "lifeSec": 6
+       },
+       "telegraph": {
+        "shape": "none",
+        "color": "red",
+        "growSec": 0,
+        "lockSec": 0,
+        "notes": "glowing drips from the cracks"
+       },
+       "counter": "Do not kite back along its path; fire is 12 HP/s."
+      }
+     ],
+     "mapRules": [
+      "Presses double speed: every 2 s (floor 5 script)."
+     ]
+    },
+    {
+     "fromPct": 0.25,
+     "attacks": [
+      {
+       "id": "charge",
+       "interval": 6,
+       "charges": 2,
+       "damage": 30,
+       "knockback": 3,
+       "recoverSec": 1.5,
+       "telegraph": {
+        "shape": "lane",
+        "color": "yellow",
+        "growSec": 0.9,
+        "lockSec": 0,
+        "size": {
+         "width": 3,
+         "length": 16
+        }
+       },
+       "counter": "Keep baiting into slag."
+      },
+      {
+       "id": "groundSlam",
+       "trigger": "afterChargeRecovery",
+       "strikes": 3,
+       "damage": 35,
+       "telegraph": {
+        "shape": "circle",
+        "color": "red",
+        "growSec": 1.5,
+        "lockSec": 0,
+        "size": {
+         "radius": 2
+        }
+       },
+       "effect": {
+        "strike": {
+         "mode": "random",
+         "count": 3,
+         "skin": "rock"
+        }
+       },
+       "counter": "Move out of the circles the moment its charge ends."
+      }
+     ],
+     "mapRules": [
+      "Dunk and press stun still apply; slag trail continues."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 4,
+    "damage": 25,
+    "hitsEnemies": true,
+    "effect": "molten burst; leaves fire on 4 cells for 6 s"
+   },
+   "rewards": {
+    "epicCardChoice": true,
+    "extraGear": 1,
+    "powerupChestChance": 0.3,
+    "note": "Zone boss: Overcharge joins the drop pool on first clear; star 3 counts dunks."
+   }
+  },
+  {
+   "id": "mother_bloom",
+   "name": "Mother Bloom",
+   "type": "boss",
+   "zone": "verdant-colony",
+   "hp": 170,
+   "size": 3.0,
+   "speed": 0.35,
+   "biomass": 40,
+   "contactDamage": 15,
+   "regen": {
+    "onCreepPctPerSec": 0.02
+   },
+   "look": {
+    "baseModel": "bloater",
+    "scale": 2.6,
+    "tint": "#5c7a3a",
+    "extra": "pale yellow pus sacs #d8e070 (Bloater pus recoloured), 6 Spore Pod meshes on its back that inflate on the spore telegraph"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "plantPod",
+       "interval": 8,
+       "spawn": {
+        "spore_pod": 1
+       },
+       "maxAlive": 6,
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.5,
+        "lockSec": 0,
+        "size": {
+         "radius": 1
+        }
+       },
+       "counter": "Shoot pods while they grow (1.5 s); auto-fire only takes them when no enemy is in range."
+      },
+      {
+       "id": "creepTrail",
+       "trigger": "whileMoving",
+       "effect": {
+        "seed": "creep",
+        "at": "feet",
+        "tick": 1.5
+       },
+       "telegraph": {
+        "shape": "none",
+        "color": "purple",
+        "growSec": 0,
+        "lockSec": 0
+       },
+       "counter": "Dash through its trail to scorch it: it heals 2% max HP/s (3.4 RH/s) standing on creep."
+      }
+     ],
+     "mapRules": [
+      "Walks a slow figure-eight through the four paths.",
+      "Regenerates 2% max HP/s on creep; scorched cells do not count."
+     ]
+    },
+    {
+     "fromPct": 0.6,
+     "attacks": [
+      {
+       "id": "sporeBurst",
+       "interval": 10,
+       "damage": 0,
+       "effect": {
+        "cloud": {
+         "radius": 6,
+         "durationSec": 8,
+         "rules": "SPORE_POD cloud"
+        }
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "green",
+        "growSec": 1.5,
+        "lockSec": 0,
+        "size": {
+         "radius": 6
+        },
+        "notes": "back pods inflate"
+       },
+       "counter": "Step out of the 6 m ring before it inflates, or clear the cloud with an explosion."
+      },
+      {
+       "id": "plantPod",
+       "interval": 8,
+       "spawn": {
+        "spore_pod": 1
+       },
+       "maxAlive": 6,
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.5,
+        "lockSec": 0,
+        "size": {
+         "radius": 1
+        }
+       },
+       "counter": "Keep the pod count down."
+      }
+     ],
+     "mapRules": [
+      "Inside its cloud only its eye glints show."
+     ]
+    },
+    {
+     "fromPct": 0.3,
+     "speed": 0,
+     "immuneKnockback": true,
+     "attacks": [
+      {
+       "id": "root",
+       "trigger": "phaseStart",
+       "effect": {
+        "moveTo": "centre",
+        "hatchAllEggs": true
+       },
+       "telegraph": {
+        "shape": "ring",
+        "color": "purple",
+        "growSec": 1.5,
+        "lockSec": 0,
+        "size": {
+         "radius": 3
+        }
+       },
+       "counter": "Clear the eggs on the paths before it reaches 30%."
+      },
+      {
+       "id": "tendrils",
+       "interval": 6,
+       "effect": {
+        "seed": "creep",
+        "along": "paths",
+        "count": 4,
+        "tick": 1.0
+       },
+       "telegraph": {
+        "shape": "line",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "notes": "veins pulse along the four paths"
+       },
+       "counter": "Scorch the tendrils; they feed its regen."
+      },
+      {
+       "id": "plantPod",
+       "interval": 8,
+       "spawn": {
+        "spore_pod": 1
+       },
+       "maxAlive": 6,
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.5,
+        "lockSec": 0,
+        "size": {
+         "radius": 1
+        }
+       },
+       "counter": "Pods near it are its weak point."
+      }
+     ],
+     "mapRules": [
+      "Wilt: destroying the four pods nearest to it makes it wilt 5 s (damage taken x2). The count resets after each wilt.",
+      "All egg clusters hatch on phase start (floor 5 script, HATCH_ALL)."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 6,
+    "damage": 0,
+    "hitsEnemies": false,
+    "effect": "all creep recedes (1 cell per 0.5 s); living pods burst"
+   },
+   "rewards": {
+    "epicCardChoice": true,
+    "extraGear": 1,
+    "powerupChestChance": 0.3,
+    "note": "Zone boss: Incendiary Rounds joins the drop pool on first clear."
+   }
+  },
+  {
+   "id": "subject_zero",
+   "name": "Subject Zero",
+   "type": "boss",
+   "zone": "blackout-labs",
+   "hp": 150,
+   "size": 1.4,
+   "speed": 1.3,
+   "biomass": 35,
+   "contactDamage": 15,
+   "invisibleOutsideLight": true,
+   "exposedDamageTaken": 2.0,
+   "look": {
+    "baseModel": "leaper",
+    "scale": 2.0,
+    "tint": "#f2efe8",
+    "extra": "no texture detail, pale pink emissive eyes (always visible glints), cyan sparks on a grate, blue glow while stunned"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "darkPounce",
+       "interval": 5,
+       "damage": 28,
+       "knockback": 2,
+       "telegraph": {
+        "shape": "lane",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0.3,
+        "size": {
+         "width": 2.4,
+         "length": 12
+        },
+        "notes": "always visible, even in the dark"
+       },
+       "counter": "Watch for the red arrow; fight near a lit pylon or stick a flare on it to expose it (double damage)."
+      }
+     ],
+     "mapRules": [
+      "Invisible outside light (eye glints only). Takes x2 damage while lit by a flare or pylon."
+     ]
+    },
+    {
+     "fromPct": 0.6,
+     "attacks": [
+      {
+       "id": "darkPounce",
+       "interval": 5,
+       "damage": 28,
+       "knockback": 2,
+       "telegraph": {
+        "shape": "lane",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0.3,
+        "size": {
+         "width": 2.4,
+         "length": 12
+        }
+       },
+       "counter": "Same as phase 1."
+      },
+      {
+       "id": "smashPylon",
+       "interval": 15,
+       "effect": {
+        "unlight": "nearest lit pylon",
+        "relightSec": 1.5
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "white",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 1.5
+        },
+        "notes": "pylon flickers"
+       },
+       "counter": "Relight it (stand 1.5 s) and keep another pylon lit as backup."
+      },
+      {
+       "id": "callStalkers",
+       "atPct": 0.6,
+       "spawn": {
+        "stalker": 2
+       },
+       "telegraphSec": 1.0
+      }
+     ],
+     "mapRules": [
+      "Smashed pylons can be relit (1.5 s)."
+     ]
+    },
+    {
+     "fromPct": 0.3,
+     "attacks": [
+      {
+       "id": "lightsOut",
+       "trigger": "phaseStart",
+       "effect": {
+        "pylonsOff": true,
+        "flaresRefillTo": 3
+       },
+       "telegraph": {
+        "shape": "none",
+        "color": "white",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "notes": "generator wind-down sound, lights dim over 1 s"
+       },
+       "counter": "Use the 3 fresh flares: stick one on it."
+      },
+      {
+       "id": "chainPounce",
+       "interval": 6,
+       "charges": 3,
+       "chainGapSec": 0.6,
+       "damage": 28,
+       "knockback": 2,
+       "telegraph": {
+        "shape": "lane",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0.3,
+        "size": {
+         "width": 2.4,
+         "length": 12
+        }
+       },
+       "counter": "Stand so the third pounce lands on a live grate."
+      }
+     ],
+     "mapRules": [
+      "A pounce that lands on a live grate (g) stuns it 3 s and lights it (exposed, x2 damage, glows blue).",
+      "Pylons go off on phase start (floor 5 script) and can be relit."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 0,
+    "damage": 0,
+    "effect": "lights restore across the hall"
+   },
+   "rewards": {
+    "epicCardChoice": true,
+    "extraGear": 1,
+    "powerupChestChance": 0.3,
+    "note": "Act I finale: first clear opens Act II and grants the Flare Pack."
+   }
+  },
+  {
+   "id": "tidecaller",
+   "name": "Tidecaller",
+   "type": "boss",
+   "zone": "drowned-city",
+   "hp": 180,
+   "size": 1.8,
+   "speed": 1.0,
+   "swimSpeed": 1.3,
+   "biomass": 40,
+   "contactDamage": 15,
+   "submerged": {
+    "untargetable": true,
+    "wake": true,
+    "onlyIn": "deep water"
+   },
+   "look": {
+    "baseModel": "leaper",
+    "scale": 2.5,
+    "tint": "#2f6f62",
+    "extra": "legs hidden under the water plane, cyan emissive gill slits #5fd8ff, white-blue splash particles on surfacing"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "surface",
+       "trigger": "heroInWater",
+       "damage": 30,
+       "knockback": 2,
+       "surfacedSec": 3,
+       "telegraph": {
+        "shape": "ring",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 2.2
+        }
+       },
+       "counter": "Step off the ring onto dry ground, then unload while it is up for 3 s."
+      },
+      {
+       "id": "rimSurface",
+       "trigger": "heroDry6s",
+       "surfacedSec": 3,
+       "spit": {
+        "globs": 3
+       },
+       "telegraph": {
+        "shape": "ring",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 2.2
+        }
+       },
+       "counter": "It surfaces at the pool rim nearest you; shoot it there."
+      }
+     ],
+     "mapRules": [
+      "Untargetable while submerged; a wake trail shows where it is.",
+      "Pool terminals (R): each switches the grates to always on for 5 s, then re-arms after 15 s (floor 5 script).",
+      "Submerged in an electrified pool: forced up, stunned 3 s, takes 18 RH (10% max HP)."
+     ]
+    },
+    {
+     "fromPct": 0.6,
+     "attacks": [
+      {
+       "id": "floodSquare",
+       "interval": 12,
+       "effect": {
+        "flood": {
+         "spread_s": 8,
+         "depth": 1
+        }
+       },
+       "telegraph": {
+        "shape": "none",
+        "color": "white",
+        "growSec": 1.5,
+        "lockSec": 0,
+        "notes": "rumble and rising ripples"
+       },
+       "counter": "Fight from the dry blue-zone corners; dash is never slowed by water."
+      },
+      {
+       "id": "poolSpit",
+       "interval": 6,
+       "globs": 3,
+       "damage": 12,
+       "telegraph": {
+        "shape": "circle",
+        "color": "green",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 1.4
+        }
+       },
+       "puddle": {
+        "type": "acid",
+        "radius": 1.4,
+        "durationSec": 4,
+        "dps": 10
+       },
+       "counter": "Keep moving between globs; they land where you stood."
+      }
+     ],
+     "mapRules": [
+      "Pool terminals (R): each switches the grates to always on for 5 s, then re-arms after 15 s (floor 5 script).",
+      "Submerged in an electrified pool: forced up, stunned 3 s, takes 18 RH (10% max HP)."
+     ]
+    },
+    {
+     "fromPct": 0.3,
+     "attacks": [
+      {
+       "id": "waterLash",
+       "interval": 8,
+       "damage": 30,
+       "knockback": 3,
+       "telegraph": {
+        "shape": "lane",
+        "color": "red",
+        "growSec": 0.8,
+        "lockSec": 0,
+        "size": {
+         "width": 2,
+         "length": 10
+        }
+       },
+       "counter": "Dash sideways out of the lane."
+      },
+      {
+       "id": "floodSquare",
+       "interval": 12,
+       "effect": {
+        "flood": {
+         "spread_s": 8,
+         "depth": 1
+        }
+       },
+       "telegraph": {
+        "shape": "none",
+        "color": "white",
+        "growSec": 1.5,
+        "lockSec": 0
+       },
+       "counter": "As phase 2."
+      }
+     ],
+     "mapRules": [
+      "Pool terminals (R): each switches the grates to always on for 5 s, then re-arms after 15 s (floor 5 script).",
+      "Submerged in an electrified pool: forced up, stunned 3 s, takes 18 RH (10% max HP)."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 0,
+    "damage": 0,
+    "effect": "water recedes one depth step"
+   },
+   "rewards": {
+    "epicCardChoice": true,
+    "extraGear": 1,
+    "powerupChestChance": 0.3,
+    "note": "Zone boss: Bulwark joins the drop pool on first clear; Cryo Rounds freeze water."
+   }
+  },
+  {
+   "id": "hullbreaker",
+   "name": "Hullbreaker",
+   "type": "boss",
+   "zone": "cargo-port",
+   "hp": 200,
+   "size": 2.2,
+   "speed": 0.9,
+   "biomass": 40,
+   "contactDamage": 15,
+   "look": {
+    "baseModel": "bloater",
+    "scale": 2.4,
+    "tint": "#7a3b1e",
+    "extra": "squashed to 0.6x height; hazard-yellow #f2c230 emissive strip; two cargo crates at 0.35x tinted #1f7a7a bolted on its back as plates (fall off in Phase 3); a crane hook (a crate at 0.2x) on a line-renderer cable from its back"
+   },
+   "frontArmour": 0.0,
+   "backDamageMult": 1.0,
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "hookThrow",
+       "interval": 6,
+       "damage": 12,
+       "range": 16,
+       "telegraph": {
+        "shape": "lane",
+        "color": "yellow",
+        "growSec": 0.9,
+        "lockSec": 0.3,
+        "size": {
+         "width": 1.0,
+         "length": 16
+        }
+       },
+       "effect": {
+        "hitHero": {
+         "pullM": 5
+        },
+        "hitContainerOrC": {
+         "dragToBoss": true,
+         "leaves": "C adjacent to boss",
+         "haulSec": 2.0,
+         "haulDamageTakenMult": 1.5
+        }
+       },
+       "counter": "Keep a crate or container between you and it: the hook catches the box, and it spends 2 s hauling (takes +50% damage)."
+      },
+      {
+       "id": "craneSwing",
+       "trigger": "holding a hauled container",
+       "interval": 9,
+       "damage": 25,
+       "telegraph": {
+        "shape": "cone",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 140,
+         "radius": 5
+        }
+       },
+       "effect": {
+        "leaves": "C at the end of the swing"
+       },
+       "counter": "Step out of the cone; the swung box lands as a new crate."
+      }
+     ],
+     "mapRules": [
+      "Crane STRIKE drops 2 containers every 10 s (leaves C): new things for it to hook.",
+      "Every hauled box is left beside it, so the bay rebuilds around the boss."
+     ]
+    },
+    {
+     "fromPct": 0.6,
+     "attacks": [
+      {
+       "id": "hookThrow",
+       "interval": 7,
+       "damage": 12,
+       "range": 16,
+       "telegraph": {
+        "shape": "lane",
+        "color": "yellow",
+        "growSec": 0.9,
+        "lockSec": 0.3,
+        "size": {
+         "width": 1.0,
+         "length": 16
+        }
+       },
+       "effect": {
+        "hitHero": {
+         "pullM": 5
+        },
+        "hitContainerOrC": {
+         "dragToBoss": true,
+         "leaves": "C adjacent to boss",
+         "haulSec": 2.0,
+         "haulDamageTakenMult": 1.5
+        }
+       },
+       "counter": "Keep a crate or container between you and it: the hook catches the box, and it spends 2 s hauling (takes +50% damage)."
+      },
+      {
+       "id": "liftAndHurl",
+       "interval": 9,
+       "damage": 35,
+       "liftSec": 1.2,
+       "range": 16,
+       "telegraph": {
+        "shape": "circle",
+        "color": "red",
+        "growSec": 1.2,
+        "lockSec": 0,
+        "size": {
+         "radius": 2
+        }
+       },
+       "effect": {
+        "leaves": "C"
+       },
+       "requires": "a container or C crate within 4 m",
+       "counter": "Leave the red circle; the box becomes a new crate."
+      },
+      {
+       "id": "crackedCargo",
+       "trigger": "each container it breaks",
+       "spawn": {
+        "tick": 4
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 0.8,
+        "lockSec": 0,
+        "size": {
+         "radius": 1.5
+        }
+       },
+       "counter": "Kill the Ticks before they latch."
+      },
+      {
+       "id": "turretYank",
+       "trigger": "a turret is captured by the hero",
+       "effect": {
+        "nextHookTarget": "captured turret",
+        "yankSec": 2.0,
+        "turretHoldsIfHeroWithin": 1.5
+       },
+       "telegraph": {
+        "shape": "lane",
+        "color": "yellow",
+        "growSec": 0.9,
+        "lockSec": 0.3,
+        "size": {
+         "width": 1.0,
+         "length": 16
+        }
+       },
+       "counter": "Stand on the turret ring while it yanks: the turret holds and it is stuck pulling for 2 s."
+      }
+     ],
+     "mapRules": [
+      "Turrets come online; a captured turret is the bait that pins it for 2 s."
+     ]
+    },
+    {
+     "fromPct": 0.3,
+     "attacks": [
+      {
+       "id": "hookThrow",
+       "interval": 5,
+       "damage": 12,
+       "range": 16,
+       "telegraph": {
+        "shape": "lane",
+        "color": "yellow",
+        "growSec": 0.9,
+        "lockSec": 0.3,
+        "size": {
+         "width": 1.0,
+         "length": 16
+        }
+       },
+       "effect": {
+        "hitHero": {
+         "pullM": 5
+        },
+        "hitContainerOrC": {
+         "dragToBoss": true,
+         "leaves": "C adjacent to boss",
+         "haulSec": 2.0,
+         "haulDamageTakenMult": 1.5
+        },
+        "missRootSec": 2.5
+       },
+       "counter": "Keep a crate or container between you and it: the hook catches the box, and it spends 2 s hauling (takes +50% damage)."
+      },
+      {
+       "id": "doubleHook",
+       "atPct": 0.15,
+       "interval": 7,
+       "damage": 12,
+       "gapSec": 0.8,
+       "telegraph": {
+        "shape": "lane",
+        "color": "yellow",
+        "growSec": 0.8,
+        "lockSec": 0.3,
+        "size": {
+         "width": 1.0,
+         "length": 16
+        }
+       },
+       "counter": "Enrage: two hooks back to back; the second aims where the first pulled you."
+      }
+     ],
+     "mapRules": [
+      "All belts run north into the press line.",
+      "A hook that catches nothing in 16 m roots it for 2.5 s; rooted on a belt it is carried into the press: 25 RH per slam and its plates break."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 3,
+    "damage": 0,
+    "effect": "collapses; its two plates fall off as C crates"
+   },
+   "rewards": "Zone boss table: featured-hero shards, Scavenger/Bulwark set gear, first clear +10 Cores.",
+   "rev": 3
+  },
+  {
+   "id": "mire_matriarch",
+   "name": "Mire Matriarch",
+   "type": "boss",
+   "zone": "acid-marsh",
+   "base": "acid_matriarch",
+   "hp": 220,
+   "size": 2.0,
+   "speed": 0.6,
+   "keepDistance": [
+    10,
+    14
+   ],
+   "biomass": 40,
+   "contactDamage": 10,
+   "look": {
+    "baseModel": "drone",
+    "scale": 3.0,
+    "tint": "#6f9a2a",
+    "extra": "Spitter placeholder; toxic #9bff3a emissive abdomen sphere 1.8x the Spitter's; crown of six Lancer spikes; dripping green particle trail"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "volley",
+       "interval": 4,
+       "globs": 5,
+       "staggerSec": 0.15,
+       "damage": 10,
+       "telegraph": {
+        "shape": "circle",
+        "color": "green",
+        "growSec": 0.8,
+        "lockSec": 0,
+        "size": {
+         "radius": 1.4
+        }
+       },
+       "puddle": {
+        "type": "acid",
+        "radius": 1.4,
+        "durationSec": 5,
+        "dps": 6
+       },
+       "counter": "Globs land where you were: strafe sideways, roofs (u) block them."
+      },
+      {
+       "id": "acidField",
+       "interval": 15,
+       "coverage": 0.3,
+       "durationSec": 6,
+       "dps": 12,
+       "alwaysSafePath": true,
+       "telegraph": {
+        "shape": "area",
+        "color": "green",
+        "growSec": 1.2,
+        "lockSec": 0,
+        "size": {
+         "coverage": 0.3
+        }
+       },
+       "counter": "Follow the safe path; stand on it until the field fades."
+      },
+      {
+       "id": "roofSeek",
+       "trigger": "acid-rain warning (3 s before each pulse)",
+       "effect": {
+        "walksTo": "nearest u",
+        "immuneUnderCover": true
+       },
+       "telegraph": {
+        "shape": "lane",
+        "color": "white",
+        "growSec": 0.5,
+        "lockSec": 0,
+        "size": {
+         "width": 1,
+         "length": 10
+        }
+       },
+       "counter": "Push her: she backs off at 10 m, so walk her away from the roof before the siren."
+      }
+     ],
+     "mapRules": [
+      "Rain pulses (every 20 s) hit her for 3 RH per 0.5 s tick while she is outside cover; she shrieks.",
+      "She keeps 10-14 m away and backs off when the hero pushes in."
+     ]
+    },
+    {
+     "fromPct": 0.65,
+     "attacks": [
+      {
+       "id": "volley",
+       "interval": 5,
+       "globs": 5,
+       "damage": 10,
+       "telegraph": {
+        "shape": "circle",
+        "color": "green",
+        "growSec": 0.8,
+        "lockSec": 0,
+        "size": {
+         "radius": 1.4
+        }
+       },
+       "puddle": {
+        "type": "acid",
+        "radius": 1.4,
+        "durationSec": 5,
+        "dps": 6
+       },
+       "counter": "As Phase 1."
+      },
+      {
+       "id": "poolDive",
+       "interval": 12,
+       "sinkSec": 1.0,
+       "surfaceAfterSec": 2.0,
+       "untargetable": true,
+       "telegraph": {
+        "shape": "ring",
+        "color": "green",
+        "growSec": 2.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 2.5
+        }
+       },
+       "spawn": {
+        "spitter": 2
+       },
+       "spawnAt": "the pool she left",
+       "effect": {
+        "sproutSporePodAtTarget": 1
+       },
+       "counter": "Read the green ring on the target pool and shoot the spore pod there before she surfaces."
+      }
+     ],
+     "mapRules": [
+      "Dives only between a cells (the six acid pools).",
+      "A Spore Pod sprouts beside each surfacing pool."
+     ]
+    },
+    {
+     "fromPct": 0.3,
+     "attacks": [
+      {
+       "id": "volley",
+       "interval": 4,
+       "globs": 6,
+       "damage": 10,
+       "telegraph": {
+        "shape": "circle",
+        "color": "green",
+        "growSec": 0.8,
+        "lockSec": 0,
+        "size": {
+         "radius": 1.4
+        }
+       },
+       "puddle": {
+        "type": "acid",
+        "radius": 1.4,
+        "durationSec": 5,
+        "dps": 6
+       },
+       "counter": "As Phase 1."
+      },
+      {
+       "id": "bringTheStorm",
+       "interval": 10,
+       "effect": {
+        "acidRainPeriod": 10
+       },
+       "telegraph": {
+        "shape": "area",
+        "color": "green",
+        "growSec": 3.0,
+        "lockSec": 0,
+        "size": {
+         "coverage": 1.0
+        }
+       },
+       "counter": "Keep a roof between you and her line; the rain hurts her when she is in the open."
+      },
+      {
+       "id": "roofMelt",
+       "trigger": "she stands under a roof for 3 s",
+       "effect": {
+        "roofFalls": true,
+        "rubble": "C for 15 s, then floor"
+       },
+       "telegraph": {
+        "shape": "area",
+        "color": "green",
+        "growSec": 3.0,
+        "lockSec": 0,
+        "size": {
+         "cells": "u under her"
+        }
+       },
+       "counter": "Bait her into roofs that are already melting so she loses her shelter."
+      }
+     ],
+     "mapRules": [
+      "She calls the rain herself every 10 s.",
+      "Corroded roofs fall like the Monsoon floor."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 6,
+    "damage": 25,
+    "hitsEnemies": true,
+    "scorchCreep": "all"
+   },
+   "rewards": "Zone boss table: featured-hero shards, Hivebreaker/Scavenger set gear, first clear +10 Cores."
+  },
+  {
+   "id": "warden_9",
+   "name": "WARDEN-9",
+   "type": "boss",
+   "zone": "data-vault",
+   "hp": 230,
+   "size": 1.6,
+   "speed": 0.5,
+   "biomass": 40,
+   "contactDamage": 15,
+   "frontArmour": 0.5,
+   "look": {
+    "baseModel": "iron_vanguard",
+    "scale": 2.0,
+    "tint": "#2d3238",
+    "extra": "red emissive visor #ff3355, purple creep veins #b04dff on the limbs, Vanguard minigun at 2.0x, three red line renderers to a turret while hacking"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "suppression",
+       "interval": 8,
+       "damage": 10,
+       "tickSec": 0.25,
+       "sweepSec": 2.0,
+       "telegraph": {
+        "shape": "cone",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 60,
+         "radius": 14
+        }
+       },
+       "blockedBy": [
+        "B",
+        "C"
+       ],
+       "counter": "Break line with a rack or crate before the cone locks."
+      },
+      {
+       "id": "turretHack",
+       "interval": 15,
+       "effect": {
+        "turretOwner": "enemy",
+        "recaptureSec": 2.5,
+        "recapturedPrioritisesBoss": true,
+        "recapturedDamageMult": 3
+       },
+       "telegraph": {
+        "shape": "line",
+        "color": "white",
+        "growSec": 1.5,
+        "lockSec": 0,
+        "size": {
+         "width": 0.2
+        }
+       },
+       "counter": "Recapture the red turret (2.5 s): it then hunts WARDEN-9 at 3x damage."
+      }
+     ],
+     "mapRules": [
+      "Racks and crates block the sweep.",
+      "It hacks one neutral turret every 15 s."
+     ]
+    },
+    {
+     "fromPct": 0.65,
+     "speed": 0.7,
+     "attacks": [
+      {
+       "id": "suppression",
+       "interval": 8,
+       "damage": 10,
+       "tickSec": 0.25,
+       "sweepSec": 2.0,
+       "telegraph": {
+        "shape": "cone",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 60,
+         "radius": 14
+        }
+       },
+       "counter": "As Phase 1."
+      },
+      {
+       "id": "lockdown",
+       "trigger": "phase start",
+       "effect": {
+        "laserFence": {
+         "on": 5,
+         "off": 3
+        },
+        "bossIgnoresFences": true
+       },
+       "telegraph": {
+        "shape": "line",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "width": 0.3
+        }
+       },
+       "counter": "Move between quadrants in the 3 s gaps; lure it across the grate cross on the pulse."
+      }
+     ],
+     "mapRules": [
+      "Walks through fences unharmed but takes 6 RH/s on a live grate like any enemy.",
+      "Chases the hero: the central grate cross is the damage window.",
+      "Breaker (breaker=GRATE) kills the grates: safety for the hero, a free floor for WARDEN-9."
+     ]
+    },
+    {
+     "fromPct": 0.3,
+     "attacks": [
+      {
+       "id": "suppression",
+       "interval": 8,
+       "damage": 10,
+       "tickSec": 0.25,
+       "sweepSec": 2.0,
+       "telegraph": {
+        "shape": "cone",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 60,
+         "radius": 14
+        }
+       },
+       "counter": "The red cone still shows in the dark."
+      },
+      {
+       "id": "gridLock",
+       "trigger": "phase start",
+       "effect": {
+        "laserFence": {
+         "on": 8,
+         "off": 2
+        },
+        "bossIgnoresFences": true
+       },
+       "telegraph": {
+        "shape": "line",
+        "color": "white",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "width": 0.3
+        }
+       },
+       "counter": "Cross only in the 2 s gaps; lure it onto the grate cross while the fences pin you in its quadrant."
+      }
+     ],
+     "mapRules": [
+      "Lights stay on; the pylons are unused.",
+      "Fences hurt the hero (25 HP + shove); WARDEN-9 walks through them."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 0,
+    "damage": 0,
+    "effect": "powers down and kneels; the core floats out",
+    "bonus": {
+     "weaponParts": 3
+    }
+   },
+   "rewards": "Zone boss table: featured-hero shards, Volt/Bulwark set gear, +3 Weapon Parts from the core, first clear +10 Cores.",
+   "rev": 3
+  },
+  {
+   "id": "the_surgeon",
+   "name": "The Surgeon",
+   "type": "miniboss",
+   "zone": "quarantine-ward",
+   "hp": 60,
+   "size": 1.3,
+   "speed": 0.8,
+   "biomass": 25,
+   "contactDamage": 8,
+   "look": {
+    "baseModel": "drone",
+    "scale": 2.6,
+    "tint": "#e6efe9",
+    "extra": "Mender placeholder; mint #7fd8a6 emissive sac; four thin Lancer spikes as scalpels; three green tether lines at once"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "tether",
+       "trigger": "always",
+       "maxLinks": 3,
+       "healPerSec": 2,
+       "range": 8,
+       "effect": {
+        "alsoTethersHiveWalls": true,
+        "tetheredWallRegrowSec": 0.6
+       },
+       "telegraph": {
+        "shape": "line",
+        "color": "green",
+        "growSec": 0.5,
+        "lockSec": 0,
+        "size": {
+         "width": 0.15
+        }
+       },
+       "counter": "Burn or freeze its targets (fire and ice block healing); a vent eruption cancels the current tether."
+      },
+      {
+       "id": "transfusion",
+       "interval": 12,
+       "radius": 8,
+       "effect": {
+        "drainsDrones": "all in radius (they die)",
+        "healPerDrone": 2,
+        "healCap": 12
+       },
+       "telegraph": {
+        "shape": "ring",
+        "color": "green",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 8
+        }
+       },
+       "counter": "Kill the Drones near it first so it has nothing to drink."
+      }
+     ],
+     "mapRules": [
+      "Regrows any hive wall it is tethered to instantly when shot down.",
+      "Vents deal double damage to it (8 RH/s) and cancel its current tether."
+     ]
+    },
+    {
+     "fromPct": 0.5,
+     "attacks": [
+      {
+       "id": "cocoon",
+       "trigger": "phase start",
+       "effect": {
+        "hiveWallCocoonHp": 30,
+        "explosionMult": 3,
+        "invulnerableWhileCocooned": true
+       },
+       "spawn": {
+        "mender": 2
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 2
+        }
+       },
+       "counter": "Explosions x3 on the cocoon; kill the two Menders before they tether."
+      },
+      {
+       "id": "tether",
+       "trigger": "always",
+       "maxLinks": 3,
+       "healPerSec": 2,
+       "range": 8,
+       "telegraph": {
+        "shape": "line",
+        "color": "green",
+        "growSec": 0.5,
+        "lockSec": 0,
+        "size": {
+         "width": 0.15
+        }
+       },
+       "counter": "As Phase 1."
+      }
+     ],
+     "mapRules": [
+      "The cocoon is a hive wall (m) that does not regrow."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 4,
+    "damage": 0,
+    "effect": "tethered walls stop regrowing for 12 s"
+   },
+   "rewards": "Mini-boss: guaranteed power-up drop and an elite gear roll."
+  },
+  {
+   "id": "patient_zero",
+   "name": "Patient Zero",
+   "type": "boss",
+   "zone": "quarantine-ward",
+   "hp": 260,
+   "size": 1.5,
+   "speed": 0.7,
+   "biomass": 40,
+   "contactDamage": 15,
+   "look": {
+    "baseModel": "iron_vanguard",
+    "scale": 1.8,
+    "tint": "#9aa898",
+    "extra": "creep veins #b04dff pulsing; a Bloater mesh at 0.8x fused on the back (purple emissive pus); torn translucent hospital sheeting on one arm"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "cough",
+       "interval": 8,
+       "damage": 18,
+       "telegraph": {
+        "shape": "cone",
+        "color": "green",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 50,
+         "radius": 8
+        }
+       },
+       "effect": {
+        "seedsCreepCells": 6
+       },
+       "counter": "Step out of the cone, then scorch the creep it leaves (dash, barrels, Incendiary)."
+      }
+     ],
+     "mapRules": [
+      "Creep under it heals it 2% max HP/s (5.2 RH/s), the zone's SPREAD rule.",
+      "A vent eruption that hits it stuns it for 1.5 s."
+     ]
+    },
+    {
+     "fromPct": 0.65,
+     "attacks": [
+      {
+       "id": "cough",
+       "interval": 8,
+       "damage": 18,
+       "telegraph": {
+        "shape": "cone",
+        "color": "green",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 50,
+         "radius": 8
+        }
+       },
+       "effect": {
+        "seedsCreepCells": 6
+       },
+       "counter": "As Phase 1."
+      },
+      {
+       "id": "quarantineLines",
+       "interval": 20,
+       "damage": 20,
+       "durationSec": 12,
+       "wallHp": 10,
+       "explosionMult": 3,
+       "telegraph": {
+        "shape": "line",
+        "color": "red",
+        "growSec": 1.2,
+        "lockSec": 0,
+        "size": {
+         "width": 1,
+         "length": 22
+        }
+       },
+       "effect": {
+        "hiveWallsInTwoLines": true,
+        "eggsPerQuarter": 1,
+        "eggHatchSec": 6
+       },
+       "counter": "Step off the lines; shoot through a wall (explosions x3) to keep the fight in one room, or clear the eggs."
+      }
+     ],
+     "mapRules": [
+      "Vents in its quarter erupt on its own cycle; a vent hit stuns it 1.5 s."
+     ]
+    },
+    {
+     "fromPct": 0.3,
+     "attacks": [
+      {
+       "id": "cough",
+       "interval": 6,
+       "damage": 18,
+       "telegraph": {
+        "shape": "cone",
+        "color": "green",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 50,
+         "radius": 8
+        }
+       },
+       "effect": {
+        "seedsCreepCells": 6
+       },
+       "counter": "As Phase 1."
+      },
+      {
+       "id": "outbreak",
+       "trigger": "phase start",
+       "spawn": {
+        "mender": 2
+       },
+       "effect": {
+        "damageTakenMult": 0.5,
+        "untilMendersDead": true
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 2
+        }
+       },
+       "counter": "Kill both Menders first: until then it takes half damage."
+      }
+     ],
+     "mapRules": [
+      "Centre creep grows 3x faster.",
+      "Vents run 4 s cycles."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 0,
+    "damage": 0,
+    "effect": "collapses into a hive wall statue (2x2 m, permanent)"
+   },
+   "rewards": "Zone boss table: featured-hero shards, Hivebreaker/Bulwark set gear, first clear +15 Cores."
+  },
+  {
+   "id": "highwire",
+   "name": "Highwire",
+   "type": "miniboss",
+   "zone": "relay-spire",
+   "hp": 55,
+   "size": 0.9,
+   "speed": 0.9,
+   "biomass": 25,
+   "contactDamage": 8,
+   "look": {
+    "baseModel": "drone",
+    "scale": 1.8,
+    "tint": "#1f4f55",
+    "extra": "Lancer placeholder; gold elite rim; three back spikes; cyan spark trail while on grates"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "perchFan",
+       "interval": 5,
+       "spines": 3,
+       "fanDeg": 10,
+       "damage": 22,
+       "requires": "under a roof (u)",
+       "telegraph": {
+        "shape": "lane",
+        "color": "red",
+        "growSec": 1.4,
+        "lockSec": 0.35,
+        "size": {
+         "width": 0.6,
+         "length": 18
+        }
+       },
+       "counter": "Break the line with a housing; lightning cannot reach it under a roof, so flush it out."
+      },
+      {
+       "id": "railRun",
+       "trigger": "fleeing",
+       "speedMult": 1.4,
+       "effect": {
+        "untargetableOnLiveGrate": true
+       },
+       "telegraph": {
+        "shape": "line",
+        "color": "white",
+        "growSec": 0.3,
+        "lockSec": 0,
+        "size": {
+         "width": 0.3
+        }
+       },
+       "counter": "Shoot the breaker (breaker=GRATE) to make it killable, at the cost of the grates."
+      },
+      {
+       "id": "gustJump",
+       "trigger": "wind gust",
+       "distance": 6,
+       "telegraph": {
+        "shape": "lane",
+        "color": "white",
+        "growSec": 0.5,
+        "lockSec": 0,
+        "size": {
+         "width": 1,
+         "length": 6
+        }
+       },
+       "counter": "Stand downwind of it: the gust brings it to you."
+      }
+     ],
+     "mapRules": [
+      "Flees up and down the switchbacks; stops only under roofs.",
+      "Escort summons every 10 s are Lancer pairs."
+     ]
+    },
+    {
+     "fromPct": 0.5,
+     "attacks": [
+      {
+       "id": "decoy",
+       "trigger": "phase start",
+       "effect": {
+        "decoyShimmer": true
+       },
+       "spawn": {
+        "lancer": 2
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 1.5
+        }
+       },
+       "counter": "The decoy has no gold eye glints; ignore it."
+      },
+      {
+       "id": "perchFan",
+       "interval": 5,
+       "spines": 3,
+       "fanDeg": 10,
+       "damage": 22,
+       "telegraph": {
+        "shape": "lane",
+        "color": "red",
+        "growSec": 1.4,
+        "lockSec": 0.35,
+        "size": {
+         "width": 0.6,
+         "length": 18
+        }
+       },
+       "counter": "As Phase 1."
+      }
+     ],
+     "mapRules": [
+      "Same as Phase 1."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 0,
+    "damage": 0,
+    "effect": "ends the ASSASSINATE floor"
+   },
+   "rewards": "Mini-boss: guaranteed power-up drop and an elite gear roll; 60 s kill pays the ASSASSINATE bonus."
+  },
+  {
+   "id": "the_arc_matron",
+   "name": "The Arc Matron",
+   "type": "boss",
+   "zone": "relay-spire",
+   "hp": 280,
+   "size": 2.2,
+   "speed": 0.8,
+   "biomass": 40,
+   "contactDamage": 15,
+   "look": {
+    "baseModel": "leaper",
+    "scale": 2.8,
+    "tint": "#ece4d0",
+    "extra": "Weaver recipe; dark purple joints; cyan #5fd8ff emissive abdomen that sparks when lightning lands within 6 m; strands are cyan Weaver tracer cylinders"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "chargedWeb",
+       "interval": 4,
+       "maxStrands": 3,
+       "strandLifeSec": 12,
+       "strandHp": 3,
+       "damage": 8,
+       "telegraph": {
+        "shape": "line",
+        "color": "yellow",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "width": 0.3
+        }
+       },
+       "effect": {
+        "between": "antenna pylons (B)",
+        "lightningArcDamage": 15,
+        "lightningArcDamageEnemies": 6,
+        "gustBreaksParallel": true
+       },
+       "counter": "Shoot strands (3 RH) or let a gust snap the ones parallel to it; never stand on a strand when lightning lands."
+      }
+     ],
+     "mapRules": [
+      "Lightning that hits a strand arcs along it (15 HP to the hero, 6 RH to enemies).",
+      "Wind gusts break strands parallel to the gust."
+     ]
+    },
+    {
+     "fromPct": 0.65,
+     "attacks": [
+      {
+       "id": "lightningRod",
+       "trigger": "phase start, and again after each fall",
+       "climbSec": 2,
+       "effect": {
+        "lightningInterval": 4,
+        "healPerNearStrike": 10,
+        "healRadius": 3,
+        "noHealIfPylonGrateOff": true,
+        "deadPylonStrikeDamage": 12,
+        "fallStunSec": 2
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "red",
+        "growSec": 1.5,
+        "lockSec": 0,
+        "size": {
+         "radius": 2
+        }
+       },
+       "counter": "Shoot the breaker: on a dead pylon the strike hits her (12 RH, 2 s fall stun) instead of healing her."
+      },
+      {
+       "id": "callLancers",
+       "interval": 15,
+       "spawn": {
+        "lancer": 2
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 1.5
+        }
+       },
+       "counter": "Kill the Lancers from under a roof."
+      },
+      {
+       "id": "chargedWeb",
+       "interval": 6,
+       "maxStrands": 3,
+       "strandLifeSec": 12,
+       "strandHp": 3,
+       "damage": 8,
+       "telegraph": {
+        "shape": "line",
+        "color": "yellow",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "width": 0.3
+        }
+       },
+       "counter": "As Phase 1."
+      }
+     ],
+     "mapRules": [
+      "Every pylon has a grate under it; the breaker (breaker=GRATE) drops all four."
+     ]
+    },
+    {
+     "fromPct": 0.3,
+     "speed": 1.1,
+     "attacks": [
+      {
+       "id": "stormCradle",
+       "trigger": "phase start",
+       "effect": {
+        "webDomeOverRoofs": true,
+        "domeHp": 15,
+        "fireBurnsDomeSec": 1
+       },
+       "telegraph": {
+        "shape": "area",
+        "color": "yellow",
+        "growSec": 1.5,
+        "lockSec": 0,
+        "size": {
+         "cells": "u"
+        }
+       },
+       "counter": "Burn or shoot your way into a roof and fight from under it."
+      },
+      {
+       "id": "chase",
+       "trigger": "always",
+       "damage": 15,
+       "telegraph": {
+        "shape": "circle",
+        "color": "white",
+        "growSec": 0.3,
+        "lockSec": 0,
+        "size": {
+         "radius": 2.2
+        }
+       },
+       "counter": "Drag her through the open: the storm (lightning every 3 s) hits her too, 12 RH a strike."
+      }
+     ],
+     "mapRules": [
+      "Gusts every 8 s push toward the pit corners; lightning every 3 s."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 0,
+    "damage": 0,
+    "effect": "the storm breaks: lightning and wind stop, sunlight floods the platform"
+   },
+   "rewards": "Zone boss table: featured-hero shards, Volt/Overclock set gear, first clear +15 Cores."
+  },
+  {
+   "id": "gale_ravager",
+   "name": "Gale Ravager",
+   "type": "miniboss",
+   "zone": "skyhook",
+   "basedOn": "ravager_prime",
+   "hp": 60,
+   "size": 1.8,
+   "speed": 0.6,
+   "biomass": 30,
+   "contactDamage": 12,
+   "frontArmour": {
+    "arcDeg": 120,
+    "damageTaken": 0.1
+   },
+   "look": {
+    "baseModel": "carapace-look",
+    "scale": 1.6,
+    "tint": "#3a4048",
+    "extra": "orange emissive front, three Lancer spikes on its back, pale cyan streak particles trailing off the shell (wind-blasted)"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "tripleCharge",
+       "charges": 3,
+       "damage": 25,
+       "telegraph": {
+        "shape": "lane",
+        "color": "yellow",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "width": 2,
+         "length": 16
+        }
+       },
+       "rechargeTelegraphSec": 0.5,
+       "stunAfterThirdSec": 3.5,
+       "effect": "railings (r) it hits break and open that edge to the void instead of stunning it",
+       "counter": "Stand with an open edge behind you and sidestep the third charge; it stops stunned at the lip."
+      },
+      {
+       "id": "shellShards",
+       "interval": 12,
+       "count": 6,
+       "damage": 10,
+       "telegraph": {
+        "shape": "line",
+        "color": "yellow",
+        "growSec": 0.8,
+        "lockSec": 0,
+        "size": {
+         "length": 10
+        }
+       },
+       "counter": "Step between the six lines; they fan from its back."
+      },
+      {
+       "id": "ledge",
+       "trigger": "WIND gust while stunned within 2 m of an open edge",
+       "effect": "hangs on the lip 4 s (LEDGE: x2 damage taken, cannot act); above 30% HP it climbs back, at or below 30% it falls and dies",
+       "counter": "Wait for the gust arrow while it is stunned at the edge, then unload."
+      }
+     ],
+     "mapRules": [
+      "Railings break on its charge, so every charge permanently opens more void edges.",
+      "Gusts push it like any boss (4 m/s) only while it is stunned."
+     ]
+    },
+    {
+     "fromPct": 0.4,
+     "attacks": [
+      {
+       "id": "callCarapace",
+       "trigger": "once on entering phase",
+       "spawn": {
+        "carapace": 2
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 1.5
+        }
+       },
+       "effect": "the two Carapaces charge along the cart rail",
+       "counter": "Step off the rail line; gusts push them off the 1-cell bridge."
+      }
+     ],
+     "mapRules": [
+      "The 30% LEDGE kill threshold makes this phase the window for a void kill."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 3,
+    "damage": 0,
+    "effect": "shell fragments; if it died by falling, full biomass and the 'Blown Away' callout"
+   },
+   "rewards": {
+    "note": "Mini-boss: guaranteed power-up drop and 30 biomass; counts for the void-kill bonus challenge."
+   }
+  },
+  {
+   "id": "cloudbreaker",
+   "name": "Cloudbreaker",
+   "type": "boss",
+   "zone": "skyhook",
+   "basedOn": "leaper",
+   "hp": 280,
+   "size": 2.1,
+   "speed": 0.6,
+   "biomass": 50,
+   "contactDamage": 15,
+   "look": {
+    "baseModel": "leaper",
+    "scale": 3.0,
+    "tint": "#6f7a86",
+    "extra": "white streak tint on the back, cyan emissive eyes #4fd2ff; the snapped cable is a stretched tether-material cylinder with the tracer trail"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "speed": 0.6,
+     "attacks": [
+      {
+       "id": "skyPounce",
+       "interval": 6,
+       "damage": 25,
+       "knockback": 4,
+       "telegraph": {
+        "shape": "circle",
+        "color": "red",
+        "growSec": 1.2,
+        "lockSec": 0.2,
+        "size": {
+         "radius": 3
+        }
+       },
+       "effect": "red arrow from boss to circle; lands on the hero's ring; every crumbling cell (k) under the circle falls",
+       "counter": "Leave the circle; take the jump pad when it commits to your ring so it lands on bare crumbling cells."
+      },
+      {
+       "id": "swipe",
+       "interval": 3,
+       "damage": 18,
+       "telegraph": {
+        "shape": "cone",
+        "color": "red",
+        "growSec": 0.7,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 90,
+         "radius": 3.5
+        }
+       },
+       "counter": "Stay out of melee range between pounces."
+      }
+     ],
+     "mapRules": [
+      "Landings crack spokes: each pounce removes k cells, so the ring links shrink over the fight.",
+      "LEDGE: a gust or a jump-pad landing shove that leaves it within 1 m of a pit lip makes it hang 4 s at x2 damage (once per 15 s). It never falls."
+     ]
+    },
+    {
+     "fromPct": 0.6,
+     "speed": 0.7,
+     "attacks": [
+      {
+       "id": "cableSnap",
+       "interval": 10,
+       "damage": 30,
+       "telegraph": {
+        "shape": "line",
+        "color": "yellow",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "width": 1.5,
+         "length": 40
+        }
+       },
+       "effect": "a whipping cable sweeps the line; enemies on it are shoved 4 m (pits kill them)",
+       "counter": "Cross the yellow line before it locks; lure packs onto it."
+      },
+      {
+       "id": "skyPounce",
+       "interval": 6,
+       "damage": 25,
+       "knockback": 4,
+       "spawn": {
+        "leaper_pup": 2
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "red",
+        "growSec": 1.2,
+        "lockSec": 0.2,
+        "size": {
+         "radius": 3
+        }
+       },
+       "effect": "each landing drops 2 Leaper pups (Leaper at 0.6x, 2 RH)",
+       "counter": "Shoot pups near pit lips; one gust clears them."
+      }
+     ],
+     "mapRules": [
+      "Pups pounce gaps like Leapers (3 cells)."
+     ]
+    },
+    {
+     "fromPct": 0.3,
+     "speed": 0.8,
+     "attacks": [
+      {
+       "id": "stormcaller",
+       "interval": 7,
+       "telegraph": {
+        "shape": "arrow",
+        "color": "white",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "length": 6
+        }
+       },
+       "effect": "roar, then a WIND gust (4 m/s, 3 s) toward the nearest pit from the hero",
+       "counter": "Get a block between you and the gust, or dash through it."
+      },
+      {
+       "id": "pitPounce",
+       "interval": 5,
+       "damage": 25,
+       "knockback": 4,
+       "telegraph": {
+        "shape": "circle",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0.2,
+        "size": {
+         "radius": 3
+        }
+       },
+       "effect": "pounces only across pits",
+       "counter": "Bait the pounce, then jump-pad away so it lands on crumbling cells near a lip."
+      }
+     ],
+     "mapRules": [
+      "The boss chooses the gust direction (floor script: WEATHER period 7)."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 4,
+    "damage": 0,
+    "effect": "falls from the crown into the cloud sea, scream fades with Doppler pitch-down"
+   },
+   "rewards": {
+    "epicCardChoice": true,
+    "extraGear": 1,
+    "powerupChestChance": 0.3,
+    "note": "Ledge bonus: 3 LEDGE states in one fight completes star 3."
+   }
+  },
+  {
+   "id": "deck_crusher",
+   "name": "Deck Crusher",
+   "type": "miniboss",
+   "zone": "dreadnought",
+   "basedOn": "carapace (Juggernaut Carapace elite)",
+   "hp": 55,
+   "size": 2.0,
+   "speed": 0.6,
+   "biomass": 30,
+   "contactDamage": 15,
+   "frontArmour": {
+    "arcDeg": 120,
+    "damageTaken": 0.15,
+    "regrowAfterStunSec": 2
+   },
+   "look": {
+    "baseModel": "carapace-look",
+    "scale": 1.8,
+    "tint": "#4a4f55",
+    "extra": "ship's white deck markings as a stripe decal, amber emissive front #ffb347"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "slopeCharge",
+       "interval": 6,
+       "damage": 28,
+       "knockback": 3,
+       "telegraph": {
+        "shape": "lane",
+        "color": "yellow",
+        "growSec": 0.9,
+        "lockSec": 0,
+        "size": {
+         "width": 1.8,
+         "length": 14
+        }
+       },
+       "effect": "downhill x1.35 speed, uphill x0.7; a downhill charge into a bulkhead stuns 4 s (2.5 s otherwise); breaking a crate sets it on fire (fire seed)",
+       "counter": "Stand downhill with a block at your back and dodge; it stuns itself for 4 s."
+      },
+      {
+       "id": "shockwave",
+       "trigger": "end of each charge",
+       "damage": 8,
+       "telegraph": {
+        "shape": "line",
+        "color": "red",
+        "growSec": 0.4,
+        "lockSec": 0,
+        "size": {
+         "width": 1,
+         "length": 14
+        }
+       },
+       "counter": "Step off the charge lane right after it passes."
+      }
+     ],
+     "mapRules": [
+      "Targets the DEFEND core (G) first.",
+      "A captured turret within 10 m pulls it away from the core 50% of the time.",
+      "Slope from the floor's DRIFT direction sets its charge speed."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 3,
+    "damage": 10,
+    "hitsEnemies": true,
+    "effect": "armour plates scatter"
+   },
+   "rewards": {
+    "note": "Mini-boss: guaranteed power-up drop and 30 biomass."
+   }
+  },
+  {
+   "id": "fallen_vanguard",
+   "name": "Fallen Vanguard",
+   "type": "boss",
+   "zone": "dreadnought",
+   "basedOn": "Iron Vanguard hero",
+   "hp": 260,
+   "size": 0.9,
+   "speed": 0.7,
+   "biomass": 50,
+   "contactDamage": 10,
+   "look": {
+    "baseModel": "iron_vanguard",
+    "scale": 1.6,
+    "tint": "#5a2a6e",
+    "extra": "creep veins (#b04dff emissive) on the shoulders, red-violet visor, minigun muzzle flash recoloured violet"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "suppression",
+       "interval": 5,
+       "damage": 6,
+       "durationSec": 3,
+       "fireRate": 8,
+       "telegraph": {
+        "shape": "cone",
+        "color": "red",
+        "growSec": 0.8,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 40,
+         "radius": 14
+        }
+       },
+       "counter": "Dash across the cone or break line of sight behind crates."
+      },
+      {
+       "id": "barrelToss",
+       "interval": 10,
+       "telegraph": {
+        "shape": "line",
+        "color": "yellow",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "width": 1,
+         "length": 12
+        }
+       },
+       "effect": "kicks a barrel downhill; it rolls and explodes (barrel rules)",
+       "counter": "Step off the yellow line; shoot the barrel early when it rolls into a pack."
+      }
+     ],
+     "mapRules": [
+      "Walks the command deck behind the railings.",
+      "Barrels rolled from the uphill wall deal x3 damage to him."
+     ]
+    },
+    {
+     "fromPct": 0.65,
+     "attacks": [
+      {
+       "id": "barrage",
+       "interval": 9,
+       "damage": 8,
+       "durationSec": 3,
+       "knockback": 2.5,
+       "telegraph": {
+        "shape": "ring",
+        "color": "red",
+        "growSec": 0.8,
+        "lockSec": 0,
+        "size": {
+         "radius": 2.5
+        }
+       },
+       "effect": "stomp ring, then a 3 s overdrive cone (60 deg, 14 m) with knockback; knockback plus drift pushes the hero downhill into the fire cells",
+       "counter": "Attack from the side of the cone, never from below; dash across it."
+      },
+      {
+       "id": "suppression",
+       "interval": 6,
+       "damage": 6,
+       "durationSec": 3,
+       "telegraph": {
+        "shape": "cone",
+        "color": "red",
+        "growSec": 0.8,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 40,
+         "radius": 14
+        }
+       }
+      }
+     ],
+     "mapRules": [
+      "Uses DRIFT: his knockback is always aimed downhill."
+     ]
+    },
+    {
+     "fromPct": 0.35,
+     "damageTaken": 0.5,
+     "attacks": [
+      {
+       "id": "hiveOverride",
+       "trigger": "on entering phase",
+       "effect": "captures every turret within 10 m (they go red and fire at the hero) and seeds fire on the carpeted upper bridge (p)",
+       "telegraph": {
+        "shape": "ring",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 10
+        }
+       },
+       "counter": "Recapture turrets (2.5 s): a hero turret deals x3 damage to him and is the only way to strip his 50% damage reduction."
+      },
+      {
+       "id": "suppression",
+       "interval": 4,
+       "damage": 7,
+       "durationSec": 3,
+       "telegraph": {
+        "shape": "cone",
+        "color": "red",
+        "growSec": 0.7,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 40,
+         "radius": 14
+        }
+       }
+      }
+     ],
+     "mapRules": [
+      "Takes 50% damage except from turrets the hero owns (x3) and rolling barrels (x3)."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 0,
+    "damage": 0,
+    "effect": "drops to one knee, minigun spins down; the Valiant's PA goes silent"
+   },
+   "rewards": {
+    "epicCardChoice": true,
+    "extraGear": 1,
+    "powerupChestChance": 0.3
+   }
+  },
+  {
+   "id": "core_behemoth",
+   "name": "Core Behemoth",
+   "type": "boss",
+   "zone": "meltdown",
+   "basedOn": "carapace",
+   "hp": 320,
+   "size": 3.3,
+   "speed": 0.5,
+   "biomass": 55,
+   "contactDamage": 18,
+   "frontArmour": {
+    "arcDeg": 120,
+    "damageTaken": 0.15
+   },
+   "look": {
+    "baseModel": "carapace-look",
+    "scale": 3.0,
+    "tint": "#5f6670",
+    "extra": "glowing yellow-green core stripe #c8ff3a down the back, blue Cherenkov point light under the belly"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "falloutWalk",
+       "effect": "every cell it touches becomes q (radiation) for 10 s",
+       "counter": "Never fight on its trail."
+      },
+      {
+       "id": "charge",
+       "interval": 7,
+       "damage": 30,
+       "knockback": 3,
+       "telegraph": {
+        "shape": "lane",
+        "color": "yellow",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "width": 2.5,
+         "length": 16
+        }
+       },
+       "puddle": {
+        "type": "radiation",
+        "radius": 2.5,
+        "durationSec": 10
+       },
+       "onWallHit": {
+        "stunSec": 3,
+        "backExposed": true
+       },
+       "counter": "Lure the charge into the reactor block: 3 s stun with the back exposed."
+      }
+     ],
+     "mapRules": [
+      "A steam vent erupting under it cracks its shell: front armour off for 5 s and a 1 s stagger."
+     ]
+    },
+    {
+     "fromPct": 0.65,
+     "attacks": [
+      {
+       "id": "critical",
+       "interval": 9,
+       "damage": 20,
+       "rings": 3,
+       "telegraph": {
+        "shape": "ring",
+        "color": "red",
+        "growSec": 1.2,
+        "lockSec": 0,
+        "size": {
+         "radius": 3,
+         "step": 3
+        }
+       },
+       "counter": "Stand between rings or dash through one as it passes."
+      },
+      {
+       "id": "absorb",
+       "effect": "heals 1 RH/s for every q cell within 3 m",
+       "counter": "Turn the valve for its quarter (purge, cooldown 20 s) to stop the heal."
+      },
+      {
+       "id": "charge",
+       "interval": 6,
+       "damage": 30,
+       "knockback": 3,
+       "telegraph": {
+        "shape": "lane",
+        "color": "yellow",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "width": 2.5,
+         "length": 16
+        }
+       }
+      }
+     ],
+     "mapRules": [
+      "Four valves (R) purge one quarter of the arena each."
+     ]
+    },
+    {
+     "fromPct": 0.35,
+     "speed": 0.8,
+     "attacks": [
+      {
+       "id": "charge",
+       "interval": 4,
+       "damage": 30,
+       "knockback": 3,
+       "telegraph": {
+        "shape": "lane",
+        "color": "yellow",
+        "growSec": 0.9,
+        "lockSec": 0,
+        "size": {
+         "width": 2.5,
+         "length": 16
+        }
+       },
+       "counter": "Same reactor-block bait, now every 4 s."
+      },
+      {
+       "id": "meltdown",
+       "trigger": "on entering phase",
+       "effect": "reactor fire FRONT from the north at 1.0 m/s that stops at the reactor block (floor script)",
+       "counter": "Complete a valve to pause the front 4 s; fight in the southern half."
+      }
+     ],
+     "mapRules": [
+      "Enraged: speed 0.8x."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 5,
+    "damage": 0,
+    "effect": "vents all its radiation: every q cell on the floor fades over 3 s"
+   },
+   "rewards": {
+    "epicCardChoice": true,
+    "extraGear": 1,
+    "powerupChestChance": 0.3,
+    "note": "Killing blow inside a vent eruption completes star 3."
+   }
+  },
+  {
+   "id": "tunnel_matron",
+   "name": "Tunnel Matron",
+   "type": "miniboss",
+   "zone": "burrows",
+   "basedOn": "mender (Grand Mender elite, ASSASSINATE x4 HP)",
+   "hp": 60,
+   "size": 1.5,
+   "speed": 1.1,
+   "biomass": 30,
+   "contactDamage": 0,
+   "look": {
+    "baseModel": "drone",
+    "scale": 2.4,
+    "tint": "#d8cbb8",
+    "extra": "Mender look: swollen green emissive sac, gold elite rim, faint white mist trail"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "flee",
+       "effect": "flees to the far side at 1.1x; passes through hive walls (they open for her and regrow behind)",
+       "counter": "Shoot the hive wall ahead of her: she waits 1 s for it to regrow."
+      },
+      {
+       "id": "summonBurrowers",
+       "interval": 10,
+       "spawn": {
+        "burrower": 2
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 1.2
+        }
+       },
+       "effect": "they surface between her and the hero",
+       "counter": "Keep moving; shoot through the gap after they surface."
+      },
+      {
+       "id": "nurse",
+       "effect": "heals every nest and egg cluster within 6 m by 1 RH/s; Grand Mender aura heals allies 1 RH/s in 6 m",
+       "counter": "Kill her before she reaches the egg fields."
+      }
+     ],
+     "mapRules": [
+      "Exposed (+20% damage taken) while in pylon or flare light.",
+      "In the dark only her eye glints and her green tether to the nearest escort show.",
+      "A flare thrown within 1 m sticks to her for 12 s."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 2,
+    "damage": 0,
+    "effect": "sac bursts; nearby eggs stop being healed"
+   },
+   "rewards": {
+    "note": "ASSASSINATE target: kill within 60 s for the bonus (and star 3)."
+   }
+  },
+  {
+   "id": "the_gloom",
+   "name": "The Gloom",
+   "type": "boss",
+   "zone": "burrows",
+   "basedOn": "stalker",
+   "hp": 300,
+   "size": 2.0,
+   "speed": 1.3,
+   "biomass": 55,
+   "contactDamage": 15,
+   "cloak": {
+    "alpha": 0.12,
+    "autoFireIgnores": true,
+    "targetableOnlyInLight": true
+   },
+   "look": {
+    "baseModel": "leaper",
+    "scale": 2.8,
+    "tint": "#141218",
+    "extra": "Stalker cyan emissive slit #4fd2ff; cloaked 12% alpha with scrolling noise; decoys 8% alpha, no eye glints"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "speed": 1.3,
+     "attacks": [
+      {
+       "id": "backstrike",
+       "interval": 6,
+       "damage": 28,
+       "telegraph": {
+        "shape": "cone",
+        "color": "white",
+        "growSec": 0.6,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 120,
+         "radius": 3
+        }
+       },
+       "effect": "de-cloak hiss and a white blade arc from behind",
+       "counter": "Stand in pylon light and let it come; a flare on its de-cloak sticks and reveals it 8 s."
+      }
+     ],
+     "mapRules": [
+      "Targetable only inside light (pylons, flares, hero light); takes +20% in pylon light."
+     ]
+    },
+    {
+     "fromPct": 0.65,
+     "speed": 1.3,
+     "attacks": [
+      {
+       "id": "lightsOut",
+       "interval": 15,
+       "telegraph": {
+        "shape": "line",
+        "color": "yellow",
+        "growSec": 1.5,
+        "lockSec": 0,
+        "size": {
+         "width": 1
+        }
+       },
+       "effect": "smashes the nearest lit pylon; 6 RH of damage during the telegraph interrupts it",
+       "counter": "Burst it during the yellow line, or relight the pylon (1.5 s stand)."
+      },
+      {
+       "id": "dig",
+       "trigger": "when its path crosses a hive wall",
+       "damage": 10,
+       "telegraph": {
+        "shape": "ring",
+        "color": "red",
+        "growSec": 0.6,
+        "lockSec": 0,
+        "size": {
+         "radius": 2
+        }
+       },
+       "effect": "hive wall explodes outward",
+       "counter": "Don't hold position next to hive walls."
+      },
+      {
+       "id": "backstrike",
+       "interval": 6,
+       "damage": 28,
+       "telegraph": {
+        "shape": "cone",
+        "color": "white",
+        "growSec": 0.6,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 120,
+         "radius": 3
+        }
+       }
+      }
+     ],
+     "mapRules": [
+      "Pylons (I) become destructible by it and relightable by the hero."
+     ]
+    },
+    {
+     "fromPct": 0.35,
+     "speed": 1.4,
+     "attacks": [
+      {
+       "id": "manyEyes",
+       "trigger": "on entering phase",
+       "spawn": {
+        "gloom_decoy": 2
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 2
+        }
+       },
+       "effect": "two shadow decoys (Shade Stalker rule, 1 hit each, 14 damage strikes); only the real one has eye glints; every egg hatches (floor script)",
+       "counter": "Area damage (grenade, Shock Trail, explosions) reveals all three; watch for the eye glints."
+      },
+      {
+       "id": "backstrike",
+       "interval": 5,
+       "damage": 28,
+       "telegraph": {
+        "shape": "cone",
+        "color": "white",
+        "growSec": 0.5,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 120,
+         "radius": 3
+        }
+       }
+      }
+     ],
+     "mapRules": [
+      "The central d ring never lights: never fight it there."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 4,
+    "damage": 0,
+    "effect": "cloak fails in a white flash; every pylon on the floor relights"
+   },
+   "rewards": {
+    "epicCardChoice": true,
+    "extraGear": 1,
+    "powerupChestChance": 0.3
+   }
+  },
+  {
+   "id": "the_gardener",
+   "name": "The Gardener",
+   "type": "miniboss",
+   "zone": "hive-core",
+   "basedOn": "mender (Grand Mender)",
+   "hp": 65,
+   "size": 1.2,
+   "speed": 0.7,
+   "biomass": 30,
+   "contactDamage": 10,
+   "look": {
+    "baseModel": "drone",
+    "scale": 2.4,
+    "tint": "#d8cbb8",
+    "extra": "violet emissive sac #b04dff on its back, trails creep decals"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "tend",
+       "interval": 1,
+       "effect": "walks the cart track; every cell it touches becomes a creep seed (1 per s), which stops the Torch cart",
+       "counter": "Fire stops its seeding for 3 s; burn the track behind it."
+      },
+      {
+       "id": "bloom",
+       "interval": 8,
+       "telegraph": {
+        "shape": "ring",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 2
+        }
+       },
+       "effect": "grows a ring of 4 hive walls (10 RH each) around a random enemy, shielding it",
+       "counter": "Explosions deal x3 to hive walls; or ignore the shielded enemy."
+      },
+      {
+       "id": "nurseNests",
+       "effect": "heals nests within 8 m by 1 RH/s",
+       "counter": "Pull it away from nests."
+      }
+     ],
+     "mapRules": [
+      "Takes x2 damage while standing on scorched floor: burn a patch ahead of it and wait."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 2,
+    "damage": 0,
+    "effect": "every creep cell it seeded recedes 1 per 3 s"
+   },
+   "rewards": {
+    "note": "Mini-boss: guaranteed power-up drop (Incendiary weighted x2) and 30 biomass."
+   }
+  },
+  {
+   "id": "the_choir",
+   "name": "The Choir",
+   "type": "miniboss",
+   "zone": "brood-spire",
+   "basedOn": "hive_linked trio: Warcry Shrieker, Grand Mender, Marksman Lancer",
+   "hp": 90,
+   "size": 0.9,
+   "speed": 0.7,
+   "biomass": 40,
+   "contactDamage": 8,
+   "members": [
+    {
+     "base": "shrieker",
+     "variant": "Warcry Shrieker"
+    },
+    {
+     "base": "mender",
+     "variant": "Grand Mender"
+    },
+    {
+     "base": "lancer",
+     "variant": "Marksman Lancer"
+    }
+   ],
+   "sharedHp": true,
+   "dieTogether": true,
+   "look": {
+    "baseModel": "drone",
+    "scale": 1.6,
+    "tint": null,
+    "extra": "the three enemy placeholders at 1.6x, gold elite rims, one violet tether line linking them in a triangle"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "warcry",
+       "interval": 12,
+       "effect": "4-hit shield on every ally within 8 m",
+       "telegraph": {
+        "shape": "ring",
+        "color": "white",
+        "growSec": 0.8,
+        "lockSec": 0,
+        "size": {
+         "radius": 8
+        }
+       },
+       "counter": "Kill the shield carriers with area damage; the shields pop on Shrieker death (shared pool)."
+      },
+      {
+       "id": "mend",
+       "interval": 8,
+       "effect": "heals the pool 3 RH and revives the last dead Drone",
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 1
+        }
+       },
+       "counter": "Burst damage between mends."
+      },
+      {
+       "id": "spineFan",
+       "interval": 4,
+       "damage": 22,
+       "count": 3,
+       "telegraph": {
+        "shape": "line",
+        "color": "yellow",
+        "growSec": 0.8,
+        "lockSec": 0.2,
+        "size": {
+         "width": 0.6,
+         "length": 20,
+         "fanDeg": 10
+        }
+       },
+       "counter": "Move sideways; the fan is 10 degrees wide."
+      }
+     ],
+     "mapRules": [
+      "All three within 8 m of each other: immune to knockback. Split them and they can be shoved.",
+      "One member falling into a pit kills the whole Choir (shared pool)."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 3,
+    "damage": 0,
+    "effect": "the tether snaps with a choir chord"
+   },
+   "rewards": {
+    "note": "Mini-boss: guaranteed power-up drop and 40 biomass."
+   }
+  },
+  {
+   "id": "broodmother_ascendant",
+   "name": "Broodmother Ascendant",
+   "type": "boss",
+   "zone": "brood-spire",
+   "basedOn": "broodmother",
+   "hp": 480,
+   "size": 3.6,
+   "speed": 0.45,
+   "biomass": 80,
+   "contactDamage": 22,
+   "arena": {
+    "eggSacs": {
+     "count": 4,
+     "hp": 15,
+     "hatchEverySec": 12,
+     "hatch": {
+      "tick": 3
+     }
+    },
+    "pillars": 4
+   },
+   "look": {
+    "baseModel": "bloater",
+    "scale": 3.0,
+    "tint": "#4b1f5c",
+    "extra": "1.8x stretched abdomen, crown of six bone-white Lancer spikes, violet emissive veins; phase 4 adds cracked amber glow #ffb070 in her seams"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "speed": 0.45,
+     "attacks": [
+      {
+       "id": "clutch",
+       "interval": 5,
+       "spawn": {
+        "drone": 6
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 2
+        }
+       },
+       "counter": "Grenade or Shock Trail on the clutch as it lands."
+      },
+      {
+       "id": "tailSweep",
+       "interval": 8,
+       "damage": 25,
+       "telegraph": {
+        "shape": "cone",
+        "color": "red",
+        "growSec": 0.8,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 150,
+         "radius": 5.5
+        }
+       },
+       "counter": "Never stand behind her."
+      },
+      {
+       "id": "slam",
+       "interval": 10,
+       "damage": 20,
+       "telegraph": {
+        "shape": "ring",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 3
+        }
+       },
+       "effect": "cracks the nearest crumbling chitin cell (k)",
+       "counter": "Stay off the ring she is slamming next to."
+      }
+     ],
+     "mapRules": [
+      "Egg sacs (4, 15 RH) hatch 3 Ticks every 12 s.",
+      "Enemies shoved off the ring fall.",
+      "Every slam cracks the nearest k cell."
+     ]
+    },
+    {
+     "fromPct": 0.75,
+     "transition": {
+      "invulnSec": 1.5,
+      "frenzyAllSec": 4
+     },
+     "speed": 0.45,
+     "attacks": [
+      {
+       "id": "acidBarrage",
+       "interval": 6,
+       "globs": 8,
+       "damage": 12,
+       "telegraph": {
+        "shape": "circle",
+        "color": "green",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 1.4
+        }
+       },
+       "puddle": {
+        "type": "acid",
+        "radius": 1.4,
+        "durationSec": 4,
+        "dps": 8
+       },
+       "blockedBy": "pillars",
+       "counter": "Stand behind a pillar (B)."
+      },
+      {
+       "id": "clutch",
+       "interval": 5,
+       "spawn": {
+        "drone": 5,
+        "spitter": 1
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 2
+        }
+       }
+      },
+      {
+       "id": "slam",
+       "interval": 10,
+       "damage": 20,
+       "telegraph": {
+        "shape": "ring",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 3
+        }
+       }
+      }
+     ],
+     "mapRules": [
+      "Pillars block the barrage."
+     ]
+    },
+    {
+     "fromPct": 0.5,
+     "transition": {
+      "burrowSec": 2,
+      "untargetableSec": 8,
+      "waves": {
+       "drone": 14,
+       "leaper": 3,
+       "tick": 6
+      },
+      "allEggsHatch": true
+     },
+     "speed": 0.6,
+     "attacks": [
+      {
+       "id": "erupt",
+       "trigger": "end of the 8 s burrow, under the hero",
+       "damage": 30,
+       "telegraph": {
+        "shape": "ring",
+        "color": "red",
+        "growSec": 1.5,
+        "lockSec": 0,
+        "size": {
+         "radius": 3.5
+        }
+       },
+       "counter": "Keep moving during the burrow; dash out of the ring."
+      },
+      {
+       "id": "clutch",
+       "interval": 4,
+       "spawn": {
+        "drone": 5
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 2
+        }
+       }
+      },
+      {
+       "id": "tailSweep",
+       "interval": 8,
+       "damage": 25,
+       "telegraph": {
+        "shape": "cone",
+        "color": "red",
+        "growSec": 0.8,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 150,
+         "radius": 5.5
+        }
+       }
+      }
+     ],
+     "mapRules": [
+      "Swarm Call: two waves pour in while she is underground."
+     ]
+    },
+    {
+     "fromPct": 0.25,
+     "transition": {
+      "invulnSec": 4,
+      "collapseRing": "k",
+      "collapseOverSec": 4
+     },
+     "speed": 0.5,
+     "attacks": [
+      {
+       "id": "spireFalls",
+       "trigger": "on entering phase",
+       "effect": "the crumbling ring around the inner arena falls into the void cell by cell, outward from her, over 4 s; the jump pad is the only link to the outer ring",
+       "telegraph": {
+        "shape": "ring",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 12
+        }
+       },
+       "counter": "Be on the inner island (or the jump pad) when the cracks reach you."
+      },
+      {
+       "id": "creepPour",
+       "interval": 2,
+       "effect": "one creep tick around her, cap 3 cells per tick",
+       "counter": "Dash lines and explosions scorch it."
+      },
+      {
+       "id": "clutch",
+       "interval": 3,
+       "spawn": {
+        "drone": 4
+       },
+       "telegraph": {
+        "shape": "circle",
+        "color": "purple",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 2
+        }
+       }
+      },
+      {
+       "id": "tailSweep",
+       "interval": 7,
+       "damage": 25,
+       "telegraph": {
+        "shape": "cone",
+        "color": "red",
+        "growSec": 0.8,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 150,
+         "radius": 5.5
+        }
+       }
+      },
+      {
+       "id": "finalLeap",
+       "atPct": 0.1,
+       "effect": "leaps to the outer ring through the jump pad, which breaks; the last 10% is fought across the void",
+       "telegraph": {
+        "shape": "lane",
+        "color": "yellow",
+        "growSec": 1.5,
+        "lockSec": 0,
+        "size": {
+         "width": 3
+        }
+       },
+       "counter": "Long-range fire; dodge her barrage across the gap."
+      }
+     ],
+     "mapRules": [
+      "Ledge Teeter: an explosion, a Barrage knockback or her own missed Tail Sweep that leaves her within 1 m of the island lip makes her teeter 3 s at x2 damage (once per 12 s).",
+      "She never falls."
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 0,
+    "damage": 0,
+    "effect": "the spire breaks: 15 s victory-lap OUTRUN to the lift with a harmless creep FRONT behind; credits roll from the lift"
+   },
+   "rewards": {
+    "epicCardChoice": true,
+    "extraGear": 2,
+    "powerupChestChance": 1.0,
+    "note": "Final boss: 'Swarm Breaker' title on first clear."
+   }
+  },
+  {
+   "id": "gravid_bloater",
+   "name": "Gravid Bloater",
+   "type": "boss",
+   "alsoMiniBoss": {
+    "hp": 60,
+    "phases": 1
+   },
+   "hp": 100,
+   "size": 2.6,
+   "biomass": 40,
+   "look": {
+    "baseModel": "bloater",
+    "scale": 2.2,
+    "tint": null,
+    "extra": "red emissive lerp in phase 2"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "birth",
+       "interval": 5,
+       "spawn": {
+        "drone_mini": 4
+       },
+       "telegraphSec": 1.0
+      },
+      {
+       "id": "pusSlam",
+       "interval": 10,
+       "telegraph": {
+        "shape": "ring",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 4
+        }
+       },
+       "puddle": {
+        "type": "pus",
+        "radius": 4,
+        "durationSec": 5,
+        "dps": 6
+       }
+      }
+     ]
+    },
+    {
+     "fromPct": 0.5,
+     "speed": 0.65,
+     "attacks": [
+      {
+       "id": "birth",
+       "interval": 5,
+       "spawn": {
+        "drone_mini": 4,
+        "tick": 2
+       }
+      },
+      {
+       "id": "rupture",
+       "atPct": 0.25,
+       "globs": 8,
+       "telegraph": {
+        "shape": "circle",
+        "color": "green",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 1.4
+        }
+       }
+      }
+     ]
+    }
+   ],
+   "onDeath": {
+    "radius": 5,
+    "damage": 30,
+    "hitsEnemies": true
+   }
+  },
+  {
+   "id": "broodmother",
+   "name": "Broodmother",
+   "type": "boss",
+   "hp": 240,
+   "speed": 0.4,
+   "size": 3.2,
+   "biomass": 40,
+   "contact": 20,
+   "arena": {
+    "diameterM": 30,
+    "eggSacs": {
+     "count": 4,
+     "hp": 12,
+     "hatchEverySec": 15,
+     "hatch": {
+      "tick": 2
+     }
+    },
+    "pillars": 4
+   },
+   "look": {
+    "baseModel": "bloater",
+    "scale": 2.6,
+    "tint": "#4b1f5c",
+    "extra": "stretched Bloater abdomen 1.6x long pulsing; violet egg sacs"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "clutch",
+       "interval": 6,
+       "spawn": {
+        "drone": 5
+       },
+       "telegraphSec": 1.0
+      },
+      {
+       "id": "tailSweep",
+       "interval": 9,
+       "damage": 22,
+       "telegraph": {
+        "shape": "cone",
+        "color": "red",
+        "growSec": 0.8,
+        "lockSec": 0,
+        "size": {
+         "angleDeg": 150,
+         "radius": 5
+        },
+        "notes": "behind her"
+       }
+      }
+     ]
+    },
+    {
+     "fromPct": 0.66,
+     "transition": {
+      "invulnSec": 1.5,
+      "frenzyAllSec": 4
+     },
+     "attacks": [
+      {
+       "id": "acidBarrage",
+       "interval": 7,
+       "globs": 6,
+       "telegraph": {
+        "shape": "circle",
+        "color": "green",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "size": {
+         "radius": 1.4
+        }
+       },
+       "blockedBy": "pillars"
+      },
+      {
+       "id": "clutch",
+       "interval": 6,
+       "spawn": {
+        "drone": 5,
+        "spitter": 1
+       }
+      }
+     ]
+    },
+    {
+     "fromPct": 0.33,
+     "transition": {
+      "burrowSec": 2,
+      "untargetableSec": 8,
+      "waves": {
+       "drone": 12,
+       "leaper": 2,
+       "tick": 4
+      },
+      "allEggsHatch": true
+     },
+     "speed": 0.6,
+     "attacks": [
+      {
+       "id": "erupt",
+       "telegraph": {
+        "shape": "ring",
+        "color": "red",
+        "growSec": 1.5,
+        "lockSec": 0,
+        "size": {
+         "radius": 3.5
+        }
+       }
+      },
+      {
+       "id": "clutch",
+       "interval": 4,
+       "spawn": {
+        "drone": 5
+       }
+      }
+     ]
+    }
+   ],
+   "rewards": {
+    "epicCardChoice": true,
+    "extraGear": 1,
+    "powerupChestChance": 0.3
+   }
+  },
+  {
+   "id": "ravager_prime",
+   "name": "Ravager Prime",
+   "type": "miniBoss",
+   "hp": 60,
+   "size": 1.8,
+   "biomass": 25,
+   "frontArmour": {
+    "arcDeg": 120,
+    "damageTaken": 0.1
+   },
+   "look": {
+    "baseModel": "bloater",
+    "scale": 1.2,
+    "tint": "#3a4048",
+    "extra": "Carapace placeholder at 1.6x, bright orange emissive, 3 Lancer spikes on shell"
+   },
+   "attacks": [
+    {
+     "id": "tripleCharge",
+     "charges": 3,
+     "damage": 25,
+     "telegraph": {
+      "shape": "lane",
+      "color": "yellow",
+      "growSec": 1.0,
+      "lockSec": 0,
+      "size": {
+       "width": 2,
+       "length": 16
+      }
+     },
+     "rechargeTelegraphSec": 0.5,
+     "stunAfterThirdSec": 3.5,
+     "crateHit": "breaks crate, immediate stun"
+    },
+    {
+     "id": "shellShards",
+     "interval": 12,
+     "count": 6,
+     "damage": 10,
+     "telegraph": {
+      "shape": "line",
+      "color": "yellow",
+      "growSec": 0.8,
+      "lockSec": 0.0
+     }
+    },
+    {
+     "id": "callCarapace",
+     "atPct": 0.4,
+     "spawn": {
+      "carapace": 2
+     }
+    }
+   ]
+  },
+  {
+   "id": "acid_matriarch",
+   "name": "Acid Matriarch",
+   "type": "miniBoss",
+   "hp": 55,
+   "speed": 0.6,
+   "size": 1.6,
+   "biomass": 25,
+   "keepDistance": [
+    10,
+    14
+   ],
+   "look": {
+    "baseModel": "drone",
+    "scale": 2.6,
+    "tint": "#9bc53d",
+    "extra": "Spitter placeholder at 2.2x, abdomen sphere 1.5x, crown of Lancer spikes"
+   },
+   "attacks": [
+    {
+     "id": "volley",
+     "globs": 5,
+     "staggerSec": 0.15,
+     "telegraph": {
+      "shape": "circle",
+      "color": "green",
+      "growSec": 0.8,
+      "lockSec": 0,
+      "size": {
+       "radius": 1.4
+      }
+     }
+    },
+    {
+     "id": "acidField",
+     "interval": 15,
+     "coverage": 0.3,
+     "telegraphSec": 1.2,
+     "durationSec": 6,
+     "alwaysSafePath": true
+    },
+    {
+     "id": "brood",
+     "atPct": 0.5,
+     "spawn": {
+      "spitter": 2
+     }
+    }
+   ]
+  },
+  {
+   "id": "the_maw",
+   "name": "The Maw",
+   "type": "boss",
+   "hp": 300,
+   "size": 3.0,
+   "biomass": 40,
+   "damageableOnlySurfaced": true,
+   "look": {
+    "baseModel": "bloater",
+    "scale": 1.6,
+    "tint": "#7a5a3a",
+    "extra": "column of 4 stacked Bloaters (1.6/1.4/1.2/1.0), red emissive mouth ring, Burrower dust 3x"
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "attacks": [
+      {
+       "id": "breach",
+       "telegraph": {
+        "shape": "ring",
+        "color": "red",
+        "growSec": 1.2,
+        "lockSec": 0,
+        "size": {
+         "radius": 2
+        }
+       },
+       "surfaceSec": 4
+      },
+      {
+       "id": "tremorLines",
+       "count": 3,
+       "damage": 15,
+       "telegraph": {
+        "shape": "line",
+        "color": "yellow",
+        "growSec": 0.8,
+        "lockSec": 0.0
+       }
+      }
+     ]
+    },
+    {
+     "fromPct": 0.6,
+     "attacks": [
+      {
+       "id": "twinBreach",
+       "rings": 2,
+       "secondRing": "dodgePrediction"
+      }
+     ],
+     "spawn": {
+      "burrower": 3
+     }
+    },
+    {
+     "fromPct": 0.25,
+     "attacks": [
+      {
+       "id": "devour",
+       "pullMps": 1.5,
+       "durationSec": 4,
+       "eatsDrones": {
+        "healPerDrone": 2
+       },
+       "safeOn": [
+        "metalPlate",
+        "blueZone"
+       ]
+      },
+      {
+       "id": "spitRing",
+       "globs": 12
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "the_overmind",
+   "name": "The Overmind",
+   "type": "finalOrPostGameBoss",
+   "hp": 400,
+   "size": 2.4,
+   "biomass": 60,
+   "stationary": true,
+   "look": {
+    "baseModel": "bloater",
+    "scale": 2.0,
+    "tint": "#c58a9a",
+    "extra": "purple emissive veins, hovering 1.5 m over a pedestal; purple Bulwark shield at 4 m"
+   },
+   "psionicNodes": {
+    "count": 4,
+    "hp": 15,
+    "eachSpawns": {
+     "mender": 1
+    },
+    "shieldWhileAlive": true
+   },
+   "phases": [
+    {
+     "fromPct": 1.0,
+     "shielded": true,
+     "attacks": [
+      {
+       "id": "mindLash",
+       "interval": 8,
+       "damage": 15,
+       "telegraph": {
+        "shape": "line",
+        "color": "red",
+        "growSec": 1.0,
+        "lockSec": 0,
+        "notes": "rotating sweep"
+       }
+      }
+     ]
+    },
+    {
+     "fromPct": 1.0,
+     "afterShieldDown": true,
+     "attacks": [
+      {
+       "id": "puppet",
+       "targets": 3,
+       "grant": [
+        "elite",
+        "frenzied"
+       ],
+       "releaseAfterDamage": 40
+      },
+      {
+       "id": "psychicMirror",
+       "clones": 2,
+       "cloneDamageMult": 0.4,
+       "cloneHp": 6,
+       "look": "hero model tinted #2a1438"
+      }
+     ]
+    },
+    {
+     "fromPct": 0.5,
+     "regrowNodes": 2,
+     "attacks": [
+      {
+       "id": "shrinkArena",
+       "everySec": 20,
+       "stepM": 2,
+       "puddle": "acid"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

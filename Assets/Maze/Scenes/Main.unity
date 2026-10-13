@@ -1,0 +1,935 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!29 &1
+OcclusionCullingSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_OcclusionBakeSettings:
+    smallestOccluder: 5
+    smallestHole: 0.25
+    backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
+--- !u!104 &2
+RenderSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 10
+  m_Fog: 1
+  m_FogColor: {r: 0.8901961, g: 0.9019608, b: 0.92156863, a: 1}
+  m_FogMode: 1
+  m_FogDensity: 0.01
+  m_LinearFogStart: 90
+  m_LinearFogEnd: 170
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
+  m_AmbientIntensity: 1
+  m_AmbientMode: 1
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SkyboxMaterial: {fileID: 0}
+  m_HaloStrength: 0.5
+  m_FlareStrength: 1
+  m_FlareFadeSpeed: 3
+  m_HaloTexture: {fileID: 0}
+  m_SpotCookie: {fileID: 10001, guid: 0000000000000000e000000000000000, type: 0}
+  m_DefaultReflectionMode: 0
+  m_DefaultReflectionResolution: 128
+  m_ReflectionBounces: 1
+  m_ReflectionIntensity: 1
+  m_CustomReflection: {fileID: 0}
+  m_Sun: {fileID: 0}
+  m_UseRadianceAmbientProbe: 0
+--- !u!157 &3
+LightmapSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
+  m_GISettings:
+    serializedVersion: 2
+    m_BounceScale: 1
+    m_IndirectOutputScale: 1
+    m_AlbedoBoost: 1
+    m_EnvironmentLightingMode: 0
+    m_EnableBakedLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
+  m_LightmapEditorSettings:
+    serializedVersion: 12
+    m_Resolution: 2
+    m_BakeResolution: 40
+    m_AtlasSize: 1024
+    m_AO: 0
+    m_AOMaxDistance: 1
+    m_CompAOExponent: 1
+    m_CompAOExponentDirect: 0
+    m_ExtractAmbientOcclusion: 0
+    m_Padding: 2
+    m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
+    m_TextureCompression: 1
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 2
+    m_BakeBackend: 2
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 512
+    m_PVRBounces: 2
+    m_PVREnvironmentSampleCount: 256
+    m_PVREnvironmentReferencePointCount: 2048
+    m_PVRFilteringMode: 1
+    m_PVRDenoiserTypeDirect: 2
+    m_PVRDenoiserTypeIndirect: 2
+    m_PVRDenoiserTypeAO: 2
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
+    m_PVREnvironmentMIS: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 1
+    m_PVRFilteringGaussRadiusAO: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
+  m_LightingDataAsset: {fileID: 20201, guid: 0000000000000000f000000000000000, type: 0}
+  m_LightingSettings: {fileID: 0}
+--- !u!196 &4
+NavMeshSettings:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_BuildSettings:
+    serializedVersion: 3
+    agentTypeID: 0
+    agentRadius: 0.5
+    agentHeight: 2
+    agentSlope: 45
+    agentClimb: 0.4
+    ledgeDropHeight: 0
+    maxJumpAcrossDistance: 0
+    minRegionArea: 2
+    manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    buildHeightMesh: 0
+    maxJobWorkers: 0
+    preserveTilesOutsideBounds: 0
+    debug:
+      m_Flags: 0
+  m_NavMeshData: {fileID: 0}
+--- !u!1 &925311498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 925311500}
+  - component: {fileID: 925311499}
+  m_Layer: 0
+  m_Name: Game
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &925311499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925311498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907253663076b4922a0bfa830b66d0ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Maze.Game
+  floorBio: 0
+  sealUsed: 0
+  tagsUsed: 0
+  cfg:
+    camera:
+      fov: 30
+      distance: 40
+      minDistance: 24
+      maxDistance: 70
+      pitch: 57
+      yaw: -14
+      follow: 5
+      lead: 0
+      shake: 0.5
+    player:
+      hp: 100
+      speed: 7.2
+      radius: 0.42
+      modelHeight: 1.6
+      dashSpeed: 24
+      dashTime: 0.16
+      dashCooldown: 6
+      contactPush: 0.15
+      topUpIdle: 1.2
+    enemy:
+      hp: 40
+      speed: 3.7
+      radius: 0.4
+      damage: 7
+      attackCooldown: 0.85
+      attackReach: 0.3
+      knockbackDecay: 7
+      flowRefresh: 0.15
+    enemyTypes:
+    - name: grunt
+      model: drone
+      hp: 1
+      speed: 1
+      scale: 1
+      damage: 1
+      weight: 1
+      fromWave: 1
+      score: 10
+      color: {r: 0.16470589, g: 0.17254902, b: 0.2, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 0
+      ai: 
+      knockback: 1
+      stride: 0
+    - name: leaper
+      model: leaper
+      hp: 2.6
+      speed: 1.15
+      scale: 1.35
+      damage: 1
+      weight: 0
+      fromWave: 999
+      score: 35
+      color: {r: 0.78431374, g: 0.2901961, b: 0.13333334, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 1
+      nest: 0
+      fixedHp: 1
+      ai: 
+      knockback: 0.8
+      stride: 1.2
+    - name: brute
+      model: 
+      hp: 3.6
+      speed: 0.72
+      scale: 1.4
+      damage: 2.2
+      weight: 0.12
+      fromWave: 3
+      score: 40
+      color: {r: 0.078431375, g: 0.08235294, b: 0.09803922, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 0
+      ai: 
+      knockback: 1
+      stride: 0
+    - name: bloater
+      model: bloater
+      hp: 8.75
+      speed: 0.43
+      scale: 2.5
+      damage: 2
+      weight: 0
+      fromWave: 999
+      score: 150
+      color: {r: 0.42352942, g: 0.7607843, b: 0.16470589, a: 1}
+      bloater: 1
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 0
+      ai: 
+      knockback: 0.15
+      stride: 0.76
+    - name: nest
+      model: 
+      hp: 60
+      speed: 0
+      scale: 1.7
+      damage: 0
+      weight: 0
+      fromWave: 999
+      score: 100
+      color: {r: 0.22745098, g: 0.10980392, b: 0.30588236, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 1
+      fixedHp: 1
+      ai: 
+      knockback: 0
+      stride: 0
+    - name: mini
+      model: drone
+      hp: 0.5
+      speed: 1.22
+      scale: 0.55
+      damage: 0.4
+      weight: 0
+      fromWave: 999
+      score: 5
+      color: {r: 0.6117647, g: 0.8784314, b: 0.41568628, a: 1}
+      bloater: 0
+      mini: 1
+      leaper: 0
+      nest: 0
+      fixedHp: 1
+      ai: 
+      knockback: 1
+      stride: 0
+    - name: carapace
+      model: bloater
+      hp: 5
+      speed: 0.6
+      scale: 1.9
+      damage: 1.5
+      weight: 0
+      fromWave: 999
+      score: 60
+      color: {r: 0.22745098, g: 0.2509804, b: 0.28235295, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 0
+      ai: carapace
+      knockback: 0.3
+      stride: 0.76
+    - name: spitter
+      model: drone
+      hp: 2
+      speed: 0.8
+      scale: 1.2
+      damage: 1
+      weight: 0
+      fromWave: 999
+      score: 30
+      color: {r: 0.60784316, g: 0.77254903, b: 0.23921569, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 0
+      ai: spitter
+      knockback: 1
+      stride: 0
+    - name: burrower
+      model: leaper
+      hp: 2.5
+      speed: 1.4
+      scale: 1.2
+      damage: 1
+      weight: 0
+      fromWave: 999
+      score: 40
+      color: {r: 0.54509807, g: 0.41960785, b: 0.2901961, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 0
+      ai: burrower
+      knockback: 1
+      stride: 1.2
+    - name: shrieker
+      model: drone
+      hp: 3
+      speed: 0.7
+      scale: 1.1
+      damage: 0.8
+      weight: 0
+      fromWave: 999
+      score: 50
+      color: {r: 0.84705883, g: 0.79607844, b: 0.72156864, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 0
+      ai: shrieker
+      knockback: 1
+      stride: 0
+    - name: tick
+      model: drone
+      hp: 0.5
+      speed: 1.6
+      scale: 0.45
+      damage: 0.5
+      weight: 0
+      fromWave: 999
+      score: 8
+      color: {r: 0.8156863, g: 0.22352941, b: 0.6117647, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 0
+      ai: tick
+      knockback: 1
+      stride: 0
+    - name: weaver
+      model: leaper
+      hp: 2.5
+      speed: 0.9
+      scale: 1.08
+      damage: 0.8
+      weight: 0
+      fromWave: 999
+      score: 40
+      color: {r: 0.9254902, g: 0.89411765, b: 0.8156863, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 0
+      ai: weaver
+      knockback: 1
+      stride: 1.2
+    - name: lancer
+      model: drone
+      hp: 2.5
+      speed: 0.7
+      scale: 1.2
+      damage: 1
+      weight: 0
+      fromWave: 999
+      score: 50
+      color: {r: 0.12156863, g: 0.30980393, b: 0.33333334, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 0
+      ai: lancer
+      knockback: 1
+      stride: 0
+    - name: splitter
+      model: bloater
+      hp: 3
+      speed: 0.8
+      scale: 1.12
+      damage: 1
+      weight: 0
+      fromWave: 999
+      score: 20
+      color: {r: 0.9098039, g: 0.41568628, b: 0.6509804, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 0
+      ai: splitter
+      knockback: 1
+      stride: 0.76
+    - name: splitter_m
+      model: bloater
+      hp: 1.5
+      speed: 1
+      scale: 0.75
+      damage: 0.75
+      weight: 0
+      fromWave: 999
+      score: 10
+      color: {r: 0.9098039, g: 0.41568628, b: 0.6509804, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 0
+      ai: splitter
+      knockback: 1
+      stride: 0.76
+    - name: splitter_s
+      model: bloater
+      hp: 0.5
+      speed: 1.4
+      scale: 0.5
+      damage: 0.5
+      weight: 0
+      fromWave: 999
+      score: 5
+      color: {r: 0.9098039, g: 0.41568628, b: 0.6509804, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 0
+      ai: splitter
+      knockback: 1
+      stride: 0.76
+    - name: mender
+      model: drone
+      hp: 2.5
+      speed: 0.8
+      scale: 1.1
+      damage: 0.6
+      weight: 0
+      fromWave: 999
+      score: 50
+      color: {r: 0.49803922, g: 0.84705883, b: 0.6509804, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 0
+      ai: mender
+      knockback: 1
+      stride: 0
+    - name: stalker
+      model: leaper
+      hp: 3
+      speed: 1.3
+      scale: 1.35
+      damage: 1
+      weight: 0
+      fromWave: 999
+      score: 60
+      color: {r: 0.078431375, g: 0.07058824, b: 0.09411765, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 0
+      ai: stalker
+      knockback: 1
+      stride: 1.2
+    - name: boss_leaper
+      model: leaper
+      hp: 10
+      speed: 1
+      scale: 1.35
+      damage: 1.5
+      weight: 0
+      fromWave: 999
+      score: 500
+      color: {r: 0.56078434, g: 0.11372549, b: 0.11372549, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 1
+      ai: boss
+      knockback: 0.1
+      stride: 1.2
+    - name: boss_bloater
+      model: bloater
+      hp: 10
+      speed: 1
+      scale: 2.5
+      damage: 1.5
+      weight: 0
+      fromWave: 999
+      score: 500
+      color: {r: 0.29411766, g: 0.12156863, b: 0.36078432, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 1
+      ai: boss
+      knockback: 0.05
+      stride: 0.76
+    - name: boss_drone
+      model: drone
+      hp: 10
+      speed: 1
+      scale: 1
+      damage: 1.5
+      weight: 0
+      fromWave: 999
+      score: 500
+      color: {r: 0.43529412, g: 0.6039216, b: 0.16470589, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 1
+      ai: boss
+      knockback: 0.1
+      stride: 0
+    - name: boss_vanguard
+      model: 
+      hp: 10
+      speed: 1
+      scale: 1.6
+      damage: 1.5
+      weight: 0
+      fromWave: 999
+      score: 500
+      color: {r: 0.1764706, g: 0.19607843, b: 0.21960784, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 0
+      fixedHp: 1
+      ai: boss
+      knockback: 0.1
+      stride: 0
+    - name: spore_pod
+      model: 
+      hp: 4
+      speed: 0
+      scale: 1.1
+      damage: 0
+      weight: 0
+      fromWave: 999
+      score: 30
+      color: {r: 0.30980393, g: 0.3529412, b: 0.16470589, a: 1}
+      bloater: 0
+      mini: 0
+      leaper: 0
+      nest: 1
+      fixedHp: 1
+      ai: spore_pod
+      knockback: 0
+      stride: 0
+    bloater:
+      fromWave: 3
+      twoFrom: 5
+      threeFrom: 8
+      spawnEvery: 5
+      spawnRange: 18
+      castTime: 0.7
+      minisMin: 2
+      minisMax: 3
+      capPerBloater: 6
+      capTotal: 30
+      deathMinisMin: 3
+      deathMinisMax: 4
+      deathShake: 0.85
+    leaper:
+      fromWave: 4
+      range: 7
+      minRange: 2.2
+      crouch: 0.6
+      lockAt: 0.38
+      distance: 8
+      time: 0.45
+      hitDamage: 3
+      knock: 11
+      missStun: 0.8
+      hitRecover: 0.5
+      cooldown: 2.2
+      dodgeChance: 0.35
+      dodgeCooldown: 2.5
+      dodgeSpeed: 7
+    waves:
+      firstCount: 14
+      perWave: 9
+      hpGrowth: 0.1
+      speedGrowth: 0.035
+      maxSpeedMult: 1.5
+      maxAlive: 90
+      spawnInterval: 0.2
+      breakTime: 3.5
+      minSpawnDistance: 18
+    pickups:
+      dropChance: 0.05
+      heal: 25
+      life: 18
+    barrels:
+      hp: 30
+      height: 1.35
+      collide: 0.46
+      perSpot: 2
+      radius: 4.8
+      enemyDamage: 140
+      playerDamage: 40
+      knockback: 14
+      fuse: 0.12
+      chainRadius: 5
+      chainDelay: 0.18
+      shake: 0.7
+      respawnEachWave: 1
+    weapons:
+    - name: RIFLE
+      color: {r: 0.9607843, g: 0.76862746, b: 0, a: 1}
+      rate: 7
+      damage: 24
+      spread: 0.02
+      speed: 80
+      knockback: 1.8
+      range: 30
+      shake: 0.06
+      reach: 15
+      moveMul: 0.9
+      pellets: 1
+      magSize: 36
+      reloadTime: 1.8
+      perShell: 0
+      kind: 
+    - name: SHOTGUN
+      color: {r: 0.22745098, g: 0.65882355, b: 1, a: 1}
+      rate: 1.5
+      damage: 16
+      spread: 0.3
+      speed: 60
+      knockback: 5
+      range: 10
+      shake: 0.38
+      reach: 7
+      moveMul: 1.08
+      pellets: 9
+      magSize: 8
+      reloadTime: 2.4
+      perShell: 1
+      kind: 
+    - name: SMG
+      color: {r: 1, g: 0.41568628, b: 0.23921569, a: 1}
+      rate: 16
+      damage: 11
+      spread: 0.13
+      speed: 68
+      knockback: 0.9
+      range: 16
+      shake: 0.04
+      reach: 10
+      moveMul: 1
+      pellets: 1
+      magSize: 60
+      reloadTime: 1
+      perShell: 0
+      kind: 
+  floorPixelsPerMeter: 10
+  lastBreathUsed: 0
+  secondWindUsed: 0
+  plan: 0000000000000000000000000000000000000000i
+  LastRunTest: 0
+  RunScore: 0
+  damageTaken: 0
+  XpGained: 0
+  ShardsGained: 0
+  FirstClear: 0
+  ShardHero: 
+  RankUps: []
+  StarTrack: []
+  OpsToasts: []
+  Grade: 
+  GradeVerdict: 
+  GradePoints: 0
+  GradeBonus: 0
+  ObRecommend: 0
+--- !u!4 &925311500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925311498}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1315977115
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1315977118}
+  - component: {fileID: 1315977117}
+  - component: {fileID: 1315977116}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!81 &1315977116
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315977115}
+  m_Enabled: 1
+--- !u!20 &1315977117
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315977115}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1315977118
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315977115}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2034246292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2034246294}
+  - component: {fileID: 2034246293}
+  m_Layer: 0
+  m_Name: Directional Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!108 &2034246293
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034246292}
+  m_Enabled: 1
+  serializedVersion: 13
+  m_Type: 1
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Intensity: 1
+  m_Range: 10
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.802082
+  m_CookieSize2D: {x: 0.5, y: 0.5}
+  m_Shadows:
+    m_Type: 2
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ForceVisible: 0
+  m_ShapeRadius: 0.025
+  m_ShadowAngle: 0
+  m_LightUnit: 1
+  m_LuxAtDistance: 1
+  m_EnableSpotReflector: 1
+--- !u!4 &2034246294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034246292}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 1315977118}
+  - {fileID: 2034246294}
+  - {fileID: 925311500}

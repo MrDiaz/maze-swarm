@@ -1,0 +1,75 @@
+id,value,range,section
+SHAKE_M_PER_UNIT,0.5 m,0.3 to 0.8,1.3
+SHAKE_ROLL_DEG_PER_UNIT,2.0,0 to 4,1.3
+SHAKE_TOTAL_CAP,0.35,0.25 to 0.5,1.3
+SHAKE_TELEGRAPH_CAP,0.04,0 to 0.08,1.2
+TELEGRAPH_WINDOW_S,0.6,0.4 to 1.0,1.2
+FLASH_ALPHA_CAP,0.35,0.2 to 0.5,1.2
+FLASH_MAX_PER_SEC,3,2 to 4,1.2
+HAPTIC_MIN_GAP_MS,80,50 to 120,1.2
+HAPTIC_MAX_PER_SEC,6,4 to 8,1.2
+SLOWMO_BUDGET_S_PER_5S,1.6,1.0 to 2.5,1.2
+PARTICLE_CAP,600,300 to 900,1.2
+DECAL_CAP,80,40 to 120,1.2
+GOVERNOR_FRAME_MS,9.5,8.5 to 11,1.2
+HIT_FLASH_MS (rifle / SMG / shotgun / minigun),60 / 50 / 90 / 40,30 to 120,2.1
+HIT_FLASH_MIN_GAP_MS,90,60 to 150,2.1
+STAGGER_MS (rifle / shotgun),40 / 70,0 to 100,2.1
+KNOCK_M (rifle / SMG / shotgun / minigun),0.05 / 0.03 / 0.6 / 0.08,0 to 1,2.1
+KNOCK_STACK_CAP_M (rifle / SMG / minigun),0.30 / 0.20 / 0.40,0.1 to 0.6,2.1
+SHOTGUN_SHAKE,0.06,0 to 0.1,2.1
+MINIGUN_SHAKE,0.03 (cap 0.04),0 to 0.05,2.1
+KILL_SHAKE (M / L / Elite / Mini-boss),0.04 / 0.10 / 0.14 / 0.25,0 to 0.35,2.2
+KILL_DIP (L / Elite / Mini-boss),0.3 for 50 ms / 0.25 for 80 ms / 0.2 for 250 ms,0.15 to 0.6,2.2
+KILL_DIP_MIN_HP,30%,15 to 50,2.2
+S_KILL_HAPTIC_GAP_MS,120,80 to 250,2.2
+CHAIN_POINTS (S / M / L / Elite / Mini-boss),1 / 2 / 5 / 10 / 20,,2.3
+CHAIN_TIER_POOL,10 / 25 / 45 / 70,,2.3
+CHAIN_SCORE_MULT,1.25 / 1.5 / 1.75 / 2.0,,2.3
+CHAIN_BIOMASS_FACTOR,0.5 of the excess,0.25 to 1.0,2.3
+CHAIN_DECAY_BASE / K,1.0 / 0.08 per s,0.5 to 2 / 0.04 to 0.12,2.3
+CHAIN_HIT_PENALTY,25% of the pool,0 to 50,2.3
+CALLOUT_TIER_COOLDOWN_S,8,4 to 15,2.4
+MULTIKILL_COUNT / WINDOW,5 kills / 0.6 s,4 to 8 / 0.4 to 1.0,2.4
+CLOSE_CALL_RADIUS_M,0.9,0.6 to 1.2,2.5
+CLOSE_CALL_DIP,0.6 for 120 ms,,2.5
+CLOSE_CALL_CHAIN,+3,0 to 6,2.5
+PERFECT_DASH_WINDOW_S,0.25,0.15 to 0.4,2.5
+PERFECT_DASH_CHAIN,+10,0 to 20,2.5
+PERFECT_DASH_REFUND,33% of the cooldown,0 to 50,2.5
+HERO_HIT_SHAKE (up to 10 HP / above),0.12 / 0.18,0.05 to 0.25,2.6
+HERO_HIT_VIGNETTE,"alpha 0.35, 0.18 s",,2.6
+LOWHP_THRESHOLDS,40 / 25 / 15 %,,2.6
+LOWHP_PULSE_HZ / ALPHA,"0.8, 1.3, 2.0 Hz / 0.18, 0.28, 0.35",,2.6
+LAST_BREATH_MIN_HP,35%,20 to 60,2.6
+LAST_BREATH_INVULN_S,1.2,0.6 to 2.0,2.6
+LAST_BREATH_SHOVE_M / RADIUS,2 / 4,,2.6
+BOSS_INTRO_S,"1.8 (slow 0.25, dolly 10%)",1.2 to 2.5,2.7
+MINIBOSS_INTRO_S,0.8 at 0.5,,2.7
+BOSS_KILL_SLOW,"0.2 for 1.2 s, push-in 8%",,2.7
+BOSS_KILL_FLASH,"alpha 0.5, 0.12 s",,2.7
+STING_DIP / SHAKE,per the table,,2.8
+LEVELUP_EASE_S,0.4 (scale 0.5 to 1) + 0.3 s telegraph extension,,2.8
+DROPIN_TIMINGS,"impact 0.9 s, controls 1.2 s, first spawn 2.5 s, safe radius 8 m",,2.9
+GRADE_WEIGHTS,Time 30 / Safety 30 / Chain 25 / Stars 15,,3.1
+GRADE_TIME_RANGE,0.7 to 1.5 x par (100 to 0 points),,3.1
+GRADE_SAFETY_FULL,f = 0.8 of max HP per floor sum,0.6 to 1.0,3.1
+GRADE_CUTS,S 88 / A 70 / B 45,,3.1
+PAR_TIER_MULT,Hard x1.15 / Nightmare x1.3,,3.1
+SCORE_KILL_POINTS,"S 10 / M 30 / L 100 / Elite 300 / Mini-boss 1,000 / Boss 4,000",,3.2
+SCORE_FLOOR / SPEED / FLAWLESS,500 per floor number / 30 per second / 400 per floor,,3.2
+GRADE_CREDITS_BONUS,C 0 / B 5 / A 12 / S 25 %,,3.3
+GRADE_XP_BONUS,A +10 / S +20,,3.3
+FIRST_S_CORES,5,,3.3
+SUMMARY_TIMINGS,"stamp 0, bars 0.8, grade 2.6, stars 3.4, rewards 4.2, button 5.6 s",,3.4
+FIRST_RUN_ENEMY_DAMAGE,"run 1 x0.75, run 2 x0.85",0.6 to 1.0,4
+FIRST_RUN_SALVAGE,250 Credits,,4
+HINT_MAX_SHOWS,2,1 to 3,4
+HINT_DURATION_S,2.4,1.5 to 4,1.2
+FIRST_WAVE_CAP,6 enemies within 8 m,4 to 10,4
+MERCY_MEDGEL_HP,30% (once),20 to 40,4.1
+PIN_HITBOX_PT,56,44 to 72,5.1
+BRIEFING_DRAWER_WIDTH,44%,36 to 50,5.3
+COUNTDOWN_S,2.2,2.0 to 3.0,5.4
+QUICK_DROP_S,1.5,,5.4
+ACT_UNLOCK_TIMINGS,"rotate 1.2, sweep 1.5, title 1.8 s",,5.2

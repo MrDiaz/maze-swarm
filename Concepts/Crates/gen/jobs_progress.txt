@@ -1,0 +1,9 @@
+crate_cargo_crate 0 792744
+crate_long_crate 0 407332
+crate_supply_crate 0 605389
+crate_cryo_canister 0 544466
+crate_stacked_crates 0 728309
+door_closed 0 887624
+door_frame 0 447366
+door_panel 0 280858
+door_light_red 0 357797

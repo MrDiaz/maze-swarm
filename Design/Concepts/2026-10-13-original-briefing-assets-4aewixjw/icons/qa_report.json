@@ -1,0 +1,115 @@
+{
+  "result": "passed",
+  "asset_count": 18,
+  "visual_review": "Reviewed two-background contact sheet, enlarged source details and corrected isolated ring fragments; known dark-background edge contamination documented.",
+  "checks": [
+    {
+      "name": "purge",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 491
+    },
+    {
+      "name": "purge_badge",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 857
+    },
+    {
+      "name": "hunt",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 588
+    },
+    {
+      "name": "hunt_badge",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 933
+    },
+    {
+      "name": "hold",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 727
+    },
+    {
+      "name": "hold_badge",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 913
+    },
+    {
+      "name": "survive",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 889
+    },
+    {
+      "name": "boss",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 606
+    },
+    {
+      "name": "boss_badge",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 1000
+    },
+    {
+      "name": "dash",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 519
+    },
+    {
+      "name": "lock",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 717
+    },
+    {
+      "name": "lock_small",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 614
+    },
+    {
+      "name": "selected_check",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 59
+    },
+    {
+      "name": "selected_badge",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 805
+    },
+    {
+      "name": "back_arrow",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 187
+    },
+    {
+      "name": "launch_triangle",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 779
+    },
+    {
+      "name": "modifier_emblem",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 399
+    },
+    {
+      "name": "difficulty_bars",
+      "original_rgb_preserved": true,
+      "padded_transparent_border": true,
+      "nonzero_alpha_pixels": 451
+    }
+  ]
+}

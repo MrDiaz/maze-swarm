@@ -1,0 +1,12 @@
+Maze Swarm texture sources. All CC0 1.0 (public domain); credit given anyway. Downloaded Oct 11, 2026 with
+Manuel's approval into Textures/Source/ (2K JPG). Processed by Tools/cryo_pbr.mjs into
+Assets/Maze/Resources/Cryo/pbr/ (2K, 1K ASTC on iOS) and Concepts/CryoStation/pbr/ (1K, for the web build).
+
+  MetalPlates016A   ambientCG   https://ambientcg.com/view?id=MetalPlates016A   Cryo Station floor (detail normal + grey detail)
+  Metal016          ambientCG   https://ambientcg.com/view?id=Metal016          walls (recoloured, panel seams added)
+  snow_02           Poly Haven  https://polyhaven.com/a/snow_02                 roofs, crate caps, ground
+  Ice004            ambientCG   https://ambientcg.com/view?id=Ice004            cryo pads (tinted cyan, glow strips added)
+  Metal027          ambientCG   https://ambientcg.com/view?id=Metal027          crates (with our yellow bands / frost overlay)
+  Lava004           ambientCG   https://ambientcg.com/view?id=Lava004           swarm creep (recoloured purple-black, green veins)
+
+ambientCG content is CC0 (https://docs.ambientcg.com/license/); Poly Haven assets are CC0 (https://polyhaven.com/license).

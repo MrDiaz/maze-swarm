@@ -1,0 +1,667 @@
+{
+  "source": "exec-c3967dd4-1985-4916-9df2-f7dfdeb0c7cc.png",
+  "source_size": [
+    1672,
+    941
+  ],
+  "coordinate_convention": "Original image pixels; x/y origin top left; xyxy right/bottom exclusive. No scaling or regenerated pixels.",
+  "limitations": [
+    "Source is a flattened RGB mockup, not layered art; exact original foreground alpha and colors cannot be recovered.",
+    "RGB channels of retained pixels are unchanged source pixels. Alpha masks are deterministic color/luminance selections; source anti-aliasing contains dark-background contamination and can show dark rims on light backgrounds.",
+    "Native resolution is only 20\u201354 pixels for these symbols. Do not expect high-resolution vector quality.",
+    "Stage connector lines and text excluded by crop/circular masks. Badge ring borders are approximate at connector junctions.",
+    "Selected badge preserves its original blue disk; modifier emblem preserves its original orange disk and black design.",
+    "The UI contains a back arrow, not a separate cancel/X icon; back_arrow is the extracted available symbol.",
+    "hold includes stylized group/figures; survive includes shield surround. Separate alternate glyphs were not invented."
+  ],
+  "icons": [
+    {
+      "name": "purge",
+      "source_crop_xyxy": [
+        152,
+        690,
+        192,
+        731
+      ],
+      "source_visible_bounds_xyxy": [
+        155,
+        692,
+        190,
+        725
+      ],
+      "native_size": [
+        35,
+        33
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        14,
+        15
+      ],
+      "native_file": "native/purge.png",
+      "padded_file": "padded_64/purge.png",
+      "mask_method": "cyan",
+      "atlas_xywh": [
+        0,
+        0,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "purge_badge",
+      "source_crop_xyxy": [
+        145,
+        682,
+        200,
+        738
+      ],
+      "source_visible_bounds_xyxy": [
+        147,
+        684,
+        199,
+        735
+      ],
+      "native_size": [
+        52,
+        51
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        6,
+        6
+      ],
+      "native_file": "native/purge_badge.png",
+      "padded_file": "padded_64/purge_badge.png",
+      "mask_method": "cyan",
+      "atlas_xywh": [
+        64,
+        0,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "hunt",
+      "source_crop_xyxy": [
+        340,
+        691,
+        375,
+        729
+      ],
+      "source_visible_bounds_xyxy": [
+        343,
+        693,
+        370,
+        725
+      ],
+      "native_size": [
+        27,
+        32
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        18,
+        16
+      ],
+      "native_file": "native/hunt.png",
+      "padded_file": "padded_64/hunt.png",
+      "mask_method": "gold",
+      "atlas_xywh": [
+        128,
+        0,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "hunt_badge",
+      "source_crop_xyxy": [
+        329,
+        682,
+        386,
+        738
+      ],
+      "source_visible_bounds_xyxy": [
+        331,
+        684,
+        384,
+        735
+      ],
+      "native_size": [
+        53,
+        51
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        5,
+        6
+      ],
+      "native_file": "native/hunt_badge.png",
+      "padded_file": "padded_64/hunt_badge.png",
+      "mask_method": "gold",
+      "atlas_xywh": [
+        192,
+        0,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "hold",
+      "source_crop_xyxy": [
+        511,
+        683,
+        554,
+        728
+      ],
+      "source_visible_bounds_xyxy": [
+        513,
+        684,
+        554,
+        726
+      ],
+      "native_size": [
+        41,
+        42
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        11,
+        11
+      ],
+      "native_file": "native/hold.png",
+      "padded_file": "padded_64/hold.png",
+      "mask_method": "cyan",
+      "atlas_xywh": [
+        256,
+        0,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "hold_badge",
+      "source_crop_xyxy": [
+        507,
+        681,
+        559,
+        738
+      ],
+      "source_visible_bounds_xyxy": [
+        508,
+        685,
+        559,
+        735
+      ],
+      "native_size": [
+        51,
+        50
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        6,
+        7
+      ],
+      "native_file": "native/hold_badge.png",
+      "padded_file": "padded_64/hold_badge.png",
+      "mask_method": "cyan",
+      "atlas_xywh": [
+        320,
+        0,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "survive",
+      "source_crop_xyxy": [
+        691,
+        683,
+        738,
+        738
+      ],
+      "source_visible_bounds_xyxy": [
+        691,
+        685,
+        738,
+        735
+      ],
+      "native_size": [
+        47,
+        50
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        8,
+        7
+      ],
+      "native_file": "native/survive.png",
+      "padded_file": "padded_64/survive.png",
+      "mask_method": "cyan",
+      "atlas_xywh": [
+        0,
+        64,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "boss",
+      "source_crop_xyxy": [
+        882,
+        690,
+        922,
+        732
+      ],
+      "source_visible_bounds_xyxy": [
+        887,
+        693,
+        916,
+        726
+      ],
+      "native_size": [
+        29,
+        33
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        17,
+        15
+      ],
+      "native_file": "native/boss.png",
+      "padded_file": "padded_64/boss.png",
+      "mask_method": "red",
+      "atlas_xywh": [
+        64,
+        64,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "boss_badge",
+      "source_crop_xyxy": [
+        874,
+        681,
+        930,
+        738
+      ],
+      "source_visible_bounds_xyxy": [
+        876,
+        684,
+        928,
+        735
+      ],
+      "native_size": [
+        52,
+        51
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        6,
+        6
+      ],
+      "native_file": "native/boss_badge.png",
+      "padded_file": "padded_64/boss_badge.png",
+      "mask_method": "red",
+      "atlas_xywh": [
+        128,
+        64,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "dash",
+      "source_crop_xyxy": [
+        1171,
+        624,
+        1211,
+        677
+      ],
+      "source_visible_bounds_xyxy": [
+        1174,
+        627,
+        1208,
+        675
+      ],
+      "native_size": [
+        34,
+        48
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        15,
+        8
+      ],
+      "native_file": "native/dash.png",
+      "padded_file": "padded_64/dash.png",
+      "mask_method": "white",
+      "atlas_xywh": [
+        192,
+        64,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "lock",
+      "source_crop_xyxy": [
+        1351,
+        629,
+        1388,
+        674
+      ],
+      "source_visible_bounds_xyxy": [
+        1355,
+        633,
+        1384,
+        669
+      ],
+      "native_size": [
+        29,
+        36
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        17,
+        14
+      ],
+      "native_file": "native/lock.png",
+      "padded_file": "padded_64/lock.png",
+      "mask_method": "lock",
+      "atlas_xywh": [
+        256,
+        64,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "lock_small",
+      "source_crop_xyxy": [
+        734,
+        832,
+        768,
+        873
+      ],
+      "source_visible_bounds_xyxy": [
+        738,
+        835,
+        764,
+        869
+      ],
+      "native_size": [
+        26,
+        34
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        19,
+        15
+      ],
+      "native_file": "native/lock_small.png",
+      "padded_file": "padded_64/lock_small.png",
+      "mask_method": "lock",
+      "atlas_xywh": [
+        320,
+        64,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "selected_check",
+      "source_crop_xyxy": [
+        641,
+        841,
+        664,
+        865
+      ],
+      "source_visible_bounds_xyxy": [
+        644,
+        848,
+        659,
+        860
+      ],
+      "native_size": [
+        15,
+        12
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        24,
+        26
+      ],
+      "native_file": "native/selected_check.png",
+      "padded_file": "padded_64/selected_check.png",
+      "mask_method": "check",
+      "atlas_xywh": [
+        0,
+        128,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "selected_badge",
+      "source_crop_xyxy": [
+        632,
+        834,
+        671,
+        873
+      ],
+      "source_visible_bounds_xyxy": [
+        635,
+        837,
+        668,
+        870
+      ],
+      "native_size": [
+        33,
+        33
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        15,
+        15
+      ],
+      "native_file": "native/selected_badge.png",
+      "padded_file": "padded_64/selected_badge.png",
+      "mask_method": "disk",
+      "atlas_xywh": [
+        64,
+        128,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "back_arrow",
+      "source_crop_xyxy": [
+        84,
+        826,
+        110,
+        864
+      ],
+      "source_visible_bounds_xyxy": [
+        89,
+        831,
+        107,
+        859
+      ],
+      "native_size": [
+        18,
+        28
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        23,
+        18
+      ],
+      "native_file": "native/back_arrow.png",
+      "padded_file": "padded_64/back_arrow.png",
+      "mask_method": "cyan",
+      "atlas_xywh": [
+        128,
+        128,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "launch_triangle",
+      "source_crop_xyxy": [
+        1307,
+        815,
+        1349,
+        864
+      ],
+      "source_visible_bounds_xyxy": [
+        1311,
+        819,
+        1344,
+        860
+      ],
+      "native_size": [
+        33,
+        41
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        15,
+        11
+      ],
+      "native_file": "native/launch_triangle.png",
+      "padded_file": "padded_64/launch_triangle.png",
+      "mask_method": "black",
+      "atlas_xywh": [
+        192,
+        128,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "modifier_emblem",
+      "source_crop_xyxy": [
+        652,
+        90,
+        681,
+        119
+      ],
+      "source_visible_bounds_xyxy": [
+        655,
+        92,
+        678,
+        115
+      ],
+      "native_size": [
+        23,
+        23
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        20,
+        20
+      ],
+      "native_file": "native/modifier_emblem.png",
+      "padded_file": "padded_64/modifier_emblem.png",
+      "mask_method": "emblem",
+      "atlas_xywh": [
+        256,
+        128,
+        64,
+        64
+      ]
+    },
+    {
+      "name": "difficulty_bars",
+      "source_crop_xyxy": [
+        475,
+        836,
+        508,
+        871
+      ],
+      "source_visible_bounds_xyxy": [
+        475,
+        840,
+        504,
+        867
+      ],
+      "native_size": [
+        29,
+        27
+      ],
+      "canvas_size": [
+        64,
+        64
+      ],
+      "canvas_offset": [
+        17,
+        18
+      ],
+      "native_file": "native/difficulty_bars.png",
+      "padded_file": "padded_64/difficulty_bars.png",
+      "mask_method": "cyan",
+      "atlas_xywh": [
+        320,
+        128,
+        64,
+        64
+      ]
+    }
+  ]
+}

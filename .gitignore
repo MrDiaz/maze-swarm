@@ -1,0 +1,16 @@
+Library/
+Temp/
+Obj/
+Logs/
+UserSettings/
+Builds/
+*.csproj
+*.sln
+
+# local-only: dated code/export copies, phone save backups, macOS files
+Snapshots/
+Backups/
+.DS_Store
+*.pidb
+*.userprefs
+MemoryCaptures/
