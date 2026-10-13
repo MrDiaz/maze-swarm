@@ -100,6 +100,10 @@ namespace Maze.EditorTools
             Mat("MazeLitDetailN", "Universal Render Pipeline/Lit", null, "_DETAIL_MULX2", "_NORMALMAP");                         // Cryo PBR floor
             Mat("MazeLitPBREmit", "Universal Render Pipeline/Lit", null, "_NORMALMAP", "_METALLICSPECGLOSSMAP", "_EMISSION");      // Cryo ice pads
             Mat("MazeLitPBRClipEmit", "Universal Render Pipeline/Lit", null, "_NORMALMAP", "_METALLICSPECGLOSSMAP", "_EMISSION", "_ALPHATEST_ON"); // creep
+            Mat("MazeCryoFloor", "Universal Render Pipeline/Lit", null, "_NORMALMAP", "_METALLICSPECGLOSSMAP", "_OCCLUSIONMAP", "_DETAIL_MULX2");   // Cryo Station deck (CryoFloor)
+            Mat("MazeLitFade", "Universal Render Pipeline/Lit", false);                                          // lit decals (Cryo deck markings, frost, trim)
+            Mat("MazeLitFadeEmit", "Universal Render Pipeline/Lit", false, "_EMISSION");                         // light strips
+            Mat("MazeLitFadeNormalEmit", "Universal Render Pipeline/Lit", false, "_NORMALMAP", "_EMISSION");     // vent grates
             Mat("MazeFade", "Universal Render Pipeline/Unlit", false);
             Mat("MazeGlow", "Universal Render Pipeline/Unlit", true);
             Mat("MazeParticlesLit", "Universal Render Pipeline/Particles/Simple Lit", null);
@@ -262,6 +266,26 @@ namespace Maze.EditorTools
                 ti.mipmapEnabled = true; ti.mipmapFilter = TextureImporterMipFilter.KaiserFilter; ti.alphaIsTransparency = true; ti.wrapMode = TextureWrapMode.Clamp;
                 ti.filterMode = FilterMode.Trilinear; ti.maxTextureSize = 256; ti.textureCompression = TextureImporterCompression.CompressedHQ;
                 ti.SetPlatformTextureSettings(new TextureImporterPlatformSettings { name = "iPhone", overridden = true, maxTextureSize = 256, format = TextureImporterFormat.ASTC_4x4, compressionQuality = 100 });
+                ti.SaveAndReimport();
+            }
+            // Cryo Station deck (Design/Concepts/2026-10-13-cryo-floor): the 8 m tile at 2048 with mipmaps and aniso 8 (a grazing
+            // camera), ASTC 4x4 on iOS so it stays sharp; normals as normal maps; metal/smoothness, AO and the macro linear;
+            // decals clamp across (V) and repeat along their run (U)
+            foreach (var guid in !AssetDatabase.IsValidFolder(Root + "/Resources/Cryo/floor2") ? new string[0] : AssetDatabase.FindAssets("t:Texture2D", new[] { Root + "/Resources/Cryo/floor2" }))
+            {
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+                if (!(AssetImporter.GetAtPath(path) is TextureImporter ti)) continue;
+                string n = System.IO.Path.GetFileNameWithoutExtension(path);
+                bool nrm = n.EndsWith("_normal"), lin = n.EndsWith("_ms") || n.EndsWith("_ao") || n.EndsWith("_macro"), deck = n.StartsWith("cryo_floor");
+                bool alpha = n == "frost_drift" || n == "hazard_albedo" || n == "strip_albedo" || n == "grate_albedo" || n == "goo_splat" || n.EndsWith("_ms");
+                ti.textureType = nrm ? TextureImporterType.NormalMap : TextureImporterType.Default;
+                ti.sRGBTexture = !nrm && !lin; ti.mipmapEnabled = true; ti.filterMode = FilterMode.Trilinear; ti.anisoLevel = deck ? 8 : 4;
+                ti.alphaSource = alpha ? TextureImporterAlphaSource.FromInput : TextureImporterAlphaSource.None;
+                ti.alphaIsTransparency = alpha && !n.EndsWith("_ms");
+                bool runs = n == "frost_drift" || n == "hazard_albedo" || n.StartsWith("strip");
+                ti.wrapModeU = deck || runs ? TextureWrapMode.Repeat : TextureWrapMode.Clamp; ti.wrapModeV = deck ? TextureWrapMode.Repeat : TextureWrapMode.Clamp;
+                ti.maxTextureSize = 2048; ti.textureCompression = TextureImporterCompression.CompressedHQ;
+                ti.SetPlatformTextureSettings(new TextureImporterPlatformSettings { name = "iPhone", overridden = true, maxTextureSize = 2048, format = TextureImporterFormat.ASTC_4x4, compressionQuality = 100 });
                 ti.SaveAndReimport();
             }
             // Cryo Station PBR maps (Tools/cryo_pbr.mjs): 2K sources, 1K ASTC on iOS. Normals as normal maps,

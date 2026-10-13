@@ -16,6 +16,7 @@ namespace Maze
         readonly Transform root;
 
         public Material side, roof, concrete, crate, crateCap, trim, door, hvac, glass, yellow, dark, sign, ground, floor;
+        public float floorWorldTile;   // > 0: the floor quad's UVs are world metres / this (a tiling deck, Cryo Station)
         // Cryo Station "Frosted lab" dressing (null = the old warehouse look)
         public Material cryoPad, icicle, wallLight, drift, creep, sac;
         public bool Cryo => cryoPad != null;
@@ -75,7 +76,8 @@ namespace Maze
                 var a = Get(floor);
                 int i = a.v.Count;
                 a.v.Add(new Vector3(0, 0, -mapH)); a.v.Add(new Vector3(0, 0, 0)); a.v.Add(new Vector3(mapW, 0, 0)); a.v.Add(new Vector3(mapW, 0, -mapH));
-                a.uv.Add(new Vector2(0, 0)); a.uv.Add(new Vector2(0, 1)); a.uv.Add(new Vector2(1, 1)); a.uv.Add(new Vector2(1, 0));
+                if (floorWorldTile > 0) { float k = 1f / floorWorldTile; a.uv.Add(new Vector2(0, -mapH * k)); a.uv.Add(new Vector2(0, 0)); a.uv.Add(new Vector2(mapW * k, 0)); a.uv.Add(new Vector2(mapW * k, -mapH * k)); }
+                else { a.uv.Add(new Vector2(0, 0)); a.uv.Add(new Vector2(0, 1)); a.uv.Add(new Vector2(1, 1)); a.uv.Add(new Vector2(1, 0)); }
                 for (int k = 0; k < 4; k++) a.n.Add(Vector3.up);
                 a.t.AddRange(new[] { i, i + 1, i + 2, i, i + 2, i + 3 });
             }
@@ -108,6 +110,7 @@ namespace Maze
                 var a = kv.Value;
                 var mesh = new Mesh { indexFormat = IndexFormat.UInt32, name = "Maze_" + kv.Key.name };
                 mesh.SetVertices(a.v); mesh.SetNormals(a.n); mesh.SetUVs(0, a.uv); mesh.SetTriangles(a.t, 0);
+                if (kv.Key == floor && floorWorldTile > 0) mesh.RecalculateTangents();   // the tiled deck's normal map
                 mesh.RecalculateBounds();
                 var go = new GameObject(mesh.name);
                 go.transform.SetParent(root, false);

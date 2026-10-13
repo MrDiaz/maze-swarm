@@ -292,18 +292,21 @@ namespace Maze
             var plates = new Vector2(MazeMap.W * MazeMap.C / 9f, MazeMap.H * MazeMap.C / 9f);
             lb.floor = pbr ? Mats.LitDetailPBR(floorTex, Pbr("floor_detail"), Pbr("floor_normal"), plates, 0.32f, 0.7f)
                      : cryo ? Mats.LitDetail(floorTex, T("floor_detail"), new Vector2(MazeMap.W * MazeMap.C / 6, MazeMap.H * MazeMap.C / 6), 0.25f) : Mats.Lit(Color.white, floorTex, null, 0.12f);
-            lb.Build(floorTex); lastLb = lb;
-            if (MazeMap.Facility) StartRoomFloor(root, floorTex);
+            bool deck = run && CryoFloor.For(sector);   // Cryo Station: the tiled deck + markings overlay + decals
+            if (deck) { lb.floor = CryoFloor.Floor(); lb.floorWorldTile = CryoFloor.Tile; }
+            lb.Build(floorTex); lastLb = lb; cryoDeck = deck;
+            if (deck) CryoFloor.Build(root);
+            if (MazeMap.Facility && !deck) StartRoomFloor(root, floorTex);
             if (cryo) { cryoFx = root.gameObject.AddComponent<CryoAmbience>(); cryoFx.Init(lb.creepEdges, lb.creep); }
         }
-        CryoAmbience cryoFx; LevelBuilder lastLb;
+        CryoAmbience cryoFx; LevelBuilder lastLb; bool cryoDeck;
 
         // a zone's look over the rebuilt level (null: the default facility look)
         public void ApplyBiome(SectorDef s)
         {
             if (s == null) { RestoreBiome(); return; }
             var walls = new List<Material>(); var floors = new List<Material>();
-            if (lastLb != null) { walls.Add(lastLb.side); walls.Add(lastLb.roof); walls.Add(lastLb.concrete); walls.Add(lastLb.trim); floors.Add(lastLb.floor); floors.Add(lastLb.ground); }
+            if (lastLb != null) { walls.Add(lastLb.side); walls.Add(lastLb.roof); walls.Add(lastLb.concrete); walls.Add(lastLb.trim); if (!cryoDeck) floors.Add(lastLb.floor); floors.Add(lastLb.ground); }   // (the Cryo deck keeps its own colour: no zone tint)
             if (startFloor != null && startFloor.TryGetComponent<MeshRenderer>(out var mr)) floors.Add(mr.sharedMaterial);
             Biome.Apply(s, sun, cam, walls, floors, cfg.camera.distance);
         }
