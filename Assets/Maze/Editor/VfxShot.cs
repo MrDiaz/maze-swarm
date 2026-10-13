@@ -96,6 +96,16 @@ namespace Maze.EditorTools
             if (only == null || only.Contains("4")) s.AddRange(Case("4_evac_sentries", "evac-deck", 1, 'T', false, 2, 8, 0.3));   // Nightmare: "Abandoned Armoury" turns on the sentry turrets
             if (only == null || only.Contains("5")) s.AddRange(Case("5_kessler_slag", "kessler-refinery", 1, '*', false));
             if (only == null || only.Contains("6")) s.AddRange(Case("6_dreadnought_fire", "dreadnought", 1, 'f', false));
+            if (only != null && only.Contains("7"))
+            {   // the orphan check: a live acid puddle, then a floor rebuild and a restart; count the puddle meshes each time
+                int Count() { int n = 0; foreach (var r in UnityEngine.Object.FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None)) if (r.gameObject.name == "VfxPool" && r.gameObject.activeInHierarchy) n++; return n; }
+                s.Add(() => { Start("cryo-station", 1, true, false); WaitReal(1.0); });
+                s.Add(() => { var gp = G.player.p; EnemyAI.AcidPuddle(gp + new Vector2(3f, 0f), 2.2f, 60f, 0f); WaitReal(1.5); });
+                s.Add(() => { Debug.Log($"VfxShot: ORPHAN live puddle: VfxPool meshes {Count()}"); Shot("7_orphan_1_live"); G.DebugFloor(2); G.godMode = true; WaitReal(3.0); });
+                s.Add(() => { Debug.Log($"VfxShot: ORPHAN after floor rebuild (F2): VfxPool meshes {Count()}"); Shot("7_orphan_2_after_floor"); var gp = G.player.p; EnemyAI.AcidPuddle(gp + new Vector2(3f, 0f), 2.2f, 60f, 0f); WaitReal(1.5); });
+                s.Add(() => { Debug.Log($"VfxShot: ORPHAN second puddle live: VfxPool meshes {Count()}"); Start("cryo-station", 1, true, false); WaitReal(3.0); });
+                s.Add(() => { Debug.Log($"VfxShot: ORPHAN after restart: VfxPool meshes {Count()}"); Shot("7_orphan_3_after_restart"); Later(0.2); });
+            }
             foreach (bool on in only == null ? new[] { false, true } : new bool[0])
             {
                 bool v = on;

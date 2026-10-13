@@ -16,7 +16,7 @@ namespace Maze
         static float RH => ZoneCells.RH(G);
         static bool Sim => Game.SimRun;
 
-        public static void Init(Game g) { G = g; Tele.Clear(); puddles.Clear(); Clouds.Clear(); }
+        public static void Init(Game g) { G = g; Tele.Clear(); foreach (var p in puddles) p.v?.Kill(); puddles.Clear(); Clouds.Clear(); }   // (puddle visuals sit at the scene root: kill them, or a rebuild leaves them frozen on the floor)
 
         // ---- telegraphs: flat glow shapes on the floor (pooled), and lingering acid puddles
         public class Tele
