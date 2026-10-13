@@ -50,7 +50,8 @@ namespace Maze.EditorTools
             () => { Note($"boss intro: {Vol()}"); Later(3.0); },
             () => { Note($"boss floor: {Vol()}"); var b = G.Boss; if (b != null) { b.hp = 0; G.KillEnemy(b); Note("boss killed"); } Later(0.4); },
             () => { Note($"boss down: {Vol()}"); Later(3.0); },
-            () => { Note($"after the run: state {G.state} run {G.run}; {Vol()}"); G.ToMenu(); Later(1.0); },
+            () => { Note($"after the run: state {G.state} run {G.run}; {Vol()}"); G.ToMenu(); Later(1.2); },
+            () => { Note($"back at the menu: {Vol()}"); Later(0.1); },
             () => { var def = SectorDefs.Get("acid-marsh"); Game.PendingTier = def.tier; Game.PendingSector = def; G.LoadMap(0); G.menu.Hide(); G.Restart(); G.godMode = true; Later(4.0); },
             () => { Note($"acid marsh (not Cryo): {Vol()}"); G.ToMenu(); Later(0.5); },
         };
