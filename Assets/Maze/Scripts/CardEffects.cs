@@ -187,7 +187,7 @@ namespace Maze
                     float rh = ZoneCells.RH(this);
                     foreach (var o in swarm.enemies) if (!o.dead && (o.p - c).sqrMagnitude < 4f) { o.hp -= 4 * rh; o.flash = 1; if (o.hp <= 0) KillEnemy(o); }
                     if ((player.p - c).sqrMagnitude < 4f) HurtPlayer(ZoneCells.Hp(this, 12));
-                    if (!SimRun) Fx.I.Sparks(MazeMap.ToWorld(c, 1f), 18, new Color(0.6f, 0.85f, 1f), 7, 0.5f, 0.1f, 4);
+                    if (!SimRun) { Fx.I.Sparks(MazeMap.ToWorld(c, 1f), 18, new Color(0.6f, 0.85f, 1f), 7, 0.5f, 0.1f, 4); HazardAudio.Shot("sfx_lightning_strike", MazeMap.ToWorld(c, 0.5f), 0.9f); }
                     Feel.Shake(0.1f, 0.15f);
                 });
             }

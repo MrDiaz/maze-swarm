@@ -486,6 +486,7 @@ namespace Maze
     public class HoloButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerClickHandler
     {
         public Action onClick;
+        public bool silent;   // the button's own sound plays instead of the tap (DEPLOY)
         public bool hero, locked, selected, manual, dimmed, interactable = true;
         public RectTransform body, labelRt;
         public Image glow, fill, edge, brackets, accent, tick, icon, chevrons;
@@ -531,7 +532,7 @@ namespace Maze
             if (manual || !interactable) return;
             if (locked) { Deny(); onClick?.Invoke(); return; }
             flash = 1;
-            Sfx.Click(); Haptics.Light();
+            if (!silent) Sfx.Click(); Haptics.Light();
             onClick?.Invoke();
         }
 

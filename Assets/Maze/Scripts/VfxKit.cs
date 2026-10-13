@@ -176,6 +176,7 @@ namespace Maze
         // poison gas cloud (spore pods, toxic vents): churning low cloud with a darker core and drifting motes
         public void Gas(Vector3 at, float r, float dt, float strength = 1f)
         {
+            HazardAudio.Loop("amb_toxic_gas", new Vector2Int(Mathf.RoundToInt(at.x / 3f), Mathf.RoundToInt(at.z / 3f)), at);   // one voice per ~3 m cloud
             if (Random.value < dt * 14f * strength)
             {
                 var d = Disc(r * 0.85f); bool dark = Random.value < 0.4f; var c = dark ? GasDark : GasLight; c.a = dark ? 0.42f : 0.34f;
@@ -365,7 +366,11 @@ namespace Maze
             if (cells != null && cells.Count > 0) { var c = cells[Random.Range(0, cells.Count)]; var d = Random.insideUnitCircle * MazeMap.C * 0.5f * spread * 1.2f; return c + new Vector3(d.x, 0, d.y); }
             var e = Random.insideUnitCircle * r * spread; return center + new Vector3(e.x, 0, e.y);
         }
-        public void Ambient(float dt) { if (VfxKit.I != null && !Game.SimRun) VfxKit.I.Ambient(this, dt); }
+        public void Ambient(float dt)
+        {
+            if (VfxKit.I == null || Game.SimRun) return; VfxKit.I.Ambient(this, dt);
+            HazardAudio.Loop(look.mode == 0 ? "amb_acid_pool" : look.mode == 1 ? "amb_molten_slag" : "amb_fire", this, cells != null ? HazardAudio.Nearest(cells, center) : center);   // the pool's sound, from its point nearest the hero
+        }
         public void Kill()
         {
             if (tr != null) Object.Destroy(tr.gameObject);

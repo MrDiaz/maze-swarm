@@ -43,14 +43,18 @@ namespace Maze
             {
                 if (Meta.Difficulty == 2 && G != null && G.run) sec *= 0.7f;   // Nightmare: telegraphs 30% shorter
                 var x = Get(ring ? Fx.Ring : ZoneHazard.Disc); x.tr.position = MazeMap.ToWorld(at, 0.07f); x.tr.rotation = Quaternion.identity;
-                x.tr.localScale = Vector3.one * r; x.life = sec; x.t = 0; x.c = c; x.done = onDone; x.ring = ring; live.Add(x); return x;
+                x.tr.localScale = Vector3.one * r; x.life = sec; x.t = 0; x.c = c; x.done = onDone; x.ring = ring; live.Add(x);
+                if (G != null && (G.player.p - at).magnitude < r + 0.6f) HazardAudio.Shot("sfx_telegraph_warning", Vector3.zero, 0.45f, 1, null, 0, true);   // aimed at the hero
+                return x;
             }
             public static Tele Lane(Vector2 from, Vector2 dir, float len, float width, float sec, Color c, System.Action onDone)
             {
                 if (Meta.Difficulty == 2 && G != null && G.run && sec < 50f) sec *= 0.7f;
                 var x = Get(Quad); var mid = from + dir * len * 0.5f;
                 x.tr.position = MazeMap.ToWorld(mid, 0.07f); x.tr.rotation = Quaternion.Euler(90, MazeMap.YawDeg(Mathf.Atan2(dir.x, dir.y)), 0);
-                x.tr.localScale = new Vector3(width, len, 1); x.life = sec; x.t = 0; x.c = c; x.done = onDone; x.ring = false; live.Add(x); return x;
+                x.tr.localScale = new Vector3(width, len, 1); x.life = sec; x.t = 0; x.c = c; x.done = onDone; x.ring = false; live.Add(x);
+                if (G != null) { var rel = G.player.p - from; float al = Vector2.Dot(rel, dir), sd = Mathf.Abs(rel.x * dir.y - rel.y * dir.x); if (al > -0.5f && al < len + 0.5f && sd < width * 0.5f + 0.6f) HazardAudio.Shot("sfx_telegraph_warning", Vector3.zero, 0.45f, 1, null, 0, true); }   // the hero is in the lane
+                return x;
             }
             static Mesh quad; static Mesh Quad { get { if (quad == null) { var go = GameObject.CreatePrimitive(PrimitiveType.Quad); quad = go.GetComponent<MeshFilter>().sharedMesh; Object.Destroy(go); } return quad; } }
             static Tele Get(Mesh mesh)
@@ -128,7 +132,7 @@ namespace Maze
             {
                 v = VfxKit.I.Pool(null, at, r, VfxKit.Acid, 0.035f + puddles.Count % 8 * 0.001f);   // tiny y steps: overlapping puddles don't z-fight
                 v.SetLife(0);
-                if (r >= 1.3f) VfxKit.I.Splash(MazeMap.ToWorld(at, 0f), VfxKit.AcidSplash, r);   // (the toxic elite's 1 m trail drips quietly)
+                if (r >= 1.3f) { VfxKit.I.Splash(MazeMap.ToWorld(at, 0f), VfxKit.AcidSplash, r); HazardAudio.Shot("sfx_acid_splash", MazeMap.ToWorld(at, 0f), 0.6f); }   // (the toxic elite's 1 m trail drips quietly)
             }
             puddles.Add(new Puddle { p = at, r = r, t = sec, dps = dps, v = v });
         }

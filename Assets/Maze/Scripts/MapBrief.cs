@@ -57,10 +57,10 @@ namespace Maze
         }
         static Texture2D gradL, gradB;
         static Texture2D Grad(bool horizontal) => Holo.Tex(horizontal ? 64 : 4, horizontal ? 4 : 64, (x, y) => new Color(1, 1, 1, Mathf.SmoothStep(1, 0, (horizontal ? x : y) / 63f)));
-        void Press(RectTransform r, System.Action a)
+        void Press(RectTransform r, System.Action a, bool silent = false)
         {
             var tap = r.gameObject.AddComponent<Tap>();
-            tap.onTap = () => { r.localScale = Vector3.one * 0.97f; Sfx.Click(); Haptics.Light(); a(); };
+            tap.onTap = () => { r.localScale = Vector3.one * 0.97f; if (!silent) Sfx.Click(); Haptics.Light(); a(); };
         }
 
         void BuildBrief()
@@ -187,7 +187,7 @@ namespace Maze
             Frame(launch, BLime, Hex("#e4ff7a"), 1.2f, true);
             var pl = Holo.Img(R(launch, "Play", new Vector2(0, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(124, 0), new Vector2(64, 64)), Holo.Icon("play"), Hex("#091904")); Native(pl, "launch_triangle");
             T(launch, "T", new Vector2(0, 0.5f), new Vector2(0, 0.5f), new Vector2(172, 0), new Vector2(280, 80), "LAUNCH", 64, Hex("#091904"), TextAnchor.MiddleLeft, true);
-            Press(launch, Launch);
+            Press(launch, Launch, true);   // LAUNCH: the pod fall plays instead of the tap
         }
 
         void RefreshBriefTest()

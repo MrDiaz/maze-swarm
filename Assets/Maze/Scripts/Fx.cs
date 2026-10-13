@@ -360,6 +360,7 @@ namespace Maze
         public void Boom(Vector3 p, float R)
         {
             var b = new BoomFx { p = p, R = R };
+            HazardAudio.Shot("sfx_explosion", p, 0.9f, 3);
             bool kit = VfxKit.I != null;   // the kit draws the fireball, flash, sparks and smoke; the ring, scorch, debris and light stay
             if (kit) VfxKit.I.Explosion(p, R);
             for (int i = 0; !kit && i < 9; i++)
@@ -399,6 +400,7 @@ namespace Maze
 
         public void ClearAll()
         {
+            HazardAudio.ClearAll();
             debris.Clear(); sparks.Clear(); smoke.Clear(); goo.Clear(); splats.Clear();
             GunFx.I.ClearAll();
             if (VfxKit.I != null) VfxKit.I.ClearAll();

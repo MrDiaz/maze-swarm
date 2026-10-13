@@ -1097,6 +1097,7 @@ namespace Maze
                     {
                         if (run && CellHiveWalls.Instance != null) CellHiveWalls.Instance.Hit(b.p, b.dmg);
                         GunFx.I.Impact(MazeMap.ToWorld(b.p - b.d * 0.2f, 0.95f), MazeMap.ToWorld(-b.d), b.w.pellets > 1 ? 2 : 5);
+                        HazardAudio.Shot("sfx_hit_sparks", MazeMap.ToWorld(b.p, 0.95f), 0.35f, 4, HitKey, 0.03f);
                         remove = true; break;
                     }
                     var hb = barrels.At(b.p, 0.1f);
@@ -1116,6 +1117,7 @@ namespace Maze
             TickBlast(dt);
         }
 
+        static readonly object HitKey = new object();   // (bullet-hit sparks: one shared 30 ms throttle)
         bool BulletHit(Enemy e)
         {
             if (e.dead || e.under && !(run && Meta.Relic(15))) return true;   // underground: bullets pass over (BURROWER FANG hits them)
@@ -1129,6 +1131,7 @@ namespace Maze
             if (run && e.mods != 0) dmg = Elites.Damage(e, dmg, b.d);
             float front = run && PowerUps.IgnoreFront ? 1f : EnemyAI.FrontMul(e, b.d);
             if (run && front < 1f) front = Mathf.Min(1f, front + 0.25f * mods["armour_piercer"]);
+            if (front < 1f) HazardAudio.Shot("sfx_hit_sparks", MazeMap.ToWorld(e.p, 0.95f), 0.35f, 4, HitKey, 0.03f);   // armour
             dmg *= front * (run ? PowerUps.HitMul(e) * CardHitMul(e) : 1f); EnemyAI.OnHit(e);
             if (run) { PowerUps.OnHit(e); CardAfterHit(e, b, dmg); }
             e.hp -= dmg; e.flash = 1;

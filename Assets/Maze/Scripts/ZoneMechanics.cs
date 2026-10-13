@@ -344,7 +344,7 @@ namespace Maze
                 v.t = Random.Range(5f, 8f);
                 if ((g.player.p - v.p).magnitude < R) HeroHurt(0.16f);
                 HurtEnemies(v.p, R, 0.7f, 80f);
-                if (!Sim) { Fx.I.Boom(MazeMap.ToWorld(v.p, 0.3f), R); if ((g.player.p - v.p).magnitude < 14) g.AddShake(0.25f); }
+                if (!Sim) { HazardAudio.Shot("sfx_vent_burst", MazeMap.ToWorld(v.p, 0.3f), 0.7f); Fx.I.Boom(MazeMap.ToWorld(v.p, 0.3f), R); if ((g.player.p - v.p).magnitude < 14) g.AddShake(0.25f); }
             }
         }
     }
@@ -431,7 +431,8 @@ namespace Maze
                     if (t.t <= 0)
                     {
                         var rel = g.player.p - t.p; float along = Vector2.Dot(rel, t.aim), side = Mathf.Abs(rel.x * t.aim.y - rel.y * t.aim.x);
-                        if (along > 0 && along < Range && side < 0.9f && Sees(t.p, g.player.p)) HeroHurt(0.13f);
+                        HazardAudio.Shot("sfx_turret_beam", MazeMap.ToWorld(t.p, 1.2f), 0.7f);
+                        if (along > 0 && along < Range && side < 0.9f && Sees(t.p, g.player.p)) { HeroHurt(0.13f); HazardAudio.Shot("sfx_laser_burn", MazeMap.ToWorld(g.player.p, 0.6f), 0.6f, 0, g.player, 0.25f); }
                         foreach (var e in g.swarm.enemies) { var re = e.p - t.p; float al = Vector2.Dot(re, t.aim); if (!e.dead && al > 0 && al < Range && Mathf.Abs(re.x * t.aim.y - re.y * t.aim.x) < 0.9f + e.r) { e.hp -= e.boss ? 40 : e.maxHp * 0.5f; e.flash = 1; if (e.hp <= 0) g.KillEnemy(e); } }
                         if (!Sim && VfxKit.I != null)
                         {   // the shot: heavy beam, muzzle and impact flashes, sparks and smoke where it lands

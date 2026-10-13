@@ -143,7 +143,7 @@ namespace Maze
             logoCg.blocksRaycasts = false;
 
             column = Holo.Rect(safe, "Buttons", new Vector2(0, 1), new Vector2(44, -240), new Vector2(660, 760));
-            deployBtn = AddMain("Deploy", "DEPLOY", "deploy", 650, 176, 0, 78, true, () => { if (!Busy) { Sfx.DeployEngage(); MapSelect.I.Show(); } }, 0.55f); // sector select -> briefing -> drop
+            deployBtn = AddMain("Deploy", "DEPLOY", "deploy", 650, 176, 0, 78, true, () => { if (!Busy) { Sfx.DeployEngage(); MapSelect.I.Show(); } }, 0.55f); deployBtn.silent = true; // sector select -> briefing -> drop
             deployBtn.SetSub("SECTOR 7  //  DROP WINDOW OPEN", Holo.Acid, 26);
             loadoutBtn = AddMain("Loadout", "ARMORY", "rifle", 580, Holo.MinTouch, 194, 50, false, () => OpenSheet("loadout"), 0.67f);
             squadBtn = AddMain("Squad", "SQUAD", "squad", 580, Holo.MinTouch, 342, 50, false, () => OpenSheet("squad"), 0.77f);
@@ -232,7 +232,7 @@ namespace Maze
             current = s; s.open = true;
             s.rt.gameObject.SetActive(true);
             dim.gameObject.SetActive(true);
-            if (key == "loadout" || key == "squad" || key == "research" || key == "settings") Sfx.PanelOpen(); else Sfx.Open();
+            Sfx.PanelOpen();   // every sheet
             s.onOpen?.Invoke();
         }
 

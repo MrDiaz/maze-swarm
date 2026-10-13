@@ -26,7 +26,7 @@ namespace Maze
     // a grate carries the current. A BREAKER kills them for good.
     public class CellGrates : ZoneHazard
     {
-        readonly HashSet<int> live = new(); Material m; float t, tick; bool hitThisPulse;
+        readonly HashSet<int> live = new(); Material m; float t, tick; bool hitThisPulse; readonly List<Vector3> pts = new();
         public string Mode = "cycle"; public bool Dead;
         public float OnSec = 1.6f, OffSec = 4f, WarnSec = 0.8f;
         public override void Begin(Game game)
@@ -36,7 +36,7 @@ namespace Maze
             // the current spreads through connected water
             var seen = new HashSet<Vector2Int>(cells); var st = new Stack<Vector2Int>(cells);
             while (st.Count > 0) { var c = st.Pop(); foreach (var d in new[] { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right }) { var n = c + d; if (n.x < 0 || n.y < 0 || n.x >= MazeMap.W || n.y >= MazeMap.H || seen.Contains(n) || MazeMap.tag[n.y, n.x] != 'w') continue; seen.Add(n); st.Push(n); } }
-            foreach (var c in seen) live.Add(c.y * MazeMap.W + c.x);
+            foreach (var c in seen) { live.Add(c.y * MazeMap.W + c.x); pts.Add(MazeMap.ToWorld(MazeMap.Center(c.x, c.y), 0.1f)); }
             var go = new GameObject("GrateGlow"); go.transform.SetParent(root, false);
             go.AddComponent<MeshFilter>().sharedMesh = ZoneCells.Quads(new List<Vector2Int>(seen), 0.04f);
             var mr = go.AddComponent<MeshRenderer>(); m = Mats.Glow(new Color(0.37f, 0.85f, 1f, 0f)); mr.sharedMaterial = m; mr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
@@ -49,6 +49,7 @@ namespace Maze
             On = !Dead && (Mode == "on" || (Mode == "cycle" && ph >= OffSec + WarnSec));
             m.SetColor("_BaseColor", new Color(0.37f, 0.85f, 1f, On ? 0.75f : warn ? (Mathf.PingPong(t * 12, 1) > 0.5f ? 0.35f : 0.05f) : 0f));
             if (!On) { hitThisPulse = false; return; }
+            if (pts.Count > 0) HazardAudio.Loop("amb_electric_grate", this, HazardAudio.Nearest(pts, pts[0]));
             int hc = MazeMap.CellIndex(g.player.p);
             if (!hitThisPulse && hc >= 0 && live.Contains(hc) && g.player.dashT <= 0) { hitThisPulse = true; g.HurtPlayer(ZoneCells.Hp(g, 15)); g.player.frozenT = Mathf.Max(g.player.frozenT, 0.5f); }
             if ((tick -= dt) <= 0)

@@ -344,7 +344,7 @@ namespace Maze
                 foreach (var e in g.swarm.enemies) if (!e.dead && (e.p - at).magnitude < radius + e.r) { e.hp -= e.boss ? rh * 0.5f : rh; e.flash = 1; if (e.hp <= 0) g.KillEnemy(e); }
                 if (!Game.SimRun)
                 {
-                    if (skin == "lightning") Fx.I.Sparks(MazeMap.ToWorld(at, 0.5f), 18, new Color(0.8f, 0.9f, 1f), 7, 0.4f, 0.1f, 6);
+                    if (skin == "lightning") { Fx.I.Sparks(MazeMap.ToWorld(at, 0.5f), 18, new Color(0.8f, 0.9f, 1f), 7, 0.4f, 0.1f, 6); HazardAudio.Shot("sfx_lightning_strike", MazeMap.ToWorld(at, 0.5f), 0.9f); }
                     else Fx.I.Debris(MazeMap.ToWorld(at, 0.4f), 14, skin == "press" ? new Color(0.4f, 0.4f, 0.42f) : new Color(0.45f, 0.38f, 0.3f), 5, 0.7f, 0.18f, 5);
                     g.AddShake(0.15f);
                 }

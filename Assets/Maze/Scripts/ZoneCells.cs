@@ -179,6 +179,8 @@ namespace Maze
             }
             ignite -= dt;
             Rad = Mathf.Clamp01(Rad + (under == 'q' ? 0.12f : -0.08f) * dt);
+            if (radPts == null) { radPts = new List<Vector3>(); foreach (var c in MazeMap.Marks('q')) radPts.Add(MazeMap.ToWorld(MazeMap.Center(c.x, c.y), 0.1f)); }
+            if (radPts.Count > 0) HazardAudio.Loop("amb_radiation", this, HazardAudio.Nearest(radPts, radPts[0]));   // the irradiated floor
             // the swarm: slag melts it, pits swallow what gets shoved in, belts carry it
             foreach (var e in g.swarm.enemies)
             {
@@ -197,7 +199,7 @@ namespace Maze
                 }
             }
         }
-        bool radHot;
+        bool radHot; List<Vector3> radPts;
         public override float MoveMul => g.player.dashT > 0 ? 1f : under switch { 'w' => 0.8f, 'c' => 0.65f, _ => 1f };
         public override float Friction => under == 'i' ? 0.25f : 1f;
         public override Vector2 Push => push;
@@ -208,7 +210,7 @@ namespace Maze
     // Cryo skin (Cryo Station) freezes instead of burning: hero 0.8 s, enemies 2 s (frozen take +50%).
     public class CellVents : ZoneHazard
     {
-        class Vent { public Vector2 p; public int group; public Transform ring; public Material m; public bool hitHero; }
+        class Vent { public Vector2 p; public int group; public Transform ring; public Material m; public bool hitHero, wasOn; }
         readonly List<Vent> vents = new();
         float t, tick; Color col;
         public float Cycle = 6f, Warn = 1.2f, Erupt = 1.5f; public bool Enabled = true; const float R = 1.5f;
@@ -226,6 +228,7 @@ namespace Maze
                 if (!Sim) Fx.I.Smoke(MazeMap.ToWorld(v.p, 0.3f), 18, Color.Lerp(col, Color.white, 0.5f), r * 0.6f, 0.8f, 0.5f, 1);
             }
             g.AddShake(0.3f); Haptics.Heavy();
+            if (vents.Count > 0) { var pts = new List<Vector3>(); foreach (var v in vents) pts.Add(MazeMap.ToWorld(v.p, 0.3f)); HazardAudio.Shot(cryo ? "sfx_cryo_vent_burst" : "sfx_vent_burst", HazardAudio.Nearest(pts, pts[0]), cryo ? 0.8f : 0.7f); }   // FLASH FREEZE: once, not per vent
         }
         public override void Begin(Game game)
         {
@@ -251,7 +254,10 @@ namespace Maze
                 bool warn = !idleFloor && ph >= Idle && ph < Idle + Warn, on = !idleFloor && ph >= Idle + Warn;
                 v.m.SetColor("_BaseColor", col * new Color(1, 1, 1, on ? 0.9f : warn ? 0.35f + 0.5f * Mathf.PingPong(t * 6, 1) : 0.15f));
                 if (warn && !Sim && Random.value < dt * 8) Fx.I.Smoke(MazeMap.ToWorld(v.p, 0.2f), 1, Color.Lerp(col, Color.white, 0.6f), 0.6f, 0.6f, 0.25f, 1.5f);
+                if (on && !v.wasOn) HazardAudio.Shot(cryo ? "sfx_cryo_vent_burst" : "sfx_vent_burst", MazeMap.ToWorld(v.p, 0.3f), cryo ? 0.8f : 0.7f);
+                v.wasOn = on;
                 if (!on) { v.hitHero = false; continue; }
+                if (skin == "toxic") HazardAudio.Loop("amb_toxic_gas", v, MazeMap.ToWorld(v.p, 0.3f));
                 if (!Sim && Random.value < dt * 30) Fx.I.Smoke(MazeMap.ToWorld(v.p + Random.insideUnitCircle * 0.4f, 0.3f), 1, Color.Lerp(col, Color.white, 0.5f), 1.2f, 0.7f, 0.5f, 7f);
                 bool heroIn = (g.player.p - v.p).magnitude < R + g.cfg.player.radius;
                 if (cryo)
@@ -373,7 +379,7 @@ namespace Maze
     // walking and bullets (the grid cell becomes '|'); touching it costs 25 HP and a 3 m shove; enemies 8 RH + shove.
     public class CellFences : ZoneHazard
     {
-        class Fence { public List<Vector2Int> cells = new(); public Material m; public bool on; public VfxFence vfx; }
+        class Fence { public List<Vector2Int> cells = new(); public Material m; public bool on; public VfxFence vfx; public List<Vector3> pts; }
         readonly List<Fence> fences = new();
         float t; public float OnSec = 5f, OffSec = 3f; float hitCd;
         public string Mode = "cycle";   // cycle | on | off (TOGGLE from the floor script)
@@ -420,9 +426,10 @@ namespace Maze
             bool on = Mode == "on" || (Mode != "off" && ph < OnSec), flicker = Mode == "cycle" && !on && ph > cyc - 1f;
             foreach (var f in fences)
             {
+                if (f.pts == null) { f.pts = new List<Vector3>(); foreach (var c in f.cells) f.pts.Add(MazeMap.ToWorld(MazeMap.Center(c.x, c.y), 0.6f)); }
                 if (on != f.on)
                 {
-                    f.on = on;
+                    f.on = on; HazardAudio.Shot("sfx_laser_fence_toggle", HazardAudio.Nearest(f.pts, f.pts[0]), 0.5f);
                     foreach (var c in f.cells) MazeMap.grid[c.y, c.x] = on ? '|' : '.';
                     MazeMap.flowCell = -1;
                     if (on) foreach (var c in f.cells) Zap(MazeMap.Center(c.x, c.y));
@@ -430,14 +437,14 @@ namespace Maze
                 float a = on ? 0.65f : flicker ? (Mathf.PingPong(t * 14, 1) > 0.5f ? 0.5f : 0.05f) : 0.05f;
                 if (f.vfx != null) f.vfx.Set(on ? 1f : flicker ? (Random.value < 0.45f ? 0.7f : 0f) : 0f, on, dt);
                 else f.m.SetColor("_BaseColor", new Color(1f, 0.2f, 0.33f, a));
-                if (on) foreach (var c in f.cells) Touch(MazeMap.Center(c.x, c.y));
+                if (on) { HazardAudio.Loop("amb_laser_fence", f, HazardAudio.Nearest(f.pts, f.pts[0])); foreach (var c in f.cells) Touch(MazeMap.Center(c.x, c.y)); }
             }
         }
         void Touch(Vector2 p)
         {
             var d = g.player.p - p;
             if (hitCd <= 0 && Mathf.Abs(d.x) < MazeMap.C * 0.5f + g.cfg.player.radius + 0.05f && Mathf.Abs(d.y) < MazeMap.C * 0.5f + g.cfg.player.radius + 0.05f)
-            { g.HurtPlayer(ZoneCells.Hp(g, 25)); g.player.vel += (d.sqrMagnitude > 1e-4f ? d.normalized : Vector2.up) * 9f; hitCd = 0.8f; }
+            { g.HurtPlayer(ZoneCells.Hp(g, 25)); g.player.vel += (d.sqrMagnitude > 1e-4f ? d.normalized : Vector2.up) * 9f; hitCd = 0.8f; HazardAudio.Shot("sfx_laser_burn", MazeMap.ToWorld(g.player.p, 0.6f), 0.6f, 0, g.player, 0.25f); }
         }
         void Zap(Vector2 p)
         {
@@ -445,7 +452,7 @@ namespace Maze
             {
                 if (e.dead || e.type.nest) continue; var d = e.p - p;
                 if (Mathf.Abs(d.x) < MazeMap.C * 0.5f + e.r && Mathf.Abs(d.y) < MazeMap.C * 0.5f + e.r)
-                { e.hp -= ZoneCells.RH(g) * 8f; e.flash = 1; e.k += (d.sqrMagnitude > 1e-4f ? d.normalized : Vector2.up) * 6f; if (e.hp <= 0) g.KillEnemy(e); }
+                { e.hp -= ZoneCells.RH(g) * 8f; e.flash = 1; e.k += (d.sqrMagnitude > 1e-4f ? d.normalized : Vector2.up) * 6f; HazardAudio.Shot("sfx_laser_burn", MazeMap.ToWorld(e.p, 0.6f), 0.6f, 0, e, 0.25f); if (e.hp <= 0) g.KillEnemy(e); }
             }
         }
         public override void End() { foreach (var f in fences) foreach (var c in f.cells) MazeMap.grid[c.y, c.x] = '.'; base.End(); }
