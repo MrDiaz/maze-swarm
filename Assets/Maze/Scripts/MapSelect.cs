@@ -55,6 +55,8 @@ namespace Maze
         bool waitingLoadout;
 
         public bool Open => mode != Mode.Hidden;
+        public bool Dropping => mode == Mode.Drop;
+        public bool PodFalling { get; private set; }
 
         public void Init(Game g, MainMenu m)
         {
@@ -106,6 +108,7 @@ namespace Maze
 
         public void Show()
         {
+            PodFalling = false;
             hotId = Ops.HotZone?.id;
             RefreshTestBadge();
             seenCache.Clear(); foreach (var z in SectorDefs.All) if (Seen(z)) seenCache.Add(z.id);
@@ -132,7 +135,9 @@ namespace Maze
             dropSector.text = Sectors[Selected].name;
             SetMode(Mode.Drop);
             lastCount = -1;
-            if (wind.clip != null && Prefs.Sound) wind.Play();
+            MenuAudio.Hold = true;   // the menu music fades out (0.2 s)
+            PodFalling = Sfx.PodFall();   // the recorded pod fall (the impact plays at the hatch); else the old wind
+            if (!PodFalling && wind.clip != null && Prefs.Sound) wind.Play();
             Haptics.Medium();
         }
 

@@ -747,15 +747,30 @@ namespace Maze
             return Mathf.Sin(2 * Mathf.PI * ph);
         }
 
+        // the recorded UI / drop sounds (Resources/Audio, Sounds/Title finals); the synth versions stay as the fallback
+        public static Action<string> Log;   // (editor checks: which clip played)
+        static readonly System.Collections.Generic.Dictionary<string, AudioClip> rec = new();
+        static bool Rec(string n, float vol)
+        {
+            if (!rec.TryGetValue(n, out var c)) rec[n] = c = Resources.Load<AudioClip>("Audio/" + n);
+            if (c == null) return false;
+            Src.PlayOneShot(c, vol); Log?.Invoke(n); return true;
+        }
+        public static void PanelOpen() { if (!Rec("sfx_ui_panel_open", 0.4f)) Open(); }      // Loadout / Squad / Research / Settings
+        public static void DeployEngage() { if (!Rec("sfx_deploy_engage", 1f)) Click(); }    // the main menu's DEPLOY
+        public static bool PodFall() => Rec("sfx_drop_pod_fall", 0.9f);                       // LAUNCH
+        public static bool PodImpact() => Rec("sfx_drop_pod_impact", 1f);                     // the pod lands (heavy haptic at the caller)
         static void Play(ref AudioClip c, Func<AudioClip> make, float vol)
         {
             if (c == null) c = make();
             Src.PlayOneShot(c, vol);
         }
 
-        public static void Click() => Play(ref click, () => Make("click", 0.06f, (t, n) => (Sweep(t, 2300, 850, 0.06f) * 0.8f + n * 0.25f) * Mathf.Exp(-t * 85)), 0.55f);
+        public static void Click() { if (!Rec("sfx_ui_tap", 0.35f)) SynthClick(); }
+        static void SynthClick() => Play(ref click, () => Make("click", 0.06f, (t, n) => (Sweep(t, 2300, 850, 0.06f) * 0.8f + n * 0.25f) * Mathf.Exp(-t * 85)), 0.55f);
         public static void Toggle() => Play(ref toggle, () => Make("toggle", 0.09f, (t, n) => Sweep(t, 1200, 2600, 0.09f) * Mathf.Exp(-t * 45) * 0.8f), 0.45f);
-        public static void Deny() => Play(ref deny, () => Make("deny", 0.22f, (t, n) =>
+        public static void Deny() { if (Rec("sfx_ui_locked", 0.35f)) Haptics.Warn(); else SynthDeny(); }
+        static void SynthDeny() => Play(ref deny, () => Make("deny", 0.22f, (t, n) =>
         {
             float gate = (t < 0.08f || (t > 0.11f && t < 0.19f)) ? 1 : 0;
             return Mathf.Sign(Mathf.Sin(2 * Mathf.PI * 190 * t)) * 0.35f * gate * Mathf.Exp(-(t % 0.11f) * 18);
@@ -764,7 +779,8 @@ namespace Maze
         // Leaper: a rising hiss while it coils, a short whoosh as it pounces (placeholders until proper SFX exist)
         public static void Hiss(float vol) { if (vol > 0.05f) Play(ref hiss, () => Make("hiss", 0.6f, (t, n) => n * 0.55f * Mathf.Clamp01(t / 0.08f) * Mathf.Clamp01((0.6f - t) / 0.12f) * (0.6f + 0.4f * Mathf.Sin(t * 90f))), 0.35f * vol); }
         public static void Pounce(float vol) { if (vol > 0.05f) Play(ref pounce, () => Make("pounce", 0.3f, (t, n) => (n * 0.6f + Sweep(t, 180, 90, 0.3f) * 0.4f) * Mathf.Sin(Mathf.PI * t / 0.3f)), 0.45f * vol); }
-        public static void Close() => Play(ref close, () => Make("close", 0.2f, (t, n) => (Sweep(t, 1300, 240, 0.2f) * 0.6f + n * 0.1f) * Mathf.Sin(Mathf.PI * t / 0.2f)), 0.3f);
+        public static void Close() { if (!Rec("sfx_ui_back", 0.3f)) SynthClose(); }
+        static void SynthClose() => Play(ref close, () => Make("close", 0.2f, (t, n) => (Sweep(t, 1300, 240, 0.2f) * 0.6f + n * 0.1f) * Mathf.Sin(Mathf.PI * t / 0.2f)), 0.3f);
         public static void Drop() => Play(ref drop, () =>
         {
             float lp = 0;

@@ -43,9 +43,11 @@ namespace Maze
         public bool SheetOpen => current != null;
         public void SetCanvasVisible(bool on) { if (canvas != null) canvas.enabled = on; } // map select covers the menu
         public bool Visible => canvas != null && canvas.enabled;
+        public bool Dropping => dropT >= 0; bool podFall;
 
         public void Init(Game g)
         {
+            MenuAudio.Init(this);
             game = g;
             canvas = Holo.MakeCanvas(transform, "MenuCanvas", 10);
             canvasRt = (RectTransform)canvas.transform;
@@ -141,7 +143,7 @@ namespace Maze
             logoCg.blocksRaycasts = false;
 
             column = Holo.Rect(safe, "Buttons", new Vector2(0, 1), new Vector2(44, -240), new Vector2(660, 760));
-            deployBtn = AddMain("Deploy", "DEPLOY", "deploy", 650, 176, 0, 78, true, () => { if (!Busy) MapSelect.I.Show(); }, 0.55f); // sector select -> briefing -> drop
+            deployBtn = AddMain("Deploy", "DEPLOY", "deploy", 650, 176, 0, 78, true, () => { if (!Busy) { Sfx.DeployEngage(); MapSelect.I.Show(); } }, 0.55f); // sector select -> briefing -> drop
             deployBtn.SetSub("SECTOR 7  //  DROP WINDOW OPEN", Holo.Acid, 26);
             loadoutBtn = AddMain("Loadout", "ARMORY", "rifle", 580, Holo.MinTouch, 194, 50, false, () => OpenSheet("loadout"), 0.67f);
             squadBtn = AddMain("Squad", "SQUAD", "squad", 580, Holo.MinTouch, 342, 50, false, () => OpenSheet("squad"), 0.77f);
@@ -230,7 +232,7 @@ namespace Maze
             current = s; s.open = true;
             s.rt.gameObject.SetActive(true);
             dim.gameObject.SetActive(true);
-            Sfx.Open();
+            if (key == "loadout" || key == "squad" || key == "research" || key == "settings") Sfx.PanelOpen(); else Sfx.Open();
             s.onOpen?.Invoke();
         }
 
@@ -964,7 +966,8 @@ namespace Maze
             if (current != null) { current.open = false; current.onClose?.Invoke(); }
             dropT = 0; impact = landed = false;
             transitionRt.gameObject.SetActive(true);
-            Sfx.Drop(); Haptics.Medium();
+            podFall = MapSelect.I != null && MapSelect.I.PodFalling;   // LAUNCH already started the pod's fall: the impact lands with the hatch
+            if (!podFall) Sfx.Drop(); Haptics.Medium();
         }
 
         void TickDrop(float dt, Vector2 S)
@@ -979,7 +982,7 @@ namespace Maze
             doorBot.anchoredPosition = new Vector2(0, -off);
             foreach (var h in hazards) h.uvRect = new Rect(t * 0.6f, 0, (S.x + 160) / 30f, 1);
             if (!impact) shake = Mathf.Max(shake, closeK * 0.3f);
-            if (!impact && dropT >= CloseAt) { impact = true; shake = 1; Haptics.Heavy(); }
+            if (!impact && dropT >= CloseAt) { impact = true; shake = 1; Haptics.Heavy(); if (podFall) Sfx.PodImpact(); }
             if (!landed && dropT >= 0.75f)
             {   // behind the closed hatch: swap the menu for the level
                 landed = true;
@@ -1011,7 +1014,7 @@ namespace Maze
             transitionRt.gameObject.SetActive(false);
             foreach (var s in sheets.Values) { s.open = false; s.k = 0; s.rt.gameObject.SetActive(false); }
             current = null; dim.gameObject.SetActive(false);
-            introT = 0; dropT = -1; shake = 0;
+            introT = 0; dropT = -1; shake = 0; MenuAudio.Hold = false;
             RefreshLabels();
             Prefs.ApplySound();
             Update();

@@ -1,0 +1,23 @@
+{
+  "out_dir": "/Volumes/T7 Shield/Projects/Maze Swarm/Sounds/Title",
+  "cues": [
+    {"id": "mus_menu", "kind": "music", "seconds": 90, "takes": 1,
+     "prompt": "Dark cinematic sci-fi main theme, slow analog synth pulse and deep pads over a low orchestral string bed, distant brass swell, calm but uneasy, spacecraft in orbit before a battle, 80 bpm, instrumental, seamless loop"},
+    {"id": "amb_bridge", "seconds": 30, "takes": 2, "loop": true,
+     "prompt": "Spaceship bridge interior ambience, low engine hum, soft air vents, faint computer beeps and distant muffled radio chatter, calm, seamless loop, no music"},
+    {"id": "sfx_ui_tap", "seconds": 0.5,
+     "prompt": "Soft futuristic holographic button click, short clean digital tick with a tiny glassy tail, no music"},
+    {"id": "sfx_ui_back", "seconds": 0.5,
+     "prompt": "Very soft muted holographic click, lower and duller, short, no music"},
+    {"id": "sfx_ui_locked", "seconds": 0.5,
+     "prompt": "Short dull low electronic denied buzz, soft, no music"},
+    {"id": "sfx_ui_panel_open", "seconds": 0.6,
+     "prompt": "Holographic display powering on, quick airy shimmer sweep with soft digital sparkle, no music"},
+    {"id": "sfx_deploy_engage", "seconds": 1.2,
+     "prompt": "Heavy spaceship systems engaging, deep mechanical clunk with a powerful low thump and rising hydraulic whine, no music"},
+    {"id": "sfx_drop_pod_fall", "seconds": 3.0,
+     "prompt": "Drop pod falling through atmosphere, rising roaring scream of air and rattling metal hull, intense, no music"},
+    {"id": "sfx_drop_pod_impact", "seconds": 1.5,
+     "prompt": "Massive drop pod impact on a metal floor, thunderous boom with crunching metal and debris, short hiss after, no music"}
+  ]
+}

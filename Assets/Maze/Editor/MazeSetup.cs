@@ -325,6 +325,13 @@ namespace Maze.EditorTools
             foreach (var guid in AssetDatabase.FindAssets("t:AudioClip", new[] { Root + "/Resources/Audio" }))
             {
                 if (!(AssetImporter.GetAtPath(AssetDatabase.GUIDToAssetPath(guid)) is AudioImporter ai)) continue;
+                string an = System.IO.Path.GetFileNameWithoutExtension(ai.assetPath);
+                if (an == "mus_menu" || an == "amb_bridge")
+                {   // the title music and the bridge bed: stereo seamless loops, Vorbis kept compressed in memory
+                    ai.forceToMono = false; ai.loadInBackground = true;
+                    var ls = ai.defaultSampleSettings; ls.loadType = AudioClipLoadType.CompressedInMemory; ls.compressionFormat = AudioCompressionFormat.Vorbis; ls.quality = 0.7f;
+                    ai.defaultSampleSettings = ls; ai.SaveAndReimport(); continue;
+                }
                 ai.forceToMono = true;
                 // the clips are already peak-normalized to -1 dBFS by Tools/prep_sfx.py; keep that headroom
                 var so = new SerializedObject(ai);
