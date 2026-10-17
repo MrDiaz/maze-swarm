@@ -1,0 +1,37 @@
+{
+  "source": "maze-swarm-zone-selection-concept.png",
+  "source_size": [
+    1672,
+    941
+  ],
+  "source_sha256": "e80a1e307cf41333ee4e7db4c20942625a43c9f0e31f116d5b357aeaf318565b",
+  "coordinates": "left, top, right exclusive, bottom exclusive; origin upper left",
+  "crops": {
+    "cryo-station-art.png": {
+      "box": [
+        84,
+        210,
+        829,
+        628
+      ],
+      "size": [
+        745,
+        418
+      ],
+      "sha256": "79b733b72bba21238432bd419f307b65168f973083c52ea6ed63c75619b08799"
+    },
+    "evac-deck-art.png": {
+      "box": [
+        877,
+        210,
+        1590,
+        628
+      ],
+      "size": [
+        713,
+        418
+      ],
+      "sha256": "676eaf7a0ecf497745745778d298807602e6be2c7abb4ee76f9fceb0f86bc903"
+    }
+  }
+}

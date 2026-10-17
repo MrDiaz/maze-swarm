@@ -33,7 +33,7 @@ Shared Sparks / Smoke / Debris (still cubes in Fx.MakePS: hits, kills, skills), 
 
 Look target: the same preview, **Combat** tab (bullet hits, dash and impact dust, explosion, strike warning, charge lane, spore shot).
 
-What changes on screen: every `Fx.Sparks` call (kills, crits, skills, freezes, perfect dash; about 40 call sites) draws glowing streaks with a small flash on big bursts instead of cubes; every `Fx.Smoke` call (dash dust, slams, steam, door puffs) draws soft billowing puffs. `Fx.Boom` (barrels, Bloaters, grenades, Frag Launcher) becomes a fireball: swelling white-hot to orange to dark-red blasts, a flash, sparks, embers and a smoke column; the shockwave ring, scorch decal, debris chunks and the point light stay. Enemy attack warnings (`EnemyAI.Tele` circles and lanes) get a bright edge, a fill that sweeps in toward the moment of impact, and stripes (circles) or chevrons (lanes) flowing toward the danger; they are alpha-blended now (were additive), so they read on the light Cryo floor. Debris chunks, GunFx (muzzle, tracers, casings) and the goo are unchanged. Gameplay, timings, hit tests, the bot's dodge logic and saves are untouched.
+What changes on screen: every `Fx.Sparks` call (kills, crits, skills, freezes, perfect dash; about 40 call sites) draws glowing streaks with a small flash on big bursts instead of cubes; every `Fx.Smoke` call (dash dust, slams, steam, door puffs) draws soft billowing puffs. `Fx.Boom` (barrels, exploding elites, blast power-ups, vents and the other Boom callers) becomes a fireball: swelling white-hot to orange to dark-red blasts, a flash, sparks, embers and a smoke column; the shockwave ring, scorch decal, debris chunks and the point light stay. Enemy attack warnings (`EnemyAI.Tele` circles and lanes) get a bright edge, a fill that sweeps in toward the moment of impact, and stripes (circles) or chevrons (lanes) flowing toward the danger; they are alpha-blended now (were additive), so they read on the light Cryo floor. Debris chunks, GunFx (muzzle, tracers, casings) and the goo are unchanged. Gameplay, timings, hit tests, the bot's dodge logic and saves are untouched.
 
 ## Files (on top of batch 1)
 - Replace `Assets/Maze/Scripts/VfxKit.cs` and `Assets/Maze/Resources/Shaders/VfxParticle.shader` with these versions. The only batch-1 delta the Mac made that I know of (the line-149 brace) is already in. If you changed anything else in either file, diff before replacing.
@@ -51,3 +51,45 @@ What changes on screen: every `Fx.Sparks` call (kills, crits, skills, freezes, p
 2. A Spitter (green circle), a strike or slam (red circle) and a charger (lane): the fill should sweep from the centre out (circle) or from the attacker to the far end (lane). If a lane fills backwards, the quad's uv.y is flipped: use `1 - i.uv.y` in VfxTele's lane branch.
 3. Kill bursts and skills: streaks in the caller's colour, not white squares.
 4. fps with a busy fight (Swarm Gate or a boss): blast max 120, smoke 260 shared with hazards. If smoke runs out on fire floors, raise VfxSmoke maxParticles to 400.
+
+## Batch 1 fix (found by the game thread, 2026-10-13 15:05Z)
+Acid puddles alive at a floor change or restart stayed as frozen green discs: `EnemyAI.Init` cleared the list without killing the surfaces. Fix: `foreach (var p in puddles) p.v?.Kill();` before `puddles.Clear()` in `Init` (the game thread made this fix on the Mac; batch 2 is built on top of it and its hunks don't touch that line).
+
+# Batch 3: radiation, creep, water, ice, electric grates, vents, lightning, rain, wind
+
+Look target: the same preview, **World** tab. On the Mac this batch sits in its own subfolder, `batch3/`, so it can't disturb a batch-2 wire-in in progress. Apply it after batch 2.
+
+What changes on screen:
+- Irradiated floor `q` becomes a sickly green film with glowing contour pulses rolling out of hot spots, Geiger specks and rising motes.
+- Hive creep `c` becomes lumpy wet biomass with purple veins that pulse like a heartbeat. It still spreads cell by cell, and the pattern holds still as it grows. Scorched floor `s` becomes soot.
+- Water `w` becomes a rippled see-through sheet with a foam edge and glints. A flood rebuilds it as it spreads, and deep water is darker.
+- Ice `i` becomes a frosted sheet with deep cracks, a white frost rim, cold mist and sparkles.
+- Electrified grates `g`, and the water they connect to, get crackling blue arcs and sparks while live, and flicker in the warning beat. The grey grate cells stay.
+- Vents `o` keep their plate and ring. They let out wisps while warning, then erupt as a tall plume: white steam with an orange glow at the base, green gas, or pale cryo mist with ice crystals.
+- Lightning strikes (FloorEvents STRIKE, skin "lightning") draw a jagged bolt from the sky that flickers out, with a flash, sparks and smoke.
+- Weather around the hero: acid rain falls as slanted green streaks with splash glints, and a light drizzle runs in the 3 s before it pours. Wind gusts send streaks and dust past.
+
+Gameplay, timings, damage, the cell tags and saves are untouched. Every hook falls back to the old look when the kit is missing.
+
+## Files (on top of batch 2)
+- Rebased on main 6b149d0 (2026-10-16), so it keeps the hazard sounds from af72b8a and the Mac's spark and blast gains.
+- Replace `Assets/Maze/Scripts/VfxKit.cs` with `batch3/Assets/Maze/Scripts/VfxKit.cs`. It is main's kit plus the new looks, the streak system, Vent / Strike / Rain / Wind, and a smoke cap raised to 400. One sound change: `VfxPool.Ambient` no longer plays `amb_fire` for the new surfaces (soot, radiation, creep, water, ice, current); radiation and the grates already have their own loops.
+- Replace `Assets/Maze/Resources/Shaders/VfxPool.shader` with `batch3/Assets/Maze/Resources/Shaders/VfxPool.shader`. It adds modes 3 to 7 and `_Power`.
+- Apply the hooks with `git apply batch3/vfx-batch3-hooks.patch` on 6b149d0 (checked clean). It touches ZoneCells.cs, ZoneCells2.cs and FloorEvents.cs, keeping every HazardAudio call. VfxParticle.shader is unchanged from main.
+- No new textures. The streaks use droplet.png.
+
+## Where each hook is
+- `CellDecals`: `q` and `i` join `a * f` as `VfxKit.Cells` surfaces (Radiation, Ice). Their ambient particles run from Tick.
+- `CellVents`: `VfxKit.Vent(...)` every frame, with warn, on and the first frame of the eruption. Without the kit, the old smoke runs.
+- `CellSpread`: creep and soot are kit surfaces, rebuilt in `Rebuild()` with the same seed. `End()` kills them.
+- `CellGrates`: one kit surface (Current) over the grate cells plus the connected water. `SetPower` follows off / warn flicker / on, and the sparks follow power.
+- `CellWater`: the kit surface (Water, or WaterDeep at Depth 2) is rebuilt when the water spreads. `Flood()` now also marks it dirty, so deepening shows at once.
+- `Weather.Visuals`, called from Tick: `Rain` while it pours (0.15 strength in the 3 s warning) and `Wind` during a gust, both around the hero.
+- `FloorEvents` STRIKE lightning: `VfxKit.Strike(at)` in place of the cube sparks.
+
+## Checks before showing Manuel
+1. Find a zone with each of `q`, `c`/`s`, `w` plus flood, `i`, `g`, `o` (one per skin if possible), a lightning STRIKE, rain and wind. Pick zones whose layouts use each letter. Take before/after shots at the game camera and a close-up each.
+2. Water is see-through: the floor should show through it. If it reads too pale on the Cryo floor, darken `Water.deep`.
+3. Creep rebuilds whenever it spreads (every ~2.5 s per nest). Watch for a hitch on a big hive floor. The mask builds in under a millisecond for a 26x18 map.
+4. fps with a vent bank erupting and rain at once: smoke up to 400, streaks up to 360. If it drops, lower the plume rate (22/s in `Vent`) or the rain to 250/s.
+5. Lightning bolts are short-lived GameObjects (11 or 13 beams for 0.35 s), destroyed in `VfxKit.Update` and in `ClearAll`.

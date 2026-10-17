@@ -1,0 +1,13 @@
+{
+  "source": "approved gear reference,1672x941",
+  "method": "original perimeter RGB retained; baked content removed and interiors reconstructed using uncovered source columns; inferred Minigun alpha",
+  "not_original_hidden_layers": true,
+  "assets": [
+    "weapon_card_selected_perimeter.png",
+    "hero_caption_blank.png",
+    "detail_panel_blank.png",
+    "minigun_art_alpha.png",
+    "weapon_card_blank.png",
+    "weapons_panel_blank.png"
+  ]
+}

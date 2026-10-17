@@ -1,0 +1,286 @@
+{
+  "offline_checks": "passed",
+  "unity_verified": false,
+  "images": [
+    {
+      "file": "png/color/chill_puff.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        80,
+        124,
+        434,
+        385
+      ],
+      "minimum_padding_px": 78
+    },
+    {
+      "file": "png/color/dash_tapered_streak.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        54,
+        206,
+        459,
+        306
+      ],
+      "minimum_padding_px": 53
+    },
+    {
+      "file": "png/color/freeze_snowflake_burst.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        97,
+        75,
+        415,
+        437
+      ],
+      "minimum_padding_px": 75
+    },
+    {
+      "file": "png/color/ice_shard.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        158,
+        53,
+        359,
+        454
+      ],
+      "minimum_padding_px": 53
+    },
+    {
+      "file": "png/color/levelup_ring.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        73,
+        73,
+        439,
+        439
+      ],
+      "minimum_padding_px": 73
+    },
+    {
+      "file": "png/color/levelup_sparkle.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        82,
+        67,
+        430,
+        445
+      ],
+      "minimum_padding_px": 67
+    },
+    {
+      "file": "png/color/poison_bubble.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        101,
+        101,
+        411,
+        411
+      ],
+      "minimum_padding_px": 101
+    },
+    {
+      "file": "png/color/poison_droplet.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        142,
+        68,
+        371,
+        422
+      ],
+      "minimum_padding_px": 68
+    },
+    {
+      "file": "png/color/poison_puddle_soft.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        80,
+        140,
+        433,
+        363
+      ],
+      "minimum_padding_px": 79
+    },
+    {
+      "file": "png/color/poison_splash.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        88,
+        131,
+        422,
+        382
+      ],
+      "minimum_padding_px": 88
+    },
+    {
+      "file": "png/masks/chill_puff.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        80,
+        124,
+        434,
+        385
+      ],
+      "minimum_padding_px": 78
+    },
+    {
+      "file": "png/masks/dash_tapered_streak.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        54,
+        206,
+        459,
+        306
+      ],
+      "minimum_padding_px": 53
+    },
+    {
+      "file": "png/masks/freeze_snowflake_burst.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        97,
+        75,
+        415,
+        437
+      ],
+      "minimum_padding_px": 75
+    },
+    {
+      "file": "png/masks/ice_shard.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        158,
+        53,
+        359,
+        454
+      ],
+      "minimum_padding_px": 53
+    },
+    {
+      "file": "png/masks/levelup_ring.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        73,
+        73,
+        439,
+        439
+      ],
+      "minimum_padding_px": 73
+    },
+    {
+      "file": "png/masks/levelup_sparkle.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        82,
+        67,
+        430,
+        445
+      ],
+      "minimum_padding_px": 67
+    },
+    {
+      "file": "png/masks/poison_bubble.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        101,
+        101,
+        411,
+        411
+      ],
+      "minimum_padding_px": 101
+    },
+    {
+      "file": "png/masks/poison_droplet.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        142,
+        68,
+        371,
+        422
+      ],
+      "minimum_padding_px": 68
+    },
+    {
+      "file": "png/masks/poison_puddle_soft.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        80,
+        140,
+        433,
+        363
+      ],
+      "minimum_padding_px": 79
+    },
+    {
+      "file": "png/masks/poison_splash.png",
+      "size": [
+        512,
+        512
+      ],
+      "nonzero_alpha_bounds": [
+        88,
+        131,
+        422,
+        382
+      ],
+      "minimum_padding_px": 88
+    }
+  ]
+}

@@ -1,0 +1,305 @@
+{
+  "reference_canvas": [
+    1672,
+    941
+  ],
+  "coordinate_origin": "Top left unless explicitly labeled Unity bottom left",
+  "texture_filter": "Bilinear at non-native scale; no lossy compression; preserve aspect ratio",
+  "assets": [
+    {
+      "id": "hangar-heading",
+      "file": "hangar-heading.png",
+      "role": "Heading, original lettering and backing combined",
+      "source_rect_top_left_xywh": [
+        51,
+        169,
+        263,
+        52
+      ],
+      "unity_bottom_left_rect_xywh": [
+        51,
+        720,
+        263,
+        52
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_reference_top_left": [
+        182.5,
+        195.0
+      ],
+      "size_pixels": [
+        263,
+        52
+      ],
+      "rgb_method": "Unmodified source pixels; only alpha mask added."
+    },
+    {
+      "id": "deploy-button",
+      "file": "deploy-button.png",
+      "role": "Deploy plate, icon and label combined",
+      "source_rect_top_left_xywh": [
+        374,
+        784,
+        318,
+        98
+      ],
+      "unity_bottom_left_rect_xywh": [
+        374,
+        59,
+        318,
+        98
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_reference_top_left": [
+        533.0,
+        833.0
+      ],
+      "size_pixels": [
+        318,
+        98
+      ],
+      "rgb_method": "Unmodified source pixels; only alpha mask added."
+    },
+    {
+      "id": "heroes-button",
+      "file": "heroes-button.png",
+      "role": "Heroes plate, icon and label combined",
+      "source_rect_top_left_xywh": [
+        695,
+        784,
+        308,
+        98
+      ],
+      "unity_bottom_left_rect_xywh": [
+        695,
+        59,
+        308,
+        98
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_reference_top_left": [
+        849.0,
+        833.0
+      ],
+      "size_pixels": [
+        308,
+        98
+      ],
+      "rgb_method": "Unmodified source pixels; only alpha mask added."
+    },
+    {
+      "id": "gear-button",
+      "file": "gear-button.png",
+      "role": "Gear plate, icon and label combined",
+      "source_rect_top_left_xywh": [
+        1007,
+        784,
+        295,
+        98
+      ],
+      "unity_bottom_left_rect_xywh": [
+        1007,
+        59,
+        295,
+        98
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_reference_top_left": [
+        1154.5,
+        833.0
+      ],
+      "size_pixels": [
+        295,
+        98
+      ],
+      "rgb_method": "Unmodified source pixels; only alpha mask added."
+    },
+    {
+      "id": "settings-button",
+      "file": "settings-button.png",
+      "role": "Settings plate and gear icon combined",
+      "source_rect_top_left_xywh": [
+        1547,
+        34,
+        87,
+        83
+      ],
+      "unity_bottom_left_rect_xywh": [
+        1547,
+        824,
+        87,
+        83
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_reference_top_left": [
+        1590.5,
+        75.5
+      ],
+      "size_pixels": [
+        87,
+        83
+      ],
+      "rgb_method": "Unmodified source pixels; only alpha mask added."
+    },
+    {
+      "id": "selected-hero-marker",
+      "file": "selected-hero-marker.png",
+      "role": "Selected Hero plate, label and downward pointer",
+      "source_rect_top_left_xywh": [
+        453,
+        110,
+        225,
+        63
+      ],
+      "unity_bottom_left_rect_xywh": [
+        453,
+        768,
+        225,
+        63
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_reference_top_left": [
+        565.5,
+        141.5
+      ],
+      "size_pixels": [
+        225,
+        63
+      ],
+      "rgb_method": "Unmodified source pixels; only alpha mask added."
+    },
+    {
+      "id": "navigation-frame",
+      "file": "navigation-frame.png",
+      "role": "Source-pixel outer navigation frame; transparent holes for three button assets",
+      "source_rect_top_left_xywh": [
+        351,
+        771,
+        973,
+        126
+      ],
+      "unity_bottom_left_rect_xywh": [
+        351,
+        44,
+        973,
+        126
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_reference_top_left": [
+        837.5,
+        834.0
+      ],
+      "size_pixels": [
+        973,
+        126
+      ],
+      "rgb_method": "Unmodified source pixels; only alpha mask added."
+    },
+    {
+      "id": "navigation-complete-reference",
+      "file": "navigation-complete-reference.png",
+      "role": "Optional one-piece original navigation bar; use instead of frame + three buttons, never both",
+      "source_rect_top_left_xywh": [
+        351,
+        771,
+        973,
+        126
+      ],
+      "unity_bottom_left_rect_xywh": [
+        351,
+        44,
+        973,
+        126
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_reference_top_left": [
+        837.5,
+        834.0
+      ],
+      "size_pixels": [
+        973,
+        126
+      ],
+      "rgb_method": "Unmodified source pixels; only alpha mask added."
+    }
+  ],
+  "reconstruction_order": [
+    "hangar-heading",
+    "selected-hero-marker",
+    "settings-button",
+    "navigation-frame",
+    "deploy-button",
+    "heroes-button",
+    "gear-button"
+  ],
+  "excluded": [
+    "Systems"
+  ],
+  "notes": [
+    "These are raster cutouts from a flattened approved image, not recovered editable design layers.",
+    "Opaque interior RGB pixels are copied bit-for-bit; antialiased outline masks are manually traced.",
+    "Semitransparent-looking original panel interiors contain baked source background. Keep reference positions for closest matching.",
+    "Do not add live labels/icons over baked combined buttons.",
+    "No font file exists in the source. Appearance: heavy geometric sans-serif uppercase, pale cyan Hangar, white Heroes/Gear, dark navy Deploy; exact font family cannot be identified reliably.",
+    "Heading visible glyph approximate bounds: x89\u2013209 y184\u2013203 (19 px cap height). Button labels approximately Deploy x506\u2013633 y822\u2013845; Heroes x829\u2013946 y823\u2013844; Gear x1159\u20131241 y823\u2013845.",
+    "Preview intentionally contains only requested UI on supplied clean environment; hero and main Maze Swarm logo are not restored by this UI package."
+  ],
+  "qa": {
+    "hangar-heading": {
+      "opaque_pixel_count": 10087,
+      "max_rgb_error_opaque": 0
+    },
+    "deploy-button": {
+      "opaque_pixel_count": 27025,
+      "max_rgb_error_opaque": 0
+    },
+    "heroes-button": {
+      "opaque_pixel_count": 26135,
+      "max_rgb_error_opaque": 0
+    },
+    "gear-button": {
+      "opaque_pixel_count": 24978,
+      "max_rgb_error_opaque": 0
+    },
+    "settings-button": {
+      "opaque_pixel_count": 5372,
+      "max_rgb_error_opaque": 0
+    },
+    "selected-hero-marker": {
+      "opaque_pixel_count": 8017,
+      "max_rgb_error_opaque": 0
+    },
+    "navigation-frame": {
+      "opaque_pixel_count": 23391,
+      "max_rgb_error_opaque": 0
+    },
+    "navigation-complete-reference": {
+      "opaque_pixel_count": 109233,
+      "max_rgb_error_opaque": 0
+    }
+  }
+}

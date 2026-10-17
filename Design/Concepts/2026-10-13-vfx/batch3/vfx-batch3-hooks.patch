@@ -1,0 +1,174 @@
+diff --git a/Assets/Maze/Scripts/FloorEvents.cs b/Assets/Maze/Scripts/FloorEvents.cs
+index da208cf..1b59a77 100644
+--- a/Assets/Maze/Scripts/FloorEvents.cs
++++ b/Assets/Maze/Scripts/FloorEvents.cs
+@@ -344,7 +344,7 @@ namespace Maze
+                 foreach (var e in g.swarm.enemies) if (!e.dead && (e.p - at).magnitude < radius + e.r) { e.hp -= e.boss ? rh * 0.5f : rh; e.flash = 1; if (e.hp <= 0) g.KillEnemy(e); }
+                 if (!Game.SimRun)
+                 {
+-                    if (skin == "lightning") { Fx.I.Sparks(MazeMap.ToWorld(at, 0.5f), 18, new Color(0.8f, 0.9f, 1f), 7, 0.4f, 0.1f, 6); HazardAudio.Shot("sfx_lightning_strike", MazeMap.ToWorld(at, 0.5f), 0.9f); }
++                    if (skin == "lightning") { if (VfxKit.I != null) VfxKit.I.Strike(MazeMap.ToWorld(at, 0)); else Fx.I.Sparks(MazeMap.ToWorld(at, 0.5f), 18, new Color(0.8f, 0.9f, 1f), 7, 0.4f, 0.1f, 6); HazardAudio.Shot("sfx_lightning_strike", MazeMap.ToWorld(at, 0.5f), 0.9f); }   // a bolt from the sky
+                     else Fx.I.Debris(MazeMap.ToWorld(at, 0.4f), 14, skin == "press" ? new Color(0.4f, 0.4f, 0.42f) : new Color(0.45f, 0.38f, 0.3f), 5, 0.7f, 0.18f, 5);
+                     g.AddShake(0.15f);
+                 }
+diff --git a/Assets/Maze/Scripts/ZoneCells.cs b/Assets/Maze/Scripts/ZoneCells.cs
+index 590e602..6f7ed9b 100644
+--- a/Assets/Maze/Scripts/ZoneCells.cs
++++ b/Assets/Maze/Scripts/ZoneCells.cs
+@@ -90,9 +90,9 @@ namespace Maze
+             foreach (var kv in MazeMap.marks)
+             {
+                 if (!Look.TryGetValue(kv.Key, out var l)) continue;
+-                if (VfxKit.I != null && (kv.Key == 'a' || kv.Key == '*' || kv.Key == 'f'))
+-                {   // acid pools, molten slag and fire get real surfaces (one per letter, cells merge into blobs)
+-                    var v = VfxKit.I.Cells(root, kv.Value, kv.Key == 'a' ? VfxKit.AcidPool : kv.Key == '*' ? VfxKit.Slag : VfxKit.Char);
++                if (VfxKit.I != null && "a*fqi".IndexOf(kv.Key) >= 0 && !(kv.Key == 'i' && FirstCryoFx.Active))   // Cryo keeps its approved ice tiles
++                {   // acid pools, molten slag, fire, radiation and ice get real surfaces (one per letter, cells merge into blobs)
++                    var v = VfxKit.I.Cells(root, kv.Value, kv.Key == 'a' ? VfxKit.AcidPool : kv.Key == '*' ? VfxKit.Slag : kv.Key == 'f' ? VfxKit.Char : kv.Key == 'q' ? VfxKit.Radiation : VfxKit.Ice, kv.Key == 'i' ? 0.025f : 0.03f);
+                     if (v != null) surfaces.Add(v);
+                     continue;
+                 }
+@@ -254,12 +254,14 @@ namespace Maze
+                 float ph = (t + (v.group == 1 ? Cycle * 0.5f : 0)) % Cycle;
+                 bool warn = !idleFloor && ph >= Idle && ph < Idle + Warn, on = !idleFloor && ph >= Idle + Warn;
+                 v.m.SetColor("_BaseColor", FirstCryoFx.Active ? (on ? new Color(.12f, .58f, .78f, .8f) : warn ? new Color(.86f, .47f, .11f, .55f + .2f * Mathf.PingPong(t * 4, 1)) : new Color(.12f, .35f, .46f, .3f)) : col * new Color(1, 1, 1, on ? 0.9f : warn ? 0.35f + 0.5f * Mathf.PingPong(t * 6, 1) : 0.15f));
+-                if (warn && !Sim) { if (FirstCryoFx.Active) FirstCryoFx.Get().VentStream(MazeMap.ToWorld(v.p, .2f), true, dt); else if (Random.value < dt * 8) Fx.I.Smoke(MazeMap.ToWorld(v.p, 0.2f), 1, Color.Lerp(col, Color.white, 0.6f), 0.6f, 0.6f, 0.25f, 1.5f); }
++                bool kitVent = VfxKit.I != null && !FirstCryoFx.Active;   // CryoSoft keeps its own vent look
++                if (kitVent) { if (!Sim) VfxKit.I.Vent(MazeMap.ToWorld(v.p, 0), cryo ? VfxKit.VentKind.Cryo : skin == "toxic" ? VfxKit.VentKind.Toxic : VfxKit.VentKind.Steam, warn, on, on && !v.wasOn, dt); }   // wisps, then a plume
++                else if (warn && !Sim) { if (FirstCryoFx.Active) FirstCryoFx.Get().VentStream(MazeMap.ToWorld(v.p, .2f), true, dt); else if (Random.value < dt * 8) Fx.I.Smoke(MazeMap.ToWorld(v.p, 0.2f), 1, Color.Lerp(col, Color.white, 0.6f), 0.6f, 0.6f, 0.25f, 1.5f); }
+                 if (on && !v.wasOn) HazardAudio.Shot(cryo ? "sfx_cryo_vent_burst" : "sfx_vent_burst", MazeMap.ToWorld(v.p, 0.3f), cryo ? 0.8f : 0.7f);
+                 v.wasOn = on;
+                 if (!on) { v.hitHero = false; continue; }
+                 if (skin == "toxic") HazardAudio.Loop("amb_toxic_gas", v, MazeMap.ToWorld(v.p, 0.3f));
+-                if (!Sim) { if (FirstCryoFx.Active) FirstCryoFx.Get().VentStream(MazeMap.ToWorld(v.p, .2f), false, dt); else if (Random.value < dt * 30) Fx.I.Smoke(MazeMap.ToWorld(v.p + Random.insideUnitCircle * 0.4f, 0.3f), 1, Color.Lerp(col, Color.white, 0.5f), 1.2f, 0.7f, 0.5f, 7f); }
++                if (!Sim && !kitVent) { if (FirstCryoFx.Active) FirstCryoFx.Get().VentStream(MazeMap.ToWorld(v.p, .2f), false, dt); else if (Random.value < dt * 30) Fx.I.Smoke(MazeMap.ToWorld(v.p + Random.insideUnitCircle * 0.4f, 0.3f), 1, Color.Lerp(col, Color.white, 0.5f), 1.2f, 0.7f, 0.5f, 7f); }
+                 bool heroIn = (g.player.p - v.p).magnitude < R + g.cfg.player.radius;
+                 if (cryo)
+                 {
+@@ -500,8 +502,11 @@ namespace Maze
+         {
+             base.Begin(game); Dirty = true;
+             for (int z = 0; z < MazeMap.H; z++) for (int x = 0; x < MazeMap.W; x++) if (MazeMap.Walkable(x, z)) walkable++;
+-            creepMesh = Make("Creep", new Color(0.16f, 0.06f, 0.2f, 0.92f), false);
+-            scorchMesh = Make("Scorched", new Color(0.1f, 0.1f, 0.1f, 0.9f), false);
++            if (VfxKit.I == null)
++            {
++                creepMesh = Make("Creep", new Color(0.16f, 0.06f, 0.2f, 0.92f), false);
++                scorchMesh = Make("Scorched", new Color(0.1f, 0.1f, 0.1f, 0.9f), false);
++            }
+         }
+         Mesh Make(string n, Color c, bool glow)
+         {
+@@ -518,7 +523,11 @@ namespace Maze
+                 for (int k = 0; k < live && creep < walkable * 0.4f; k++) if (GrowOne()) creep++;
+             }
+             if (Dirty && (drawT -= dt) <= 0) { drawT = 0.25f; Dirty = false; Rebuild(); }
++            creepV?.Ambient(dt);
+         }
++        // VfxKit surfaces: wet biomass with glowing veins, soot. Rebuilt when the creep spreads (same seed, so the pattern holds still)
++        VfxPool creepV, sootV;
++        public override void End() { creepV?.Kill(); sootV?.Kill(); creepV = sootV = null; base.End(); }
+         bool GrowOne()
+         {
+             for (int tries = 0; tries < 30; tries++)
+@@ -535,7 +544,10 @@ namespace Maze
+         {
+             var c = new List<Vector2Int>(); var s = new List<Vector2Int>();
+             for (int z = 0; z < MazeMap.H; z++) for (int x = 0; x < MazeMap.W; x++) { char t = MazeMap.tag[z, x]; if (t == 'c') c.Add(new Vector2Int(x, z)); else if (t == 's') s.Add(new Vector2Int(x, z)); }
+-            Fill(creepMesh, c, 0.026f); Fill(scorchMesh, s, 0.024f);
++            if (VfxKit.I == null) { Fill(creepMesh, c, 0.026f); Fill(scorchMesh, s, 0.024f); return; }
++            float cs = creepV != null ? creepV.Seed : -1f, ss = sootV != null ? sootV.Seed : -1f;
++            creepV?.Kill(); sootV?.Kill();
++            creepV = VfxKit.I.Cells(root, c, VfxKit.Creep, 0.026f, cs); sootV = VfxKit.I.Cells(root, s, VfxKit.Soot, 0.024f, ss);
+         }
+         static void Fill(Mesh m, List<Vector2Int> cells, float y) { var q = ZoneCells.Quads(cells, y); m.Clear(); m.SetVertices(new List<Vector3>(q.vertices)); m.SetUVs(0, new List<Vector2>(q.uv)); m.SetTriangles(q.triangles, 0); m.RecalculateBounds(); Object.Destroy(q); }
+     }
+diff --git a/Assets/Maze/Scripts/ZoneCells2.cs b/Assets/Maze/Scripts/ZoneCells2.cs
+index ba6b7e1..a41c653 100644
+--- a/Assets/Maze/Scripts/ZoneCells2.cs
++++ b/Assets/Maze/Scripts/ZoneCells2.cs
+@@ -26,7 +26,8 @@ namespace Maze
+     // a grate carries the current. A BREAKER kills them for good.
+     public class CellGrates : ZoneHazard
+     {
+-        readonly HashSet<int> live = new(); Material m; float t, tick; bool hitThisPulse; readonly List<Vector3> pts = new();
++        readonly HashSet<int> live = new(); Material m; float t, tick; bool hitThisPulse; readonly List<Vector3> pts = new(); VfxPool current;
++        public override void End() { current?.Kill(); current = null; base.End(); }
+         public string Mode = "cycle"; public bool Dead;
+         public float OnSec = 1.6f, OffSec = 4f, WarnSec = 0.8f;
+         public override void Begin(Game game)
+@@ -37,6 +38,7 @@ namespace Maze
+             var seen = new HashSet<Vector2Int>(cells); var st = new Stack<Vector2Int>(cells);
+             while (st.Count > 0) { var c = st.Pop(); foreach (var d in new[] { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right }) { var n = c + d; if (n.x < 0 || n.y < 0 || n.x >= MazeMap.W || n.y >= MazeMap.H || seen.Contains(n) || MazeMap.tag[n.y, n.x] != 'w') continue; seen.Add(n); st.Push(n); } }
+             foreach (var c in seen) { live.Add(c.y * MazeMap.W + c.x); pts.Add(MazeMap.ToWorld(MazeMap.Center(c.x, c.y), 0.1f)); }
++            if (VfxKit.I != null) { current = VfxKit.I.Cells(root, new List<Vector2Int>(seen), VfxKit.Current, 0.045f); return; }   // crawling arcs over the grates and the water they touch
+             var go = new GameObject("GrateGlow"); go.transform.SetParent(root, false);
+             go.AddComponent<MeshFilter>().sharedMesh = ZoneCells.Quads(new List<Vector2Int>(seen), 0.04f);
+             var mr = go.AddComponent<MeshRenderer>(); m = Mats.Glow(new Color(0.37f, 0.85f, 1f, 0f)); mr.sharedMaterial = m; mr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+@@ -47,7 +49,8 @@ namespace Maze
+             t += dt; float cyc = OffSec + WarnSec + OnSec, ph = t % cyc;
+             bool warn = !Dead && Mode == "cycle" && ph >= OffSec && ph < OffSec + WarnSec;
+             On = !Dead && (Mode == "on" || (Mode == "cycle" && ph >= OffSec + WarnSec));
+-            m.SetColor("_BaseColor", new Color(0.37f, 0.85f, 1f, On ? 0.75f : warn ? (Mathf.PingPong(t * 12, 1) > 0.5f ? 0.35f : 0.05f) : 0f));
++            if (m != null) m.SetColor("_BaseColor", new Color(0.37f, 0.85f, 1f, On ? 0.75f : warn ? (Mathf.PingPong(t * 12, 1) > 0.5f ? 0.35f : 0.05f) : 0f));
++            if (current != null) { current.SetPower(On ? 0.85f + 0.15f * Mathf.Sin(t * 40f) : warn ? (Mathf.PingPong(t * 12, 1) > 0.5f ? 0.45f : 0f) : 0f); current.Ambient(dt); }
+             if (!On) { hitThisPulse = false; return; }
+             if (pts.Count > 0) HazardAudio.Loop("amb_electric_grate", this, HazardAudio.Nearest(pts, pts[0]));
+             int hc = MazeMap.CellIndex(g.player.p);
+@@ -309,7 +312,7 @@ namespace Maze
+         public static Vector2 ParseDir(object o) => o is string s ? Dir(s) : o is List<object> l && l.Count > 0 ? Dir(l[Random.Range(0, l.Count)] as string) : Vector2.right;
+         public override void Tick(float dt)
+         {
+-            push = Vector2.zero;
++            push = Vector2.zero; Visuals(dt);
+             if (Wind)
+             {
+                 windT -= dt;
+@@ -346,6 +349,14 @@ namespace Maze
+         bool Shadowed(Vector2 p) { for (int k = 1; k <= 2; k++) { var q = p - WindDir * MazeMap.C * k; if (MazeMap.ShotSolidAt(q.x, q.y)) return true; } return false; }
+         public override Vector2 Push => push;
+         public override void End() { if (I == this) I = null; base.End(); }
++        // what the weather looks like, around the hero: rain streaks (a drizzle in the 3 s before it pours), wind streaks and dust
++        void Visuals(float dt)
++        {
++            if (Sim || VfxKit.I == null) return;
++            var at = MazeMap.ToWorld(g.player.p, 0);
++            if (Rain && raining) VfxKit.I.Rain(at, dt, 1f); else if (Rain && rainT > 0 && rainT <= 3f) VfxKit.I.Rain(at, dt, 0.15f);
++            if (Wind && gust) VfxKit.I.Wind(at, MazeMap.ToWorld(g.player.p + WindDir, 0) - at, dt);
++        }
+     }
+ }
+ 
+@@ -360,10 +371,12 @@ namespace Maze
+         {
+             base.Begin(game); I = this;
+             for (int z = 0; z < MazeMap.H; z++) for (int x = 0; x < MazeMap.W; x++) if (MazeMap.Walkable(x, z)) walkable++;
++            if (VfxKit.I != null) return;   // drawn as a VfxKit water surface (rippled, foam edge), rebuilt on change
+             var go = new GameObject("Water"); go.transform.SetParent(root, false); mesh = new Mesh(); go.AddComponent<MeshFilter>().sharedMesh = mesh;
+             var mr = go.AddComponent<MeshRenderer>(); mr.sharedMaterial = Mats.Fade(new Color(0.16f, 0.36f, 0.48f, 0.6f)); mr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+         }
+-        public void Flood(float spreadS) { spreadLeft = spreadS; Depth++; g.hud.ShowBanner(Depth >= 2 ? "THE WATER IS DEEP" : "FLOODING"); }
++        VfxPool waterV;
++        public void Flood(float spreadS) { spreadLeft = spreadS; Depth++; dirty = true; g.hud.ShowBanner(Depth >= 2 ? "THE WATER IS DEEP" : "FLOODING"); }
+         public override void Tick(float dt)
+         {
+             if (spreadLeft > 0 && (spreadT -= dt) <= 0)
+@@ -382,10 +395,16 @@ namespace Maze
+             {
+                 dirty = false; var cells = new List<Vector2Int>();
+                 for (int z = 0; z < MazeMap.H; z++) for (int x = 0; x < MazeMap.W; x++) if (MazeMap.tag[z, x] == 'w') cells.Add(new Vector2Int(x, z));
+-                var q = ZoneCells.Quads(cells, Depth >= 2 ? 0.12f : 0.03f); mesh.Clear(); mesh.SetVertices(new List<Vector3>(q.vertices)); mesh.SetTriangles(q.triangles, 0); mesh.RecalculateBounds(); Object.Destroy(q);
++                if (VfxKit.I != null)
++                {
++                    float sd = waterV != null ? waterV.Seed : -1f; waterV?.Kill();
++                    waterV = VfxKit.I.Cells(root, cells, Depth >= 2 ? VfxKit.WaterDeep : VfxKit.Water, Depth >= 2 ? 0.12f : 0.03f, sd);
++                }
++                else { var q = ZoneCells.Quads(cells, Depth >= 2 ? 0.12f : 0.03f); mesh.Clear(); mesh.SetVertices(new List<Vector3>(q.vertices)); mesh.SetTriangles(q.triangles, 0); mesh.RecalculateBounds(); Object.Destroy(q); }
+             }
++            waterV?.Ambient(dt);
+         }
+         public override float MoveMul => ZoneCells.At(g.player.p) == 'w' && g.player.dashT <= 0 && Depth >= 2 ? 0.55f / 0.8f : 1f;   // (shallow -20% is CellFloors)
+-        public override void End() { if (I == this) I = null; base.End(); }
++        public override void End() { waterV?.Kill(); waterV = null; if (I == this) I = null; base.End(); }
+     }
+ }

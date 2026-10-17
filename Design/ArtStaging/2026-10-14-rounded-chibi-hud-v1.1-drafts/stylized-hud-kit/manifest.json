@@ -1,0 +1,1498 @@
+{
+  "version": "1.1",
+  "design_reference": "Approved rounded chibi HUD mockup",
+  "reference_canvas_px": [
+    1846,
+    852
+  ],
+  "coordinate_system": "Top-left pixel origin. Pivots normalized from bottom-left for Unity UI. Nine slice order: left,bottom,right,top.",
+  "color_space": "sRGB",
+  "alpha": "Straight alpha RGBA PNG; transparent outside visible shapes.",
+  "assets": [
+    {
+      "name": "panel_status",
+      "category": "background",
+      "size_px": [
+        480,
+        104
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/panel_status.svg",
+      "png": "png/panel_status.png",
+      "nine_slice_lbrt_px": [
+        40,
+        40,
+        40,
+        40
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "panel_objective",
+      "category": "background",
+      "size_px": [
+        400,
+        112
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/panel_objective.svg",
+      "png": "png/panel_objective.png",
+      "nine_slice_lbrt_px": [
+        36,
+        36,
+        36,
+        36
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "panel_currency",
+      "category": "background",
+      "size_px": [
+        192,
+        80
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/panel_currency.svg",
+      "png": "png/panel_currency.png",
+      "nine_slice_lbrt_px": [
+        33,
+        33,
+        33,
+        33
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Optional mockup artwork only; do not add live portrait or coin features without approval.",
+      "availability": "Optional mockup proposal; not an existing live HUD feature"
+    },
+    {
+      "name": "panel_level",
+      "category": "background",
+      "size_px": [
+        144,
+        60
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/panel_level.svg",
+      "png": "png/panel_level.png",
+      "nine_slice_lbrt_px": [
+        30,
+        28,
+        30,
+        28
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "button_rectangle",
+      "category": "background",
+      "size_px": [
+        240,
+        80
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/button_rectangle.svg",
+      "png": "png/button_rectangle.png",
+      "nine_slice_lbrt_px": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "button_rectangle_selected",
+      "category": "button_state",
+      "size_px": [
+        240,
+        80
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/button_rectangle_selected.svg",
+      "png": "png/button_rectangle_selected.png",
+      "nine_slice_lbrt_px": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "button_rectangle_pressed",
+      "category": "button_state",
+      "size_px": [
+        240,
+        80
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/button_rectangle_pressed.svg",
+      "png": "png/button_rectangle_pressed.png",
+      "nine_slice_lbrt_px": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "button_rectangle_disabled",
+      "category": "button_state",
+      "size_px": [
+        240,
+        80
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/button_rectangle_disabled.svg",
+      "png": "png/button_rectangle_disabled.png",
+      "nine_slice_lbrt_px": [
+        32,
+        32,
+        32,
+        32
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "button_circle_normal",
+      "category": "button_state",
+      "size_px": [
+        256,
+        256
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/button_circle_normal.svg",
+      "png": "png/button_circle_normal.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "button_circle_selected",
+      "category": "button_state",
+      "size_px": [
+        256,
+        256
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/button_circle_selected.svg",
+      "png": "png/button_circle_selected.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "button_circle_pressed",
+      "category": "button_state",
+      "size_px": [
+        256,
+        256
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/button_circle_pressed.svg",
+      "png": "png/button_circle_pressed.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "button_circle_disabled",
+      "category": "button_state",
+      "size_px": [
+        256,
+        256
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/button_circle_disabled.svg",
+      "png": "png/button_circle_disabled.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "button_pause",
+      "category": "background",
+      "size_px": [
+        96,
+        96
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/button_pause.svg",
+      "png": "png/button_pause.png",
+      "nine_slice_lbrt_px": [
+        34,
+        34,
+        34,
+        34
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "portrait_frame",
+      "category": "portrait",
+      "size_px": [
+        160,
+        160
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/portrait_frame.svg",
+      "png": "png/portrait_frame.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Optional mockup artwork only; do not add live portrait or coin features without approval.",
+      "availability": "Optional mockup proposal; not an existing live HUD feature"
+    },
+    {
+      "name": "health_track",
+      "category": "progress",
+      "size_px": [
+        384,
+        48
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/health_track.svg",
+      "png": "png/health_track.png",
+      "nine_slice_lbrt_px": [
+        24,
+        22,
+        24,
+        22
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "health_fill",
+      "category": "progress",
+      "size_px": [
+        384,
+        48
+      ],
+      "pivot_normalized": [
+        0,
+        0.5
+      ],
+      "svg": "svg/health_fill.svg",
+      "png": "png/health_fill.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "xp_track",
+      "category": "progress",
+      "size_px": [
+        256,
+        24
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/xp_track.svg",
+      "png": "png/xp_track.png",
+      "nine_slice_lbrt_px": [
+        12,
+        10,
+        12,
+        10
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "xp_fill",
+      "category": "progress",
+      "size_px": [
+        256,
+        24
+      ],
+      "pivot_normalized": [
+        0,
+        0.5
+      ],
+      "svg": "svg/xp_fill.svg",
+      "png": "png/xp_fill.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "objective_track",
+      "category": "progress",
+      "size_px": [
+        320,
+        24
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/objective_track.svg",
+      "png": "png/objective_track.png",
+      "nine_slice_lbrt_px": [
+        12,
+        10,
+        12,
+        10
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "objective_fill",
+      "category": "progress",
+      "size_px": [
+        320,
+        24
+      ],
+      "pivot_normalized": [
+        0,
+        0.5
+      ],
+      "svg": "svg/objective_fill.svg",
+      "png": "png/objective_fill.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "joystick_base",
+      "category": "joystick",
+      "size_px": [
+        288,
+        288
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/joystick_base.svg",
+      "png": "png/joystick_base.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        183
+      ],
+      "runtime_role": "Hud.cs floating left joystick; preserve dynamic activation/position",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "joystick_thumb",
+      "category": "joystick",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/joystick_thumb.svg",
+      "png": "png/joystick_thumb.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs floating left joystick; preserve dynamic activation/position",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_rifle_ivory",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_rifle_ivory.svg",
+      "png": "png/icon_rifle_ivory.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs weapon/reload status/control only. Mobile aim and firing remain automatic; never bind as manual fire.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_rifle_cyan",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_rifle_cyan.svg",
+      "png": "png/icon_rifle_cyan.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs weapon/reload status/control only. Mobile aim and firing remain automatic; never bind as manual fire.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_rifle_disabled",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_rifle_disabled.svg",
+      "png": "png/icon_rifle_disabled.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs weapon/reload status/control only. Mobile aim and firing remain automatic; never bind as manual fire.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_barrage_ivory",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_barrage_ivory.svg",
+      "png": "png/icon_barrage_ivory.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs shared hero Skill slot: Vanguard Barrage (generic heavy rotary gun silhouette)",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_barrage_cyan",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_barrage_cyan.svg",
+      "png": "png/icon_barrage_cyan.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs shared hero Skill slot: Vanguard Barrage (generic heavy rotary gun silhouette)",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_barrage_disabled",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_barrage_disabled.svg",
+      "png": "png/icon_barrage_disabled.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs shared hero Skill slot: Vanguard Barrage (generic heavy rotary gun silhouette)",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_decoy_ivory",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_decoy_ivory.svg",
+      "png": "png/icon_decoy_ivory.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs shared hero Skill slot: Scout Decoy",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_decoy_cyan",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_decoy_cyan.svg",
+      "png": "png/icon_decoy_cyan.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs shared hero Skill slot: Scout Decoy",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_decoy_disabled",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_decoy_disabled.svg",
+      "png": "png/icon_decoy_disabled.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs shared hero Skill slot: Scout Decoy",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_flare_ivory",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_flare_ivory.svg",
+      "png": "png/icon_flare_ivory.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs conditional Flare control; preserve existing visibility condition",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_flare_cyan",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_flare_cyan.svg",
+      "png": "png/icon_flare_cyan.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs conditional Flare control; preserve existing visibility condition",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_flare_disabled",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_flare_disabled.svg",
+      "png": "png/icon_flare_disabled.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs conditional Flare control; preserve existing visibility condition",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_dash_ivory",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_dash_ivory.svg",
+      "png": "png/icon_dash_ivory.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs Dash control",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_dash_cyan",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_dash_cyan.svg",
+      "png": "png/icon_dash_cyan.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs Dash control",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_dash_disabled",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_dash_disabled.svg",
+      "png": "png/icon_dash_disabled.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs Dash control",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_freeze_ivory",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_freeze_ivory.svg",
+      "png": "png/icon_freeze_ivory.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs shared hero Skill slot: Sentinel Freeze",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_freeze_cyan",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_freeze_cyan.svg",
+      "png": "png/icon_freeze_cyan.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs shared hero Skill slot: Sentinel Freeze",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_freeze_disabled",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_freeze_disabled.svg",
+      "png": "png/icon_freeze_disabled.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Hud.cs shared hero Skill slot: Sentinel Freeze",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_pause_ivory",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_pause_ivory.svg",
+      "png": "png/icon_pause_ivory.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_pause_cyan",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_pause_cyan.svg",
+      "png": "png/icon_pause_cyan.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_pause_disabled",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_pause_disabled.svg",
+      "png": "png/icon_pause_disabled.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "icon_shield_ivory",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_shield_ivory.svg",
+      "png": "png/icon_shield_ivory.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Optional decoration/status proposal, not a new action. Shield is not an action.",
+      "availability": "Optional mockup proposal; not an existing live HUD feature"
+    },
+    {
+      "name": "icon_shield_cyan",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_shield_cyan.svg",
+      "png": "png/icon_shield_cyan.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Optional decoration/status proposal, not a new action. Shield is not an action.",
+      "availability": "Optional mockup proposal; not an existing live HUD feature"
+    },
+    {
+      "name": "icon_shield_disabled",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_shield_disabled.svg",
+      "png": "png/icon_shield_disabled.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Optional decoration/status proposal, not a new action. Shield is not an action.",
+      "availability": "Optional mockup proposal; not an existing live HUD feature"
+    },
+    {
+      "name": "icon_coin",
+      "category": "icon",
+      "size_px": [
+        128,
+        128
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/icon_coin.svg",
+      "png": "png/icon_coin.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Optional mockup artwork only; do not add live portrait or coin features without approval.",
+      "availability": "Optional mockup proposal; not an existing live HUD feature"
+    },
+    {
+      "name": "cooldown_ring_track",
+      "category": "cooldown",
+      "size_px": [
+        256,
+        256
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/cooldown_ring_track.svg",
+      "png": "png/cooldown_ring_track.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        76
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "cooldown_ring_fill",
+      "category": "cooldown",
+      "size_px": [
+        256,
+        256
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/cooldown_ring_fill.svg",
+      "png": "png/cooldown_ring_fill.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "cooldown_ready_ring",
+      "category": "cooldown",
+      "size_px": [
+        256,
+        256
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/cooldown_ready_ring.svg",
+      "png": "png/cooldown_ready_ring.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "cooldown_dim_overlay",
+      "category": "cooldown",
+      "size_px": [
+        256,
+        256
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/cooldown_dim_overlay.svg",
+      "png": "png/cooldown_dim_overlay.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        140
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "button_selected_accent",
+      "category": "cooldown",
+      "size_px": [
+        256,
+        256
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": "svg/button_selected_accent.svg",
+      "png": "png/button_selected_accent.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Vector approximation of approved HUD visual language; not an exact extraction.",
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Reusable visual layer; requires explicit runtime binding.",
+      "availability": "Existing HUD visual replacement candidate"
+    },
+    {
+      "name": "portrait_hero_exact_crop",
+      "category": "portrait",
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "svg": null,
+      "png": "png/portrait_hero_exact_crop.png",
+      "nine_slice_lbrt_px": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "provenance": "Exact source crop, resized and rounded-alpha-masked. Face is not redrawn. Source blue background retained.",
+      "source_file": "exec-bb302eff-2cdd-4208-b135-4f2994dd094a.png",
+      "source_sha256": "e83bc56d4b7e053adcd40a5617a8ae9bde2bcf5d33ad4ac35d90cfe755b872ff",
+      "source_crop_xyxy": [
+        55,
+        0,
+        930,
+        875
+      ],
+      "alpha_min_max": [
+        0,
+        255
+      ],
+      "runtime_role": "Optional mockup artwork only; do not add live portrait or coin features without approval.",
+      "availability": "Optional mockup proposal; not an existing live HUD feature"
+    }
+  ],
+  "runtime_inventory": {
+    "source": "Read-only Mac inventory supplied by parent; no implementation performed",
+    "canvas": "uGUI Screen Space Overlay",
+    "runtime_reference_resolution_px": [
+      1920,
+      1080
+    ],
+    "scaling": "Height-based scaling with safe-area handling",
+    "text": "Legacy UnityEngine.UI.Text; preserve existing font/text components",
+    "Hud.cs": [
+      "floating left joystick",
+      "HP",
+      "pause",
+      "weapon/reload",
+      "Dash",
+      "shared hero Skill",
+      "conditional Flare"
+    ],
+    "RunUi.cs": [
+      "XP/level",
+      "objective",
+      "boss HP",
+      "chain",
+      "timed buffs",
+      "upgrade/cache cards",
+      "evolution"
+    ],
+    "hero_skill_icons": {
+      "Sentinel": "freeze",
+      "Vanguard": "barrage",
+      "Scout": "decoy"
+    },
+    "integration_warning": "HoloButton.Update overwrites tints every frame. PNG replacement alone will not replace procedural art; explicit style/render wiring is required.",
+    "preserve_behavior": [
+      "automatic mobile firing and aiming",
+      "floating joystick behavior",
+      "existing skill and conditional Flare visibility",
+      "existing text and runtime values"
+    ],
+    "optional_mockup_proposals": [
+      "portrait",
+      "live coin display",
+      "numeric ammo",
+      "shield icon (not an action)"
+    ]
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "canvas": {
+    "width": 1672,
+    "height": 941,
+    "origin": "top-left",
+    "units": "pixels"
+  },
+  "background": "background/title_background_heavy.png",
+  "glyphs": [
+    {
+      "id": "maze_01_M",
+      "file": "glyphs/maze_01_M.png",
+      "rect_top_left": [
+        840,
+        85,
+        222,
+        188
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_on_canvas": [
+        951.0,
+        179.0
+      ],
+      "unity_center_anchored_position": [
+        115.0,
+        291.5
+      ],
+      "normalized_center": [
+        0.56877990430622,
+        0.1902231668437832
+      ],
+      "letter": "M",
+      "word": "MAZE",
+      "index_in_word": 0
+    },
+    {
+      "id": "maze_02_A",
+      "file": "glyphs/maze_02_A.png",
+      "rect_top_left": [
+        1037,
+        85,
+        203,
+        162
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_on_canvas": [
+        1138.5,
+        166.0
+      ],
+      "unity_center_anchored_position": [
+        302.5,
+        304.5
+      ],
+      "normalized_center": [
+        0.680921052631579,
+        0.17640807651434645
+      ],
+      "letter": "A",
+      "word": "MAZE",
+      "index_in_word": 1
+    },
+    {
+      "id": "maze_03_Z",
+      "file": "glyphs/maze_03_Z.png",
+      "rect_top_left": [
+        1197,
+        85,
+        159,
+        162
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_on_canvas": [
+        1276.5,
+        166.0
+      ],
+      "unity_center_anchored_position": [
+        440.5,
+        304.5
+      ],
+      "normalized_center": [
+        0.7634569377990431,
+        0.17640807651434645
+      ],
+      "letter": "Z",
+      "word": "MAZE",
+      "index_in_word": 2
+    },
+    {
+      "id": "maze_04_E",
+      "file": "glyphs/maze_04_E.png",
+      "rect_top_left": [
+        1331,
+        85,
+        155,
+        162
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_on_canvas": [
+        1408.5,
+        166.0
+      ],
+      "unity_center_anchored_position": [
+        572.5,
+        304.5
+      ],
+      "normalized_center": [
+        0.8424043062200957,
+        0.17640807651434645
+      ],
+      "letter": "E",
+      "word": "MAZE",
+      "index_in_word": 3
+    },
+    {
+      "id": "swarm_01_S",
+      "file": "glyphs/swarm_01_S.png",
+      "rect_top_left": [
+        900,
+        237,
+        117,
+        93
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_on_canvas": [
+        958.5,
+        283.5
+      ],
+      "unity_center_anchored_position": [
+        122.5,
+        187.0
+      ],
+      "normalized_center": [
+        0.5732655502392344,
+        0.3012752391073326
+      ],
+      "letter": "S",
+      "word": "SWARM",
+      "index_in_word": 0
+    },
+    {
+      "id": "swarm_02_W",
+      "file": "glyphs/swarm_02_W.png",
+      "rect_top_left": [
+        1003,
+        237,
+        134,
+        93
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_on_canvas": [
+        1070.0,
+        283.5
+      ],
+      "unity_center_anchored_position": [
+        234.0,
+        187.0
+      ],
+      "normalized_center": [
+        0.6399521531100478,
+        0.3012752391073326
+      ],
+      "letter": "W",
+      "word": "SWARM",
+      "index_in_word": 1
+    },
+    {
+      "id": "swarm_03_A",
+      "file": "glyphs/swarm_03_A.png",
+      "rect_top_left": [
+        1101,
+        237,
+        122,
+        95
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_on_canvas": [
+        1162.0,
+        284.5
+      ],
+      "unity_center_anchored_position": [
+        326.0,
+        186.0
+      ],
+      "normalized_center": [
+        0.6949760765550239,
+        0.30233793836344314
+      ],
+      "letter": "A",
+      "word": "SWARM",
+      "index_in_word": 2
+    },
+    {
+      "id": "swarm_04_R",
+      "file": "glyphs/swarm_04_R.png",
+      "rect_top_left": [
+        1211,
+        237,
+        102,
+        93
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_on_canvas": [
+        1262.0,
+        283.5
+      ],
+      "unity_center_anchored_position": [
+        426.0,
+        187.0
+      ],
+      "normalized_center": [
+        0.7547846889952153,
+        0.3012752391073326
+      ],
+      "letter": "R",
+      "word": "SWARM",
+      "index_in_word": 3
+    },
+    {
+      "id": "swarm_05_M",
+      "file": "glyphs/swarm_05_M.png",
+      "rect_top_left": [
+        1304,
+        237,
+        112,
+        93
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_on_canvas": [
+        1360.0,
+        283.5
+      ],
+      "unity_center_anchored_position": [
+        524.0,
+        187.0
+      ],
+      "normalized_center": [
+        0.8133971291866029,
+        0.3012752391073326
+      ],
+      "letter": "M",
+      "word": "SWARM",
+      "index_in_word": 4
+    }
+  ],
+  "ui": [
+    {
+      "id": "play_button",
+      "file": "ui/play_button.png",
+      "rect_top_left": [
+        986,
+        346,
+        350,
+        104
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "center_on_canvas": [
+        1161.0,
+        398.0
+      ],
+      "unity_center_anchored_position": [
+        325.0,
+        72.5
+      ],
+      "normalized_center": [
+        0.694377990430622,
+        0.42295430393198724
+      ],
+      "label": "PLAY",
+      "interactive": true,
+      "suggested_transition": "Unity Color Tint; Normal white, Highlight white, Pressed #E0E0E0, Disabled #999999",
+      "raycast_target": true
+    }
+  ],
+  "unity": {
+    "canvas_reference_resolution": [
+      1672,
+      941
+    ],
+    "canvas_scaler": "Scale With Screen Size",
+    "match_width_or_height": 0.5,
+    "sprite_pixels_per_unit": 100,
+    "texture_type": "Sprite (2D and UI)",
+    "sprite_mode": "Single",
+    "alpha_is_transparency": true,
+    "mipmaps": false,
+    "filter_mode": "Bilinear",
+    "wrap_mode": "Clamp",
+    "compression": "None recommended for logo/button",
+    "pivot": [
+      0.5,
+      0.5
+    ]
+  },
+  "notes": [
+    "Static composition only; no animation components required.",
+    "Each letter is a separate original-art cutout. Both A jewels are part of their respective A sprite.",
+    "The Play sprite includes its original label. No settings sprite or settings control is included.",
+    "Background sky was reconstructed with the built-in image tool; all glyphs/button are original reference pixel cutouts."
+  ]
+}

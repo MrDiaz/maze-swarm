@@ -1,0 +1,482 @@
+[
+  {
+    "asset": "panel_inner.png",
+    "size": [
+      320,
+      160
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_settings_ivory.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_objective_hold_cyan.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_back_ivory.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_gear_navy.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "card_frame.png",
+    "size": [
+      240,
+      200
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_back_cyan.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_objective_boss_navy.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "button_navy_blank.png",
+    "size": [
+      480,
+      96
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_objective_hunt_cyan.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "badge_check_navy.png",
+    "size": [
+      64,
+      64
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_settings_navy.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_gear_cyan.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "selected_outline.png",
+    "size": [
+      240,
+      200
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_objective_hold_ivory.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "button_yellow_blank.png",
+    "size": [
+      480,
+      96
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_heroes_navy.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_settings_cyan.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_back_navy.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_objective_survive_navy.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_objective_purge_ivory.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "button_square_blank.png",
+    "size": [
+      96,
+      88
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_deploy_cyan.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_objective_boss_ivory.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_objective_purge_navy.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "panel_main.png",
+    "size": [
+      512,
+      512
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "badge_check_cyan.png",
+    "size": [
+      64,
+      64
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "card_selected.png",
+    "size": [
+      240,
+      200
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_objective_boss_cyan.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_objective_survive_cyan.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_objective_hunt_ivory.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_objective_hunt_navy.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_heroes_ivory.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_objective_purge_cyan.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_heroes_cyan.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_deploy_ivory.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_gear_ivory.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_objective_hold_navy.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_deploy_navy.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  },
+  {
+    "asset": "icon_objective_survive_ivory.png",
+    "size": [
+      128,
+      128
+    ],
+    "alpha_min_max": [
+      0,
+      255
+    ],
+    "transparent_corner": true
+  }
+]

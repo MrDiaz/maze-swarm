@@ -1,0 +1,1 @@
+HUD v1.1 art draft only; no runtime import/wiring. Vector approximations, not pixel-exact extraction or in-engine validation. Includes Barrage/Decoy/Flare icons and runtime mapping. Initial HUD/status VFX draft sibling is preserved. Claude owns gunfire only. Parent/Codex owns HUD art assets and non-gunfire art.

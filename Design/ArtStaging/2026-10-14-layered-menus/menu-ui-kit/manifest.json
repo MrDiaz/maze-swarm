@@ -1,0 +1,824 @@
+{
+  "version": 1,
+  "units": "pixels",
+  "border_order": "left,bottom,right,top",
+  "unity_import": {
+    "texture_type": "Sprite (2D and UI)",
+    "sprite_mode": "Single",
+    "mesh_type": "Full Rect",
+    "pixels_per_unit": 100,
+    "filter_mode": "Bilinear",
+    "wrap_mode": "Clamp",
+    "compression": "None",
+    "alpha_is_transparency": true,
+    "mipmaps": false
+  },
+  "assets": [
+    {
+      "name": "panel_main",
+      "png": "png/panel_main.png",
+      "svg": "svg/panel_main.svg",
+      "size": [
+        512,
+        512
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        48,
+        48,
+        48,
+        48
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "panel_inner",
+      "png": "png/panel_inner.png",
+      "svg": "svg/panel_inner.svg",
+      "size": [
+        320,
+        160
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        26,
+        26,
+        26,
+        26
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "card_frame",
+      "png": "png/card_frame.png",
+      "svg": "svg/card_frame.svg",
+      "size": [
+        240,
+        200
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "card_selected",
+      "png": "png/card_selected.png",
+      "svg": "svg/card_selected.svg",
+      "size": [
+        240,
+        200
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "selected_outline",
+      "png": "png/selected_outline.png",
+      "svg": "svg/selected_outline.svg",
+      "size": [
+        240,
+        200
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "button_yellow_blank",
+      "png": "png/button_yellow_blank.png",
+      "svg": "svg/button_yellow_blank.svg",
+      "size": [
+        480,
+        96
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        36,
+        32,
+        36,
+        32
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "button_navy_blank",
+      "png": "png/button_navy_blank.png",
+      "svg": "svg/button_navy_blank.svg",
+      "size": [
+        480,
+        96
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        26,
+        26,
+        26,
+        26
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "button_square_blank",
+      "png": "png/button_square_blank.png",
+      "svg": "svg/button_square_blank.svg",
+      "size": [
+        96,
+        88
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        21,
+        21,
+        21,
+        21
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "badge_check_cyan",
+      "png": "png/badge_check_cyan.png",
+      "svg": "svg/badge_check_cyan.svg",
+      "size": [
+        64,
+        64
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "badge_check_navy",
+      "png": "png/badge_check_navy.png",
+      "svg": "svg/badge_check_navy.svg",
+      "size": [
+        64,
+        64
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_back_ivory",
+      "png": "png/icon_back_ivory.png",
+      "svg": "svg/icon_back_ivory.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_back_cyan",
+      "png": "png/icon_back_cyan.png",
+      "svg": "svg/icon_back_cyan.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_back_navy",
+      "png": "png/icon_back_navy.png",
+      "svg": "svg/icon_back_navy.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_deploy_ivory",
+      "png": "png/icon_deploy_ivory.png",
+      "svg": "svg/icon_deploy_ivory.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_deploy_cyan",
+      "png": "png/icon_deploy_cyan.png",
+      "svg": "svg/icon_deploy_cyan.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_deploy_navy",
+      "png": "png/icon_deploy_navy.png",
+      "svg": "svg/icon_deploy_navy.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_heroes_ivory",
+      "png": "png/icon_heroes_ivory.png",
+      "svg": "svg/icon_heroes_ivory.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_heroes_cyan",
+      "png": "png/icon_heroes_cyan.png",
+      "svg": "svg/icon_heroes_cyan.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_heroes_navy",
+      "png": "png/icon_heroes_navy.png",
+      "svg": "svg/icon_heroes_navy.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_gear_ivory",
+      "png": "png/icon_gear_ivory.png",
+      "svg": "svg/icon_gear_ivory.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_gear_cyan",
+      "png": "png/icon_gear_cyan.png",
+      "svg": "svg/icon_gear_cyan.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_gear_navy",
+      "png": "png/icon_gear_navy.png",
+      "svg": "svg/icon_gear_navy.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_settings_ivory",
+      "png": "png/icon_settings_ivory.png",
+      "svg": "svg/icon_settings_ivory.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_settings_cyan",
+      "png": "png/icon_settings_cyan.png",
+      "svg": "svg/icon_settings_cyan.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_settings_navy",
+      "png": "png/icon_settings_navy.png",
+      "svg": "svg/icon_settings_navy.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_objective_purge_ivory",
+      "png": "png/icon_objective_purge_ivory.png",
+      "svg": "svg/icon_objective_purge_ivory.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_objective_purge_cyan",
+      "png": "png/icon_objective_purge_cyan.png",
+      "svg": "svg/icon_objective_purge_cyan.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_objective_purge_navy",
+      "png": "png/icon_objective_purge_navy.png",
+      "svg": "svg/icon_objective_purge_navy.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_objective_hunt_ivory",
+      "png": "png/icon_objective_hunt_ivory.png",
+      "svg": "svg/icon_objective_hunt_ivory.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_objective_hunt_cyan",
+      "png": "png/icon_objective_hunt_cyan.png",
+      "svg": "svg/icon_objective_hunt_cyan.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_objective_hunt_navy",
+      "png": "png/icon_objective_hunt_navy.png",
+      "svg": "svg/icon_objective_hunt_navy.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_objective_hold_ivory",
+      "png": "png/icon_objective_hold_ivory.png",
+      "svg": "svg/icon_objective_hold_ivory.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_objective_hold_cyan",
+      "png": "png/icon_objective_hold_cyan.png",
+      "svg": "svg/icon_objective_hold_cyan.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_objective_hold_navy",
+      "png": "png/icon_objective_hold_navy.png",
+      "svg": "svg/icon_objective_hold_navy.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_objective_survive_ivory",
+      "png": "png/icon_objective_survive_ivory.png",
+      "svg": "svg/icon_objective_survive_ivory.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_objective_survive_cyan",
+      "png": "png/icon_objective_survive_cyan.png",
+      "svg": "svg/icon_objective_survive_cyan.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_objective_survive_navy",
+      "png": "png/icon_objective_survive_navy.png",
+      "svg": "svg/icon_objective_survive_navy.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_objective_boss_ivory",
+      "png": "png/icon_objective_boss_ivory.png",
+      "svg": "svg/icon_objective_boss_ivory.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_objective_boss_cyan",
+      "png": "png/icon_objective_boss_cyan.png",
+      "svg": "svg/icon_objective_boss_cyan.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    },
+    {
+      "name": "icon_objective_boss_navy",
+      "png": "png/icon_objective_boss_navy.png",
+      "svg": "svg/icon_objective_boss_navy.svg",
+      "size": [
+        128,
+        128
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "border_lbrt": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "source": "Reference-inspired vector adaptation, not exact raster extraction."
+    }
+  ],
+  "palette": {
+    "ivory": "#FFF9EA",
+    "navy": "#082344",
+    "cyan": "#21DFFF",
+    "yellow": "#FFD51C"
+  }
+}

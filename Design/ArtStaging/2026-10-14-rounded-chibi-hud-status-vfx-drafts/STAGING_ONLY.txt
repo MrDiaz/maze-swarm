@@ -1,0 +1,8 @@
+APPROVED ART DRAFTS — STAGING ONLY
+
+These HUD and non-gunfire status VFX kits are vector approximations with PNG/SVG, manifests and import guidance. They are not pixel-exact extractions and have not been verified in-engine. No gameplay wiring or Unity import was performed. This folder is outside Assets and Resources. Preserve original archives.
+
+Codex/parent owns HUD art assets and non-gunfire VFX art. Claude owns gunfire implementation/assets separately. No HUD implementation edits authorized by this staging step.
+
+HUD preview Library: libfile_967665b56b9481919d5b502d5e85a032
+Status VFX preview Library: libfile_c3b31926562c81918bdc62e8f90fd57a

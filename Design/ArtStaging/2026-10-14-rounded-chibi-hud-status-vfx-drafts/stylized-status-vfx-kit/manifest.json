@@ -1,0 +1,339 @@
+{
+  "kit": "Maze Swarm stylized status VFX",
+  "version": "0.1-authored-approximation",
+  "verification": "Rendered and alpha-checked offline only; all emission/lifetime values are unverified in-game starting points. No Unity integration or production verification.",
+  "reference_direction": "Approved scene/HUD and chibi hero: clean toy-like forms, cyan accents, rounded highlights; poison green is an authored extension.",
+  "texture_format": "PNG RGBA, straight alpha, 512x512, sRGB color sprites. Masks have white RGB and matching alpha.",
+  "unity_import_suggestions": {
+    "texture_type": "Default for particle materials; Sprite (2D and UI) only if needed",
+    "wrap": "Clamp",
+    "filter": "Bilinear",
+    "alpha_is_transparency": true,
+    "mipmaps": "Off for screen-sized particles; test mipmaps for distant world particles",
+    "compression": "Start uncompressed for review; profile platform-specific compression afterward",
+    "pixels_per_unit": "Choose consistently with game scale; not established by these references",
+    "materials": "Use pipeline-compatible transparent particle shader. Mask tint multiplied by vertex color. Avoid alpha clipping. Test additive against bright floor."
+  },
+  "assets": [
+    {
+      "name": "freeze_snowflake_burst",
+      "tint": "#44E5FF",
+      "lifetime_seconds": [
+        0.3,
+        0.65
+      ],
+      "suggested_emission": {
+        "mode": "burst",
+        "count": [
+          1,
+          3
+        ]
+      },
+      "blend": "Alpha blend (straight alpha)",
+      "note": "Radial frost accent, not a continuous snow emitter.",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_coordinate_system": "normalized from bottom-left (Unity)",
+      "files": {
+        "svg_color": "svg/color/freeze_snowflake_burst.svg",
+        "svg_mask": "svg/masks/freeze_snowflake_burst.svg",
+        "png_color": "png/color/freeze_snowflake_burst.png",
+        "png_mask": "png/masks/freeze_snowflake_burst.png"
+      }
+    },
+    {
+      "name": "ice_shard",
+      "tint": "#76E5FF",
+      "lifetime_seconds": [
+        0.25,
+        0.65
+      ],
+      "suggested_emission": {
+        "mode": "burst",
+        "count": [
+          5,
+          10
+        ]
+      },
+      "blend": "Alpha blend (straight alpha)",
+      "note": "Local +Y points toward shard tip; randomize rotation.",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_coordinate_system": "normalized from bottom-left (Unity)",
+      "files": {
+        "svg_color": "svg/color/ice_shard.svg",
+        "svg_mask": "svg/masks/ice_shard.svg",
+        "png_color": "png/color/ice_shard.png",
+        "png_mask": "png/masks/ice_shard.png"
+      }
+    },
+    {
+      "name": "chill_puff",
+      "tint": "#B7F8FF",
+      "lifetime_seconds": [
+        0.35,
+        0.85
+      ],
+      "suggested_emission": {
+        "mode": "burst",
+        "count": [
+          3,
+          6
+        ]
+      },
+      "blend": "Alpha blend (straight alpha)",
+      "note": "Scale up and fade; avoid piling opaque puffs.",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_coordinate_system": "normalized from bottom-left (Unity)",
+      "files": {
+        "svg_color": "svg/color/chill_puff.svg",
+        "svg_mask": "svg/masks/chill_puff.svg",
+        "png_color": "png/color/chill_puff.png",
+        "png_mask": "png/masks/chill_puff.png"
+      }
+    },
+    {
+      "name": "poison_bubble",
+      "tint": "#8CE95E",
+      "lifetime_seconds": [
+        0.45,
+        1.2
+      ],
+      "suggested_emission": {
+        "mode": "rate_over_time",
+        "particles_per_second": [
+          3,
+          7
+        ]
+      },
+      "blend": "Alpha blend (straight alpha)",
+      "note": "Slow rising bubble; alpha blend preserves rim.",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_coordinate_system": "normalized from bottom-left (Unity)",
+      "files": {
+        "svg_color": "svg/color/poison_bubble.svg",
+        "svg_mask": "svg/masks/poison_bubble.svg",
+        "png_color": "png/color/poison_bubble.png",
+        "png_mask": "png/masks/poison_bubble.png"
+      }
+    },
+    {
+      "name": "poison_droplet",
+      "tint": "#89E863",
+      "lifetime_seconds": [
+        0.35,
+        0.75
+      ],
+      "suggested_emission": {
+        "mode": "burst",
+        "count": [
+          3,
+          7
+        ]
+      },
+      "blend": "Alpha blend (straight alpha)",
+      "note": "Use gravity and random rotation; pivot centered.",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_coordinate_system": "normalized from bottom-left (Unity)",
+      "files": {
+        "svg_color": "svg/color/poison_droplet.svg",
+        "svg_mask": "svg/masks/poison_droplet.svg",
+        "png_color": "png/color/poison_droplet.png",
+        "png_mask": "png/masks/poison_droplet.png"
+      }
+    },
+    {
+      "name": "poison_splash",
+      "tint": "#8CE764",
+      "lifetime_seconds": [
+        0.25,
+        0.55
+      ],
+      "suggested_emission": {
+        "mode": "burst",
+        "count": [
+          1,
+          2
+        ]
+      },
+      "blend": "Alpha blend (straight alpha)",
+      "note": "Impact decal-style accent; separate from long-lived puddle.",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_coordinate_system": "normalized from bottom-left (Unity)",
+      "files": {
+        "svg_color": "svg/color/poison_splash.svg",
+        "svg_mask": "svg/masks/poison_splash.svg",
+        "png_color": "png/color/poison_splash.png",
+        "png_mask": "png/masks/poison_splash.png"
+      }
+    },
+    {
+      "name": "poison_puddle_soft",
+      "tint": "#8DE268",
+      "lifetime_seconds": [
+        1.5,
+        3
+      ],
+      "suggested_emission": {
+        "mode": "burst",
+        "count": [
+          1,
+          1
+        ]
+      },
+      "blend": "Alpha blend (straight alpha)",
+      "note": "Soft organic ground mask. Use world-aligned quad; sprite is not a decal material.",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_coordinate_system": "normalized from bottom-left (Unity)",
+      "files": {
+        "svg_color": "svg/color/poison_puddle_soft.svg",
+        "svg_mask": "svg/masks/poison_puddle_soft.svg",
+        "png_color": "png/color/poison_puddle_soft.png",
+        "png_mask": "png/masks/poison_puddle_soft.png"
+      }
+    },
+    {
+      "name": "dash_tapered_streak",
+      "tint": "#7CEBFF",
+      "lifetime_seconds": [
+        0.08,
+        0.22
+      ],
+      "suggested_emission": {
+        "mode": "rate_over_distance",
+        "particles_per_world_unit": [
+          2,
+          5
+        ]
+      },
+      "blend": "Alpha blend (straight alpha)",
+      "note": "Tail at left, rounded leading edge at right. Align local +X to motion. World units depend on game scale.",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_coordinate_system": "normalized from bottom-left (Unity)",
+      "files": {
+        "svg_color": "svg/color/dash_tapered_streak.svg",
+        "svg_mask": "svg/masks/dash_tapered_streak.svg",
+        "png_color": "png/color/dash_tapered_streak.png",
+        "png_mask": "png/masks/dash_tapered_streak.png"
+      }
+    },
+    {
+      "name": "levelup_sparkle",
+      "tint": "#FFE778",
+      "lifetime_seconds": [
+        0.25,
+        0.6
+      ],
+      "suggested_emission": {
+        "mode": "burst",
+        "count": [
+          6,
+          12
+        ]
+      },
+      "blend": "Additive or alpha blend",
+      "note": "Reward sparkle only; no weapon-use tuning.",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_coordinate_system": "normalized from bottom-left (Unity)",
+      "files": {
+        "svg_color": "svg/color/levelup_sparkle.svg",
+        "svg_mask": "svg/masks/levelup_sparkle.svg",
+        "png_color": "png/color/levelup_sparkle.png",
+        "png_mask": "png/masks/levelup_sparkle.png"
+      }
+    },
+    {
+      "name": "levelup_ring",
+      "tint": "#FFE47A",
+      "lifetime_seconds": [
+        0.45,
+        0.8
+      ],
+      "suggested_emission": {
+        "mode": "burst",
+        "count": [
+          1,
+          2
+        ]
+      },
+      "blend": "Additive or alpha blend",
+      "note": "Circular source for world-aligned quad; expand 0.3x to 1.8x and fade.",
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "size_px": [
+        512,
+        512
+      ],
+      "pivot_coordinate_system": "normalized from bottom-left (Unity)",
+      "files": {
+        "svg_color": "svg/color/levelup_ring.svg",
+        "svg_mask": "svg/masks/levelup_ring.svg",
+        "png_color": "png/color/levelup_ring.png",
+        "png_mask": "png/masks/levelup_ring.png"
+      }
+    }
+  ]
+}

@@ -1,0 +1,1337 @@
+{
+  "source_file": "maze-swarm-gear-menu.png",
+  "source_size": [
+    1672,
+    941
+  ],
+  "source_sha256": "3a94fc15dd466fb2ea0823bb02ec2e830279956a45d83475d63b9aee2023c5d2",
+  "coordinates": "Top-left origin, integer pixels; right and bottom exclusive. Pivot normalized [0.5,0.5]. Unity bottom-left anchored position: x + width/2, sourceHeight - y - height/2.",
+  "assets": [
+    {
+      "name": "gear_header_with_backing",
+      "file": "gear_header_with_backing.png",
+      "source_rect_xywh": [
+        149,
+        29,
+        221,
+        77
+      ],
+      "source_rect_ltrb": [
+        149,
+        29,
+        370,
+        106
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        259.5,
+        67.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "back_button",
+      "file": "back_button.png",
+      "source_rect_xywh": [
+        30,
+        20,
+        103,
+        91
+      ],
+      "source_rect_ltrb": [
+        30,
+        20,
+        133,
+        111
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        81.5,
+        65.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "weapons_heading",
+      "file": "weapons_heading.png",
+      "source_rect_xywh": [
+        1055,
+        138,
+        402,
+        70
+      ],
+      "source_rect_ltrb": [
+        1055,
+        138,
+        1457,
+        208
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1256.0,
+        173.0
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "choose_weapon_label",
+      "file": "choose_weapon_label.png",
+      "source_rect_xywh": [
+        1058,
+        211,
+        395,
+        34
+      ],
+      "source_rect_ltrb": [
+        1058,
+        211,
+        1453,
+        245
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1255.5,
+        228.0
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "weapon_category_icon",
+      "file": "weapon_category_icon.png",
+      "source_rect_xywh": [
+        909,
+        134,
+        123,
+        120
+      ],
+      "source_rect_ltrb": [
+        909,
+        134,
+        1032,
+        254
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        970.5,
+        194.0
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "equip_button",
+      "file": "equip_button.png",
+      "source_rect_xywh": [
+        890,
+        746,
+        723,
+        125
+      ],
+      "source_rect_ltrb": [
+        890,
+        746,
+        1613,
+        871
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1251.5,
+        808.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "equip_typography_with_backing",
+      "file": "equip_typography_with_backing.png",
+      "source_rect_xywh": [
+        1166,
+        782,
+        175,
+        56
+      ],
+      "source_rect_ltrb": [
+        1166,
+        782,
+        1341,
+        838
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1253.5,
+        810.0
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "rifle_card_selected",
+      "file": "rifle_card_selected.png",
+      "source_rect_xywh": [
+        884,
+        260,
+        248,
+        206
+      ],
+      "source_rect_ltrb": [
+        884,
+        260,
+        1132,
+        466
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1008.0,
+        363.0
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "minigun_card",
+      "file": "minigun_card.png",
+      "source_rect_xywh": [
+        1133,
+        269,
+        239,
+        191
+      ],
+      "source_rect_ltrb": [
+        1133,
+        269,
+        1372,
+        460
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1252.5,
+        364.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "shotgun_card",
+      "file": "shotgun_card.png",
+      "source_rect_xywh": [
+        1379,
+        269,
+        236,
+        191
+      ],
+      "source_rect_ltrb": [
+        1379,
+        269,
+        1615,
+        460
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1497.0,
+        364.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "rifle_card_art",
+      "file": "rifle_card_art.png",
+      "source_rect_xywh": [
+        904,
+        294,
+        211,
+        114
+      ],
+      "source_rect_ltrb": [
+        904,
+        294,
+        1115,
+        408
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1009.5,
+        351.0
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "minigun_card_art",
+      "file": "minigun_card_art.png",
+      "source_rect_xywh": [
+        1144,
+        293,
+        214,
+        117
+      ],
+      "source_rect_ltrb": [
+        1144,
+        293,
+        1358,
+        410
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1251.0,
+        351.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "shotgun_card_art",
+      "file": "shotgun_card_art.png",
+      "source_rect_xywh": [
+        1390,
+        301,
+        202,
+        110
+      ],
+      "source_rect_ltrb": [
+        1390,
+        301,
+        1592,
+        411
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1491.0,
+        356.0
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "rifle_card_label",
+      "file": "rifle_card_label.png",
+      "source_rect_xywh": [
+        968,
+        414,
+        78,
+        31
+      ],
+      "source_rect_ltrb": [
+        968,
+        414,
+        1046,
+        445
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1007.0,
+        429.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "minigun_card_label",
+      "file": "minigun_card_label.png",
+      "source_rect_xywh": [
+        1195,
+        414,
+        118,
+        31
+      ],
+      "source_rect_ltrb": [
+        1195,
+        414,
+        1313,
+        445
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1254.0,
+        429.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "shotgun_card_label",
+      "file": "shotgun_card_label.png",
+      "source_rect_xywh": [
+        1434,
+        414,
+        127,
+        31
+      ],
+      "source_rect_ltrb": [
+        1434,
+        414,
+        1561,
+        445
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1497.5,
+        429.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "selected_check_icon",
+      "file": "selected_check_icon.png",
+      "source_rect_xywh": [
+        1066,
+        395,
+        49,
+        52
+      ],
+      "source_rect_ltrb": [
+        1066,
+        395,
+        1115,
+        447
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1090.5,
+        421.0
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "rifle_detail_panel",
+      "file": "rifle_detail_panel.png",
+      "source_rect_xywh": [
+        895,
+        473,
+        714,
+        265
+      ],
+      "source_rect_ltrb": [
+        895,
+        473,
+        1609,
+        738
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1252.0,
+        605.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "rifle_detail_label",
+      "file": "rifle_detail_label.png",
+      "source_rect_xywh": [
+        919,
+        492,
+        128,
+        43
+      ],
+      "source_rect_ltrb": [
+        919,
+        492,
+        1047,
+        535
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        983.0,
+        513.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "rifle_detail_art",
+      "file": "rifle_detail_art.png",
+      "source_rect_xywh": [
+        998,
+        516,
+        505,
+        178
+      ],
+      "source_rect_ltrb": [
+        998,
+        516,
+        1503,
+        694
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1250.5,
+        605.0
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "selection_hint_label",
+      "file": "selection_hint_label.png",
+      "source_rect_xywh": [
+        1054,
+        701,
+        401,
+        29
+      ],
+      "source_rect_ltrb": [
+        1054,
+        701,
+        1455,
+        730
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1254.5,
+        715.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "equipment_chest_card",
+      "file": "equipment_chest_card.png",
+      "source_rect_xywh": [
+        69,
+        166,
+        163,
+        159
+      ],
+      "source_rect_ltrb": [
+        69,
+        166,
+        232,
+        325
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        150.5,
+        245.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "equipment_glove_card",
+      "file": "equipment_glove_card.png",
+      "source_rect_xywh": [
+        69,
+        334,
+        164,
+        157
+      ],
+      "source_rect_ltrb": [
+        69,
+        334,
+        233,
+        491
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        151.0,
+        412.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "equipment_boot_card",
+      "file": "equipment_boot_card.png",
+      "source_rect_xywh": [
+        69,
+        499,
+        164,
+        156
+      ],
+      "source_rect_ltrb": [
+        69,
+        499,
+        233,
+        655
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        151.0,
+        577.0
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "equipment_chest_art",
+      "file": "equipment_chest_art.png",
+      "source_rect_xywh": [
+        88,
+        187,
+        123,
+        119
+      ],
+      "source_rect_ltrb": [
+        88,
+        187,
+        211,
+        306
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        149.5,
+        246.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "equipment_glove_art",
+      "file": "equipment_glove_art.png",
+      "source_rect_xywh": [
+        88,
+        354,
+        117,
+        120
+      ],
+      "source_rect_ltrb": [
+        88,
+        354,
+        205,
+        474
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        146.5,
+        414.0
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "equipment_boot_art",
+      "file": "equipment_boot_art.png",
+      "source_rect_xywh": [
+        85,
+        518,
+        129,
+        117
+      ],
+      "source_rect_ltrb": [
+        85,
+        518,
+        214,
+        635
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        149.5,
+        576.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "sentinel_nameplate",
+      "file": "sentinel_nameplate.png",
+      "source_rect_xywh": [
+        247,
+        723,
+        474,
+        134
+      ],
+      "source_rect_ltrb": [
+        247,
+        723,
+        721,
+        857
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        484.0,
+        790.0
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "sentinel_label",
+      "file": "sentinel_label.png",
+      "source_rect_xywh": [
+        346,
+        749,
+        280,
+        50
+      ],
+      "source_rect_ltrb": [
+        346,
+        749,
+        626,
+        799
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        486.0,
+        774.0
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "loadout_label",
+      "file": "loadout_label.png",
+      "source_rect_xywh": [
+        427,
+        801,
+        123,
+        33
+      ],
+      "source_rect_ltrb": [
+        427,
+        801,
+        550,
+        834
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        488.5,
+        817.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "weapons_panel_complete",
+      "file": "weapons_panel_complete.png",
+      "source_rect_xywh": [
+        859,
+        79,
+        784,
+        819
+      ],
+      "source_rect_ltrb": [
+        859,
+        79,
+        1643,
+        898
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1251.0,
+        488.5
+      ],
+      "mode": "exact_rect",
+      "note": "Unmodified source pixels, including baked background and text where present."
+    },
+    {
+      "name": "equipment_chest_card_alpha",
+      "file": "equipment_chest_card_alpha.png",
+      "source_rect_xywh": [
+        69,
+        166,
+        163,
+        159
+      ],
+      "source_rect_ltrb": [
+        69,
+        166,
+        232,
+        325
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        150.5,
+        245.5
+      ],
+      "mode": "source_pixels_polygon_alpha",
+      "note": "Clipped corner exterior only. Item and panel background remain baked."
+    },
+    {
+      "name": "equipment_chest_frame_alpha",
+      "file": "equipment_chest_frame_alpha.png",
+      "source_rect_xywh": [
+        69,
+        166,
+        163,
+        159
+      ],
+      "source_rect_ltrb": [
+        69,
+        166,
+        232,
+        325
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        150.5,
+        245.5
+      ],
+      "mode": "source_pixels_border_alpha",
+      "note": "Original perimeter ring. Interior removed; not a regenerated clean frame or nine-slice."
+    },
+    {
+      "name": "equipment_glove_card_alpha",
+      "file": "equipment_glove_card_alpha.png",
+      "source_rect_xywh": [
+        69,
+        334,
+        164,
+        157
+      ],
+      "source_rect_ltrb": [
+        69,
+        334,
+        233,
+        491
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        151.0,
+        412.5
+      ],
+      "mode": "source_pixels_polygon_alpha",
+      "note": "Clipped corner exterior only. Item and panel background remain baked."
+    },
+    {
+      "name": "equipment_glove_frame_alpha",
+      "file": "equipment_glove_frame_alpha.png",
+      "source_rect_xywh": [
+        69,
+        334,
+        164,
+        157
+      ],
+      "source_rect_ltrb": [
+        69,
+        334,
+        233,
+        491
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        151.0,
+        412.5
+      ],
+      "mode": "source_pixels_border_alpha",
+      "note": "Original perimeter ring. Interior removed; not a regenerated clean frame or nine-slice."
+    },
+    {
+      "name": "equipment_boot_card_alpha",
+      "file": "equipment_boot_card_alpha.png",
+      "source_rect_xywh": [
+        69,
+        499,
+        164,
+        156
+      ],
+      "source_rect_ltrb": [
+        69,
+        499,
+        233,
+        655
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        151.0,
+        577.0
+      ],
+      "mode": "source_pixels_polygon_alpha",
+      "note": "Clipped corner exterior only. Item and panel background remain baked."
+    },
+    {
+      "name": "equipment_boot_frame_alpha",
+      "file": "equipment_boot_frame_alpha.png",
+      "source_rect_xywh": [
+        69,
+        499,
+        164,
+        156
+      ],
+      "source_rect_ltrb": [
+        69,
+        499,
+        233,
+        655
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        151.0,
+        577.0
+      ],
+      "mode": "source_pixels_border_alpha",
+      "note": "Original perimeter ring. Interior removed; not a regenerated clean frame or nine-slice."
+    },
+    {
+      "name": "back_button_alpha",
+      "file": "back_button_alpha.png",
+      "source_rect_xywh": [
+        30,
+        20,
+        103,
+        91
+      ],
+      "source_rect_ltrb": [
+        30,
+        20,
+        133,
+        111
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        81.5,
+        65.5
+      ],
+      "mode": "source_pixels_polygon_alpha",
+      "note": "Clipped corner exterior only. Item and panel background remain baked."
+    },
+    {
+      "name": "gear_header_with_backing_text_alpha",
+      "file": "gear_header_with_backing_text_alpha.png",
+      "source_rect_xywh": [
+        149,
+        29,
+        221,
+        77
+      ],
+      "source_rect_ltrb": [
+        149,
+        29,
+        370,
+        106
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        259.5,
+        67.5
+      ],
+      "mode": "source_pixels_color_alpha",
+      "note": "Optional threshold mask. Original edge pixels contain baked background; use exact rectangular crop for maximum visual fidelity."
+    },
+    {
+      "name": "weapons_heading_text_alpha",
+      "file": "weapons_heading_text_alpha.png",
+      "source_rect_xywh": [
+        1055,
+        138,
+        402,
+        70
+      ],
+      "source_rect_ltrb": [
+        1055,
+        138,
+        1457,
+        208
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1256.0,
+        173.0
+      ],
+      "mode": "source_pixels_color_alpha",
+      "note": "Optional threshold mask. Original edge pixels contain baked background; use exact rectangular crop for maximum visual fidelity."
+    },
+    {
+      "name": "rifle_card_label_text_alpha",
+      "file": "rifle_card_label_text_alpha.png",
+      "source_rect_xywh": [
+        968,
+        414,
+        78,
+        31
+      ],
+      "source_rect_ltrb": [
+        968,
+        414,
+        1046,
+        445
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1007.0,
+        429.5
+      ],
+      "mode": "source_pixels_color_alpha",
+      "note": "Optional threshold mask. Original edge pixels contain baked background; use exact rectangular crop for maximum visual fidelity."
+    },
+    {
+      "name": "minigun_card_label_text_alpha",
+      "file": "minigun_card_label_text_alpha.png",
+      "source_rect_xywh": [
+        1195,
+        414,
+        118,
+        31
+      ],
+      "source_rect_ltrb": [
+        1195,
+        414,
+        1313,
+        445
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1254.0,
+        429.5
+      ],
+      "mode": "source_pixels_color_alpha",
+      "note": "Optional threshold mask. Original edge pixels contain baked background; use exact rectangular crop for maximum visual fidelity."
+    },
+    {
+      "name": "shotgun_card_label_text_alpha",
+      "file": "shotgun_card_label_text_alpha.png",
+      "source_rect_xywh": [
+        1434,
+        414,
+        127,
+        31
+      ],
+      "source_rect_ltrb": [
+        1434,
+        414,
+        1561,
+        445
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1497.5,
+        429.5
+      ],
+      "mode": "source_pixels_color_alpha",
+      "note": "Optional threshold mask. Original edge pixels contain baked background; use exact rectangular crop for maximum visual fidelity."
+    },
+    {
+      "name": "rifle_detail_label_text_alpha",
+      "file": "rifle_detail_label_text_alpha.png",
+      "source_rect_xywh": [
+        919,
+        492,
+        128,
+        43
+      ],
+      "source_rect_ltrb": [
+        919,
+        492,
+        1047,
+        535
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        983.0,
+        513.5
+      ],
+      "mode": "source_pixels_color_alpha",
+      "note": "Optional threshold mask. Original edge pixels contain baked background; use exact rectangular crop for maximum visual fidelity."
+    },
+    {
+      "name": "sentinel_label_text_alpha",
+      "file": "sentinel_label_text_alpha.png",
+      "source_rect_xywh": [
+        346,
+        749,
+        280,
+        50
+      ],
+      "source_rect_ltrb": [
+        346,
+        749,
+        626,
+        799
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        486.0,
+        774.0
+      ],
+      "mode": "source_pixels_color_alpha",
+      "note": "Optional threshold mask. Original edge pixels contain baked background; use exact rectangular crop for maximum visual fidelity."
+    },
+    {
+      "name": "loadout_label_text_alpha",
+      "file": "loadout_label_text_alpha.png",
+      "source_rect_xywh": [
+        427,
+        801,
+        123,
+        33
+      ],
+      "source_rect_ltrb": [
+        427,
+        801,
+        550,
+        834
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        488.5,
+        817.5
+      ],
+      "mode": "source_pixels_color_alpha",
+      "note": "Optional threshold mask. Original edge pixels contain baked background; use exact rectangular crop for maximum visual fidelity."
+    },
+    {
+      "name": "choose_weapon_label_text_alpha",
+      "file": "choose_weapon_label_text_alpha.png",
+      "source_rect_xywh": [
+        1058,
+        211,
+        395,
+        34
+      ],
+      "source_rect_ltrb": [
+        1058,
+        211,
+        1453,
+        245
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1255.5,
+        228.0
+      ],
+      "mode": "source_pixels_color_alpha",
+      "note": "Optional threshold mask. Original edge pixels contain baked background; use exact rectangular crop for maximum visual fidelity."
+    },
+    {
+      "name": "selection_hint_label_text_alpha",
+      "file": "selection_hint_label_text_alpha.png",
+      "source_rect_xywh": [
+        1054,
+        701,
+        401,
+        29
+      ],
+      "source_rect_ltrb": [
+        1054,
+        701,
+        1455,
+        730
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1254.5,
+        715.5
+      ],
+      "mode": "source_pixels_color_alpha",
+      "note": "Optional threshold mask. Original edge pixels contain baked background; use exact rectangular crop for maximum visual fidelity."
+    },
+    {
+      "name": "equip_button_alpha",
+      "file": "equip_button_alpha.png",
+      "source_rect_xywh": [
+        890,
+        746,
+        723,
+        125
+      ],
+      "source_rect_ltrb": [
+        890,
+        746,
+        1613,
+        871
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1251.5,
+        808.5
+      ],
+      "mode": "source_pixels_rounded_alpha",
+      "note": "Outer backdrop clipped; complete original button typography and colors preserved."
+    },
+    {
+      "name": "rifle_detail_art_isolated_region",
+      "file": "rifle_detail_art_isolated_region.png",
+      "source_rect_xywh": [
+        998,
+        516,
+        505,
+        178
+      ],
+      "source_rect_ltrb": [
+        998,
+        516,
+        1503,
+        694
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1250.5,
+        605.0
+      ],
+      "mode": "source_pixels_region_alpha",
+      "note": "Neighboring label or selection badge removed by alpha. Original dark art backdrop retained; this is not an isolated weapon silhouette."
+    },
+    {
+      "name": "rifle_card_art_isolated_region",
+      "file": "rifle_card_art_isolated_region.png",
+      "source_rect_xywh": [
+        904,
+        294,
+        211,
+        114
+      ],
+      "source_rect_ltrb": [
+        904,
+        294,
+        1115,
+        408
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "pivot_canvas_xy": [
+        1009.5,
+        351.0
+      ],
+      "mode": "source_pixels_region_alpha",
+      "note": "Neighboring label or selection badge removed by alpha. Original dark art backdrop retained; this is not an isolated weapon silhouette."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "utc": "2026-10-14T14:53:56.877022+00:00",
+  "stagingPath": "/Volumes/T7 Shield/Projects/Maze Swarm/Design/ArtStaging/2026-10-14-rounded-chibi-hud-status-vfx-drafts",
+  "kits": [
+    {
+      "archive": "stylized-hud-kit.zip",
+      "library_file_id": "libfile_c1accae4007881918d24498d9371b939",
+      "sha256": "ae5638e746d01ecce2aa4e535377f2574234f64b01deeffca70fa02ba92a1e71",
+      "extractedFiles": 93
+    },
+    {
+      "archive": "stylized-status-vfx-kit.zip",
+      "library_file_id": "libfile_d9c64b6df2208191b1f8187c33e65e75",
+      "sha256": "d5b8df45b5099b198207152c2a28b67dffdbe78548e53e35b8953108ea2031dd",
+      "extractedFiles": 44
+    }
+  ],
+  "guardedSourceUnchanged": true,
+  "sourceSha256": {
+    "/Volumes/T7 Shield/Projects/Maze Swarm/Assets/Maze/Scripts/Hud.cs": "2641ad68bab743b1bddc729d350644b8ba3d372a1003ee9a48fd53666ffb0fcc",
+    "/Volumes/T7 Shield/Projects/Maze Swarm/Assets/Maze/Scripts/RunUi.cs": "d84cf1e64b41428ab54769676d23de5b889560c1aa1874745675222ba1335c4f",
+    "/Volumes/T7 Shield/Projects/Maze Swarm/Assets/Maze/Scripts/Holo.cs": "e89bdd03acdf80705d1a7d92fa8b18735afb3125ed3df163e009d3c086bba072",
+    "/Volumes/T7 Shield/Projects/Maze Swarm/Assets/Maze/Scripts/Abilities.cs": "3d106201c0603ba278d25bee6871375cf601d56b88401eb4ea06386958d06713"
+  },
+  "runtimeWiring": false,
+  "filesOverwritten": 0
+}
