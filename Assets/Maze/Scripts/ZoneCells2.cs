@@ -26,7 +26,8 @@ namespace Maze
     // a grate carries the current. A BREAKER kills them for good.
     public class CellGrates : ZoneHazard
     {
-        readonly HashSet<int> live = new(); Material m; float t, tick; bool hitThisPulse; readonly List<Vector3> pts = new();
+        readonly HashSet<int> live = new(); Material m; float t, tick; bool hitThisPulse; readonly List<Vector3> pts = new(); VfxPool current;
+        public override void End() { current?.Kill(); current = null; base.End(); }
         public string Mode = "cycle"; public bool Dead;
         public float OnSec = 1.6f, OffSec = 4f, WarnSec = 0.8f;
         public override void Begin(Game game)
@@ -37,6 +38,7 @@ namespace Maze
             var seen = new HashSet<Vector2Int>(cells); var st = new Stack<Vector2Int>(cells);
             while (st.Count > 0) { var c = st.Pop(); foreach (var d in new[] { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right }) { var n = c + d; if (n.x < 0 || n.y < 0 || n.x >= MazeMap.W || n.y >= MazeMap.H || seen.Contains(n) || MazeMap.tag[n.y, n.x] != 'w') continue; seen.Add(n); st.Push(n); } }
             foreach (var c in seen) { live.Add(c.y * MazeMap.W + c.x); pts.Add(MazeMap.ToWorld(MazeMap.Center(c.x, c.y), 0.1f)); }
+            if (VfxKit.I != null) { current = VfxKit.I.Cells(root, new List<Vector2Int>(seen), VfxKit.Current, 0.045f); return; }   // crawling arcs over the grates and the water they touch
             var go = new GameObject("GrateGlow"); go.transform.SetParent(root, false);
             go.AddComponent<MeshFilter>().sharedMesh = ZoneCells.Quads(new List<Vector2Int>(seen), 0.04f);
             var mr = go.AddComponent<MeshRenderer>(); m = Mats.Glow(new Color(0.37f, 0.85f, 1f, 0f)); mr.sharedMaterial = m; mr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
@@ -47,7 +49,8 @@ namespace Maze
             t += dt; float cyc = OffSec + WarnSec + OnSec, ph = t % cyc;
             bool warn = !Dead && Mode == "cycle" && ph >= OffSec && ph < OffSec + WarnSec;
             On = !Dead && (Mode == "on" || (Mode == "cycle" && ph >= OffSec + WarnSec));
-            m.SetColor("_BaseColor", new Color(0.37f, 0.85f, 1f, On ? 0.75f : warn ? (Mathf.PingPong(t * 12, 1) > 0.5f ? 0.35f : 0.05f) : 0f));
+            if (m != null) m.SetColor("_BaseColor", new Color(0.37f, 0.85f, 1f, On ? 0.75f : warn ? (Mathf.PingPong(t * 12, 1) > 0.5f ? 0.35f : 0.05f) : 0f));
+            if (current != null) { current.SetPower(On ? 0.85f + 0.15f * Mathf.Sin(t * 40f) : warn ? (Mathf.PingPong(t * 12, 1) > 0.5f ? 0.45f : 0f) : 0f); current.Ambient(dt); }
             if (!On) { hitThisPulse = false; return; }
             if (pts.Count > 0) HazardAudio.Loop("amb_electric_grate", this, HazardAudio.Nearest(pts, pts[0]));
             int hc = MazeMap.CellIndex(g.player.p);
@@ -309,7 +312,7 @@ namespace Maze
         public static Vector2 ParseDir(object o) => o is string s ? Dir(s) : o is List<object> l && l.Count > 0 ? Dir(l[Random.Range(0, l.Count)] as string) : Vector2.right;
         public override void Tick(float dt)
         {
-            push = Vector2.zero;
+            push = Vector2.zero; Visuals(dt);
             if (Wind)
             {
                 windT -= dt;
@@ -346,6 +349,14 @@ namespace Maze
         bool Shadowed(Vector2 p) { for (int k = 1; k <= 2; k++) { var q = p - WindDir * MazeMap.C * k; if (MazeMap.ShotSolidAt(q.x, q.y)) return true; } return false; }
         public override Vector2 Push => push;
         public override void End() { if (I == this) I = null; base.End(); }
+        // what the weather looks like, around the hero: rain streaks (a drizzle in the 3 s before it pours), wind streaks and dust
+        void Visuals(float dt)
+        {
+            if (Sim || VfxKit.I == null) return;
+            var at = MazeMap.ToWorld(g.player.p, 0);
+            if (Rain && raining) VfxKit.I.Rain(at, dt, 1f); else if (Rain && rainT > 0 && rainT <= 3f) VfxKit.I.Rain(at, dt, 0.15f);
+            if (Wind && gust) VfxKit.I.Wind(at, MazeMap.ToWorld(g.player.p + WindDir, 0) - at, dt);
+        }
     }
 }
 
@@ -360,10 +371,12 @@ namespace Maze
         {
             base.Begin(game); I = this;
             for (int z = 0; z < MazeMap.H; z++) for (int x = 0; x < MazeMap.W; x++) if (MazeMap.Walkable(x, z)) walkable++;
+            if (VfxKit.I != null) return;   // drawn as a VfxKit water surface (rippled, foam edge), rebuilt on change
             var go = new GameObject("Water"); go.transform.SetParent(root, false); mesh = new Mesh(); go.AddComponent<MeshFilter>().sharedMesh = mesh;
             var mr = go.AddComponent<MeshRenderer>(); mr.sharedMaterial = Mats.Fade(new Color(0.16f, 0.36f, 0.48f, 0.6f)); mr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
         }
-        public void Flood(float spreadS) { spreadLeft = spreadS; Depth++; g.hud.ShowBanner(Depth >= 2 ? "THE WATER IS DEEP" : "FLOODING"); }
+        VfxPool waterV;
+        public void Flood(float spreadS) { spreadLeft = spreadS; Depth++; dirty = true; g.hud.ShowBanner(Depth >= 2 ? "THE WATER IS DEEP" : "FLOODING"); }
         public override void Tick(float dt)
         {
             if (spreadLeft > 0 && (spreadT -= dt) <= 0)
@@ -382,10 +395,16 @@ namespace Maze
             {
                 dirty = false; var cells = new List<Vector2Int>();
                 for (int z = 0; z < MazeMap.H; z++) for (int x = 0; x < MazeMap.W; x++) if (MazeMap.tag[z, x] == 'w') cells.Add(new Vector2Int(x, z));
-                var q = ZoneCells.Quads(cells, Depth >= 2 ? 0.12f : 0.03f); mesh.Clear(); mesh.SetVertices(new List<Vector3>(q.vertices)); mesh.SetTriangles(q.triangles, 0); mesh.RecalculateBounds(); Object.Destroy(q);
+                if (VfxKit.I != null)
+                {
+                    float sd = waterV != null ? waterV.Seed : -1f; waterV?.Kill();
+                    waterV = VfxKit.I.Cells(root, cells, Depth >= 2 ? VfxKit.WaterDeep : VfxKit.Water, Depth >= 2 ? 0.12f : 0.03f, sd);
+                }
+                else { var q = ZoneCells.Quads(cells, Depth >= 2 ? 0.12f : 0.03f); mesh.Clear(); mesh.SetVertices(new List<Vector3>(q.vertices)); mesh.SetTriangles(q.triangles, 0); mesh.RecalculateBounds(); Object.Destroy(q); }
             }
+            waterV?.Ambient(dt);
         }
         public override float MoveMul => ZoneCells.At(g.player.p) == 'w' && g.player.dashT <= 0 && Depth >= 2 ? 0.55f / 0.8f : 1f;   // (shallow -20% is CellFloors)
-        public override void End() { if (I == this) I = null; base.End(); }
+        public override void End() { waterV?.Kill(); waterV = null; if (I == this) I = null; base.End(); }
     }
 }

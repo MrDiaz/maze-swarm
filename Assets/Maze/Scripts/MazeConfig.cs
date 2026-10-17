@@ -41,6 +41,9 @@ namespace Maze
             new EnemyType { name = "splitter_s",ai = "splitter",  model = "bloater", hp = 0.5f,  speed = 1.4f,  scale = 0.5f,  damage = 0.5f,  weight = 0, fromWave = 999, color = new Color32(0xe8, 0x6a, 0xa6, 255), score = 5, stride = 0.76f },
             new EnemyType { name = "mender",    ai = "mender",    model = "drone",   hp = 2.5f,  speed = 0.8f,  scale = 1.1f,  damage = 0.6f,  weight = 0, fromWave = 999, color = new Color32(0x7f, 0xd8, 0xa6, 255), score = 50 },
             new EnemyType { name = "stalker",   ai = "stalker",   model = "leaper",  hp = 3f,    speed = 1.3f,  scale = 1.35f, damage = 1f,    weight = 0, fromWave = 999, color = new Color32(0x14, 0x12, 0x18, 255), score = 60, stride = 1.2f },
+            // Shardback (2026-10-15, Blender: Characters/Shardback): the Cryo swarm's frost-armoured beetle, ~2 m long with ice
+            // crystals on its back. Not in any zone table or wave mix yet (weight 0): a plain walker until its role is picked
+            new EnemyType { name = "shardback", model = "shardback", hp = 4f, speed = 0.6f, scale = 1.5f, damage = 1.6f, weight = 0, fromWave = 999, color = new Color32(0x4c, 0x2e, 0x66, 255), score = 50, knockback = 0.35f, stride = 0.9f },
             // data bosses (BossBrain, Resources/Design/bosses.json): a stand-in body per base model, HP / size / speed set on spawn
             new EnemyType { name = "boss_leaper",   ai = "boss", model = "leaper",  hp = 10f, speed = 1f, scale = 1.35f, damage = 1.5f, weight = 0, fromWave = 999, color = new Color32(0x8f, 0x1d, 0x1d, 255), score = 500, fixedHp = true, knockback = 0.1f, stride = 1.2f },
             new EnemyType { name = "boss_bloater",  ai = "boss", model = "bloater", hp = 10f, speed = 1f, scale = 2.5f,  damage = 1.5f, weight = 0, fromWave = 999, color = new Color32(0x4b, 0x1f, 0x5c, 255), score = 500, fixedHp = true, knockback = 0.05f, stride = 0.76f },
@@ -101,6 +104,7 @@ namespace Maze
         public float dashSpeed = 24f, dashTime = 0.16f, dashCooldown = 6f; // was 1 s
         public float contactPush = 0.15f; // how much the swarm shoves the player
         public float topUpIdle = 1.2f;    // reload a part-empty magazine after this long with nothing in reach
+        public float aimCone = 30f;       // auto-fire only takes targets within this many degrees of the hero's facing (2026-10-14: no auto-turning)
     }
 
     [Serializable]

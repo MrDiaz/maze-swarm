@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-17T00:15:19.083594+00:00",
+  "source": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/mobile-002/LOD0/cream-orange-cover-barrier_LOD0.glb",
+  "selected": "mobile-002/LOD0",
+  "sha256": "a915149875de7a9bd64280b0b2701d536ae802f6398105d177a619e70f460f52",
+  "resource": "CohesiveZone/Models/cargo-barrier",
+  "triangles": 3500,
+  "sourceHeightMeters": 0.75,
+  "originalsUnchanged": true,
+  "sourceManifest": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/deliverables/INTEGRATION.json",
+  "visualReview": "Actual approved comparison inspected; Unity/device review pending.3500tri accepted to preserve primary shape, per source manifest."
+}

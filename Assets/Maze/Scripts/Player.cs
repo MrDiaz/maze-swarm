@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 namespace Maze
 {
     // Player state (plane coordinates, like the web build) and its visuals: the animated
-    // Wanderer model from Resources/Models/hero.glb, or a blocky stand-in if it's missing.
+    // Heavy and Engineer share the established minigun combat/progression baseline.
     public class Player : MonoBehaviour
     {
         public Vector2 p, vel, aim = new Vector2(0, -1), dashDir;
@@ -39,11 +39,16 @@ namespace Maze
 
         // hero model
         Animation anim;
-        string clipWalk, clipRun, clipShoot, currentClip;
+        string clipWalk, clipRun, clipShoot, clipDead, currentClip;
+        bool deathPose;
         Transform hips, hand, handL;
         Vector3 hipsBaseLocal;
         float heroYaw;
-        bool hasHero;
+        bool hasHero, engineerModel;
+        EngineerHeroPlayback engineerPlayback;
+        Vector2 engineerPreviousPosition; bool engineerPositionValid;
+        float engineerAimOffset;
+        Quaternion hipGunRotation;
 
         // assault rifle from Resources/Models/ar.glb, held in the right hand
         public const float GunLength = 0.78f;       // world length in metres: ~48% of the 1.6 m hero, like an AK on a person (was 1.0)
@@ -58,7 +63,7 @@ namespace Maze
         // hip carry: the minigun hangs level at the right hip (never raised), both hands are put on it by IK
         bool hipCarry; Vector3 gunGrip; float gunScale;
         public static bool IkDebug;
-        static readonly Vector3 HipGrip = new Vector3(0.06f, 0.55f, 0.17f); // rear grip, visual space as a fraction of hero height
+        static readonly Vector3 HipGrip = new Vector3(0.06f, 0.50f, 0.17f); // rear grip, visual space as a fraction of hero height
         public Transform gun;
 
         public void Init(Game g) => Init(g.cfg);
@@ -101,30 +106,37 @@ namespace Maze
             LoadHero(cfg);
         }
 
-        // the Squad pick (Prefs.Hero): Arctic Sentinel with the AK, or Iron Vanguard with the minigun
+        // The Heavy model and minigun retain their approved rig and proportions.
         void LoadHero(MazeConfig cfg)
         {
-            bool vg = Prefs.Vanguard && Resources.Load<GameObject>("Models/hero_vanguard") != null;
-            // the Heavy: Meshy's rig (hero_vanguard_meshy: Walking / Running / run_fast) or the Blender one (Squad toggle)
-            string vgModel = Prefs.VanguardMeshy && Resources.Load<GameObject>("Models/hero_vanguard_meshy") != null ? "Models/hero_vanguard_meshy" : "Models/hero_vanguard";
-            bool sc = !vg && Prefs.Scout && Resources.Load<GameObject>("Models/hero_scout") != null;   // the Scout: Meshy's rig (Run_and_Shoot / Walking / Running)
-            var prefab = Resources.Load<GameObject>(vg ? vgModel : sc ? "Models/hero_scout" : "Models/hero");
-            if (prefab != null)
+            engineerModel = Prefs.Engineer;
+            string path = engineerModel ? CohesiveCharacterPolicy.EngineerResource : HeroChibi.ModelOn ? "Models/hero_vanguard_chibi" : Prefs.VanguardMeshy ? "Models/hero_vanguard_meshy" : "Models/hero_vanguard";
+            var prefab = Resources.Load<GameObject>(path);
+            if (!engineerModel && prefab == null) prefab = Resources.Load<GameObject>("Models/hero_vanguard_meshy");
+            if(prefab!=null)
             {
-                var hero = Instantiate(prefab); Mats.ConvertGltf(hero);
-                SetupHero(hero, cfg.player.modelHeight * (vg ? VanguardHeightMul : 1));
-                if (vg) AttachMinigun(); else AttachGun();
+                var hero=Instantiate(prefab);Mats.ConvertGltf(hero);CohesiveCharacterPolicy.ApplyHeroMaterials(hero.transform);
+                SetupHero(hero, engineerModel ? CohesiveCharacterPolicy.EngineerHeight : cfg.player.modelHeight*VanguardHeightMul);
+                AttachMinigun();
+                if (engineerModel) { CohesiveCharacterPolicy.SetEngineerAnimatedBounds(hero.transform); engineerPlayback = new EngineerHeroPlayback(anim, hero.transform); }
             }
-            else { Debug.LogWarning("Maze: Resources/Models/hero not found, using the stand-in player."); BuildStandIn(); }
+            else{Debug.LogError("Selected hero model is missing: " + path);BuildStandIn();}
         }
 
         // swap the hero after a Squad pick (keeps the ring, range circle and ammo arc)
+        public void ResetEngineerMotion()
+        {
+            engineerPositionValid = false;
+            engineerPlayback?.ResetContacts();
+        }
+
         public void RebuildHero(MazeConfig cfg)
         {
             for (int i = visual.childCount - 1; i >= 0; i--) Destroy(visual.GetChild(i).gameObject);
             visual.DetachChildren();
-            anim = null; clipWalk = clipRun = clipShoot = currentClip = null; hips = hand = handL = null; gun = null; barrels = null; hasHero = false; hipCarry = false;
+            anim = null; clipWalk = clipRun = clipShoot = clipDead = currentClip = null; deathPose = false; hips = hand = handL = null; gun = null; barrels = null; hasHero = false; hipCarry = false;
             GunMuzzle = GunMuzzleAr; GunHandguard = GunHandguardAr;
+            engineerPlayback = null; engineerPositionValid = false; engineerAimOffset = 0;
             LoadHero(cfg);
         }
 
@@ -240,7 +252,8 @@ namespace Maze
                 {
                     st.wrapMode = WrapMode.Loop;
                     string n = st.name.ToLower();
-                    if (n.Contains("shoot")) clipShoot = st.name;
+                    if (n.Contains("dead") || n.Contains("death")) clipDead = st.name;
+                    else if (n.Contains("shoot")) clipShoot = st.name;
                     else if (n.Contains("run") && (clipRun == null || n.EndsWith("running"))) clipRun = st.name; // "Running" over the alternate "Run_02"
                     else if (n.Contains("walk")) clipWalk = st.name;
                 }
@@ -280,10 +293,11 @@ namespace Maze
         void AttachMinigun()
         {
             if (hand == null) return;
-            var prefab = Resources.Load<GameObject>("Models/minigun");
+            var prefab = Resources.Load<GameObject>(HeroChibi.ModelOn ? "Models/minigun_chibi" : "Models/minigun");
             if (prefab == null) { AttachGun(); return; }
             var go = Instantiate(prefab); go.name = "Gun";
             Mats.ConvertGltf(go);
+            CohesiveCharacterPolicy.ApplyHeroMaterials(go.transform);
             foreach (var r in go.GetComponentsInChildren<Renderer>()) r.shadowCastingMode = ShadowCastingMode.On;
             barrels = null; foreach (var t in go.GetComponentsInChildren<Transform>()) if (t.name == "Barrels") barrels = t;
             Bounds all = new Bounds(), bodyB = new Bounds(), barB = new Bounds(); bool a0 = true, b0 = true, c0 = true;
@@ -300,14 +314,15 @@ namespace Maze
             float dir = c0 ? 1 : Mathf.Sign(barB.center.x - bodyB.center.x);   // muzzle end along model X
             float rear = dir > 0 ? all.min.x : all.max.x, axisY = c0 ? all.center.y : barB.center.y;
             var grip = new Vector3(rear + dir * 0.42f * bodyB.size.x, axisY - 0.12f, all.center.z);
-            GunHandguard = new Vector3(rear + dir * 0.52f * bodyB.size.x, bodyB.max.y - 0.04f, all.center.z);
+            GunHandguard = new Vector3(rear + dir * 0.40f * bodyB.size.x, bodyB.min.y + 0.10f, all.center.z);   // (2026-10-15) the support hand under the body, not on the top handle: reaching up there put the forearm across his face
             GunMuzzle = new Vector3(dir > 0 ? all.max.x : all.min.x, axisY, all.center.z);
-            gunScale = MinigunLength / all.size.x; gunGrip = grip;
+            if (CohesiveCharacterPolicy.PreserveAuthoredHero) { grip = CohesiveCharacterPolicy.ChibiGunGrip; GunHandguard = CohesiveCharacterPolicy.ChibiGunSupport; GunMuzzle = CohesiveCharacterPolicy.ChibiGunMuzzle; }
+            gunScale = (HeroChibi.ModelOn ? HeroChibi.GunLen : MinigunLength) / all.size.x; gunGrip = grip;
             gun = go.transform;
             gun.SetParent(visual, false);
             gun.localRotation = Quaternion.Euler(0, dir > 0 ? -90 : 90, 0); // muzzle onto the hero's forward, level
             gun.localScale = Vector3.one * (gunScale / Mathf.Max(1e-4f, visual.lossyScale.x));
-            hipCarry = true;
+            hipCarry = true; hipGunRotation = gun.localRotation;
             clipShoot = null; // the Sentinel's Run_and_Shoot shoulders the gun: the Heavy keeps walking/running clips while firing
             PlaceHipGun(0);
         }
@@ -318,7 +333,11 @@ namespace Maze
             float h = heroHeight;
             var rot = gun.rotation;
             float tt = Time.time * 90f; var shake = recoil * 0.025f * new Vector3(Mathf.Sin(tt), Mathf.Sin(tt * 1.37f + 1), -1.5f); // no Random: keeps the sims deterministic
-            var gripWorld = visual.TransformPoint(new Vector3(HipGrip.x * h, HipGrip.y * h, HipGrip.z * h) + shake) + Vector3.up * bob;
+            var grip = engineerModel ? CohesiveCharacterPolicy.EngineerHipGrip : CohesiveCharacterPolicy.UseRebuiltVanguard ? CohesiveCharacterPolicy.HipGrip : HeroChibi.ModelOn ? HeroChibi.HipGrip : HipGrip;   // (the chibi rebuild: hips at ~1/3 of his height)
+            var gripOffset = new Vector3(grip.x * h, grip.y * h, grip.z * h) + shake;
+            var gripWorld = (engineerPlayback != null
+                ? visual.position + Quaternion.Euler(0, MazeMap.YawDeg(heroYaw) + engineerAimOffset, 0) * gripOffset
+                : visual.TransformPoint(gripOffset)) + Vector3.up * bob;
             gun.position = gripWorld - rot * (gunGrip * gunScale);
         }
 
@@ -356,29 +375,39 @@ namespace Maze
             Vector3 pa = a.position, pb = b.position, pc = c.position;
             float lab = (pb - pa).magnitude, lcb = (pc - pb).magnitude;
             if (lab < 1e-4f || lcb < 1e-4f) return;
-            float lat = Mathf.Clamp((t - pa).magnitude, 0.01f, lab + lcb - 0.001f);
+            float lat = Mathf.Clamp((t - pa).magnitude, Mathf.Abs(lab-lcb)+.0001f, lab+lcb-.0001f);
             float ac_ab0 = Mathf.Acos(Mathf.Clamp(Vector3.Dot((pc - pa).normalized, (pb - pa).normalized), -1, 1));
             float ba_bc0 = Mathf.Acos(Mathf.Clamp(Vector3.Dot((pa - pb).normalized, (pc - pb).normalized), -1, 1));
             float ac_at0 = Mathf.Acos(Mathf.Clamp(Vector3.Dot((pc - pa).normalized, (t - pa).normalized), -1, 1));
             float ac_ab1 = Mathf.Acos(Mathf.Clamp((lcb * lcb - lab * lab - lat * lat) / (-2 * lab * lat), -1, 1));
             float ba_bc1 = Mathf.Acos(Mathf.Clamp((lat * lat - lab * lab - lcb * lcb) / (-2 * lab * lcb), -1, 1));
-            var axis0 = Vector3.Cross(pc - pa, pb - pa); if (axis0.sqrMagnitude < 1e-8f) axis0 = visual.right; axis0.Normalize();
+            var axis0 = Vector3.Cross(pc - pa, pb - pa); if (axis0.sqrMagnitude < 1e-8f) axis0 = Vector3.Cross(pc-pa, visual.up); if (axis0.sqrMagnitude < 1e-8f) axis0 = Vector3.Cross(pc-pa, visual.forward); axis0.Normalize();
             var axis1 = Vector3.Cross(pc - pa, t - pa); if (axis1.sqrMagnitude < 1e-8f) axis1 = axis0; axis1.Normalize();
             var handRot = c.rotation;
             var r0 = Quaternion.AngleAxis((ac_ab1 - ac_ab0) * Mathf.Rad2Deg, Quaternion.Inverse(a.rotation) * axis0);
             var r1 = Quaternion.AngleAxis((ba_bc1 - ba_bc0) * Mathf.Rad2Deg, Quaternion.Inverse(b.rotation) * axis0);
             var r2 = Quaternion.AngleAxis(ac_at0 * Mathf.Rad2Deg, Quaternion.Inverse(a.rotation) * axis1);
-            a.localRotation = a.localRotation * (r0 * r2);
+            a.localRotation = a.localRotation * (r2 * r0);
             b.localRotation = b.localRotation * r1;
             c.rotation = handRot; // keep the hand's own orientation
         }
 
-        static Vector3 Palm(Transform h) => h.childCount > 0 ? (h.position + h.GetChild(0).position) * 0.5f : h.position;
+        static Vector3 Palm(Transform h)
+        {
+            if (h.childCount == 0) return h.position;
+            var child = h.GetChild(0);
+            if (child.name == "RightPalm" || child.name == "LeftPalm") return child.position;
+            if (CohesiveCharacterPolicy.UseRebuiltVanguard)
+                return h.TransformPoint(new Vector3(0,h.name.EndsWith("RightHand") ? .05753228f : .05346125f,0));
+            return (h.position+child.position)*.5f;
+        }
         public Transform HandL => handL;
 
         public Vector3 MuzzleWorld => gun != null ? gun.TransformPoint(GunMuzzle) : Vector3.zero;
         public Transform Hand => hand;
         public Transform VisualRoot => visual;
+        public string HeroId => engineerModel ? "engineer" : "vanguard";
+        public bool HeroAnimationReady => engineerModel ? engineerPlayback != null && engineerPlayback.Ready : hasHero && anim != null;
         public void PoseShoot() { if (anim != null && clipShoot != null) { var st = anim[clipShoot]; st.enabled = true; st.weight = 1; st.normalizedTime = 0.3f; anim.Sample(); } }
 
         void Play(string clip, float speed, bool hold = false)
@@ -392,16 +421,59 @@ namespace Maze
 
         public void Visuals(float dt, MazeConfig cfg, Vector2 moveVel, bool dead)
         {
+            if (engineerPlayback != null)
+            {
+                // Collision and terrain push have already updated p. Intended velocity
+                // keeps running into walls; use the actual displacement for Engineer.
+                Vector2 displaced = p - engineerPreviousPosition;
+                moveVel = engineerPositionValid && dt > .00001f && displaced.magnitude <= Mathf.Max(.1f, cfg.player.dashSpeed * dt * 1.5f)
+                    ? displaced / dt : Vector2.zero;
+                if (!engineerPositionValid || displaced.magnitude > Mathf.Max(.1f, cfg.player.dashSpeed * dt * 1.5f)) engineerPlayback.ResetContacts();
+                engineerPreviousPosition = p; engineerPositionValid = true;
+            }
             transform.position = MazeMap.ToWorld(p);
             float sp = moveVel.magnitude;
-            bool shooting = shootT > 0, moving = sp > 0.6f;
+            bool shooting = shootT > 0, moving = sp > (engineerPlayback != null ? .08f : .6f);
             float moveYaw = Mathf.Atan2(moveVel.x, moveVel.y);
             float want = (shooting || !moving || !hasHero) ? facing : moveYaw;
-            heroYaw += Mathf.DeltaAngle(heroYaw * Mathf.Rad2Deg, want * Mathf.Rad2Deg) * Mathf.Deg2Rad * Mathf.Min(1, dt * 14);
+            if (engineerPlayback != null && moving)
+            {
+                // Normal mobile target acquisition stays within30 degrees of travel.
+                // Feet face travel; the chest and gun cover that modest aiming arc.
+                float aimDelta = Mathf.Abs(Mathf.DeltaAngle(moveYaw * Mathf.Rad2Deg, facing * Mathf.Rad2Deg));
+                want = shooting && aimDelta > 70 ? facing : moveYaw;
+            }
+            heroYaw += Mathf.DeltaAngle(heroYaw * Mathf.Rad2Deg, want * Mathf.Rad2Deg) * Mathf.Deg2Rad * Mathf.Min(1, dt * (engineerPlayback != null ? 24 : 14));
             visual.rotation = Quaternion.Euler(0, MazeMap.YawDeg(heroYaw), 0);
 
-            if (hasHero)
+            if (engineerPlayback != null)
             {
+                if (dead != engineerPlayback.Dead && gun != null)
+                {
+                    gun.SetParent(dead && hand != null ? hand : visual, true);
+                    if (!dead) gun.localRotation = hipGunRotation;
+                }
+                engineerPlayback.Tick(dt, sp, shooting, dead, moving ? Vector3.Dot(visual.forward, MazeMap.ToWorld(moveVel.normalized)) : 1, dashT > 0 || sp > cfg.player.dashSpeed * .75f);
+                engineerAimOffset = shooting ? Mathf.Clamp(Mathf.DeltaAngle(MazeMap.YawDeg(heroYaw), MazeMap.YawDeg(facing)), -45, 45) : 0;
+            }
+            else if (hasHero && dead && clipDead != null)
+            {
+                if (!deathPose)
+                {
+                    deathPose = true;
+                    if (gun != null && hand != null) gun.SetParent(hand, true);
+                    anim.Stop(); var falling = anim[clipDead];
+                    falling.layer = 0; falling.wrapMode = WrapMode.ClampForever; falling.speed = 1; falling.time = 0;
+                    anim.Play(clipDead); currentClip = clipDead;
+                }
+            }
+            else if (hasHero)
+            {
+                if (deathPose)
+                {
+                    deathPose = false; currentClip = null;
+                    if (hipCarry && gun != null) { gun.SetParent(visual, true); gun.localRotation = hipGunRotation; }
+                }
                 float rate = sp / cfg.player.speed;
                 float back = shooting && moving && Mathf.Cos(moveYaw - facing) < -0.3f ? -1 : 1;
                 if (shooting && clipShoot != null) Play(clipShoot, moving ? back * Mathf.Max(0.6f, rate) : 0f);
@@ -419,26 +491,52 @@ namespace Maze
                 rangeMf.sharedMesh = m;
             }
             else rangeMf.sharedMesh = rangeMeshes[weapon];
-            rangeMat.SetColor("_BaseColor", hasTarget ? new Color(1f, 0.55f, 0.35f, 0.35f) : new Color(1f, 1f, 1f, 0.2f));
+            // The friendly auto-fire guide stays distinct from orange/red enemy danger telegraphs.
+            rangeMat.SetColor("_BaseColor", CryoSoftSceneInfo.VisualsActive
+                ? (hasTarget ? new Color(.08f, .45f, .68f, .28f) : new Color(.10f, .24f, .37f, .13f))
+                : (hasTarget ? new Color(1f, 0.55f, 0.35f, 0.35f) : new Color(1f, 1f, 1f, 0.2f)));
             ring.localScale = Vector3.one * (dashT > 0 ? 1.1f : 0.85f);
             if (ammo != null) UpdateAmmo(cfg);
         }
 
         void LateUpdate()
         {
+            if (deathPose || (engineerPlayback != null && engineerPlayback.Dead))
+            {
+                // The falling hands carry the gun; live two-arm IK must not override death.
+                if (hips != null)
+                {
+                    var origin = hips.parent != null ? hips.parent.TransformPoint(hipsBaseLocal) : hipsBaseLocal;
+                    var delta = hips.position - origin; hips.position -= new Vector3(delta.x, 0, delta.z);
+                }
+                if (GunFx.I != null && gun != null) GunFx.I.FollowMuzzle(gun.TransformPoint(GunMuzzle));
+                return;
+            }
+            if (engineerPlayback != null) engineerPlayback.Aim(engineerAimOffset);
+            ReadabilityFx.HeroBones(this);   // authored chibi proportions are retained before weapon IK
+            FeelFx.HeroPose(this, recoil, hasTarget);   // (feel: lean and recoil while firing; before the IK below)
             // strip root motion: the game moves the player, so pin the hips horizontally
             float bob = 0;
             if (hips != null)
             {
                 var basePos = hips.parent != null ? hips.parent.TransformPoint(hipsBaseLocal) : hipsBaseLocal;
                 var d = hips.position - basePos;
-                hips.position -= new Vector3(d.x, 0, d.z);
+                if (engineerPlayback != null)
+                {
+                    // Root stays fixed. Keep only the approved small lateral hip sway.
+                    var local = hips.parent.InverseTransformVector(d);
+                    local.x = Mathf.Clamp(local.x, -.01f, .01f); local.y = 0; local.z = 0;
+                    hips.position = basePos + Vector3.up * d.y + hips.parent.TransformVector(local);
+                }
+                else hips.position -= new Vector3(d.x, 0, d.z);
                 bob = d.y;
             }
+            if (engineerPlayback != null) engineerPlayback.PlaceFeet();
             if (hipCarry && gun != null)
             {
+                if (engineerPlayback != null) gun.rotation = Quaternion.Euler(0, MazeMap.YawDeg(heroYaw) + engineerAimOffset, 0) * hipGunRotation;
                 recoil *= Mathf.Exp(-Time.deltaTime * 24f);
-                PlaceHipGun(bob);
+                PlaceHipGun(engineerPlayback != null ? bob * .35f : bob);
                 ArmIk(hand, gun.TransformPoint(gunGrip));   // right hand on the rear grip / trigger
                 if (IkDebug) Debug.Log($"Maze: hip IK right palm {(Palm(hand) - gun.TransformPoint(gunGrip)).magnitude:F2} m off, left {(Palm(handL) - gun.TransformPoint(GunHandguard)).magnitude:F2} m off (before left IK)");
             }

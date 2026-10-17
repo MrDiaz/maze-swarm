@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 namespace Maze
@@ -14,11 +15,9 @@ namespace Maze
         public float zoom;       // +1 out, -1 in
     }
 
-    // In-game UI in the holographic style of the main menu: HP / wave / score bar, the virtual move
-    // stick, DASH / weapon / pause buttons, and the pause and game-over panels.
-    // Left half of the screen = move stick; aiming and firing are automatic, so the right thumb
-    // is free for the DASH and weapon buttons.
-    public class Hud : MonoBehaviour
+    // In-map status and icon controls, plus the existing pause and game-over panels.
+    // The left half retains the floating move stick; action buttons read touches directly.
+    public partial class Hud : MonoBehaviour
     {
         class Stick
         {
@@ -39,14 +38,13 @@ namespace Maze
         Canvas canvas;
         RectTransform hudRoot, safe;
         Sprite circle, ringSprite;
-        Image hpFill, dashCool, reloadDim, reloadSweep;
-        Text dashNum; bool dashWasReady = true;
+        Image hpFill;
+        bool dashWasReady = true;
         RawImage hurt;
-        Text hpText, waveText, scoreText, weaponText, banner, statsText;
+        TMP_Text hpText, waveText, banner, statsText;
         Image hpBack; RectTransform hpRoot, wavePill;
-        HoloButton dashBtn, weaponBtn, pauseBtn, skillBtn, flareBtn; Text flareLbl; Image skillCool; Text skillNum, skillLbl;
+        HoloButton dashBtn, pauseBtn, skillBtn, flareBtn;
         public static bool SkillOn;   // a sector run: the hero's skill button shows
-        bool weaponIconHeavy;
         readonly Stick left = new(), right = new();
         float bannerT, stickRadiusPx, t;
         float fpsAvg = 16f;
@@ -78,80 +76,7 @@ namespace Maze
             hurt = Holo.Raw(Holo.Fill(hudRoot, "Hurt"), Holo.VignetteTex, Holo.A(Holo.Red, 0));
             safe = Holo.SafeRoot(hudRoot);
 
-            // HP bar + wave/score (top center)
-            var top = Holo.Panel(safe, "Top");
-            top.anchorMin = top.anchorMax = top.pivot = new Vector2(0.5f, 1);
-            top.anchoredPosition = new Vector2(0, -18); top.sizeDelta = new Vector2(880, 90);
-            var hpl = Holo.Label(Holo.Rect(top, "HP", new Vector2(0, 0.5f), new Vector2(32, 0), new Vector2(60, 60)), "HP", 32, Holo.Acid, TextAnchor.MiddleLeft);
-            hpl.fontStyle = FontStyle.Bold;
-            var bar = Holo.Rect(top, "Bar", new Vector2(0, 0.5f), new Vector2(96, 0), new Vector2(300, 24));
-            Holo.Img(bar, Holo.WhiteSprite, new Color(0, 0.02f, 0.05f, 0.75f));
-            hpFill = Holo.Img(Holo.Fill(bar, "Fill", 3), Holo.WhiteSprite, Holo.Cyan);
-            hpFill.type = Image.Type.Filled; hpFill.fillMethod = Image.FillMethod.Horizontal;
-            for (int i = 1; i < 10; i++) Holo.Img(Holo.Rect(bar, "Tick", new Vector2(i / 10f, 0.5f), Vector2.zero, new Vector2(3, 24)), Holo.WhiteSprite, new Color(0, 0.02f, 0.05f, 0.85f)).rectTransform.pivot = new Vector2(0.5f, 0.5f);
-            hpText = Holo.Label(Holo.Rect(top, "HpText", new Vector2(0, 0.5f), new Vector2(410, 0), new Vector2(90, 60)), "100", 34, Holo.Ink, TextAnchor.MiddleLeft);
-            waveText = Holo.Label(Holo.Rect(top, "Wave", new Vector2(0, 0.5f), new Vector2(510, 0), new Vector2(170, 60)), "WAVE 1", 34, Holo.Acid, TextAnchor.MiddleLeft);
-            waveText.fontStyle = FontStyle.Bold;
-            scoreText = Holo.Label(Holo.Rect(top, "Score", new Vector2(1, 0.5f), new Vector2(-34, 0), new Vector2(200, 60)), "0", 36, Holo.Ink, TextAnchor.MiddleRight);
-            scoreText.fontStyle = FontStyle.Bold;
-            // minimal HUD: the old top panel (HP, wave, score) is gone; HP sits bottom-left, the wave / room label in a
-            // small pill at the top (outside sector runs, whose tracker lives in RunUi), FPS only via Settings
-            top.gameObject.SetActive(false);
-            var hpBlock = Holo.Plain(safe, "Hp", 0.78f);
-            hpBlock.anchorMin = hpBlock.anchorMax = hpBlock.pivot = new Vector2(0, 0); hpBlock.anchoredPosition = new Vector2(26, 22); hpBlock.sizeDelta = new Vector2(400, 62);
-            var hb = Holo.Rect(hpBlock, "Bar", new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(368, 34));
-            hpBack = Holo.Img(hb, Holo.WhiteSprite, new Color(0, 0.02f, 0.05f, 0.85f));
-            hpFill = Holo.Img(Holo.Fill(hb, "Fill", 3), Holo.WhiteSprite, Holo.Cyan);
-            hpFill.type = Image.Type.Filled; hpFill.fillMethod = Image.FillMethod.Horizontal;
-            hpText = Holo.Label(Holo.Fill(hb, "Num"), "100", 28, Holo.Ink); hpText.fontStyle = FontStyle.Bold;
-            hpText.gameObject.AddComponent<Outline>().effectColor = new Color(0, 0.03f, 0.06f, 0.9f);
-            hpRoot = hpBlock;
-            var wp = Holo.Plain(safe, "WavePill", 0.7f); wp.anchorMin = wp.anchorMax = wp.pivot = new Vector2(0.5f, 1); wp.anchoredPosition = new Vector2(0, -16); wp.sizeDelta = new Vector2(300, 56);
-            waveText = Holo.Label(Holo.Fill(wp, "T"), "WAVE 1", 30, Holo.Acid); waveText.fontStyle = FontStyle.Bold; wavePill = wp;
-            statsText = Holo.Label(Holo.Rect(safe, "Stats", new Vector2(0, 1), new Vector2(26, -22), new Vector2(560, 40)), "", 21, Holo.Ink, TextAnchor.UpperLeft);
-            var ssh = statsText.gameObject.AddComponent<Outline>(); ssh.effectColor = new Color(0, 0.03f, 0.06f, 0.7f); ssh.effectDistance = new Vector2(1.5f, -1.5f);
-
-            testTag = Holo.Label(Holo.Rect(safe, "TestTag", new Vector2(1, 1), new Vector2(-200, -40), new Vector2(260, 40)), "TEST MODE", 28, new Color(1f, 0.72f, 0.15f), TextAnchor.MiddleRight);   // a test run (no progress saved)
-            testTag.fontStyle = FontStyle.Bold; testTag.raycastTarget = false; testTag.rectTransform.pivot = new Vector2(1, 1); testTag.gameObject.SetActive(false);
-            pauseBtn = Holo.Button(safe, "Pause", new Vector2(Holo.MinTouch, Holo.MinTouch), null, "pause");
-            Place(pauseBtn, new Vector2(1, 1), new Vector2(-24, -18), new Vector2(1, 1));
-            pauseBtn.onClick = () => game.TogglePause();
-
-            // buttons (bottom right, above the aim stick zone); they read touches directly for zero latency
-            weaponBtn = Corner("Weapon", "rifle", 164, new Vector2(-150, 330), out weaponText);
-            // reload: the button darkens and a cyan wedge sweeps round it clockwise from 12 o'clock
-            reloadDim = Holo.Img(Holo.Fill(weaponBtn.body, "ReloadDim", 6), Holo.FillSprite, new Color(0, 0.02f, 0.05f, 0.62f));
-            reloadSweep = Holo.Img(Holo.Fill(weaponBtn.body, "ReloadSweep", 6), Holo.FillSprite, Holo.A(Holo.Cyan, 0.62f));
-            reloadSweep.type = Image.Type.Filled; reloadSweep.fillMethod = Image.FillMethod.Radial360;
-            reloadSweep.fillOrigin = (int)Image.Origin360.Top; reloadSweep.fillClockwise = true;
-            reloadDim.raycastTarget = reloadSweep.raycastTarget = false;
-            weaponText.transform.SetAsLastSibling();
-            dashBtn = Corner("Dash", "bolt", 150, new Vector2(-340, 196), out var dashLbl);
-            dashLbl.text = "DASH";
-            dashCool = Holo.Img(Holo.Fill(dashBtn.body, "Cooldown", 6), Holo.FillSprite, new Color(0, 0.02f, 0.05f, 0.7f));
-            dashCool.type = Image.Type.Filled; dashCool.fillMethod = Image.FillMethod.Vertical; dashCool.fillOrigin = (int)Image.OriginVertical.Top;
-            skillBtn = Corner("Skill", "bolt", 132, new Vector2(-520, 120), out skillLbl);
-            flareBtn = Corner("Flare", "bolt", 112, new Vector2(-520, 300), out flareLbl); flareBtn.gameObject.SetActive(false);
-            skillCool = Holo.Img(Holo.Fill(skillBtn.body, "Cooldown", 6), Holo.FillSprite, new Color(0, 0.02f, 0.05f, 0.7f));
-            skillCool.type = Image.Type.Filled; skillCool.fillMethod = Image.FillMethod.Vertical; skillCool.fillOrigin = (int)Image.OriginVertical.Top; skillCool.raycastTarget = false;
-            skillNum = Holo.Label(Holo.Rect(skillBtn.body, "Seconds", new Vector2(0.5f, 0.5f), new Vector2(0, 12), new Vector2(120, 70)), "", 54, Holo.Ink); skillNum.fontStyle = FontStyle.Bold; skillNum.raycastTarget = false;
-            // seconds left, big in the middle of the button while it recharges
-            dashNum = Holo.Label(Holo.Rect(dashBtn.body, "Seconds", new Vector2(0.5f, 0.5f), new Vector2(0, 14), new Vector2(140, 80)), "", 64, Holo.Ink);
-            dashNum.fontStyle = FontStyle.Bold; Holo.GlowText(dashNum, Holo.Cyan, 0.5f); dashNum.raycastTarget = false;
-
-            left.baseImg = StickImg("MoveStick", 260, ringSprite, Holo.A(Holo.Cyan, 0.55f));
-            left.knob = StickImg("MoveKnob", 110, circle, Holo.A(Holo.Acid, 0.7f));
-            right.baseImg = StickImg("AimStick", 260, ringSprite, Holo.A(Holo.Cyan, 0.55f));
-            right.knob = StickImg("AimKnob", 110, circle, Holo.A(Holo.Cyan, 0.75f));
-            ShowStick(left, false); ShowStick(right, false);
-
-            var br = Holo.Rect(safe, "Banner");
-            br.anchorMin = br.anchorMax = new Vector2(0.5f, 0.72f); br.pivot = new Vector2(0.5f, 0.5f); br.sizeDelta = new Vector2(1400, 150);
-            banner = Holo.Label(br, "", 100, Holo.Ink);
-            banner.fontStyle = FontStyle.Bold;
-            Holo.GlowText(banner, Holo.Cyan, 0.8f);
-            var hr = Holo.Rect(safe, "Hint"); hr.anchorMin = hr.anchorMax = new Vector2(0.5f, 1f); hr.pivot = new Vector2(0.5f, 1f); hr.anchoredPosition = new Vector2(0, -120); hr.sizeDelta = new Vector2(1300, 60);
-            hint = Holo.Label(hr, "", 38, Holo.Acid); hint.fontStyle = FontStyle.Bold; hint.raycastTarget = false; hint.gameObject.AddComponent<Outline>().effectColor = new Color(0, 0.03f, 0.06f, 0.9f);   // onboarding / floor-script hints (top band, never the thumbs)
+            BuildRoundedHud();
 
             BuildPause();
             BuildGameOver();
@@ -162,18 +87,6 @@ namespace Maze
         {
             var rt = (RectTransform)b.transform;
             rt.anchorMin = rt.anchorMax = anchor; rt.pivot = pivot; rt.anchoredPosition = pos;
-        }
-
-        HoloButton Corner(string name, string icon, float size, Vector2 pos, out Text label)
-        {
-            var b = Holo.Button(safe, name, new Vector2(size, size), null, icon);
-            Place(b, new Vector2(1, 0), pos, new Vector2(0.5f, 0.5f));
-            b.manual = true; b.fill.raycastTarget = false;
-            b.icon.rectTransform.anchoredPosition = new Vector2(0, size * 0.1f);
-            label = Holo.Label(Holo.Rect(b.body, "Label", new Vector2(0.5f, 0), new Vector2(0, 16), new Vector2(size - 20, 36)), "", 28, Holo.Ink);
-            label.rectTransform.pivot = new Vector2(0.5f, 0);
-            label.fontStyle = FontStyle.Bold;
-            return b;
         }
 
         RectTransform StickImg(string name, float size, Sprite s, Color c)
@@ -202,35 +115,7 @@ namespace Maze
             return b;
         }
 
-        void BuildPause()
-        {
-            pauseRt = Dim(canvas.transform, "Pause", new Color(0, 0.01f, 0.03f, 0.86f), out pauseCg, out pauseScan);
-            var ps = Holo.SafeRoot(pauseRt);
-            pausePanel = Holo.Panel(ps, "Panel");
-            pausePanel.anchorMin = pausePanel.anchorMax = pausePanel.pivot = new Vector2(0.5f, 0.5f);
-            pausePanel.sizeDelta = new Vector2(860, 880);
-            Holo.Label(Holo.Rect(pausePanel, "Caption", new Vector2(0, 1), new Vector2(46, -30), new Vector2(500, 34)), "TACTICAL HOLD", 26, Holo.Acid, TextAnchor.UpperLeft);
-            var title = Holo.Label(Holo.Rect(pausePanel, "Title", new Vector2(0, 1), new Vector2(42, -58), new Vector2(520, 96)), "PAUSED", 86, Holo.Ink, TextAnchor.UpperLeft);
-            title.fontStyle = FontStyle.Bold; Holo.GlowText(title, Holo.Cyan, 0.45f);
-            pauseInfo = Holo.Label(Holo.Rect(pausePanel, "Info", new Vector2(0, 1), new Vector2(46, -160), new Vector2(760, 34)), "", 26, Holo.Muted, TextAnchor.UpperLeft);
-
-            soundBtn = Holo.Button(pausePanel, "Sound", new Vector2(Holo.MinTouch, Holo.MinTouch), null, "sound");
-            Place(soundBtn, new Vector2(1, 1), new Vector2(-170, -20), new Vector2(1, 1));
-            soundBtn.onClick = () => { Prefs.Sound = !Prefs.Sound; Sfx.Toggle(); };
-            hapticBtn = Holo.Button(pausePanel, "Haptics", new Vector2(Holo.MinTouch, Holo.MinTouch), null, "haptic");
-            Place(hapticBtn, new Vector2(1, 1), new Vector2(-22, -20), new Vector2(1, 1));
-            hapticBtn.onClick = () => { Prefs.HapticsOn = !Prefs.HapticsOn; Haptics.Medium(); };
-
-            Stack(pausePanel, "Resume", "RESUME", "play", new Vector2(770, 166), 214, true, 66).onClick = () => game.TogglePause();
-            Stack(pausePanel, "Restart", "RESTART RUN", "retry", new Vector2(770, Holo.MinTouch), 404, false, 48).onClick = () => game.Restart();
-            Stack(pausePanel, "Menu", "MAIN MENU", "home", new Vector2(770, Holo.MinTouch), 556, false, 48).onClick = () => game.ToMenu();
-            camBtn = Stack(pausePanel, "Camera", "CAMERA: FAR", "eye", new Vector2(770, Holo.MinTouch), 708, false, 48);
-            camBtn.onClick = () => { game.ToggleCamera(); Sfx.Toggle(); };
-            // FLOOR test toggle (Escape Test only): shares the camera row, each half width
-            floorBtn = Holo.Button(pausePanel, "Floor", new Vector2(377, Holo.MinTouch), "FLOOR: NEW", "quality", 36);
-            Place(floorBtn, new Vector2(0.5f, 1), new Vector2(197, -708), new Vector2(0.5f, 1));
-            floorBtn.onClick = () => { game.ToggleFloor(); Sfx.Toggle(); };
-        }
+        void BuildPause() => BuildBluePause();
 
         void BuildGameOver()
         {
@@ -260,12 +145,10 @@ namespace Maze
             var menu = Holo.Button(overPanel, "Menu", new Vector2(220, 150), "MENU", "home", 30);
             Place(menu, new Vector2(1, 0), new Vector2(-48, 54), new Vector2(1, 0));
             menu.onClick = () => game.ToMenu();
-            var sector = Holo.Button(overPanel, "Sector", new Vector2(240, 150), "SECTOR", "deploy", 26);
-            Place(sector, new Vector2(1, 0), new Vector2(-280, 54), new Vector2(1, 0));
-            sector.onClick = () => game.ToSector();
+
         }
 
-        bool Hit(RectTransform rt, Vector2 screen) => rt.gameObject.activeInHierarchy && RectTransformUtility.RectangleContainsScreenPoint(rt, screen, null);
+        bool Hit(RectTransform rt, Vector2 screen) => rt.gameObject.activeInHierarchy && RectTransformUtility.RectangleContainsScreenPoint(rt, screen, canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera);
         Vector2 ToCanvas(Vector2 screen) => screen / canvas.scaleFactor;
 
         // ---- input
@@ -280,15 +163,7 @@ namespace Maze
                 {
                     case TouchPhase.Began:
                         if (overlayOpen) break; // menus and panels take taps through their own buttons
-                        if (Hit((RectTransform)dashBtn.transform, t.position)) { f.dash = true; dashBtn.Flash(false); break; }
-                        if (SkillOn && Hit((RectTransform)skillBtn.transform, t.position)) { f.skill = true; skillBtn.Flash(false); break; }
-                        if (flareBtn.gameObject.activeSelf && Hit((RectTransform)flareBtn.transform, t.position)) { f.flare = true; flareBtn.Flash(false); break; }
-                        if (Hit((RectTransform)weaponBtn.transform, t.position))
-                        {   // the Heavy can't swap: the same button is his manual RELOAD
-                            if (Prefs.Vanguard && !Meta.WeaponOwned("THERMAL") && !Meta.WeaponOwned("RAIL")) { if (!weaponBtn.dimmed) { f.reload = true; weaponBtn.Flash(); } }   // the Heavy with only the minigun: RELOAD
-                            else { f.nextWeapon = true; weaponBtn.Flash(); }
-                            break;
-                        }
+                        if (TryHudAction(t.position, ref f)) break;
                         if (t.position.x >= Screen.width * 0.5f) break; // right half: buttons only
                         var s = left;
                         if (s.finger < 0) { s.finger = t.fingerId; s.origin = s.pos = t.position; ShowStick(s, true); }
@@ -325,7 +200,7 @@ namespace Maze
                 if (Input.GetMouseButton(0)) f.fire = true;
             }
             if (Input.GetKey(KeyCode.Space)) f.fire = true;
-            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) { f.dash = true; if (!overlayOpen) dashBtn.Flash(false); }
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) { f.dash = true; if (!overlayOpen) FlashRounded(dashBtn); }
             if (Input.GetKeyDown(KeyCode.E)) f.nextWeapon = true;
             if (Input.GetKeyDown(KeyCode.R)) f.reload = true;
             if (Input.GetKeyDown(KeyCode.F)) f.skill = true;
@@ -343,23 +218,28 @@ namespace Maze
         }
 
         // ---- display
-        public void ShowBanner(string text) { banner.text = text; bannerT = 1.6f; }
-        Text hint, testTag; float hintT;
+        public void ShowBanner(string text)
+        {
+            // Ability feedback lives on its icon; keep the central lane clear of ability names.
+            if (text == "FLASH FREEZE" || text == "BARRAGE" || text == "DECOY") { if (skillBtn != null) FlashRounded(skillBtn); return; }
+            banner.text = text; bannerT = 1.6f;
+        }
+        TMP_Text hint, testTag; float hintT;
         public bool HintBusy => hintT > 0.2f;
         public void ShowHint(string text) { if (hint == null) return; hint.text = text; hintT = 2.4f; }
 
         public void SetMode(Mode m)
         {
+            canvas.sortingOrder=m==Mode.Paused?6:0;
             mode = m;
             canvas.enabled = m != Mode.Hidden;
             pauseRt.gameObject.SetActive(m == Mode.Paused);
             overRt.gameObject.SetActive(m == Mode.Dead);
-            if (m == Mode.Paused) pauseK = 0;
+            if (m == Mode.Paused) { pauseK = 0; ResetBluePauseConfirmation(); }
             if (m == Mode.Dead) { overK = 0; overDelay = 1.1f; overCg.alpha = 0; }
             pauseBtn.gameObject.SetActive(m == Mode.Playing);
-            dashBtn.gameObject.SetActive(m == Mode.Playing || m == Mode.Paused);
+            dashBtn.gameObject.SetActive(m == Mode.Playing);
             skillBtn.gameObject.SetActive(SkillOn && (m == Mode.Playing || m == Mode.Paused));
-            weaponBtn.gameObject.SetActive(m == Mode.Playing || m == Mode.Paused);
             if (m != Mode.Playing) { ShowStick(left, false); ShowStick(right, false); left.finger = right.finger = -1; }
             if (m == Mode.Hidden) { bannerT = 0; hintT = 0; }
         }
@@ -407,45 +287,14 @@ namespace Maze
             var pl = g.player; var cfg = g.cfg;
             float pct = pl.hp / Mathf.Max(1, pl.maxHp);
             hpFill.fillAmount = Mathf.Lerp(hpFill.fillAmount, pct, 1 - Mathf.Exp(-dt * 12));
-            hpFill.color = pl.hurtT > 0 ? Color.Lerp(Holo.Cyan, Holo.Red, Mathf.Clamp01(pl.hurtT * 5)) // a red flash on each hit
-                         : pct < 0.3f ? Color.Lerp(Holo.Red, Color.white, 0.25f * (0.5f + 0.5f * Mathf.Sin(t * 10))) : Holo.Cyan;
-            hpRoot.localScale = Vector3.one * (1 + 0.06f * Mathf.Clamp01(pl.hurtT * 4));
+            hpFill.color = Color.Lerp(Color.white, new Color(1,.65f,.65f), Mathf.Clamp01(pl.hurtT * 4));
+            hpText.color = pct < .3f ? Color.Lerp(new Color(1,.7f,.65f),Color.white,.5f+.5f*Mathf.Sin(t*6)) : RoundedHudStyle.Ink;
+            hpRoot.localScale = Vector3.one; // fixed containment while taking damage
             wavePill.gameObject.SetActive(!g.run && mode == Mode.Playing);
-            hpText.text = Mathf.CeilToInt(pl.hp).ToString();
+            hpText.text = $"{Mathf.CeilToInt(pl.hp):N0} / {Mathf.CeilToInt(pl.maxHp):N0}";
             waveText.text = g.WaveLabel;
-            scoreText.text = g.score.ToString("N0");
             hurt.color = Holo.A(Holo.Red, mode == Mode.Playing && pct < 0.3f ? 0.35f + 0.2f * Mathf.Sin(t * 6) : Mathf.Clamp01(pl.hurtT * 2.4f));
-            var w = cfg.weapons[pl.weapon];
-            bool reloading = pl.ammo != null && pl.Reloading;
-            bool heavy = Prefs.Vanguard;
-            weaponText.text = reloading ? "RELOADING" : heavy ? "RELOAD" : w.name;
-            weaponText.fontSize = reloading ? 22 : heavy ? 26 : w.name.Length > 5 ? 24 : 28;
-            weaponText.color = reloading ? Color.Lerp(Holo.Ink, Holo.Acid, 0.5f + 0.5f * Mathf.Sin(t * 12)) : Holo.Ink;
-            reloadDim.enabled = reloadSweep.enabled = reloading;
-            if (reloading) reloadSweep.fillAmount = 1 - pl.reloadLeft[pl.weapon] / pl.reloadDur[pl.weapon];
-            weaponBtn.tint = reloading ? Holo.Cyan : Color.Lerp(w.color, Holo.Cyan, 0.35f);
-            if (weaponBtn.icon != null && heavy != weaponIconHeavy) { weaponBtn.icon.sprite = Holo.Icon(heavy ? "retry" : "rifle"); weaponIconHeavy = heavy; }
-            // the Heavy's RELOAD is disabled with a full magazine or while a reload runs
-            weaponBtn.dimmed = heavy && pl.ammo != null && (reloading || pl.ammo[pl.weapon] >= w.magSize);
-            if (skillBtn.gameObject.activeSelf != (SkillOn && mode == Mode.Playing)) skillBtn.gameObject.SetActive(SkillOn && mode == Mode.Playing);
-            bool dark = CellLight.I != null && CellLight.I.Dark && mode == Mode.Playing;
-            if (flareBtn.gameObject.activeSelf != dark) flareBtn.gameObject.SetActive(dark);
-            if (dark) { flareLbl.text = $"FLARE {CellLight.Flares}"; flareBtn.dimmed = CellLight.Flares <= 0; }
-            if (SkillOn)
-            {
-                bool sr = Abilities.Cd <= 0; skillLbl.text = Abilities.Name;
-                skillCool.fillAmount = sr ? 0 : Mathf.Clamp01(Abilities.Cd / Abilities.Cooldown);
-                skillNum.text = sr ? "" : Mathf.CeilToInt(Abilities.Cd).ToString();
-                skillBtn.tint = sr ? Holo.Acid : Holo.Cyan;
-            }
-            bool ready = pl.dashCd <= 0;
-            dashCool.fillAmount = ready ? 0 : Mathf.Clamp01(pl.dashCd / cfg.player.dashCooldown);
-            dashBtn.tint = ready ? Holo.Acid : Holo.Cyan;
-            dashBtn.glowBoost = ready ? 0.12f + 0.12f * Mathf.Sin(t * 5) : 0;
-            dashNum.text = ready ? "" : Mathf.CeilToInt(pl.dashCd).ToString();
-            if (dashBtn.icon != null) dashBtn.icon.color = Holo.A(Holo.Ink, ready ? 1 : 0.25f);
-            if (ready && !dashWasReady && mode == Mode.Playing) { dashBtn.Flash(false); Sfx.Click(); Haptics.Light(); } // it is back
-            dashWasReady = ready;
+            RefreshRoundedActions();
             bannerT -= dt;
             if (testTag != null && testTag.gameObject.activeSelf != Game.TestRun) testTag.gameObject.SetActive(Game.TestRun);
             if (hint != null) { hintT -= dt; var hc = hint.color; hc.a = Mathf.Clamp01(hintT * 2.5f); hint.color = hc; }
@@ -462,16 +311,7 @@ namespace Maze
                 pauseCg.alpha = e;
                 pausePanel.localScale = Vector3.one * (0.94f + 0.06f * e);
                 pauseScan.uvRect = new Rect(0, t * 0.5f, 1, ((RectTransform)canvas.transform).rect.height / 4f);
-                pauseInfo.text = $"WAVE {g.wave}  //  {g.kills} KILLS  //  SCORE {g.score:N0}";
-                soundBtn.dimmed = !Prefs.Sound; soundBtn.selected = Prefs.Sound;
-                hapticBtn.dimmed = !Prefs.HapticsOn; hapticBtn.selected = Prefs.HapticsOn;
-                if (camBtn.label != null) camBtn.label.text = Prefs.CamCloseOn ? "CAMERA: CLOSE" : "CAMERA: FAR";
-                bool esc = MazeMap.Escape;
-                floorBtn.gameObject.SetActive(esc);
-                var crt = (RectTransform)camBtn.transform;
-                crt.sizeDelta = new Vector2(esc ? 377 : 770, crt.sizeDelta.y); crt.anchoredPosition = new Vector2(esc ? -197 : 0, -708);
-                if (camBtn.label != null) camBtn.label.fontSize = esc ? 36 : 48;
-                if (floorBtn.label != null) floorBtn.label.text = Game.FloorNew ? "FLOOR: NEW" : "FLOOR: OLD";
+                RefreshBluePause();
             }
             if (mode == Mode.Dead)
             {

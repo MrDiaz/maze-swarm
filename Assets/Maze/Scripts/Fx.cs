@@ -24,9 +24,14 @@ namespace Maze
         struct PendingSplat { public Vector3 p; public float t, size; public Color c; public bool quiet; }
         readonly List<PendingSplat> pendingSplats = new();
         const float GooGravity = 1.7f;
-        static readonly Color GooPurple = new Color32(0x8a, 0x2b, 0xe2, 255), GooBright = new Color32(0xb0, 0x4c, 0xff, 255), GooAcid = new Color32(0x8f, 0xe0, 0x3a, 255);
+        static readonly Color GooPurple = new Color32(0x8a, 0x2b, 0xe2, 255), GooBright = new Color32(0xb0, 0x4c, 0xff, 255), OriginalGooAcid = new Color32(0x8f, 0xe0, 0x3a, 255);
+        static Color GooAcid => CohesiveZone.Active ? new Color(.44f, .59f, .26f) : OriginalGooAcid;
         // the Bloater's pus
-        static readonly Color Pus = new Color32(0x7c, 0xc8, 0x22, 255), PusBright = new Color32(0xb6, 0xf0, 0x4a, 255), PusDark = new Color32(0x3e, 0x74, 0x12, 255);
+        static readonly Color OriginalPus = new Color32(0x7c, 0xc8, 0x22, 255), OriginalPusBright = new Color32(0xb6, 0xf0, 0x4a, 255), OriginalPusDark = new Color32(0x3e, 0x74, 0x12, 255);
+        // Keep green fluid identity, with a quieter saturation/value on the Cargo deck.
+        static Color Pus => CohesiveZone.Active ? new Color(.40f, .48f, .23f) : OriginalPus;
+        static Color PusBright => CohesiveZone.Active ? new Color(.57f, .66f, .34f) : OriginalPusBright;
+        static Color PusDark => CohesiveZone.Active ? new Color(.23f, .31f, .13f) : OriginalPusDark;
         static Color PusCol() { var c = Random.value < 0.3f ? PusBright : Pus; return Color.Lerp(c, PusDark, Random.value * 0.35f); }
 
         public void Init(Weapon[] weapons)
@@ -339,6 +344,7 @@ namespace Maze
                 t = go.transform;
             }
             GunFx.I.SetupTracer(t.GetComponent<MeshFilter>(), t.GetComponent<MeshRenderer>(), t, weapon, weapons[weapon].name);
+            if (weapons[weapon].name == "RIFLE") ReadabilityFx.Tracer(t); else t.GetComponent<MeshRenderer>().SetPropertyBlock(null);   // (readability: rifle / minigun tracers)
             return t;
         }
         public void ReleaseTracer(Transform t) { t.gameObject.SetActive(false); tracerPool.Push(t); }
@@ -359,6 +365,8 @@ namespace Maze
 
         public void Boom(Vector3 p, float R)
         {
+            ReadabilityFx.Explosion(p, R);   // (readability: a floor ring and a fading scorch)
+            if (FirstCryoFx.Active) { FirstCryoFx.Get().Blast(p, R); return; }
             var b = new BoomFx { p = p, R = R };
             HazardAudio.Shot("sfx_explosion", p, 0.9f, 3);
             bool kit = VfxKit.I != null;   // the kit draws the fireball, flash, sparks and smoke; the ring, scorch, debris and light stay
@@ -400,6 +408,7 @@ namespace Maze
 
         public void ClearAll()
         {
+            FirstCryoFx.ClearIfBuilt();
             HazardAudio.ClearAll();
             debris.Clear(); sparks.Clear(); smoke.Clear(); goo.Clear(); splats.Clear();
             GunFx.I.ClearAll();

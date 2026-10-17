@@ -80,7 +80,7 @@ namespace Maze
     // the camera (snow / spores / ash / rain / embers)
     public static class Biome
     {
-        static ParticleSystem ps; static Particles current = Particles.None;
+        static ParticleSystem ps; static Particles current = Particles.None; static Material originalParticleMaterial;
 
         public static void Apply(SectorDef s, Light sun, Camera cam, IEnumerable<Material> walls, IEnumerable<Material> floors, float camDist = 40f)
         {
@@ -103,7 +103,7 @@ namespace Maze
                 ps = go.AddComponent<ParticleSystem>();
                 ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
                 var r = go.GetComponent<ParticleSystemRenderer>();
-                r.sharedMaterial = Mats.Particles(true); r.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+                r.sharedMaterial = originalParticleMaterial = Mats.Particles(true); r.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                 var sh = ps.shape; sh.shapeType = ParticleSystemShapeType.Box; sh.scale = new Vector3(60, 1, 44);
                 var m = ps.main; m.simulationSpace = ParticleSystemSimulationSpace.World; m.maxParticles = 600; m.playOnAwake = false;
             }
@@ -114,6 +114,7 @@ namespace Maze
             var main = ps.main; var em = ps.emission; var vel = ps.velocityOverLifetime; vel.enabled = true; var noise = ps.noise;
             noise.enabled = p == Particles.Spores || p == Particles.Snow || p == Particles.Ash; noise.strength = 0.6f; noise.frequency = 0.25f;
             var r2 = ps.GetComponent<ParticleSystemRenderer>();
+            r2.sharedMaterial = originalParticleMaterial; main.maxParticles = 600; var fade = ps.colorOverLifetime; fade.enabled = false;
             r2.renderMode = p == Particles.Rain ? ParticleSystemRenderMode.Stretch : ParticleSystemRenderMode.Billboard;
             r2.velocityScale = p == Particles.Rain ? 0.06f : 0; r2.lengthScale = p == Particles.Rain ? 2.5f : 1;
             switch (p)
@@ -124,6 +125,7 @@ namespace Maze
                 case Particles.Spores: main.startColor = Color.Lerp(accent, Color.white, 0.3f) * new Color(1, 1, 1, 0.75f); main.startSize = new ParticleSystem.MinMaxCurve(0.08f, 0.22f); main.startLifetime = 8; em.rateOverTime = 40; vel.y = new ParticleSystem.MinMaxCurve(0.2f, 0.6f); vel.x = new ParticleSystem.MinMaxCurve(-0.3f, 0.3f); vel.z = new ParticleSystem.MinMaxCurve(-0.3f, 0.3f); break;
                 case Particles.Embers: main.startColor = new Color(1f, 0.55f, 0.15f, 0.9f); main.startSize = new ParticleSystem.MinMaxCurve(0.05f, 0.14f); main.startLifetime = 4; em.rateOverTime = 50; vel.y = new ParticleSystem.MinMaxCurve(1f, 2.6f); vel.x = new ParticleSystem.MinMaxCurve(-0.6f, 0.6f); vel.z = new ParticleSystem.MinMaxCurve(-0.4f, 0.4f); break;
             }
+            if (p == Particles.Snow && FirstCryoFx.Active) FirstCryoFx.Snow(ps);
             ps.Play();
         }
 

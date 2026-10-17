@@ -1,0 +1,789 @@
+{
+  "utc": "2026-10-17T00:19:04.938232+00:00",
+  "distinctNewPropCount": 5,
+  "lodVariantCount": 10,
+  "source": "Exact five new parent-supplied concepts, all materialized and inspected before inference",
+  "backend": "Existing local Hunyuan3D2.1 AppleMPS / CPU rasterizer; Blender5.2.2 CPU finishing",
+  "oneInferenceAtATime": true,
+  "newDownloadsInstallsCredentialsPaidCloudInference": false,
+  "geometryPassCount": 5,
+  "texturePassCount": 5,
+  "totalGeometryWorkerSeconds": 1218.5800000000002,
+  "totalTextureWorkerSeconds": 1404.69,
+  "peakSampledOwnedRssGiB": 20.3885498046875,
+  "lod0TriangleTotal": 13500,
+  "lowerLodTriangleTotal": 6400,
+  "paletteSrgb8": {
+    "orange": [
+      255,
+      129,
+      35
+    ],
+    "cream": [
+      244,
+      232,
+      212
+    ],
+    "navy": [
+      46,
+      61,
+      92
+    ],
+    "cyan": [
+      56,
+      199,
+      231
+    ]
+  },
+  "material": "One opaque/culling PBR material/primitive per prop; shared128px sRGB palette, flat1px normal and1px linear ORM, matte roughness184/255 metallic0",
+  "reductionErrorLimits": "Primary LODs1.5%height. Battery/tank/crate lowerLODs1.5%; barrier/conveyor distantLODs explicitly2.5%, with actual measured errors recorded perLOD and budget probes preserved.",
+  "allFinalOfflineChecksPassed": true,
+  "allFrontQuarterSideBackAndLowerLodRendersInspected": true,
+  "rawSourcesAndAllOldOutputsPreserved": true,
+  "rawTextureJobInArchiveIncludesGeometryCheckpoint": true,
+  "noGameEditorOrXcodeChangesByAssetWorker": true,
+  "phoneValidation": "Owned by canonical integration task; not measured by asset worker",
+  "integrationOwner": "01a13737-9ca8-728a-9baa-fc7ac2c030ee",
+  "assetManifests": [
+    {
+      "asset": "orange-cargo-crate",
+      "manifest": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/deliverables-003/INTEGRATION.json",
+      "archiveRelativeManifest": "assets/orange-cargo-crate/deliverables-003/INTEGRATION.json",
+      "archiveRelativeGlbs": [
+        "assets/orange-cargo-crate/mobile-003/LOD0/orange-cargo-crate_LOD0.glb",
+        "assets/orange-cargo-crate/mobile-003/LOD1/orange-cargo-crate_LOD1.glb"
+      ],
+      "version": "003",
+      "heightMeters": 0.9,
+      "lods": [
+        {
+          "level": 0,
+          "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/mobile-003/LOD0/orange-cargo-crate_LOD0.glb",
+          "sha256": "c85f10b45a109506c4112d505829be893db882ffbc110c16a451ebf52a2da52d",
+          "bytes": 303076,
+          "triangles": 2000,
+          "dimensionsXYZMeters": [
+            1.0742038488388062,
+            0.9001451730728149,
+            1.0727316737174988
+          ],
+          "topology": {
+            "boundaryEdges": 0,
+            "nonmanifoldEdges": 0,
+            "degenerateFaces": 0,
+            "connectedComponents": 1,
+            "eulerCharacteristic": 2
+          },
+          "sourceSampledShapeMaxErrorMeters": 0.005210059694945812,
+          "sourceShapeP95ErrorMeters": 0.0018846777558792383,
+          "shapeErrorIsSampledNotExactHausdorff": true,
+          "floorMinY": 0.0,
+          "adjustedFloorVertices": 0,
+          "materialCount": 1,
+          "primitiveCount": 1,
+          "baseColorSize": 128,
+          "normalSize": 1,
+          "ormSize": 1,
+          "paletteFaceCounts": {
+            "orange": 998,
+            "cream": 310,
+            "navy": 692,
+            "cyan": 0
+          },
+          "textureGpuRgbaWithMipsEstimateBytes": 87392,
+          "pbr": {
+            "maps": [
+              "albedo.png",
+              "normal.png",
+              "roughness.png",
+              "metallic.png",
+              "metallic-roughness.png"
+            ],
+            "normal_embedded": true,
+            "tangents_exported": true,
+            "metallic_roughness_channels": {
+              "roughness": "G",
+              "metallic": "B"
+            }
+          }
+        },
+        {
+          "level": 1,
+          "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/mobile-003/LOD1/orange-cargo-crate_LOD1.glb",
+          "sha256": "f96d9af63d923058d4da792ed0d0d92afdd878f05945b8354463c0fd56afb1c3",
+          "bytes": 153084,
+          "triangles": 1000,
+          "dimensionsXYZMeters": [
+            1.073571503162384,
+            0.899524450302124,
+            1.0689029693603516
+          ],
+          "topology": {
+            "boundaryEdges": 0,
+            "nonmanifoldEdges": 0,
+            "degenerateFaces": 0,
+            "connectedComponents": 1,
+            "eulerCharacteristic": 2
+          },
+          "sourceSampledShapeMaxErrorMeters": 0.006526367738842964,
+          "sourceShapeP95ErrorMeters": 0.0033903258503414687,
+          "shapeErrorIsSampledNotExactHausdorff": true,
+          "floorMinY": 0.0,
+          "adjustedFloorVertices": 1,
+          "materialCount": 1,
+          "primitiveCount": 1,
+          "baseColorSize": 128,
+          "normalSize": 1,
+          "ormSize": 1,
+          "paletteFaceCounts": {
+            "orange": 486,
+            "cream": 166,
+            "navy": 348,
+            "cyan": 0
+          },
+          "textureGpuRgbaWithMipsEstimateBytes": 87392,
+          "pbr": {
+            "maps": [
+              "albedo.png",
+              "normal.png",
+              "roughness.png",
+              "metallic.png",
+              "metallic-roughness.png"
+            ],
+            "normal_embedded": true,
+            "tangents_exported": true,
+            "metallic_roughness_channels": {
+              "roughness": "G",
+              "metallic": "B"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "asset": "navy-cyan-battery-stack",
+      "manifest": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack/deliverables/INTEGRATION.json",
+      "archiveRelativeManifest": "assets/navy-cyan-battery-stack/deliverables/INTEGRATION.json",
+      "archiveRelativeGlbs": [
+        "assets/navy-cyan-battery-stack/mobile-002/LOD0/navy-cyan-battery-stack_LOD0.glb",
+        "assets/navy-cyan-battery-stack/mobile-002/LOD1/navy-cyan-battery-stack_LOD1.glb"
+      ],
+      "version": "002",
+      "heightMeters": 1.2,
+      "lods": [
+        {
+          "level": 0,
+          "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack/mobile-002/LOD0/navy-cyan-battery-stack_LOD0.glb",
+          "sha256": "a1d734b501f24f1eac76ae5cf9f300a296a1ce3773433cd65c0924f59b77036e",
+          "bytes": 378084,
+          "triangles": 2500,
+          "dimensionsXYZMeters": [
+            1.3450607061386108,
+            1.1985270977020264,
+            0.6857724189758301
+          ],
+          "topology": {
+            "boundaryEdges": 0,
+            "nonmanifoldEdges": 0,
+            "degenerateFaces": 0,
+            "connectedComponents": 1,
+            "eulerCharacteristic": 2
+          },
+          "sourceSampledShapeMaxErrorMeters": 0.00712316669523716,
+          "sourceShapeP95ErrorMeters": 0.002310217195190489,
+          "shapeErrorIsSampledNotExactHausdorff": true,
+          "floorMinY": 0.0,
+          "adjustedFloorVertices": 0,
+          "materialCount": 1,
+          "primitiveCount": 1,
+          "baseColorSize": 128,
+          "normalSize": 1,
+          "ormSize": 1,
+          "paletteFaceCounts": {
+            "orange": 309,
+            "cream": 1518,
+            "navy": 248,
+            "cyan": 425
+          },
+          "textureGpuRgbaWithMipsEstimateBytes": 87392,
+          "pbr": {
+            "maps": [
+              "albedo.png",
+              "normal.png",
+              "roughness.png",
+              "metallic.png",
+              "metallic-roughness.png"
+            ],
+            "normal_embedded": true,
+            "tangents_exported": true,
+            "metallic_roughness_channels": {
+              "roughness": "G",
+              "metallic": "B"
+            }
+          }
+        },
+        {
+          "level": 1,
+          "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack/mobile-002/LOD1/navy-cyan-battery-stack_LOD1.glb",
+          "sha256": "639e73bd27d6c6eb2a1da92994496f627f8b416f64b8547d70fbd1ae4c988c2b",
+          "bytes": 183092,
+          "triangles": 1200,
+          "dimensionsXYZMeters": [
+            1.3444432020187378,
+            1.1989631652832031,
+            0.6844436228275299
+          ],
+          "topology": {
+            "boundaryEdges": 0,
+            "nonmanifoldEdges": 0,
+            "degenerateFaces": 0,
+            "connectedComponents": 1,
+            "eulerCharacteristic": 2
+          },
+          "sourceSampledShapeMaxErrorMeters": 0.008750335313379765,
+          "sourceShapeP95ErrorMeters": 0.004200729727745056,
+          "shapeErrorIsSampledNotExactHausdorff": true,
+          "floorMinY": 0.0,
+          "adjustedFloorVertices": 1,
+          "materialCount": 1,
+          "primitiveCount": 1,
+          "baseColorSize": 128,
+          "normalSize": 1,
+          "ormSize": 1,
+          "paletteFaceCounts": {
+            "orange": 135,
+            "cream": 740,
+            "navy": 115,
+            "cyan": 210
+          },
+          "textureGpuRgbaWithMipsEstimateBytes": 87392,
+          "pbr": {
+            "maps": [
+              "albedo.png",
+              "normal.png",
+              "roughness.png",
+              "metallic.png",
+              "metallic-roughness.png"
+            ],
+            "normal_embedded": true,
+            "tangents_exported": true,
+            "metallic_roughness_channels": {
+              "roughness": "G",
+              "metallic": "B"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "asset": "rounded-utility-tank",
+      "manifest": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank/deliverables/INTEGRATION.json",
+      "archiveRelativeManifest": "assets/rounded-utility-tank/deliverables/INTEGRATION.json",
+      "archiveRelativeGlbs": [
+        "assets/rounded-utility-tank/mobile-002/LOD0/rounded-utility-tank_LOD0.glb",
+        "assets/rounded-utility-tank/mobile-002/LOD1/rounded-utility-tank_LOD1.glb"
+      ],
+      "version": "002",
+      "heightMeters": 1.2,
+      "lods": [
+        {
+          "level": 0,
+          "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank/mobile-002/LOD0/rounded-utility-tank_LOD0.glb",
+          "sha256": "e8b40e3390288c5bbb006c26e8fd7aaa14c897667b2e29c326fe88c0c0f283b8",
+          "bytes": 378080,
+          "triangles": 2500,
+          "dimensionsXYZMeters": [
+            1.4320019483566284,
+            1.198996901512146,
+            1.0426768064498901
+          ],
+          "topology": {
+            "boundaryEdges": 0,
+            "nonmanifoldEdges": 0,
+            "degenerateFaces": 0,
+            "connectedComponents": 1,
+            "eulerCharacteristic": 2
+          },
+          "sourceSampledShapeMaxErrorMeters": 0.0035664818715304136,
+          "sourceShapeP95ErrorMeters": 0.0017446095938794316,
+          "shapeErrorIsSampledNotExactHausdorff": true,
+          "floorMinY": 0.0,
+          "adjustedFloorVertices": 0,
+          "materialCount": 1,
+          "primitiveCount": 1,
+          "baseColorSize": 128,
+          "normalSize": 1,
+          "ormSize": 1,
+          "paletteFaceCounts": {
+            "orange": 1395,
+            "cream": 581,
+            "navy": 424,
+            "cyan": 100
+          },
+          "textureGpuRgbaWithMipsEstimateBytes": 87392,
+          "pbr": {
+            "maps": [
+              "albedo.png",
+              "normal.png",
+              "roughness.png",
+              "metallic.png",
+              "metallic-roughness.png"
+            ],
+            "normal_embedded": true,
+            "tangents_exported": true,
+            "metallic_roughness_channels": {
+              "roughness": "G",
+              "metallic": "B"
+            }
+          }
+        },
+        {
+          "level": 1,
+          "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank/mobile-002/LOD1/rounded-utility-tank_LOD1.glb",
+          "sha256": "fcea7d6da42af42f4e97f99f86948f03d098f988d23e6ff08694c205e9f5d93c",
+          "bytes": 183092,
+          "triangles": 1200,
+          "dimensionsXYZMeters": [
+            1.4311279654502869,
+            1.1988966464996338,
+            1.0454476475715637
+          ],
+          "topology": {
+            "boundaryEdges": 0,
+            "nonmanifoldEdges": 0,
+            "degenerateFaces": 0,
+            "connectedComponents": 1,
+            "eulerCharacteristic": 2
+          },
+          "sourceSampledShapeMaxErrorMeters": 0.005598940420895815,
+          "sourceShapeP95ErrorMeters": 0.00341455879388377,
+          "shapeErrorIsSampledNotExactHausdorff": true,
+          "floorMinY": 0.0,
+          "adjustedFloorVertices": 1,
+          "materialCount": 1,
+          "primitiveCount": 1,
+          "baseColorSize": 128,
+          "normalSize": 1,
+          "ormSize": 1,
+          "paletteFaceCounts": {
+            "orange": 657,
+            "cream": 280,
+            "navy": 206,
+            "cyan": 57
+          },
+          "textureGpuRgbaWithMipsEstimateBytes": 87392,
+          "pbr": {
+            "maps": [
+              "albedo.png",
+              "normal.png",
+              "roughness.png",
+              "metallic.png",
+              "metallic-roughness.png"
+            ],
+            "normal_embedded": true,
+            "tangents_exported": true,
+            "metallic_roughness_channels": {
+              "roughness": "G",
+              "metallic": "B"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "asset": "cream-orange-cover-barrier",
+      "manifest": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/deliverables/INTEGRATION.json",
+      "archiveRelativeManifest": "assets/cream-orange-cover-barrier/deliverables/INTEGRATION.json",
+      "archiveRelativeGlbs": [
+        "assets/cream-orange-cover-barrier/mobile-002/LOD0/cream-orange-cover-barrier_LOD0.glb",
+        "assets/cream-orange-cover-barrier/mobile-002/LOD1/cream-orange-cover-barrier_LOD1.glb"
+      ],
+      "version": "002",
+      "heightMeters": 0.75,
+      "lods": [
+        {
+          "level": 0,
+          "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/mobile-002/LOD0/cream-orange-cover-barrier_LOD0.glb",
+          "sha256": "a915149875de7a9bd64280b0b2701d536ae802f6398105d177a619e70f460f52",
+          "bytes": 528096,
+          "triangles": 3500,
+          "dimensionsXYZMeters": [
+            1.516312599182129,
+            0.7493212819099426,
+            0.7150407433509827
+          ],
+          "topology": {
+            "boundaryEdges": 0,
+            "nonmanifoldEdges": 0,
+            "degenerateFaces": 0,
+            "connectedComponents": 1,
+            "eulerCharacteristic": 2
+          },
+          "sourceSampledShapeMaxErrorMeters": 0.004544379189610481,
+          "sourceShapeP95ErrorMeters": 0.0012503451900556682,
+          "shapeErrorIsSampledNotExactHausdorff": true,
+          "shapeErrorLimitHeightFraction": 0.015,
+          "floorMinY": 0.0,
+          "adjustedFloorVertices": 0,
+          "materialCount": 1,
+          "primitiveCount": 1,
+          "baseColorSize": 128,
+          "normalSize": 1,
+          "ormSize": 1,
+          "paletteFaceCounts": {
+            "orange": 1309,
+            "cream": 1278,
+            "navy": 913,
+            "cyan": 0
+          },
+          "textureGpuRgbaWithMipsEstimateBytes": 87392,
+          "pbr": {
+            "maps": [
+              "albedo.png",
+              "normal.png",
+              "roughness.png",
+              "metallic.png",
+              "metallic-roughness.png"
+            ],
+            "normal_embedded": true,
+            "tangents_exported": true,
+            "metallic_roughness_channels": {
+              "roughness": "G",
+              "metallic": "B"
+            }
+          }
+        },
+        {
+          "level": 1,
+          "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/mobile-002/LOD1/cream-orange-cover-barrier_LOD1.glb",
+          "sha256": "b15d958f0f05e1b80babd1d6f6a772d3dfb1ef08f394bdc2f24e61c570aece7d",
+          "bytes": 228096,
+          "triangles": 1500,
+          "dimensionsXYZMeters": [
+            1.5184441208839417,
+            0.7483009696006775,
+            0.7151967883110046
+          ],
+          "topology": {
+            "boundaryEdges": 0,
+            "nonmanifoldEdges": 0,
+            "degenerateFaces": 0,
+            "connectedComponents": 1,
+            "eulerCharacteristic": 2
+          },
+          "sourceSampledShapeMaxErrorMeters": 0.016527298837900162,
+          "sourceShapeP95ErrorMeters": 0.0023575246683321892,
+          "shapeErrorIsSampledNotExactHausdorff": true,
+          "shapeErrorLimitHeightFraction": 0.025,
+          "floorMinY": 0.0,
+          "adjustedFloorVertices": 1,
+          "materialCount": 1,
+          "primitiveCount": 1,
+          "baseColorSize": 128,
+          "normalSize": 1,
+          "ormSize": 1,
+          "paletteFaceCounts": {
+            "orange": 532,
+            "cream": 553,
+            "navy": 415,
+            "cyan": 0
+          },
+          "textureGpuRgbaWithMipsEstimateBytes": 87392,
+          "pbr": {
+            "maps": [
+              "albedo.png",
+              "normal.png",
+              "roughness.png",
+              "metallic.png",
+              "metallic-roughness.png"
+            ],
+            "normal_embedded": true,
+            "tangents_exported": true,
+            "metallic_roughness_channels": {
+              "roughness": "G",
+              "metallic": "B"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "asset": "compact-loading-conveyor",
+      "manifest": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/deliverables/INTEGRATION.json",
+      "archiveRelativeManifest": "assets/compact-loading-conveyor/deliverables/INTEGRATION.json",
+      "archiveRelativeGlbs": [
+        "assets/compact-loading-conveyor/mobile-002/LOD0/compact-loading-conveyor_LOD0.glb",
+        "assets/compact-loading-conveyor/mobile-002/LOD1/compact-loading-conveyor_LOD1.glb"
+      ],
+      "version": "002",
+      "heightMeters": 0.85,
+      "lods": [
+        {
+          "level": 0,
+          "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/mobile-002/LOD0/compact-loading-conveyor_LOD0.glb",
+          "sha256": "cd14cef2678f3f1b7afb418f97e6907aaf7d248bee4fff789d506a18088ad8a4",
+          "bytes": 453040,
+          "triangles": 3000,
+          "dimensionsXYZMeters": [
+            1.5782517194747925,
+            0.8491199612617493,
+            1.5578880310058594
+          ],
+          "topology": {
+            "boundaryEdges": 0,
+            "nonmanifoldEdges": 0,
+            "degenerateFaces": 0,
+            "connectedComponents": 1,
+            "eulerCharacteristic": 2
+          },
+          "sourceSampledShapeMaxErrorMeters": 0.01110815443098545,
+          "sourceShapeP95ErrorMeters": 0.0020564637845382093,
+          "shapeErrorIsSampledNotExactHausdorff": true,
+          "shapeErrorLimitHeightFraction": 0.015,
+          "floorMinY": 0.0,
+          "adjustedFloorVertices": 0,
+          "materialCount": 1,
+          "primitiveCount": 1,
+          "baseColorSize": 128,
+          "normalSize": 1,
+          "ormSize": 1,
+          "paletteFaceCounts": {
+            "orange": 575,
+            "cream": 852,
+            "navy": 1573,
+            "cyan": 0
+          },
+          "textureGpuRgbaWithMipsEstimateBytes": 87392,
+          "pbr": {
+            "maps": [
+              "albedo.png",
+              "normal.png",
+              "roughness.png",
+              "metallic.png",
+              "metallic-roughness.png"
+            ],
+            "normal_embedded": true,
+            "tangents_exported": true,
+            "metallic_roughness_channels": {
+              "roughness": "G",
+              "metallic": "B"
+            }
+          }
+        },
+        {
+          "level": 1,
+          "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/mobile-002/LOD1/compact-loading-conveyor_LOD1.glb",
+          "sha256": "f1e2c93f6acd2cac87d62cb18e2f30b33c2c1febf95efac471f3d19115f0ab3e",
+          "bytes": 228096,
+          "triangles": 1500,
+          "dimensionsXYZMeters": [
+            1.577334225177765,
+            0.8504093289375305,
+            1.5584561228752136
+          ],
+          "topology": {
+            "boundaryEdges": 0,
+            "nonmanifoldEdges": 0,
+            "degenerateFaces": 0,
+            "connectedComponents": 1,
+            "eulerCharacteristic": 2
+          },
+          "sourceSampledShapeMaxErrorMeters": 0.01899717003107071,
+          "sourceShapeP95ErrorMeters": 0.003331458591856062,
+          "shapeErrorIsSampledNotExactHausdorff": true,
+          "shapeErrorLimitHeightFraction": 0.025,
+          "floorMinY": 0.0,
+          "adjustedFloorVertices": 1,
+          "materialCount": 1,
+          "primitiveCount": 1,
+          "baseColorSize": 128,
+          "normalSize": 1,
+          "ormSize": 1,
+          "paletteFaceCounts": {
+            "orange": 261,
+            "cream": 447,
+            "navy": 792,
+            "cyan": 0
+          },
+          "textureGpuRgbaWithMipsEstimateBytes": 87392,
+          "pbr": {
+            "maps": [
+              "albedo.png",
+              "normal.png",
+              "roughness.png",
+              "metallic.png",
+              "metallic-roughness.png"
+            ],
+            "normal_embedded": true,
+            "tangents_exported": true,
+            "metallic_roughness_channels": {
+              "roughness": "G",
+              "metallic": "B"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nativeLibraryFilesAlreadySaved": [
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/mobile-002/LOD0/cream-orange-cover-barrier_LOD0.glb",
+      "libraryFileId": "libfile_8ed3bb556a408191a8ac8452e870c740",
+      "libraryFileName": "cream-orange-cover-barrier_LOD0.glb"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/mobile-002/LOD1/cream-orange-cover-barrier_LOD1.glb",
+      "libraryFileId": "libfile_2b46584775bc8191b58ea407ae67d298",
+      "libraryFileName": "cream-orange-cover-barrier_LOD1.glb"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/deliverables/INTEGRATION.json",
+      "libraryFileId": "libfile_fdc32176086c81919cb6bd595f978e03",
+      "libraryFileName": "INTEGRATION(6).json"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank/mobile-002/LOD0/rounded-utility-tank_LOD0.glb",
+      "libraryFileId": "libfile_b92e1bd6f7548191a864e48668a95a19",
+      "libraryFileName": "rounded-utility-tank_LOD0.glb"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank/mobile-002/LOD1/rounded-utility-tank_LOD1.glb",
+      "libraryFileId": "libfile_d6eac01b94f48191b8154c7e6ff308d4",
+      "libraryFileName": "rounded-utility-tank_LOD1.glb"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank/deliverables/INTEGRATION.json",
+      "libraryFileId": "libfile_043ff5d091448191b7635de9862bb9dc",
+      "libraryFileName": "INTEGRATION(5).json"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank/deliverables/rounded-utility-tank-comparison.png",
+      "libraryFileId": "libfile_4a9a3974410481918e9ea426394849d3",
+      "libraryFileName": "rounded-utility-tank-comparison.png"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank/deliverables/rounded-utility-tank-multiview.png",
+      "libraryFileId": "libfile_87f23da3a0d88191bf5611cfe2d40e50",
+      "libraryFileName": "rounded-utility-tank-multiview.png"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack/mobile-002/LOD0/navy-cyan-battery-stack_LOD0.glb",
+      "libraryFileId": "libfile_b5d1fc17b5548191a63ae271733eb611",
+      "libraryFileName": "navy-cyan-battery-stack_LOD0.glb"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack/mobile-002/LOD1/navy-cyan-battery-stack_LOD1.glb",
+      "libraryFileId": "libfile_7e7b0beef0748191ade06aa56b76e282",
+      "libraryFileName": "navy-cyan-battery-stack_LOD1.glb"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack/deliverables/INTEGRATION.json",
+      "libraryFileId": "libfile_3043d53484fc81919903f3ab6bb2eaca",
+      "libraryFileName": "INTEGRATION(3).json"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/mobile-003/LOD0/orange-cargo-crate_LOD0.glb",
+      "libraryFileId": "libfile_3c8c6808d9cc819196392a925a397103",
+      "libraryFileName": "orange-cargo-crate_LOD0(1).glb"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/mobile-003/LOD1/orange-cargo-crate_LOD1.glb",
+      "libraryFileId": "libfile_bc3ac8c3eb9481918fb3f2cbe2475b45",
+      "libraryFileName": "orange-cargo-crate_LOD1(1).glb"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/deliverables-003/INTEGRATION.json",
+      "libraryFileId": "libfile_ebcd4f7fc5708191ab94412f6ee01389",
+      "libraryFileName": "INTEGRATION(4).json"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/mobile-002/LOD0/orange-cargo-crate_LOD0.glb",
+      "libraryFileId": "libfile_37291768a26c8191b80e1ae239788331",
+      "libraryFileName": "orange-cargo-crate_LOD0.glb"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/mobile-002/LOD1/orange-cargo-crate_LOD1.glb",
+      "libraryFileId": "libfile_028595aace248191a09ca51169a78dab",
+      "libraryFileName": "orange-cargo-crate_LOD1.glb"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/deliverables/INTEGRATION.json",
+      "libraryFileId": "libfile_54d594baa7f48191b35ac9652d023175",
+      "libraryFileName": "INTEGRATION(1).json"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/deliverables/compact-loading-conveyor-comparison.png",
+      "libraryFileId": "libfile_f77495994b90819184e48a4beef3b9ed",
+      "libraryFileName": "compact-loading-conveyor-comparison.png"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/deliverables/compact-loading-conveyor-multiview.png",
+      "libraryFileId": "libfile_fdcda9fd728c81918d2aa2dcf84fd13c",
+      "libraryFileName": "compact-loading-conveyor-multiview.png"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/mobile-002/LOD0/compact-loading-conveyor_LOD0.glb",
+      "libraryFileId": "libfile_e1b531d5e1188191be5505c64f45fbfb",
+      "libraryFileName": "compact-loading-conveyor_LOD0.glb"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/mobile-002/LOD1/compact-loading-conveyor_LOD1.glb",
+      "libraryFileId": "libfile_4e08ff59d510819193a41dbd1e4baa6f",
+      "libraryFileName": "compact-loading-conveyor_LOD1.glb"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/deliverables/INTEGRATION.json",
+      "libraryFileId": "libfile_43e933ed55548191ab1942db5f96fa11",
+      "libraryFileName": "INTEGRATION(7).json"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/deliverables/orange-cargo-crate-comparison.png",
+      "libraryFileId": "libfile_6e9596319a2881919f8e0152f000133b",
+      "libraryFileName": "orange-cargo-crate-comparison.png"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/deliverables/orange-cargo-crate-multiview.png",
+      "libraryFileId": "libfile_ec78b2b0e84081919d019838fe3c774f",
+      "libraryFileName": "orange-cargo-crate-multiview.png"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack/deliverables/navy-cyan-battery-stack-comparison.png",
+      "libraryFileId": "libfile_708cc0779c44819194d603d487cc427a",
+      "libraryFileName": "navy-cyan-battery-stack-comparison.png"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack/deliverables/navy-cyan-battery-stack-multiview.png",
+      "libraryFileId": "libfile_1792552970a08191877260c88ce6b739",
+      "libraryFileName": "navy-cyan-battery-stack-multiview.png"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/deliverables-003/orange-cargo-crate-comparison.png",
+      "libraryFileId": "libfile_4d55854531348191a9ae3d2d09d08d79",
+      "libraryFileName": "orange-cargo-crate-comparison(1).png"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/deliverables-003/orange-cargo-crate-multiview.png",
+      "libraryFileId": "libfile_3700f9442e408191bafffa6dd1405325",
+      "libraryFileName": "orange-cargo-crate-multiview(1).png"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/deliverables/cream-orange-cover-barrier-comparison.png",
+      "libraryFileId": "libfile_9d8aad901bd0819199a26ad17bd2bdf0",
+      "libraryFileName": "cream-orange-cover-barrier-comparison.png"
+    },
+    {
+      "localPath": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/deliverables/cream-orange-cover-barrier-multiview.png",
+      "libraryFileId": "libfile_77016cf4e4d48191a69ecfa5b2b4c95a",
+      "libraryFileName": "cream-orange-cover-barrier-multiview.png"
+    }
+  ],
+  "spitterManifest": "/Volumes/T7 Shield/Assets/Enemies/Lavender Spitter 2026-10-16/metadata/final-delivery.json",
+  "heavyAssessment": "metadata/heavy-rig-assessment.json",
+  "limitations": [
+    "Inferred rear details from single images",
+    "Face-aligned broad color boundaries can show small steps close up",
+    "Conveyor and machines are static",
+    "No new hero mesh or animation invention; existing chibi rig recommended for reuse",
+    "No formal self-intersection proof or device performance measurement"
+  ]
+}

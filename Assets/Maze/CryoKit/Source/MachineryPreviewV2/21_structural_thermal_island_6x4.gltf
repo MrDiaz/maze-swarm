@@ -1,0 +1,246 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v5.2.40",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_materials_clearcoat",
+    "KHR_materials_emissive_strength"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        1
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "extras": {
+        "assetId": "21",
+        "triangleCount": 17202,
+        "pivot": "Ground centre",
+        "footprint": [
+          6,
+          4
+        ]
+      },
+      "mesh": 0,
+      "name": "Cryo_Thermal_Island_LOD0",
+      "translation": [
+        0,
+        2.822499990463257,
+        0
+      ]
+    },
+    {
+      "children": [
+        0
+      ],
+      "extras": {
+        "assetId": "21",
+        "footprintMetres": [
+          6,
+          4
+        ],
+        "proofOnly": true,
+        "sourceReuse": "Approved Cryo coating PNGs; all shell/detail geometry new"
+      },
+      "name": "Cryo_Thermal_Island_6x4"
+    }
+  ],
+  "materials": [
+    {
+      "emissiveFactor": [
+        1,
+        1,
+        1
+      ],
+      "emissiveTexture": {
+        "index": 0
+      },
+      "extensions": {
+        "KHR_materials_clearcoat": {
+          "clearcoatFactor": 0.15000000596046448,
+          "clearcoatRoughnessFactor": 0.18000000715255737
+        },
+        "KHR_materials_emissive_strength": {
+          "emissiveStrength": 3
+        }
+      },
+      "name": "Cryo_Island_Mobile_PBR",
+      "normalTexture": {
+        "index": 1
+      },
+      "occlusionTexture": {
+        "index": 2
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 3
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Cube.005",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3,
+            "TANGENT": 4
+          },
+          "indices": 5,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    }
+  ],
+  "images": [
+    {
+      "mimeType": "image/png",
+      "name": "CryoIsland_Emission",
+      "uri": "textures/CryoIsland_Emission.png"
+    },
+    {
+      "mimeType": "image/png",
+      "name": "CryoIsland_Normal",
+      "uri": "textures/CryoIsland_Normal.png"
+    },
+    {
+      "mimeType": "image/png",
+      "name": "CryoIsland_ORM",
+      "uri": "textures/CryoIsland_ORM.png"
+    },
+    {
+      "mimeType": "image/png",
+      "name": "CryoIsland_BaseColor",
+      "uri": "textures/CryoIsland_BaseColor.png"
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 18917,
+      "max": [
+        3,
+        0.9854999780654907,
+        2
+      ],
+      "min": [
+        -3,
+        -2.822499990463257,
+        -2
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 18917,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 18917,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 18917,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 4,
+      "componentType": 5126,
+      "count": 18917,
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 5,
+      "componentType": 5123,
+      "count": 51606,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 227004,
+      "byteOffset": 0,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 227004,
+      "byteOffset": 227004,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 151336,
+      "byteOffset": 454008,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 151336,
+      "byteOffset": 605344,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 302672,
+      "byteOffset": 756680,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 103212,
+      "byteOffset": 1059352,
+      "target": 34963
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "21_structural_thermal_island_6x4.bin",
+      "byteLength": 1162564
+    }
+  ]
+}

@@ -1,0 +1,306 @@
+{
+  "status": "Production packaging selected by canonical integration owner: appearance002 clean palette + Unity smoothness.15; final resource/regression pending owner.",
+  "generatedUtc": "2026-10-17T04:57:19.830752+00:00",
+  "selectedGlb": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/production-001/hero_engineer_chibi.glb",
+  "sha256": "23715596db9e3530b440c21267af23829b538cf16d3ab82eaebebe522dc76034",
+  "bytes": 3126852,
+  "baseline009Sha256": "67efe1187f47d8706d4910cdfc57f95ded0b56748731ceff323ca01744fc2c93",
+  "triangles": 24190,
+  "joints": 26,
+  "maximumWeightsPerVertex": 3,
+  "heightMeters": 1,
+  "runtimeHeightMeters": 1.65,
+  "axes": "+Y up/+Z forward, floor centered, no authored horizontal Root motion",
+  "clips": {
+    "Walking": {
+      "periodSeconds": 0.8,
+      "nativeRuntimeSpeed": 0.65,
+      "nativeAuthorSpeed": 0.393939393939394,
+      "runtimeDistancePerCycle": 0.52,
+      "stepsPerSecondAtNative": 2.5,
+      "stanceSecondsPerFoot": 0.44000000000000006,
+      "stancePhaseFraction": 0.55
+    },
+    "Jogging": {
+      "periodSeconds": 0.62,
+      "nativeRuntimeSpeed": 2.5,
+      "nativeAuthorSpeed": 1.5151515151515151,
+      "runtimeDistancePerCycle": 1.55,
+      "stepsPerSecondAtNative": 3.2258064516129035,
+      "stanceSecondsPerFoot": 0.124,
+      "stancePhaseFraction": 0.2
+    },
+    "Running": {
+      "periodSeconds": 0.5,
+      "nativeRuntimeSpeed": 6.48,
+      "nativeAuthorSpeed": 3.9272727272727277,
+      "runtimeDistancePerCycle": 3.24,
+      "stepsPerSecondAtNative": 4.0,
+      "stanceSecondsPerFoot": 0.05,
+      "stancePhaseFraction": 0.1
+    }
+  },
+  "unchangedClips": {
+    "Idle": 2,
+    "Attack": 0.4,
+    "Death": 1.5
+  },
+  "Dash": {
+    "duration": 0.16,
+    "nonLocomotionGlide": true
+  },
+  "meshUvNormalsIndicesImagesPreservedByteExact": false,
+  "toeBindingDerivative": {
+    "old": {
+      "Right": [
+        -0.153,
+        0.03,
+        0.095
+      ],
+      "Left": [
+        0.153,
+        0.03,
+        0.095
+      ]
+    },
+    "new": {
+      "Right": [
+        -0.151052325963974,
+        0.02506350353360176,
+        0.07248935550451277
+      ],
+      "Left": [
+        0.14564178884029388,
+        0.02500000037252903,
+        0.01757628396153449
+      ]
+    },
+    "nonToeJointsAndBindMatricesUnchanged": true
+  },
+  "restSurfaceMaxErrorAuthor": 2.4086661828697265e-08,
+  "unchangedClipSurfaceErrors": {
+    "Idle": 8.56218983801193e-09,
+    "Attack": 8.56218983801193e-09,
+    "Death": 1.2717075245721105e-08
+  },
+  "independentBlenderImportMaxErrorAuthor": 6.182497194779874e-05,
+  "betweenKeyAudit": {
+    "rate": 480,
+    "offsetHalfSample": true,
+    "clips": {
+      "Idle": {
+        "durationSeconds": 2,
+        "minimumSkinYAuthor": -9.249362868638324e-09,
+        "maximumGroundPenetrationRuntimeMeters": 1.5261448733253236e-08,
+        "maximumPalmErrorRuntimeMeters": 0.0,
+        "rootTranslationMax": 0,
+        "loopPoseMaxError": 1.2412670766236366e-16
+      },
+      "Walking": {
+        "durationSeconds": 0.8,
+        "minimumSkinYAuthor": -2.116566852783386e-06,
+        "maximumGroundPenetrationRuntimeMeters": 3.4923353070925865e-06,
+        "maximumPalmErrorRuntimeMeters": 8.729575413277736e-08,
+        "rootTranslationMax": 0,
+        "loopPoseMaxError": 2.607722418939317e-08
+      },
+      "Jogging": {
+        "durationSeconds": 0.62,
+        "minimumSkinYAuthor": -6.085097243704483e-05,
+        "maximumGroundPenetrationRuntimeMeters": 0.00010040410452112397,
+        "maximumPalmErrorRuntimeMeters": 1.996806842671209e-06,
+        "rootTranslationMax": 0,
+        "loopPoseMaxError": 2.514569066029992e-08
+      },
+      "Running": {
+        "durationSeconds": 0.5,
+        "minimumSkinYAuthor": -0.0006155647064342202,
+        "maximumGroundPenetrationRuntimeMeters": 0.0010156817656164633,
+        "maximumPalmErrorRuntimeMeters": 4.755880195796149e-06,
+        "rootTranslationMax": 0,
+        "loopPoseMaxError": 1.7901120993147208e-16
+      },
+      "Attack": {
+        "durationSeconds": 0.4,
+        "minimumSkinYAuthor": -9.249362868638324e-09,
+        "maximumGroundPenetrationRuntimeMeters": 1.5261448733253236e-08,
+        "maximumPalmErrorRuntimeMeters": 0.0,
+        "rootTranslationMax": 0,
+        "loopPoseMaxError": 0.0003697743520907252
+      },
+      "Death": {
+        "durationSeconds": 1.5,
+        "minimumSkinYAuthor": -9.249362868638324e-09,
+        "maximumGroundPenetrationRuntimeMeters": 1.5261448733253236e-08,
+        "maximumPalmErrorRuntimeMeters": 0.0,
+        "rootTranslationMax": 0,
+        "loopPoseMaxError": 1.1385368851118145
+      },
+      "Dash": {
+        "durationSeconds": 0.16,
+        "minimumSkinYAuthor": 0.025000010986814307,
+        "maximumGroundPenetrationRuntimeMeters": 0,
+        "maximumPalmErrorRuntimeMeters": 1.2717637684832832e-08,
+        "rootTranslationMax": 0,
+        "loopPoseMaxError": 3.576224061345498e-18
+      }
+    }
+  },
+  "bounds": {
+    "center": [
+      0,
+      0.5,
+      0.14
+    ],
+    "extents": [
+      0.46,
+      0.57,
+      0.67
+    ]
+  },
+  "contactManifest": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/gait-011/CONTACT-MANIFEST.json",
+  "sourceAuthoringContacts": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/gait-011/CONTACTS.json",
+  "weapon": {
+    "sameSharedMinigun": true,
+    "runtimeLengthMeters": 0.82,
+    "rightPalmUnityRootAuthor": [
+      0.06,
+      0.35,
+      0.13
+    ],
+    "leftPalmUnityRootAuthor": [
+      -0.06,
+      0.35,
+      0.15
+    ],
+    "bobFormula": "Root-relative palmY=.35+.35*(Hips localY-.29); palmX/Z stay fixed while Hips sways. Apply same damped Y to gun; do not parent gun directly to moving Hips or WeaponGrip helper.",
+    "nativeGunRearGrip": [
+      -0.04,
+      -0.14,
+      0
+    ],
+    "unityGunRearGrip": [
+      0.04,
+      -0.14,
+      0
+    ],
+    "unityGunSupport": [
+      -0.003038414,
+      -0.14,
+      -0.258230484
+    ],
+    "unityGunMuzzle": [
+      -0.919999958,
+      0,
+      0
+    ],
+    "helperNames": [
+      "RightPalm",
+      "LeftPalm"
+    ],
+    "handChainsUnchanged": true
+  },
+  "playback": {
+    "direction": "positive phase only; moving body follows post-collision actual displacement.",
+    "normalPhoneAim": "Spine/weapon bounded\u00b130deg relative travel; handIK preserves exact weapon sockets.",
+    "manual180": "Unsupported sustained spine twist. Desktop diagnostic may transition whole body; no backward phase/gait claim.",
+    "rateRecommendations": "Use actual distance and adjacent native-speed clips. At normal6.48 Run is1x (4steps/s); at7.2 Run1.111x; at8.424 Run1.30x. Dash uses its separate.16s pose.",
+    "phaseBlending": "Shared normalized strike phase. With adjacent weights w, use phaseHz=actualSpeed/sum(w*nativeSpeed*period); each clip seconds=phase*period. Interpolate contact duty as appropriate; validate blends with actual world anchors.",
+    "safeInitialReviewedRateRange": [
+      0.65,
+      1.4
+    ],
+    "rateRangeLimitation": "Offline deformation/range review only1x native and turns; recommended neighboring rates require owner runtime critique. Starts/stops/collision are not claimed solved by the GLB alone."
+  },
+  "reviews": {
+    "runBeforeAfter": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/gait-011/review/run-comparison-60fps.mp4",
+    "walking": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/gait-011/review/walking-native-30fps.mp4",
+    "jogging": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/gait-011/review/jogging-native-30fps.mp4",
+    "forwardTurn": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/gait-011/review/forward-turn-60fps.mp4",
+    "dash": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/gait-011/review/dash-glide-60fps.mp4",
+    "scope": "Actual imported GLBs moving on measured checker ground; offline asset evidence, not phone or Unity after evidence.",
+    "productionNote": "No new render required: selected appearance image/material values unchanged; exact geometry/skin/node/clip data proven. Owner selected appearance002 after actual Unity A/B and will validate final imported resource."
+  },
+  "limitations": [
+    "Toy bounding run uses short.05s contacts and deliberate flight to match6.48m/s with compact legs.",
+    "Worst between-key raw sole floor intrusion about1.016mm runtime before owner contact correction.",
+    "Unchanged Attack is approximated recoil; Death remains old collapse, clamp once."
+  ],
+  "noInference": true,
+  "noCanonicalWrites": true,
+  "sharedLeaseReleased": true,
+  "sourceGait011Sha256": "3904d2d8dae2e1ba9da400274103df480f04fd26a9826640251103c9da5abc5d",
+  "sourceComparisonSha256": "d653625a1e7f4f1359bc40fd88c1dde60725be55a20ba0909ac89d8c96f205a1",
+  "meshUvNormalsIndicesSkinNodesSevenClipPayloadsPreservedByteExact": true,
+  "appearance": {
+    "selection": "appearance002 exact embedded2048x2048 albedo; selected Unity smoothness.15",
+    "baseColorPng": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/appearance-002/engineer-clean-palette-2k.png",
+    "baseColorSha256": "a288a75db064f25660ef28d8d252fd4fe822d832f2b3f531e7d9431bcfc61426",
+    "gltfRoughness": 0.85,
+    "gltfMetallic": 0,
+    "scope": "Engineer body only; shared gun and Heavy materials unchanged by this asset packaging.",
+    "referenceLibraryId": "libfile_f6b8a179527c81919ca35ed467433d18",
+    "comparisonSource": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/appearance-002/hero_engineer_clean_palette_comparison.glb",
+    "comparisonLibraryId": "libfile_13dc2999c04c81919b5d6de20c117859"
+  },
+  "packing": {
+    "inputBytes": 5340424,
+    "productionBytes": 3126852,
+    "removedBytes": 2213572,
+    "reductionPercent": 41.44936806515738,
+    "materials": 1,
+    "textures": 2,
+    "images": 2,
+    "accessors": 197,
+    "bufferViews": 199,
+    "removedOrphanViews": [
+      {
+        "sourceView": 1,
+        "bytes": 2213322,
+        "sha256": "e0f12a61ac48e5be694fcf71e1d3a5a87dc5ef2372d804eb47dbd09e517a2811"
+      },
+      {
+        "sourceView": 2,
+        "bytes": 250,
+        "sha256": "86d94ef2c60f1fb5c103f6fa7f969381277b946d154278fd517b078c00f277a0"
+      }
+    ],
+    "removedUnusedImages": [
+      2
+    ],
+    "removedUnusedTextures": [
+      2
+    ],
+    "byteProof": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/production-001/COMPACT-BYTE-PROOF.json",
+    "reencodedImages": false,
+    "rendered": false,
+    "inference": false
+  },
+  "contactContract": {
+    "unchangedFromGait011": true,
+    "contactManifest": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/gait-011/CONTACT-MANIFEST.json",
+    "contactManifestLibraryId": "libfile_51a72510d0208191a0ee7d18d4a5424f",
+    "manifestOriginalModelSha256": "3904d2d8dae2e1ba9da400274103df480f04fd26a9826640251103c9da5abc5d",
+    "appliesToProductionByExactNodeSkinClipPayloadProof": true
+  },
+  "canonicalOwner": "01a13737-9ca8-728a-9baa-fc7ac2c030ee",
+  "sharedLeaseClaimed": false,
+  "clipNames": [
+    "Idle",
+    "Walking",
+    "Jogging",
+    "Running",
+    "Attack",
+    "Death",
+    "Dash"
+  ],
+  "byteProofSummary": {
+    "allComparisonAccessorsExact": 197,
+    "gait011SemanticRoleComparisons": 372,
+    "nodeJsonEntriesExact": 27,
+    "skinJointCount": 26,
+    "allSevenClipSamplerInputsOutputsExact": true,
+    "selectedAlbedoBytesExact": true,
+    "sourceArchivesByteIntact": true
+  }
+}

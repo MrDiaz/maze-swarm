@@ -67,7 +67,11 @@ namespace Maze
             if (d.sectorsCleared > 0 && d.cleared.Count == 0) foreach (var z in SectorDefs.All) if (z.tier <= d.sectorsCleared && z.unlockAfter == null || z.tier < d.sectorsCleared) d.cleared.Add(z.id);
         }
         public static bool Sim;   // the editor RunSim: a throwaway save (never written)
-        public static void Save() { if (Sim) return; PlayerPrefs.SetString(Key, JsonUtility.ToJson(D)); PlayerPrefs.Save(); }
+        public static void Save() { if (Sim
+#if UNITY_EDITOR
+            || FloorEditing.FloorDocuments.PlaytestActive
+#endif
+            ) return; PlayerPrefs.SetString(Key, JsonUtility.ToJson(D)); PlayerPrefs.Save(); }
         public static void UseTemp(SaveData t)
         {   // (sims / captures) the same padding a load gets: 9 weapon slots
             d = t;

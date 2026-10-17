@@ -1,0 +1,65 @@
+fileFormatVersion: 2
+guid: fe1f9c7b83f214673bdbc74199e50b4e
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 0
+    animationMethod: 0
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets/Maze/CryoKit/Source/04_floor_panel.bin
+    assetPath: Assets/Maze/CryoKit/Source/04_floor_panel.bin
+  - type: 1
+    originalUri: Assets/Maze/CryoKit/Source/sharedtextures/0a1a5dcb5be51a72e02614fd199c44ca35a3bfb43b3556b5f2dcd9690fc345e5.png
+    assetPath: Assets/Maze/CryoKit/Source/sharedtextures/0a1a5dcb5be51a72e02614fd199c44ca35a3bfb43b3556b5f2dcd9690fc345e5.png
+  - type: 1
+    originalUri: Assets/Maze/CryoKit/Source/sharedtextures/951f4b90bb7dd63768c7c89226d3878554f9afffdedfc85634dc73b74543f544.png
+    assetPath: Assets/Maze/CryoKit/Source/sharedtextures/951f4b90bb7dd63768c7c89226d3878554f9afffdedfc85634dc73b74543f544.png
+  - type: 1
+    originalUri: Assets/Maze/CryoKit/Source/sharedtextures/64698204ec6855837ecc6471e423fa41157068a5fae4cefc2f3ad8bb4684294a.png
+    assetPath: Assets/Maze/CryoKit/Source/sharedtextures/64698204ec6855837ecc6471e423fa41157068a5fae4cefc2f3ad8bb4684294a.png
+  - type: 1
+    originalUri: Assets/Maze/CryoKit/Source/sharedtextures/ef1eaf60131628c944bd0434e652fe9122207beef7c19ae580700d4817f35c6d.png
+    assetPath: Assets/Maze/CryoKit/Source/sharedtextures/ef1eaf60131628c944bd0434e652fe9122207beef7c19ae580700d4817f35c6d.png
+  - type: 1
+    originalUri: Assets/Maze/CryoKit/Source/sharedtextures/cb10877daa52b19ca6e3c62d66dc1cb680bf8226b5e54130ebc5e96cf9f9aa66.png
+    assetPath: Assets/Maze/CryoKit/Source/sharedtextures/cb10877daa52b19ca6e3c62d66dc1cb680bf8226b5e54130ebc5e96cf9f9aa66.png
+  - type: 1
+    originalUri: Assets/Maze/CryoKit/Source/sharedtextures/7b5f5721e675f6ab8548f306825a712fa9377d12382cbf1e0ce302d6a4126162.png
+    assetPath: Assets/Maze/CryoKit/Source/sharedtextures/7b5f5721e675f6ab8548f306825a712fa9377d12382cbf1e0ce302d6a4126162.png
+  - type: 1
+    originalUri: Assets/Maze/CryoKit/Source/sharedtextures/c7c55bf7f01648a134d924210a76ea93dd6472a98804301031519365fc92e5f3.png
+    assetPath: Assets/Maze/CryoKit/Source/sharedtextures/c7c55bf7f01648a134d924210a76ea93dd6472a98804301031519365fc92e5f3.png
+  - type: 1
+    originalUri: Assets/Maze/CryoKit/Source/sharedtextures/6c4f4efc395d6185af8855046958c47caad7a6450dbc63eeffe9abf00886220c.png
+    assetPath: Assets/Maze/CryoKit/Source/sharedtextures/6c4f4efc395d6185af8855046958c47caad7a6450dbc63eeffe9abf00886220c.png
+  - type: 1
+    originalUri: Assets/Maze/CryoKit/Source/sharedtextures/f788a7f634eb001df88aa82ad8df77591b730c0ce06a80db17df76045811899a.png
+    assetPath: Assets/Maze/CryoKit/Source/sharedtextures/f788a7f634eb001df88aa82ad8df77591b730c0ce06a80db17df76045811899a.png
+  - type: 1
+    originalUri: Assets/Maze/CryoKit/Source/sharedtextures/1259c125f1a82060e21d147b4ef0869aa7fc9614a27ffe34eaa1bf81b0289ec2.png
+    assetPath: Assets/Maze/CryoKit/Source/sharedtextures/1259c125f1a82060e21d147b4ef0869aa7fc9614a27ffe34eaa1bf81b0289ec2.png
+  reportItems:
+  - type: 2
+    code: 20
+    messages:
+    - KHR_materials_anisotropy

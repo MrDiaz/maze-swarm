@@ -1,0 +1,33 @@
+.floor-preview {
+    flex-grow: 1;
+    min-height: 220px;
+    background-color: #101c2a;
+    border-width: 1px;
+    border-color: #2b4057;
+}
+
+.floor-preview-toolbar {
+    flex-direction: row;
+    padding: 5px;
+    background-color: #182738;
+}
+
+.floor-preview-toolbar > Button {
+    margin-right: 4px;
+}
+
+.floor-preview-image {
+    flex-grow: 1;
+    min-height: 150px;
+}
+
+.floor-preview-caption {
+    padding: 6px;
+    font-size: 10px;
+    color: #bed0e2;
+    white-space: normal;
+}
+
+.floor-preview-error {
+    color: #ffb6a6;
+}

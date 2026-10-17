@@ -1,0 +1,93 @@
+{
+  "readyForIntegration": true,
+  "status": "Approved after final quarter/side/back sequential frame inspection; canonical runtime/device validation remains with integration owner.",
+  "asset": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/lavender-spitter-animated/lavender-spitter-animated_LOD0.glb",
+  "sha256": "7bc01d38c339ad7d7e5cf4f7e67c19e2b6ccfb3d18533f015af5e3935c60a814",
+  "editableScene": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/lavender-spitter-animated/lavender-spitter-authored.blend",
+  "source": "Approved local Hunyuan Lavender Spitter mobile-006 LOD0 only",
+  "sourceSha256": "3618f6d18b6968572899bbabd285c250dce7b3c15d93f6ecc7a227b9f6c3730c",
+  "sourceRestGeometryExactlyPreserved": true,
+  "sourceEmbeddedTexturesPixelIdentical": true,
+  "triangles": 4000,
+  "materials": 1,
+  "skinJoints": 15,
+  "deformBones": 13,
+  "maximumInfluences": 4,
+  "coordinates": "+Y up / +Z forward / metre units / common floor pivot",
+  "authorRestHeightMeters": 1.0000046491622925,
+  "clips": [
+    {
+      "name": "Idle",
+      "durationSeconds": 2.0,
+      "fps": 30,
+      "loop": true
+    },
+    {
+      "name": "Walk",
+      "durationSeconds": 0.8,
+      "fps": 30,
+      "loop": true,
+      "strideMetersPerCycle": 0.28,
+      "nativeGroundSpeedMetersPerSecond": 0.35,
+      "stanceFractionPerFoot": 0.56,
+      "liftMeters": 0.045
+    },
+    {
+      "name": "Spit",
+      "durationSeconds": 0.8,
+      "fps": 30,
+      "loop": false,
+      "releaseTimeSeconds": 0.36666666666666664,
+      "releaseZeroBasedFrame": 11,
+      "releaseBone": "Muzzle",
+      "supportsUpperBodyLayer": true,
+      "layerBones": [
+        "Spine",
+        "Head",
+        "UpperArm.L",
+        "Forearm.L",
+        "UpperArm.R",
+        "Forearm.R"
+      ]
+    }
+  ],
+  "gaitRateFormula": "clip.speed = signed ground speed / (0.35 * total uniform model world scale). Reverse phase for retreat while facing target. Existing Swarm stride field must use 0.35 for this formula.",
+  "animationDrive": "Baked local FK keys. No runtime IK/controller, root motion or scale animation required.",
+  "animatedMeshBoundsGltfXYZ": [
+    [
+      -0.4990925203336315,
+      -9.917971520167602e-09,
+      -0.5032540158735724
+    ],
+    [
+      0.5328585027415039,
+      1.0009255005852726,
+      0.4180716632326984
+    ]
+  ],
+  "boundsPaddingSuggestionMeters": 0.02,
+  "independentSkinSamples": 111,
+  "sourceHashes": {
+    "/Volumes/T7 Shield/Assets/Enemies/Lavender Spitter 2026-10-16/mobile-006/LOD0/lavender-spitter_LOD0.glb": "3618f6d18b6968572899bbabd285c250dce7b3c15d93f6ecc7a227b9f6c3730c",
+    "/Volumes/T7 Shield/Assets/Enemies/Lavender Spitter 2026-10-16/mobile-006/LOD1/lavender-spitter_LOD1.glb": "344a312e59863a17f200ac56f6680d62133c0009a3e625df52043e1d7c482c23",
+    "/Volumes/T7 Shield/Assets/Enemies/Lavender Spitter 2026-10-16/mobile-006/LOD2/lavender-spitter_LOD2.glb": "cfd8b7da42c19f9a4cf71a331e16496557a6fcac006649eef9b38e1872c6c25c"
+  },
+  "limitations": [
+    "Only LOD0 is rigged; original source LOD1/2 remain static and must not be used as animated LOD replacements.",
+    "Fused sculpt joints retain limited close-up deformation quality; no new anatomical retopology or full self-intersection certification.",
+    "Mouth is the approved closed cavity, without an invented jaw opening.",
+    "This staged asset has no Unity import, runtime AI or phone validation from this worker. Canonical integration owner must verify them."
+  ],
+  "canonicalWrites": false,
+  "unityOrXcodeLaunched": false,
+  "gpuUse": false,
+  "cpuRenderThreads": 2,
+  "approvedUtc": "2026-10-16T23:33:30.121351+00:00",
+  "leaseReleasedUtc": "2026-10-16T23:32:04.877774Z",
+  "capturedFinalFrames": 77,
+  "renderProof": "export-review-final.json",
+  "reviewDirectory": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/lavender-spitter-animated/review",
+  "skinAudit": "independent-skin-audit.json",
+  "maximumUvSeamCrackMeters": 0.0,
+  "readme": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/lavender-spitter-animated/README-INTEGRATION.txt"
+}

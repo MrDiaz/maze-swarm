@@ -49,6 +49,7 @@ namespace Maze
 
         Vector2 moveVel; // velocity actually applied this frame (drives the run animation)
         Vector2 botMove; bool botFire, botDash;
+        Vector2 faceDir = Vector2.up; Enemy lockOn;   // the hero's facing (from movement / aim; kept while standing) and the held auto-fire target
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         static void Bootstrap()
@@ -57,9 +58,21 @@ namespace Maze
             if (FindAnyObjectByType<Game>() == null) new GameObject("Game").AddComponent<Game>();
         }
 
+        // (2026-10-15, Manuel: "remove reloading for now") false = every gun is bottomless: it never empties, never reloads
+        // (no reload pause, sound or animation). The magazine / reload code stays as it was behind this switch.
+        public static bool ReloadEnabled = false;
+        static readonly System.Collections.Generic.Dictionary<string, int> magBackup = new();
+        public void ApplyReloadSwitch()
+        {
+            if (ReloadEnabled) { foreach (var w in cfg.weapons) if (w.magSize == 0 && magBackup.TryGetValue(w.name, out int m)) w.magSize = m; return; }
+            foreach (var w in cfg.weapons) { if (w.magSize > 0) magBackup[w.name] = w.magSize; w.magSize = 0; }
+            if (player != null) for (int i = 0; i < player.reloadLeft.Length; i++) player.reloadLeft[i] = 0;
+        }
+        public void SetReload(bool on) { ReloadEnabled = on; ApplyReloadSwitch(); if (on && player != null) for (int i = 0; i < player.ammo.Length && i < cfg.weapons.Length; i++) player.ammo[i] = cfg.weapons[i].magSize; }   // (captures / checks)
+
         void Awake()
         {
-            BlueprintWeapons.Ensure(cfg);
+            BlueprintWeapons.Ensure(cfg); ApplyReloadSwitch();
             Prefs.ApplyFrameRate(); // 120 on ProMotion screens unless turned off in Settings, else 60
             var heroEnv = System.Environment.GetEnvironmentVariable("MAZE_HERO");
             if (!string.IsNullOrEmpty(heroEnv)) Prefs.HeroOverride = heroEnv;
@@ -100,7 +113,7 @@ namespace Maze
 
             ApplyQuality();
             Prefs.ApplySound();
-            cfg.camera.distance = Prefs.CamDistance;
+            cfg.camera.distance = ReadabilityFx.CamDistance;
             ResetGame();
             menu = Child<MainMenu>("Menu"); menu.Init(this);
             EnterMenu();
@@ -234,6 +247,16 @@ namespace Maze
             var root = new GameObject("Level").transform;
             levelRoot = root;
             root.SetParent(transform, false);
+            if (CohesiveZone.For(this))
+            {
+                CargoEnvironment.Build(root); lastLb = null; cryoDeck = true;
+                return;
+            }
+            if (CryoSoftEnvironment.For(run, sector, floor))
+            {
+                CryoSoftEnvironment.Build(root); lastLb = null; cryoDeck = true;
+                return; // original materials/deck are not allocated by the rounded art path
+            }
             Texture2D T(string n) => Resources.Load<Texture2D>("Cryo/" + n);
             bool cryo = CryoLook && T("frost_wall") != null;
             LevelBuilder lb;
@@ -294,7 +317,9 @@ namespace Maze
                      : cryo ? Mats.LitDetail(floorTex, T("floor_detail"), new Vector2(MazeMap.W * MazeMap.C / 6, MazeMap.H * MazeMap.C / 6), 0.25f) : Mats.Lit(Color.white, floorTex, null, 0.12f);
             bool deck = run && CryoFloor.For(sector);   // Cryo Station: the tiled deck + markings overlay + decals
             if (deck) { lb.floor = CryoFloor.Floor(); lb.floorWorldTile = CryoFloor.Tile; }
+            if (!FloorEditing.FloorRuntime.TryCurrent(out _) && CryoKitEnvironment.For(run, sector)) lb.cryoKit = new CryoKitEnvironment(root, lb);
             lb.Build(floorTex); lastLb = lb; cryoDeck = deck;
+            if (FloorEditing.FloorRuntime.TryCurrent(out _)) FloorEditing.FloorRuntime.Spawn(root);
             if (deck) CryoFloor.Build(root);
             if (MazeMap.Facility && !deck) StartRoomFloor(root, floorTex);
             if (cryo) { cryoFx = root.gameObject.AddComponent<CryoAmbience>(); cryoFx.Init(lb.creepEdges, lb.creep); }
@@ -305,6 +330,7 @@ namespace Maze
         public void ApplyBiome(SectorDef s)
         {
             if (s == null) { RestoreBiome(); return; }
+            if (CohesiveZone.For(s)) { CargoEnvironment.Lighting(sun, cam); return; }
             var walls = new List<Material>(); var floors = new List<Material>();
             if (lastLb != null) { walls.Add(lastLb.side); walls.Add(lastLb.roof); walls.Add(lastLb.concrete); walls.Add(lastLb.trim); if (!cryoDeck) floors.Add(lastLb.floor); floors.Add(lastLb.ground); }   // (the Cryo deck keeps its own colour: no zone tint)
             if (startFloor != null && startFloor.TryGetComponent<MeshRenderer>(out var mr)) floors.Add(mr.sharedMaterial);
@@ -312,6 +338,7 @@ namespace Maze
         }
         public void RestoreBiome()
         {
+            CargoEnvironment.RestoreLighting();
             sun.color = new Color32(0xff, 0xf6, 0xea, 255); sun.intensity = 1.25f;
             RenderSettings.ambientSkyColor = new Color(0.66f, 0.69f, 0.78f); RenderSettings.ambientEquatorColor = new Color(0.58f, 0.6f, 0.66f); RenderSettings.ambientGroundColor = new Color(0.44f, 0.47f, 0.55f);
             RenderSettings.fogColor = Bg; RenderSettings.fogStartDistance = 90; RenderSettings.fogEndDistance = 170; cam.backgroundColor = Bg;
@@ -487,8 +514,8 @@ namespace Maze
             pickups.Clear();
             barrels.ResetAll();
             Fx.I.ClearAll();
-            player.p = MazeMap.playerSpawn; player.vel = Vector2.zero; player.maxHp = cfg.player.hp; player.hp = player.maxHp;
-            run = false; choosing = Choice.None; mods.Reset(); ClearOrbs(); fires.Clear(); swarm.HpScale = swarm.DmgScale = 1; player.shieldUp = false;
+            player.p = MazeMap.playerSpawn; player.vel = Vector2.zero; player.ResetEngineerMotion(); player.maxHp = cfg.player.hp; player.hp = player.maxHp;
+            run = false; choosing = Choice.None; mods.Reset(); ClearOrbs(); fires.Clear(); swarm.HpScale = swarm.DmgScale = swarm.SpeedScale = 1; player.shieldUp = false;
             player.dashT = player.dashCd = player.fireCd = player.hurtT = player.shootT = 0;
             if (escape != null) escape.ResetRun();
             int nw = cfg.weapons.Length;
@@ -534,7 +561,7 @@ namespace Maze
         public void ToggleCamera()
         {
             Prefs.CamCloseOn = !Prefs.CamCloseOn;
-            cfg.camera.distance = Prefs.CamDistance;
+            cfg.camera.distance = ReadabilityFx.CamDistance;
         }
 
         public void ApplyQuality()
@@ -657,7 +684,7 @@ namespace Maze
         public void ApplyNeedlerTier()
         {   // the tier deltas (mag / rate) on the weapon itself, at run start
             int i = ScoutWeapon; if (cfg.weapons[i].name != "NEEDLER") return; int t = Meta.WeaponTier(8);
-            cfg.weapons[i].magSize = 48 + (t >= 1 ? 8 : 0) + (t >= 4 ? 8 : 0); cfg.weapons[i].rate = 14f * (t >= 3 ? 1.1f : 1f);
+            cfg.weapons[i].magSize = 48 + (t >= 1 ? 8 : 0) + (t >= 4 ? 8 : 0); cfg.weapons[i].rate = 14f * (t >= 3 ? 1.1f : 1f); ApplyReloadSwitch();
         }
         public bool VgMinigun => Prefs.Vanguard && player.weapon == 0;
         // the in-run swap skips weapons still on blueprints
@@ -718,6 +745,7 @@ namespace Maze
         public void KillEnemy(Enemy e)
         {
             if (e.dead) return;
+            FeelFx.OnKill(this, e);   // (feel: the rare heart drop)
             swarm.Defer(true);
             try { KillEnemyInner(e); } finally { swarm.Defer(false); }
         }
@@ -853,7 +881,8 @@ namespace Maze
             {
                 move = ScreenToPlane(inp.move);
                 if (move.magnitude < 0.12f) move = Vector2.zero;
-                if (inp.aim != Vector2.zero) player.aim = ScreenToPlane(inp.aim).normalized;
+                if (move != Vector2.zero) faceDir = move.normalized;   // face where you walk; standing still keeps the last facing
+                if (inp.aim != Vector2.zero) { player.aim = ScreenToPlane(inp.aim).normalized; faceDir = player.aim; }
                 else if (inp.hasMouseAim && inp.fire)
                 {
                     var ray = cam.ScreenPointToRay(inp.mouseScreen);
@@ -861,12 +890,12 @@ namespace Maze
                     {
                         var hit = ray.GetPoint((0.95f - ray.origin.y) / ray.direction.y);
                         var d = MazeMap.ToPlane(hit) - player.p;
-                        if (d.magnitude > 0.3f) player.aim = d.normalized;
+                        if (d.magnitude > 0.3f) { player.aim = d.normalized; faceDir = player.aim; }
                     }
                 }
-                else if (move != Vector2.zero) player.aim = move.normalized; // touch, not aiming: face where you walk
+                else player.aim = faceDir; // touch, not aiming: face where you walk (or last walked)
                 firing = inp.fire; dashing = inp.dash;
-                // auto-fire: lock the best target inside the range circle unless aiming by hand
+                // auto-fire: only what's in front (a cone round the facing, in reach, clear line), held until it's gone
                 player.hasTarget = false;
                 if (!firing && AutoTarget(out var tp)) { player.aim = (tp - player.p).normalized; firing = player.hasTarget = true; }
             }
@@ -961,17 +990,28 @@ namespace Maze
             return false;
         }
 
-        // Nearest live enemy inside the range circle with a clear line of fire; a barrel with a crowd
-        // around it wins, like the demo bot.
+        // Auto-fire target: only inside the cone of the hero's facing (cfg.player.aimCone, from movement; the hero never
+        // auto-turns), in reach, with a clear line of fire. The held target is kept until it dies or leaves the cone /
+        // reach / line; otherwise the one nearest the facing line (then the nearer). A barrel with a crowd around it in
+        // the cone wins, like the demo bot.
+        // (2026-10-15, Manuel: auto-fire all round the hero) true = no facing cone: the nearest target in reach, any direction (the
+        // hero turns to it while firing); false = the 30-degree forward cone as before
+        public static bool AutoFireAllRound = true;
+        bool InCone(Vector2 p, float cosCone) { var d = p - player.p; float m = d.magnitude; return m < 1e-3f || Vector2.Dot(d / m, faceDir) >= cosCone; }
+        bool Targetable(Enemy e) => !(e.dead || e.spawnT < 0.5f || (e.Hidden && !(e.cloaked && run && mods["phase_sight"] > 0) && !(e.under && run && Meta.Relic(15))) || (e.type.ai == "tick" && e.aiState == 2)
+            || (CellLight.I != null && !CellLight.I.Lit(e.p)) || (run && EnemyAI.Clouds.Count > 0 && EnemyAI.InCloud(e.p) && !EnemyAI.InCloud(player.p)));
         bool AutoTarget(out Vector2 target)
         {
-            float R = Reach;
+            float R = Reach, cosCone = AutoFireAllRound ? -2f : Mathf.Cos(cfg.player.aimCone * Mathf.Deg2Rad);
             target = default;
+            if (lockOn != null && swarm.enemies.Contains(lockOn) && Targetable(lockOn) && !lockOn.type.nest && (lockOn.p - player.p).sqrMagnitude < R * R && InCone(lockOn.p, cosCone) && ClearShot(player.p, lockOn.p)) { target = lockOn.p; return true; }
+            lockOn = null;
             var b = barrels.BestTarget(player.p);
-            if (b != null && (b.p - player.p).magnitude <= R && (b.p - player.p).magnitude > cfg.barrels.radius + 0.8f && ClearShot(player.p, b.p)) { target = b.p; return true; }   // never one that would catch the hero
-            float best = R * R, bestLow = R * R; bool found = false; Vector2 low = default; bool foundLow = false;
+            if (b != null && (b.p - player.p).magnitude <= R && (b.p - player.p).magnitude > cfg.barrels.radius + 0.8f && InCone(b.p, cosCone) && ClearShot(player.p, b.p)) { target = b.p; return true; }   // never one that would catch the hero
+            float best = float.MaxValue, bestLow = R * R; bool found = false; Vector2 low = default; bool foundLow = false; Enemy pick = null;
             foreach (var e in swarm.enemies)
             {
+                if (!Targetable(e) || (e.p - player.p).sqrMagnitude >= R * R || !InCone(e.p, cosCone)) continue;
                 if (e.dead || e.spawnT < 0.5f || (e.Hidden && !(e.cloaked && run && mods["phase_sight"] > 0) && !(e.under && run && Meta.Relic(15))) || (e.type.ai == "tick" && e.aiState == 2)) continue;   // cloaked / underground / latched: not targets (PHASE SIGHT sees the cloaked)
                 if (CellLight.I != null && !CellLight.I.Lit(e.p)) continue;   // darkness: only lit enemies are targets
                 if (run && EnemyAI.Clouds.Count > 0 && EnemyAI.InCloud(e.p) && !EnemyAI.InCloud(player.p)) continue;   // hidden in a spore cloud   // cloaked, underground, latched: not auto-targeted
@@ -981,11 +1021,14 @@ namespace Maze
                     if (d < bestLow && ClearShot(player.p, e.p)) { bestLow = d; low = e.p; foundLow = true; }
                     continue;
                 }
-                if (run && mods["hunters_mark"] > 0 && IsPriority(e)) d *= 0.25f;   // HUNTER'S MARK: the dangerous ones first
-                if (d < best && ClearShot(player.p, e.p)) { best = d; target = e.p; found = true; }
+                var off = e.p - player.p; float m = Mathf.Sqrt(d), lateral = Mathf.Abs(off.x * faceDir.y - off.y * faceDir.x);
+                float score = AutoFireAllRound ? m : lateral + 0.15f * m;   // all round: the nearest first; cone: nearest the facing line first, then the nearer
+                if (run && mods["hunters_mark"] > 0 && IsPriority(e)) score *= 0.25f;   // HUNTER'S MARK: the dangerous ones first
+                if (score < best && ClearShot(player.p, e.p)) { best = score; target = e.p; found = true; pick = e; }
             }
-            if (!found && foundLow) { target = low; return true; }
-            return found;
+            if (found) { lockOn = pick; return true; }
+            if (foundLow) { target = low; return true; }
+            return false;
         }
 
         static bool ClearShot(Vector2 a, Vector2 b)
@@ -1136,6 +1179,7 @@ namespace Maze
             if (run) { PowerUps.OnHit(e); CardAfterHit(e, b, dmg); }
             e.hp -= dmg; e.flash = 1;
             if (crit && !SimRun) Fx.I.Sparks(MazeMap.ToWorld(e.p, 1f), 6, new Color(1f, 0.85f, 0.2f), 4, 0.35f, 0.08f, 3);
+            if (!SimRun) GunFx.I.HitEnemy(MazeMap.ToWorld(b.p, 0.95f), MazeMap.ToWorld(-b.d));   // gunfire kit: a small hit spark
             if (e.type.leaper) swarm.OnShot(e, b.d);
             float kb = b.w.knockback / Mathf.Sqrt(e.type.hp) * e.type.knockback * (run ? RunShove : 1f); // a Bloater barely budges
             if (run && Evolved("inferno") && ++infernoCount % 5 == 0) fires.Add(new FirePatch { p = e.p, t = 3f });
@@ -1288,6 +1332,7 @@ namespace Maze
                 var gt = BotGoalTarget();
                 if (gt != null && (gt.p - player.p).magnitude < Reach && (near == null || nd > 4f)) { player.aim = (gt.p - player.p).normalized; botFire = true; }
             }
+            if (run && goal != Goal.Hold && CryoHeroTurret.BotWants(this, out var tdir)) botMove = tdir;   // the Cryo floors' turrets: go and bring one online
             // a Leaper's line locked on the hero: step sideways out of it (and dash once it's about to go)
             foreach (var e in swarm.enemies)
             {

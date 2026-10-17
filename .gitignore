@@ -14,3 +14,21 @@ Backups/
 *.pidb
 *.userprefs
 MemoryCaptures/
+
+# Authoring autosaves and tool caches (editable .blend files remain tracked)
+*.blend[0-9]*
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Local credentials, signing material and private QA/save evidence
+.env
+.env.*
+!.env.example
+*.private.*
+*.p12
+*.pfx
+*.mobileprovision
+*.keystore
+*.jks

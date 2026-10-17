@@ -1,0 +1,142 @@
+{
+  "status": "Visually checked separate appearance comparison; original gait paint remains preserved; canonical choice belongs to integration owner.",
+  "sourceGait": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/gait-011/hero_engineer_chibi.glb",
+  "sourceSha256": "3904d2d8dae2e1ba9da400274103df480f04fd26a9826640251103c9da5abc5d",
+  "derivative": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/appearance-002/hero_engineer_clean_palette_comparison.glb",
+  "sha256": "d653625a1e7f4f1359bc40fd88c1dde60725be55a20ba0909ac89d8c96f205a1",
+  "albedo": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/appearance-002/engineer-clean-palette-2k.png",
+  "albedoPixels": [
+    2048,
+    2048
+  ],
+  "material": {
+    "metallic": 0,
+    "roughness": 0.85
+  },
+  "geometryNormalsUvTangentsIndicesSkinAnimationPayloadsByteIdentical": true,
+  "faceProtectedTexels": 98250,
+  "protectedFaceTexelsExact": true,
+  "changedCoveredTexels": 1889755,
+  "coveredTexels": 2136256,
+  "palette": {
+    "1": {
+      "targetSrgb8": [
+        141,
+        87,
+        203
+      ],
+      "sourceMedianSrgb8": [
+        141.0,
+        87.0,
+        203.0
+      ],
+      "coveredTexels": 898688,
+      "sourceLumaStd": 8.48231766527978,
+      "newLumaStd": 0.8435834958844701
+    },
+    "2": {
+      "targetSrgb8": [
+        33,
+        145,
+        159
+      ],
+      "sourceMedianSrgb8": [
+        30.0,
+        140.0,
+        154.0
+      ],
+      "coveredTexels": 309816,
+      "sourceLumaStd": 30.36105144922723,
+      "newLumaStd": 3.016295496543939
+    },
+    "3": {
+      "targetSrgb8": [
+        36,
+        90,
+        105
+      ],
+      "sourceMedianSrgb8": [
+        24.0,
+        91.0,
+        106.0
+      ],
+      "coveredTexels": 276994,
+      "sourceLumaStd": 22.46623102176338,
+      "newLumaStd": 2.1574980915749573
+    },
+    "4": {
+      "targetSrgb8": [
+        252,
+        187,
+        32
+      ],
+      "sourceMedianSrgb8": [
+        251.0,
+        186.0,
+        33.0
+      ],
+      "coveredTexels": 355035,
+      "sourceLumaStd": 21.2312006970564,
+      "newLumaStd": 2.127587378074285
+    },
+    "5": {
+      "targetSrgb8": [
+        251,
+        228,
+        199
+      ],
+      "sourceMedianSrgb8": [
+        250.0,
+        228.0,
+        199.0
+      ],
+      "coveredTexels": 52313,
+      "sourceLumaStd": 20.31666737128322,
+      "newLumaStd": 2.0017806767275617
+    }
+  },
+  "method": "Registered UV raster bake using retained source hue-family masks and original concept palette. Reduce baked-light variation to \u00b14%; preserve skin/face/eyes/smile, source color region boundaries, boot/overall separation. Subtexel0.4px antialias and island-color gutters. No sharpen, upscale, new detail or inference.",
+  "limitations": [
+    "Neural strap/cuff boundary errors and fused shape remain where existing UV paint is ambiguous.",
+    "This is a controlled comparison; flatter albedo alone cannot reproduce every stylistic property of the reference environment.",
+    "No canonical or portrait changes. Owner must compare at actual phone scale."
+  ],
+  "seconds": 1.6446637500775978,
+  "reviewedUtc": "2026-10-17T04:50:24.238716+00:00",
+  "referenceLibraryId": "libfile_f6b8a179527c81919ca35ed467433d18",
+  "findings": {
+    "reference": "Broad matte low-noise stone/islands, clean value/color boundaries and small hero silhouette. Does not demonstrate a need for realistic detail or a larger bitmap.",
+    "runtimeProbeFromOwner": "Existing 2048x2048 ARGB32 uncompressed sRGB,12mips,Trilinear, aniso1, bias0, URPHighRenderScale1/MSAA4, smoothness.30. Filter/matte-only probes produced modest changes.",
+    "source": "Source neural paint has baked shading and patchy cuff/strap color transitions.2048pixel dimensions do not equal2048pixels of hand-authored detail.",
+    "comparisonBenefit": "Cleaner teal overall/yellow backpack fields and consistent boot color in close front/back. Original face/navy eyes verified in final actual imported renders.",
+    "phoneScale": "Modest change at67px silhouette; matte-only vs same-roughness texture change is smaller. This source cleanup is not a dramatic resolution fix.",
+    "remaining": "Cuff/strap silhouette and ambiguous boundaries remain from original neural geometry/paint. No geometry or UV changes authorized for this comparison."
+  },
+  "review": {
+    "engine": "Actual imported GLBs, CyclesCPU4threads12samples",
+    "states": [
+      "original-map with originalroughness.72157",
+      "clean-texture-only same.72157roughness",
+      "clean-matte roughness.85"
+    ],
+    "views": [
+      "front",
+      "side",
+      "back"
+    ],
+    "sizes": [
+      "close512x576",
+      "matched192x192 with projected67px hero silhouette at45deg elevation"
+    ],
+    "notUnityOrPhoneEvidence": true,
+    "faceVisualPass": true,
+    "eyesNavyAndSkinUnchanged": true,
+    "canonicalWrites": false,
+    "noInference": true
+  },
+  "rejectedTrials": {
+    "appearance001": "Preserved; purple hue mask affected eyes. Not handed off or selected."
+  },
+  "sharedLeaseReleased": true,
+  "canonicalOwner": "01a13737-9ca8-728a-9baa-fc7ac2c030ee"
+}

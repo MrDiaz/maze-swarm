@@ -1,0 +1,36 @@
+.floor-plan-canvas {
+    flex-grow: 1;
+    min-width: 160px;
+    min-height: 200px;
+    overflow: hidden;
+    background-color: rgb(14, 21, 31);
+}
+.floor-plan-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 20px;
+    color: rgb(225, 239, 247);
+    font-size: 11px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+}
+.floor-plan-prop-label {
+    width: 132px;
+    height: 18px;
+    font-size: 10px;
+    -unity-font-style: normal;
+    background-color: rgba(9, 17, 27, 0.85);
+    border-radius: 3px;
+    color: rgb(219, 233, 241);
+}
+.floor-plan-ruler-label {
+    color: rgb(116, 141, 160);
+    font-size: 9px;
+    -unity-font-style: normal;
+}
+.floor-plan-player-label { color: rgb(131, 246, 228); }
+.floor-plan-enemy-label { color: rgb(255, 173, 154); }
+.floor-plan-objective-label { color: rgb(255, 225, 142); }
+.floor-plan-label-hidden { display: none; }

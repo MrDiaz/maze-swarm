@@ -1,0 +1,7 @@
+{
+  "utc": "2026-10-17T00:34:06.187455+00:00",
+  "source": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/evidence/editor-cohesive-06/cargo-arena-scene-only_1920x1080.png",
+  "sha256": "929daf6cb234d25c35afa5389ba63f9e6260f5bea29284da405ffd25f4675e50",
+  "conditions": "Actual production camera/Cargo geometry; one forced mature Spitter fixture; canvases hidden temporarily. World-space health/rings retained; no camera, layout or image retouching. Captured before final matte-fluid shader adjustment.",
+  "purpose": "Actual environment preview for Cargo Depot selection"
+}

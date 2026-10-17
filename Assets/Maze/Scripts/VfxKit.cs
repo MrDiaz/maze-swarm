@@ -15,19 +15,27 @@ namespace Maze
         public static VfxKit I;
 
         // ---- looks (colours in gamma, as authored in the preview)
-        public struct Look { public Color deep, mid, rim, stain; public float mode, erode, flow; public Vector2 dir; }
+        public struct Look { public Color deep, mid, rim, stain; public float mode, erode, flow, power; public Vector2 dir; public bool quiet; }   // quiet: no ambient particles
         static Color C(float r, float g, float b, float a = 1) => new Color(r, g, b, a);
         public static readonly Look Acid = new Look { deep = C(0.07f, 0.24f, 0.02f), mid = C(0.55f, 0.95f, 0.12f), rim = C(0.82f, 1f, 0.3f), stain = C(0.09f, 0.1f, 0.04f, 0.62f), mode = 0, erode = 0.75f, flow = 1f };
         public static readonly Look AcidPool = new Look { deep = Acid.deep, mid = Acid.mid, rim = Acid.rim, stain = Acid.stain, mode = 0, erode = 0.9f, flow = 0.8f };
         public static readonly Look Slag = new Look { deep = C(0.07f, 0.05f, 0.045f), mid = C(0.75f, 0.12f, 0.02f), rim = C(1f, 0.7f, 0.25f), stain = C(0.05f, 0.04f, 0.035f, 0.7f), mode = 1, erode = 0.35f, flow = 1.3f, dir = new Vector2(0, 1) };
         public static readonly Look Char = new Look { deep = C(0.05f, 0.045f, 0.04f), mid = C(0.6f, 0.12f, 0.02f), rim = C(1f, 0.55f, 0.12f), stain = C(0.06f, 0.05f, 0.045f, 0.7f), mode = 2, erode = 1.1f, flow = 0.5f };
+        // batch 3: radiation 'q', hive creep 'c', scorched 's', water 'w' (shallow / deep), ice 'i', electric current (grates)
+        public static readonly Look Radiation = new Look { deep = C(0.12f, 0.16f, 0.02f), mid = C(0.75f, 1f, 0.15f), rim = C(0.95f, 1f, 0.45f), stain = C(0.1f, 0.12f, 0.03f, 0.35f), mode = 3, erode = 0.5f, flow = 0.4f };
+        public static readonly Look Creep = new Look { deep = C(0.12f, 0.04f, 0.15f), mid = C(0.3f, 0.1f, 0.34f), rim = C(0.95f, 0.3f, 1f), stain = C(0.1f, 0.04f, 0.1f, 0.55f), mode = 4, erode = 1f, flow = 0.5f };
+        public static readonly Look Soot = new Look { deep = C(0.06f, 0.055f, 0.05f), mid = C(0.14f, 0.11f, 0.09f), rim = C(0.3f, 0.18f, 0.1f), stain = C(0.05f, 0.045f, 0.04f, 0.6f), mode = 2, erode = 1f, flow = 0.5f, quiet = true };
+        public static readonly Look Water = new Look { deep = C(0.08f, 0.22f, 0.3f), mid = C(0.42f, 0.66f, 0.76f), rim = C(0.75f, 0.95f, 1f), stain = C(0.03f, 0.05f, 0.06f, 0.3f), mode = 5, erode = 0.45f, flow = 0.8f, power = 0 };
+        public static readonly Look WaterDeep = new Look { deep = C(0.05f, 0.15f, 0.22f), mid = Water.mid, rim = Water.rim, stain = Water.stain, mode = 5, erode = 0.6f, flow = 0.8f, power = 1 };
+        public static readonly Look Ice = new Look { deep = C(0.12f, 0.3f, 0.5f), mid = C(0.55f, 0.76f, 0.9f), rim = C(0.9f, 0.96f, 1f), stain = C(0.85f, 0.93f, 1f, 0.4f), mode = 6, erode = 0.45f, flow = 0.3f };
+        public static readonly Look Current = new Look { deep = C(0, 0, 0), mid = C(0.3f, 0.75f, 1f), rim = C(0.92f, 0.98f, 1f), stain = C(0, 0, 0, 0), mode = 7, erode = 0.15f, flow = 1f, power = 0 };
         public static readonly Color AcidSplash = C(0.72f, 1f, 0.3f), AcidFume = C(0.75f, 0.95f, 0.45f);
         public static readonly Color GasLight = C(0.82f, 0.95f, 0.32f), GasDark = C(0.55f, 0.66f, 0.16f), GasMote = C(0.75f, 1f, 0.25f);
 
 
         Texture2D noise;
         Shader poolSh, beamSh, teleSh;
-        public ParticleSystem smoke, fire, spark, ember, glow, bubble, drop, blast;
+        public ParticleSystem smoke, fire, spark, ember, glow, bubble, drop, blast, streak;
         static Mesh beamMesh;
 
         public void Init()
@@ -38,7 +46,7 @@ namespace Maze
             if (poolSh == null || beamSh == null || partSh == null) Debug.LogError("Maze: VFX shaders missing (Resources/Shaders/Vfx*.shader)");
             noise = Tex("vfx_noise"); if (noise != null) noise.wrapMode = TextureWrapMode.Repeat;
 
-            smoke  = Make("VfxSmoke", partSh, Tex("smoke_8x8"), false, 260, 0f, 8, 0.5f, Curve(0.6f, 1f), Fade(0.3f, 0.5f));
+            smoke  = Make("VfxSmoke", partSh, Tex("smoke_8x8"), false, 400, 0f, 8, 0.5f, Curve(0.6f, 1f), Fade(0.3f, 0.5f));
             fire   = Make("VfxFire", partSh, Tex("fire_8x8"), true, 240, 0f, 8, 0.5f, Curve(0.8f, 1.05f), Fade(0.15f, 0.55f));
             spark  = Make("VfxSpark", partSh, Tex("ember"), true, 300, 1.2f, 1, 0, Curve(1f, 0.4f), Fade(0.02f, 0.5f));
             ember  = Make("VfxEmber", partSh, Tex("ember"), true, 260, 0f, 1, 0, Curve(1f, 0.4f), Fade(0.05f, 0.6f));
@@ -59,6 +67,9 @@ namespace Maze
             fire.GetComponent<ParticleSystemRenderer>().sharedMaterial.SetFloat("_FloorFade", 0.12f);
             glow.GetComponent<ParticleSystemRenderer>().sharedMaterial.SetFloat("_FloorFade", 0.5f);
             Drag(smoke, 1.2f); Drag(ember, 0.4f); Drag(blast, 5f);
+            // rain and wind streaks: the droplet sprite stretched along its velocity (alpha blended, so they read on light floors)
+            streak = Make("VfxStreak", partSh, Tex("droplet"), false, 360, 0f, 1, 0, Curve(1f, 1f), Fade(0.05f, 0.9f));
+            var str = streak.GetComponent<ParticleSystemRenderer>(); str.renderMode = ParticleSystemRenderMode.Stretch; str.velocityScale = 0.05f; str.lengthScale = 1f;
             teleSh = Shader.Find("Maze/VfxTele"); if (teleSh == null) Debug.LogError("Maze: VfxTele shader missing");
             var dc = drop.collision; dc.enabled = true; dc.type = ParticleSystemCollisionType.Planes; dc.SetPlane(0, transform); dc.bounce = 0f; dc.dampen = 1f; dc.lifetimeLoss = 0.5f;
         }
@@ -105,7 +116,7 @@ namespace Maze
             return ps;
         }
 
-        public void ClearAll() { foreach (var ps in new[] { smoke, fire, spark, ember, glow, bubble, drop, blast }) if (ps != null) ps.Clear(); }
+        public void ClearAll() { foreach (var ps in new[] { smoke, fire, spark, ember, glow, bubble, drop, blast, streak }) if (ps != null) ps.Clear(); foreach (var b in bolts) foreach (var x in b.segs) if (x.tr != null) { Destroy(x.m); Destroy(x.tr.gameObject); } bolts.Clear(); }
 
         static float R(float a, float b) => Random.Range(a, b);
         static Vector2 Disc(float r) => Random.insideUnitCircle * r;
@@ -120,10 +131,11 @@ namespace Maze
         // a liquid hitting the floor: droplets flung out, a flash, a puff of fumes
         public void Splash(Vector3 at, Color c, float r)
         {
+            bool cargo = CohesiveZone.Active;
             int n = Mathf.RoundToInt(Mathf.Clamp(r * 12, 6, 28));
             for (int i = 0; i < n; i++) { float a = R(0, Mathf.PI * 2), s = R(2, 6) * Mathf.Min(1, r / 2f); One(drop, at + Vector3.up * 0.2f, new Vector3(Mathf.Cos(a) * s, R(2.5f, 6f), Mathf.Sin(a) * s), R(0.16f, 0.3f), R(0.5f, 0.9f), c); }
-            One(glow, at + Vector3.up * 0.1f, Vector3.zero, r * 2.5f, 0.5f, new Color(c.r * 0.8f, c.g, c.b * 0.7f, 0.8f));
-            for (int i = 0; i < 4; i++) { var d = Disc(r * 0.55f); One(smoke, at + new Vector3(d.x, 0.4f, d.y), new Vector3(d.x, R(0.6f, 1.2f), d.y), R(1.6f, 2.2f), R(0.9f, 1.4f), new Color(0.8f, 0.95f, 0.5f, 0.5f)); }
+            One(glow, at + Vector3.up * .1f, Vector3.zero, r * (cargo ? 1.5f : 2.5f), cargo ? .24f : .5f, new Color(c.r * .8f, c.g, c.b * .7f, cargo ? .28f : .8f));
+            for (int i = 0; i < 4; i++) { var d = Disc(r * 0.55f); One(smoke, at + new Vector3(d.x, 0.4f, d.y), new Vector3(d.x, R(0.6f, 1.2f), d.y), cargo ? R(.28f, .42f) : R(1.6f, 2.2f), cargo ? R(.22f, .35f) : R(.9f, 1.4f), cargo ? new Color(c.r, c.g, c.b, .12f) : new Color(.8f, .95f, .5f, .5f)); }
         }
 
         public void Sparks(Vector3 at, int n, Color c, float speed, float life = 0.35f, float size = 0.28f)
@@ -148,6 +160,7 @@ namespace Maze
         // Fx.Smoke with the same arguments: soft billowing puffs (dust, steam, smoke), fewer and larger than the cubes were
         public void FxSmoke(Vector3 at, int n, Color c, float speed, float life, float size, float up)
         {
+            if (FirstCryoFx.Active) { FirstCryoFx.Get().Vapour(at, Mathf.Min(6, n), Mathf.Clamp(size * 1.6f, .3f, 1.2f), c.b > c.r + .05f); return; }
             int m = Mathf.Max(1, Mathf.CeilToInt(n * 0.6f)); float s = size * 3.5f + 0.3f; c.a = 0.5f;
             for (int i = 0; i < m; i++)
             {
@@ -169,6 +182,77 @@ namespace Maze
             for (int i = 0; i < 14; i++) One(ember, at + new Vector3(R(-1f, 1f), 1f, R(-1f, 1f)), new Vector3(R(-3f, 3f), R(3f, 6f), R(-3f, 3f)), 0.15f, R(1f, 1.8f), new Color(1f, 0.6f, 0.2f, 1f));
             for (int i = 0; i < 8; i++) { var d = Disc(r * 0.35f); One(smoke, at + new Vector3(d.x, R(1f, 1.8f), d.y), new Vector3(d.x * 0.6f, R(1f, 2f), d.y * 0.6f), r * 1.5f, R(2f, 2.8f), new Color(0.24f, 0.23f, 0.23f, 0.6f)); }
         }
+
+        // ================================================================ batch 3: vents, lightning, weather
+        public enum VentKind { Steam, Toxic, Cryo }
+        static readonly Color[] VentPuff = { C(1f, 1f, 1f), C(0.75f, 0.95f, 0.35f), C(0.9f, 0.96f, 1f) };
+        static readonly float[] VentA = { 0.62f, 0.58f, 0.6f };
+        // a floor vent: wisps while it warns, a tall plume while it erupts (burst: the first frame of an eruption). Call every frame.
+        public void Vent(Vector3 at, VentKind kind, bool warn, bool on, bool burst, float dt)
+        {
+            int k = (int)kind; var pc = VentPuff[k];
+            if (warn && Random.value < dt * 10f) { var d = Disc(0.5f); One(smoke, at + new Vector3(d.x, 0.2f, d.y), new Vector3(d.x * 0.3f, R(0.6f, 1.2f), d.y * 0.3f), 1.2f, R(0.8f, 1.2f), new Color(pc.r, pc.g, pc.b, VentA[k] * 0.7f)); }
+            if (!on) return;
+            if (burst) for (int i = 0; i < 10; i++) { float a = R(0, Mathf.PI * 2); One(smoke, at + Vector3.up * 0.3f, new Vector3(Mathf.Cos(a) * 4f, R(0.3f, 1f), Mathf.Sin(a) * 4f), 2.2f, R(0.8f, 1.2f), new Color(pc.r, pc.g, pc.b, VentA[k])); }
+            if (Random.value < dt * 22f) { var d = Disc(0.35f); One(smoke, at + new Vector3(d.x, 0.3f, d.y), new Vector3(d.x * 1.5f + R(-0.4f, 0.4f), R(6f, 9f), d.y * 1.5f + R(-0.4f, 0.4f)), 4f, R(1.1f, 1.5f), new Color(pc.r, pc.g, pc.b, VentA[k])); }
+            if (kind == VentKind.Steam && Random.value < dt * 4f) One(glow, at + Vector3.up * 0.3f, Vector3.zero, 2.8f, 0.4f, new Color(1f, 0.55f, 0.2f, 0.35f));
+            if (kind == VentKind.Cryo && Random.value < dt * 30f) One(ember, at + new Vector3(R(-0.4f, 0.4f), 0.4f, R(-0.4f, 0.4f)), new Vector3(R(-1f, 1f), R(4f, 8f), R(-1f, 1f)), 0.1f, R(0.6f, 1.1f), new Color(0.9f, 0.97f, 1f, 1f));
+            if (kind == VentKind.Toxic && Random.value < dt * 14f) One(ember, at + new Vector3(R(-0.6f, 0.6f), R(0.5f, 2.5f), R(-0.6f, 0.6f)), new Vector3(R(-0.6f, 0.6f), R(1f, 3f), R(-0.6f, 0.6f)), 0.12f, R(1f, 1.6f), new Color(0.75f, 1f, 0.25f, 0.8f));
+        }
+
+        // a lightning bolt from the sky to a floor point: jagged beam segments that flicker out, a flash, sparks, smoke
+        class Bolt { public List<VfxBeam> segs = new(); public float t; }
+        readonly List<Bolt> bolts = new();
+        static readonly Color BoltCol = C(0.62f, 0.78f, 1f);
+        public void Strike(Vector3 at)
+        {
+            var b = new Bolt(); const int n = 10; var top = at + new Vector3(R(-3f, 3f), 18f, R(-3f, 3f)); var prev = top;
+            for (int i = 1; i <= n; i++)
+            {
+                float k = i / (float)n, j = (1 - k) * 1.6f;
+                var p = i == n ? at : new Vector3(Mathf.Lerp(top.x, at.x, k) + R(-j, j), 18f * (1 - k), Mathf.Lerp(top.z, at.z, k) + R(-j, j));
+                var s = Beam(transform, BoltCol, 1.1f, 0.24f, 3f); s.Set(prev, p); b.segs.Add(s); prev = p;
+                if (i == n / 2) { var q = p; for (int m = 0; m < 3; m++) { var q2 = q + new Vector3(R(-1.6f, 1.6f), -R(1.2f, 2f), R(-1.6f, 1.6f)); var br = Beam(transform, BoltCol, 0.6f, 0.2f, 3f); br.Set(q, q2); b.segs.Add(br); q = q2; } }
+            }
+            bolts.Add(b);
+            One(glow, at + Vector3.up * 0.8f, Vector3.zero, 7f, 0.3f, new Color(0.75f, 0.85f, 1f, 0.9f));
+            One(glow, at + Vector3.up * 0.2f, Vector3.zero, 3.5f, 0.9f, new Color(0.5f, 0.65f, 1f, 0.5f));
+            for (int i = 0; i < 34; i++) { float a = R(0, Mathf.PI * 2), sp = R(4f, 11f); One(spark, at + Vector3.up * 0.3f, new Vector3(Mathf.Cos(a) * sp, R(2f, 8f), Mathf.Sin(a) * sp), 0.28f, R(0.25f, 0.55f), new Color(0.8f, 0.9f, 1f, 1f)); }
+            for (int i = 0; i < 5; i++) { var d = Disc(0.8f); One(smoke, at + new Vector3(d.x, 0.5f, d.y), new Vector3(d.x, R(0.8f, 1.6f), d.y), 2.4f, R(1.6f, 2.2f), new Color(0.3f, 0.3f, 0.33f, 0.45f)); }
+        }
+        void Update()
+        {
+            float dt = Time.deltaTime;
+            for (int i = bolts.Count - 1; i >= 0; i--)
+            {
+                var b = bolts[i]; b.t += dt;
+                float f = b.t < 0.06f ? 1f : b.t < 0.32f ? (Mathf.Sin(b.t * 120f) > -0.2f ? 1f - b.t / 0.32f : 0.15f) : 0f;
+                foreach (var s in b.segs) s.Intensity = f * 2.4f;
+                if (b.t > 0.35f) { foreach (var s in b.segs) if (s.tr != null) { Destroy(s.m); Destroy(s.tr.gameObject); } bolts.RemoveAt(i); }
+            }
+        }
+
+        // acid rain around a point (strength 1 = downpour, ~0.15 = the drizzle before it): streaks fall at a slant, splashes glint on the floor
+        public void Rain(Vector3 around, float dt, float strength = 1f)
+        {
+            float n = 400f * strength * dt;   // the preview's 170/s over 7.5 m, spread over the 14 m the camera sees
+            int c = Mathf.FloorToInt(n) + (Random.value < n % 1 ? 1 : 0);
+            for (int i = 0; i < c; i++)
+            {
+                var d = Disc(14f);
+                One(streak, around + new Vector3(d.x - 1.4f, 9.2f, d.y - 0.5f), new Vector3(3.2f, -22f, 1.2f), 0.08f, 0.42f, new Color(0.62f, 1f, 0.22f, 0.9f));
+                if (Random.value < 0.35f) { var e = Disc(14f); One(glow, around + new Vector3(e.x, 0.05f, e.y), Vector3.zero, 0.7f, 0.18f, new Color(0.7f, 1f, 0.3f, 0.4f)); }
+            }
+        }
+        // a wind gust past a point (dir in world xz): streaks and blown dust
+        public void Wind(Vector3 around, Vector3 dir, float dt)
+        {
+            dir.y = 0; dir.Normalize(); var side = new Vector3(-dir.z, 0, dir.x);
+            float n = 45f * dt; int c = Mathf.FloorToInt(n) + (Random.value < n % 1 ? 1 : 0);
+            for (int i = 0; i < c; i++) One(streak, around - dir * R(9f, 13f) + side * R(-9f, 9f) + Vector3.up * R(0.3f, 2.6f), dir * R(16f, 22f), 0.06f, R(0.6f, 0.9f), new Color(0.9f, 0.94f, 1f, 0.6f));
+            if (Random.value < dt * 8f) One(smoke, around - dir * R(7f, 10f) + side * R(-8f, 8f) + Vector3.up * 0.35f, dir * R(6f, 9f) + Vector3.up * 0.3f, 2.6f, R(1.6f, 2.2f), new Color(0.62f, 0.59f, 0.52f, 0.5f));
+        }
+
         // the attack-warning material for EnemyAI.Tele (keeps the _BaseColor name the Tele code sets)
         public Material TeleMat() => teleSh != null ? new Material(teleSh) { name = "VfxTele" } : null;
 
@@ -188,6 +272,7 @@ namespace Maze
         // a pool's own life: bubbles + fumes (liquid), heat glow + embers + smoke (lava), flames + embers + smoke + firelight (char)
         public void Ambient(VfxPool p, float dt)
         {
+            if (p.look.quiet) return;
             float area = p.Area, k = Mathf.Min(area / 12f, 4f);   // rate scales with size, capped (fire is the fill-rate risk)
             switch ((int)p.look.mode)
             {
@@ -200,7 +285,30 @@ namespace Maze
                     if (Random.value < dt * 1f * k) { var a = p.RandomPoint(0.7f); for (int i = 0; i < 6; i++) One(spark, a + Vector3.up * 0.1f, new Vector3(R(-1, 1), R(2, 4), R(-1, 1)), 0.12f, R(0.5f, 0.9f), new Color(1f, 0.65f, 0.25f, 1f)); }
                     if (Random.value < dt * 0.8f * k) One(smoke, p.RandomPoint(0.7f) + Vector3.up * 0.6f, new Vector3(0.2f, R(0.6f, 1f), 0), 2.4f, 2.4f, new Color(0.3f, 0.27f, 0.26f, 0.25f));
                     break;
-                default:
+                case 3:   // radiation: green motes drifting up, slow glow pulses
+                    if (Random.value < dt * 3f * k) One(ember, p.RandomPoint(0.8f) + Vector3.up * 0.15f, new Vector3(R(-0.2f, 0.2f), R(0.4f, 0.9f), R(-0.2f, 0.2f)), 0.11f, R(1.6f, 2.6f), new Color(0.75f, 1f, 0.3f, 0.9f));
+                    if (Random.value < dt * 0.4f * k) One(glow, p.RandomPoint(0.7f) + Vector3.up * 0.2f, Vector3.zero, 3.2f, 1.4f, new Color(0.7f, 1f, 0.2f, 0.18f));
+                    break;
+                case 4:   // creep: spore motes, little blisters
+                    if (Random.value < dt * 1.3f * k) One(ember, p.RandomPoint(0.8f) + Vector3.up * 0.1f, new Vector3(R(-0.15f, 0.15f), R(0.2f, 0.5f), R(-0.15f, 0.15f)), 0.09f, R(1.5f, 2.5f), new Color(0.85f, 0.35f, 1f, 0.8f));
+                    if (Random.value < dt * 0.7f * k) One(bubble, p.RandomPoint(0.6f) + Vector3.up * 0.05f, Vector3.zero, 0.26f, R(0.6f, 1.1f), new Color(0.6f, 0.25f, 0.7f, 0.9f));
+                    break;
+                case 5:   // water: glints
+                    if (Random.value < dt * 0.8f * k) One(glow, p.RandomPoint(0.8f) + Vector3.up * 0.06f, Vector3.zero, 0.9f, 0.5f, new Color(0.8f, 0.95f, 1f, 0.25f));
+                    break;
+                case 6:   // ice: cold mist hugging the floor, sparkles
+                    if (Random.value < dt * 0.8f * k) One(smoke, p.RandomPoint(0.8f) + Vector3.up * 0.3f, new Vector3(R(0.1f, 0.3f), R(0.02f, 0.1f), R(-0.1f, 0.1f)), 3f, R(3f, 4f), new Color(0.86f, 0.93f, 1f, 0.18f));
+                    if (Random.value < dt * 2f * k) One(ember, p.RandomPoint(0.8f) + Vector3.up * R(0.05f, 0.6f), new Vector3(0, R(0.05f, 0.2f), 0), 0.08f, R(0.4f, 0.9f), new Color(0.9f, 0.97f, 1f, 1f));
+                    break;
+                case 7:   // current: sparks jump off the live cells
+                    if (p.power > 0.5f && Random.value < dt * 5f * k)
+                    {
+                        var a = p.RandomPoint(0.9f) + Vector3.up * 0.1f;
+                        for (int i = 0; i < 4; i++) One(spark, a, new Vector3(R(-2.5f, 2.5f), R(1f, 4f), R(-2.5f, 2.5f)), 0.2f, R(0.15f, 0.3f), new Color(0.55f, 0.85f, 1f, 1f));
+                        One(glow, a, Vector3.zero, 1.8f, 0.1f, new Color(0.4f, 0.8f, 1f, 0.6f));
+                    }
+                    break;
+                default:   // 2: fire on charred ground
                     if (Random.value < dt * 8f * k) { var a = p.RandomPoint(0.85f); float s = R(1.3f, 2.3f); One(fire, a + Vector3.up * (s * 0.42f), new Vector3(0, R(0.5f, 1.1f), 0), s * 1.1f, R(0.6f, 1f), Color.white, 360f + R(-8f, 8f)); }   // flames stay upright
                     if (Random.value < dt * 3.5f * k) One(ember, p.RandomPoint(0.8f) + Vector3.up * 0.5f, new Vector3(R(-0.5f, 0.5f), R(2f, 3.6f), R(-0.5f, 0.5f)), 0.13f, R(1f, 1.8f), new Color(1f, 0.6f, 0.2f, 1f));
                     if (Random.value < dt * 1.2f * k) One(smoke, p.RandomPoint(0.7f) + Vector3.up * 1.7f, new Vector3(0.25f, R(0.9f, 1.4f), 0), 3f, R(2f, 2.8f), new Color(0.22f, 0.2f, 0.2f, 0.42f));
@@ -216,7 +324,8 @@ namespace Maze
             m.SetTexture("_Noise", noise);
             m.SetColor("_Deep", l.deep); m.SetColor("_Mid", l.mid); m.SetColor("_Rim", l.rim); m.SetColor("_Stain", l.stain);
             m.SetFloat("_Mode", l.mode); m.SetFloat("_Erode", l.erode); m.SetFloat("_Flow", l.flow); m.SetVector("_Dir", l.dir);
-            m.SetFloat("_Seed", Random.Range(0f, 40f)); m.SetFloat("_Life", 1);
+            m.SetFloat("_QuietFluid", FirstCryoFx.Cargo && l.quiet && l.mode < .5f ? 1 : 0);
+            m.SetFloat("_Seed", Random.Range(0f, 40f)); m.SetFloat("_Life", 1); m.SetFloat("_Power", l.power);
             return m;
         }
         static Mesh Quad(Vector3 a, Vector3 b, Vector3 c, Vector3 d)
@@ -243,7 +352,8 @@ namespace Maze
         }
 
         // map cells (acid 'a', slag '*', fire 'f'): one surface over their bounds, shaped by a blurred cell mask so neighbours merge
-        public VfxPool Cells(Transform parent, List<Vector2Int> cells, Look look, float y = 0.03f)
+        // seed >= 0 keeps the same pattern when a spreading surface (creep, flood) is rebuilt
+        public VfxPool Cells(Transform parent, List<Vector2Int> cells, Look look, float y = 0.03f, float seed = -1f)
         {
             if (cells == null || cells.Count == 0) return null;
             int x0 = int.MaxValue, y0 = int.MaxValue, x1 = int.MinValue, y1 = int.MinValue;
@@ -268,6 +378,7 @@ namespace Maze
             float dx = w11.x - w00.x, dz = w11.z - w00.z;
             m.SetVector("_MaskRect", new Vector4(w00.x, w00.z, 1f / dx, 1f / dz));
             if (look.mode == 0) m.SetFloat("_Erode", 0.5f);
+            if (seed >= 0) m.SetFloat("_Seed", seed);
             var p = Spawn(parent, "VfxCells", mesh, m, org); p.look = look; p.mask = tex; p.center = org;
             p.cells = new List<Vector3>(); foreach (var c in cells) p.cells.Add(MazeMap.ToWorld(MazeMap.Center(c.x, c.y), y));
             return p;
@@ -357,10 +468,14 @@ namespace Maze
     {
         public Transform tr; public Material m; public Mesh mesh; public Texture2D mask;
         public VfxKit.Look look; public Vector3 center; public float r; public List<Vector3> cells;
-        static readonly int LifeId = Shader.PropertyToID("_Life");
+        static readonly int LifeId = Shader.PropertyToID("_Life"), PowerId = Shader.PropertyToID("_Power");
         public float Area => cells != null ? cells.Count * MazeMap.C * MazeMap.C : Mathf.PI * r * r;
         // 0 = gone, 1 = full size (grows in, shrinks and fades out)
         public void SetLife(float k) { if (m != null) m.SetFloat(LifeId, Mathf.Clamp01(k)); }
+        // water depth or current strength (0..1); the current's sparks follow it
+        public float power;
+        public void SetPower(float k) { power = k; if (m != null) m.SetFloat(PowerId, k); }
+        public float Seed => m != null ? m.GetFloat("_Seed") : -1f;
         public Vector3 RandomPoint(float spread)
         {
             if (cells != null && cells.Count > 0) { var c = cells[Random.Range(0, cells.Count)]; var d = Random.insideUnitCircle * MazeMap.C * 0.5f * spread * 1.2f; return c + new Vector3(d.x, 0, d.y); }
@@ -369,7 +484,8 @@ namespace Maze
         public void Ambient(float dt)
         {
             if (VfxKit.I == null || Game.SimRun) return; VfxKit.I.Ambient(this, dt);
-            HazardAudio.Loop(look.mode == 0 ? "amb_acid_pool" : look.mode == 1 ? "amb_molten_slag" : "amb_fire", this, cells != null ? HazardAudio.Nearest(cells, center) : center);   // the pool's sound, from its point nearest the hero
+            if (look.quiet || look.mode > 2.5f) return;   // soot is silent; radiation, creep, water, ice and current get their sound from their hazard (or none)
+            HazardAudio.Loop(look.mode < 0.5f ? "amb_acid_pool" : look.mode < 1.5f ? "amb_molten_slag" : "amb_fire", this, cells != null ? HazardAudio.Nearest(cells, center) : center);   // the pool's sound, from its point nearest the hero
         }
         public void Kill()
         {

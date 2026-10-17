@@ -1,0 +1,13 @@
+{
+  "utc": "2026-10-16T23:46:27.215643+00:00",
+  "source": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/mobile-003/LOD0/orange-cargo-crate_LOD0.glb",
+  "selected": "mobile-003/LOD0",
+  "sha256": "c85f10b45a109506c4112d505829be893db882ffbc110c16a451ebf52a2da52d",
+  "resource": "CohesiveZone/Models/cargo-crate",
+  "triangles": 2000,
+  "sourceHeightMeters": 0.9,
+  "originalsUnchanged": true,
+  "sourceManifest": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/deliverables-003/INTEGRATION.json",
+  "previousCanonicalBackup": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/snapshot/integrated-crate-mobile002",
+  "visualReview": "Actual approved003 comparison inspected; Unity minification and phone proof pending"
+}

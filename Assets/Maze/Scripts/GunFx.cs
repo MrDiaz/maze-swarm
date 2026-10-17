@@ -24,6 +24,9 @@ namespace Maze
         Mesh[] tracerMeshes;
         Material tracerMat;
         float hullT = -1; Vector3 hullAt, hullRight, lastDir = Vector3.forward;
+        // the approved chibi gunfire kit (Assets/Maze/Gunfire) for the rifle and the Heavy's minigun; null = the old look
+        GunfireKit kit; Game game; int kitTracerFrame = -1;
+        bool Heavy { get { if (game == null) game = FindAnyObjectByType<Game>(); return game != null && game.player != null && game.VgMinigun; } }
 
         static readonly Color Brass = new Color(0.86f, 0.64f, 0.24f), Hull = new Color(0.72f, 0.09f, 0.07f);
         const float LightLife = 0.06f;
@@ -106,6 +109,7 @@ namespace Maze
             tracerMat = Mats.Fade(Color.white, streakTex);
             tracerMeshes = new Mesh[3];
             for (int i = 0; i < 3; i++) tracerMeshes[i] = StreakQuad(i);
+            kit = GunfireKit.Load(transform, anchor);
         }
 
         // flat quad in XZ, length along +Z (head at +Z), uv from column `col` of streaks.png
@@ -123,6 +127,8 @@ namespace Maze
         // tracer look for a weapon index (cfg order RIFLE, SHOTGUN, SMG = streaks.png columns 0..2)
         public void SetupTracer(MeshFilter mf, MeshRenderer mr, Transform t, int weapon, string name)
         {
+            mr.enabled = true;   // (the kit hides some Barrage tracers; pooled quads come back visible)
+            if (kit != null && name == "RIFLE") { kit.SetupTracer(mf, mr, t, Heavy, Abilities.BarrageT > 0); kitTracerFrame = Time.frameCount; return; }
             mf.sharedMesh = tracerMeshes[Mathf.Clamp(weapon, 0, 2)];
             mr.sharedMaterial = tracerMat;
             int s = Style(name);
@@ -190,6 +196,7 @@ namespace Maze
         {
             lastDir = dir;
             anchor.position = muzzle;
+            if (kit != null && style == 0 && kitTracerFrame == Time.frameCount) { KitShot(muzzle, dir); return; }   // the rifle / minigun this frame
             float yaw = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg; // world yaw of the barrel (0 = +Z)
             var ep = new ParticleSystem.EmitParams { applyShapeToPosition = false };
 
@@ -283,6 +290,23 @@ namespace Maze
             else if (pump) { hullT = PumpBack; hullRight = right; hullAt = muzzle - dir * 0.4f; }
         }
 
+        // the kit's rifle / minigun shot: the star + flame, a small warm floor-light pop, a casing; no smoke
+        void KitShot(Vector3 muzzle, Vector3 dir)
+        {
+            bool heavy = Heavy, barrage = Abilities.BarrageT > 0;
+            kit.Shot(heavy, barrage, dir);
+            var l = lights[nextLight];
+            l.transform.position = muzzle + dir * 0.35f + Vector3.up * 0.2f;
+            l.enabled = true; lightT[nextLight] = LightLife; l.intensity = (heavy ? 0.9f : 1.3f) * Random.Range(0.85f, 1.1f);
+            l.range = heavy ? 2.6f : 3.2f; l.color = new Color(1f, 0.72f, 0.36f);
+            nextLight = (nextLight + 1) % lights.Length;
+            Casing(muzzle - dir * 0.45f, new Vector3(dir.z, 0, -dir.x), Brass, new Vector3(0.035f, 0.035f, 0.075f));
+        }
+
+        // a bullet hitting an enemy (the kit's small spark; nothing in the old look)
+        public void HitEnemy(Vector3 p, Vector3 back) { if (kit != null) kit.Impact(p, back, true, 2); }
+        public GunfireKit Kit => kit;
+
         // the hull flips out at the pump's back stroke: 0.44 s after the shot (the pump sound starts at 0.34)
         public const float PumpBack = 0.44f;
 
@@ -320,6 +344,7 @@ namespace Maze
         // a bullet hitting a wall or a barrel: a little burst of streak sparks back off the surface
         public void Impact(Vector3 p, Vector3 back, int n = 5)
         {
+            if (kit != null) { kit.Impact(p, back, false, n); return; }
             for (int i = 0; i < n; i++)
             {
                 var v = (back + Random.insideUnitSphere * 0.9f); v.y = Mathf.Abs(v.y) * 0.8f + 0.2f;
@@ -348,6 +373,7 @@ namespace Maze
             sparks.Clear(); smoke.Clear(); casings.Clear(); rings.Clear();
             foreach (var l in lights) l.enabled = false;
             hullT = -1;
+            if (kit != null) kit.ClearAll();
         }
     }
 }

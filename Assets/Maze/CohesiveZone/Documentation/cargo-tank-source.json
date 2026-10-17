@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-17T00:10:10.025170+00:00",
+  "source": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank/mobile-002/LOD0/rounded-utility-tank_LOD0.glb",
+  "selected": "mobile-002/LOD0",
+  "sha256": "e8b40e3390288c5bbb006c26e8fd7aaa14c897667b2e29c326fe88c0c0f283b8",
+  "resource": "CohesiveZone/Models/cargo-tank",
+  "triangles": 2500,
+  "sourceHeightMeters": 1.2,
+  "originalsUnchanged": true,
+  "sourceManifest": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank/deliverables/INTEGRATION.json",
+  "visualReview": "Actual source-vs-delivery comparison inspected by integration owner; Unity and phone proof pending"
+}

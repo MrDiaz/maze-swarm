@@ -97,12 +97,16 @@ namespace Maze
             if (!Game.SimRun)
             {
                 var root = new GameObject("PowerUp_" + d.id).transform; root.position = MazeMap.ToWorld(at, 0);
+                if (FirstCryoFx.Active) { pk.tr = root; pk.ring = FirstCryoPickupView.Build(root, d); }
+                else
+                {
                 var cube = GameObject.CreatePrimitive(PrimitiveType.Cube); Object.Destroy(cube.GetComponent<Collider>());
                 cube.transform.SetParent(root, false); cube.transform.localPosition = new Vector3(0, 0.9f, 0); cube.transform.localScale = Vector3.one * 0.55f;
                 cube.GetComponent<MeshRenderer>().sharedMaterial = Mats.Glow(d.col);
                 var ring = new GameObject("Ring"); ring.transform.SetParent(root, false); ring.transform.localPosition = new Vector3(0, 0.06f, 0); ring.transform.localScale = Vector3.one * 1.2f;
                 ring.AddComponent<MeshFilter>().sharedMesh = Fx.Ring; var mr = ring.AddComponent<MeshRenderer>(); mr.sharedMaterial = Mats.Glow(d.col * new Color(1, 1, 1, 0.8f)); mr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                 pk.tr = root; pk.ring = cube.transform;
+                }
             }
             picks.Add(pk);
         }

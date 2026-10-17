@@ -1,0 +1,178 @@
+{
+  "utc": "2026-10-17T00:13:09.136892+00:00",
+  "asset": "cream-orange-cover-barrier",
+  "name": "Cream Orange Short Cover Barrier",
+  "readyForIntegrationReview": true,
+  "root": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier",
+  "selectedVersion": "002",
+  "sourceLibraryId": "libfile_3505d4b58e2881918f4f41ed53b69c18",
+  "sourceOriginalSha256": "893560c015fa27f32cd14c43a177dba50b8216400e57aa153188aa225b16dd6a",
+  "backend": "Existing local Hunyuan3D2.1 AppleMPS / CPU rasterizer",
+  "jobId": "12643e4a-e22e-47d2-9228-e127920664ee",
+  "geometry": {
+    "steps": 40,
+    "density": 256,
+    "triangles": 16000,
+    "seed": 260120
+  },
+  "texture": {
+    "steps": 12,
+    "size": 1024,
+    "enhance": false,
+    "seed": 260120
+  },
+  "geometryWorkerSeconds": 151.42,
+  "textureWorkerSeconds": 125.72,
+  "peakSampledRssGiB": 16.218353271484375,
+  "oneGeometryAndOneTexturePass": true,
+  "noDownloadsInstallsOrCredentials": true,
+  "rawAndOriginalPreserved": true,
+  "heightMeters": 0.75,
+  "orientation": "+Yup/+Zfront author convention; source-quarter camera -45degrees; static prop can be rotated by integration owner",
+  "pivot": "shared base-footprint floor center",
+  "paletteSrgb8": {
+    "orange": [
+      255,
+      129,
+      35
+    ],
+    "cream": [
+      244,
+      232,
+      212
+    ],
+    "navy": [
+      46,
+      61,
+      92
+    ],
+    "cyan": [
+      56,
+      199,
+      231
+    ]
+  },
+  "paletteMethod": "7interior UV samples per reduced triangle vote raw neural hue family; apply shared exact source-style orange/cream/navy/cyan swatches; bounded tank cyan-window cleanup recorded per LOD; no baked light or noise",
+  "textureAndMaterial": "128x128 shared four-color sRGB atlas, intentional1x1 flat tangent normal/ORM linear, roughness184/255 and metallic0; clean vertex-normal shape, no baked albedo lighting or dense noisy normal detail",
+  "lods": [
+    {
+      "level": 0,
+      "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/mobile-002/LOD0/cream-orange-cover-barrier_LOD0.glb",
+      "sha256": "a915149875de7a9bd64280b0b2701d536ae802f6398105d177a619e70f460f52",
+      "bytes": 528096,
+      "triangles": 3500,
+      "dimensionsXYZMeters": [
+        1.516312599182129,
+        0.7493212819099426,
+        0.7150407433509827
+      ],
+      "topology": {
+        "boundaryEdges": 0,
+        "nonmanifoldEdges": 0,
+        "degenerateFaces": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2
+      },
+      "sourceSampledShapeMaxErrorMeters": 0.004544379189610481,
+      "sourceShapeP95ErrorMeters": 0.0012503451900556682,
+      "shapeErrorIsSampledNotExactHausdorff": true,
+      "shapeErrorLimitHeightFraction": 0.015,
+      "floorMinY": 0.0,
+      "adjustedFloorVertices": 0,
+      "materialCount": 1,
+      "primitiveCount": 1,
+      "baseColorSize": 128,
+      "normalSize": 1,
+      "ormSize": 1,
+      "paletteFaceCounts": {
+        "orange": 1309,
+        "cream": 1278,
+        "navy": 913,
+        "cyan": 0
+      },
+      "textureGpuRgbaWithMipsEstimateBytes": 87392,
+      "pbr": {
+        "maps": [
+          "albedo.png",
+          "normal.png",
+          "roughness.png",
+          "metallic.png",
+          "metallic-roughness.png"
+        ],
+        "normal_embedded": true,
+        "tangents_exported": true,
+        "metallic_roughness_channels": {
+          "roughness": "G",
+          "metallic": "B"
+        }
+      }
+    },
+    {
+      "level": 1,
+      "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/mobile-002/LOD1/cream-orange-cover-barrier_LOD1.glb",
+      "sha256": "b15d958f0f05e1b80babd1d6f6a772d3dfb1ef08f394bdc2f24e61c570aece7d",
+      "bytes": 228096,
+      "triangles": 1500,
+      "dimensionsXYZMeters": [
+        1.5184441208839417,
+        0.7483009696006775,
+        0.7151967883110046
+      ],
+      "topology": {
+        "boundaryEdges": 0,
+        "nonmanifoldEdges": 0,
+        "degenerateFaces": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2
+      },
+      "sourceSampledShapeMaxErrorMeters": 0.016527298837900162,
+      "sourceShapeP95ErrorMeters": 0.0023575246683321892,
+      "shapeErrorIsSampledNotExactHausdorff": true,
+      "shapeErrorLimitHeightFraction": 0.025,
+      "floorMinY": 0.0,
+      "adjustedFloorVertices": 1,
+      "materialCount": 1,
+      "primitiveCount": 1,
+      "baseColorSize": 128,
+      "normalSize": 1,
+      "ormSize": 1,
+      "paletteFaceCounts": {
+        "orange": 532,
+        "cream": 553,
+        "navy": 415,
+        "cyan": 0
+      },
+      "textureGpuRgbaWithMipsEstimateBytes": 87392,
+      "pbr": {
+        "maps": [
+          "albedo.png",
+          "normal.png",
+          "roughness.png",
+          "metallic.png",
+          "metallic-roughness.png"
+        ],
+        "normal_embedded": true,
+        "tangents_exported": true,
+        "metallic_roughness_channels": {
+          "roughness": "G",
+          "metallic": "B"
+        }
+      }
+    }
+  ],
+  "offlineValidation": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/mobile-002/offline-validation.json",
+  "visualReview": {
+    "frontQuarterSideBack": true,
+    "sourceComparison": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/deliverables/cream-orange-cover-barrier-comparison.png",
+    "actualMultiview": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/deliverables/cream-orange-cover-barrier-multiview.png",
+    "notes": "Actual front/quarter/side/back and1500-triangle distant LOD inspected. Rounded orange end posts, cream recessed panels/grip and navy plinth match the source silhouette and toy palette. Main3500-triangle mesh max sampled shape error0.61%height; far1500-triangle mesh2.20%height, under its explicitly recorded2.5%limit. Initial2000-triangle export stopped at its strict1.5%primary limit and remains preserved; no extra inference. Slight panel asymmetry/soft grooves and small face-aligned color steps at orange/cream/navy boundaries remain close up. Distant LOD retains the grip and feet at its intended far-view detail. Closed wound one-component topology, PBR maps, palette and nondegenerate tiny-UV checks passed. Static prop, no rig/animation."
+  },
+  "limitations": [
+    "Single-view rear inference",
+    "Static mesh; no moving machine or conveyor mechanism",
+    "No rig or animation",
+    "No game edit/import or device profiling",
+    "Self-intersections not formally tested"
+  ],
+  "integrationOwner": "01a13737-9ca8-728a-9baa-fc7ac2c030ee"
+}

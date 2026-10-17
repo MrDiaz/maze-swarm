@@ -68,7 +68,8 @@ namespace Maze
         [System.NonSerialized] public int tier, floor, level = 1, xp, bonusCredits;
         public const int Floors = 5;
         public readonly RunMods mods = new();
-        public int XpNeed => Mathf.RoundToInt((18 + 4 * (level - 1)) * (Ops.Mut(0) ? 0.7f : 1f));   // Hot Zone OVERCLOCKED: 30% faster
+        public const int MaxLevel = 10;   // the in-run level caps at 10 per map run (2026-10-14); XP past the cap is not banked
+        public int XpNeed => Mathf.RoundToInt((30 + 6 * (level - 1)) * (Ops.Mut(0) ? 0.7f : 1f));   // (was 18 + 4/level: a run hit 13-14); Hot Zone OVERCLOCKED: 30% faster
         public enum Choice { None, LevelUp, Cache, Rare }
         [System.NonSerialized] public Choice choosing;
         public readonly List<Card> offer = new();
@@ -174,14 +175,16 @@ namespace Maze
             foreach (var b in bullets) Fx.I.ReleaseTracer(b.tr); bullets.Clear();
             foreach (var p in pickups) Destroy(p.tr.gameObject); pickups.Clear();
             ClearOrbs(); fires.Clear(); Fx.I.ClearAll();
+            FloorEditing.FloorDocuments.SetRuntimeContext(sector?.id, floor);
             MazeMap.MapIndex = index; MazeMap.Init();
             if (levelRoot != null) Destroy(levelRoot.gameObject);
             BuildLevel(); swarm.ResizeHash(); barrels.Rebuild(); barrels.ResetAll(); escape.Build(this);
             MazeMap.flowCell = -1; flowT = 0;
-            player.p = MazeMap.playerSpawn; player.vel = Vector2.zero; camTarget = player.p;
+            player.p = MazeMap.playerSpawn; player.vel = Vector2.zero; player.ResetEngineerMotion(); camTarget = player.p;
             goalField = new short[MazeMap.W * MazeMap.H];
             EnemyAI.Init(this); EnemyAI.Latched = 0; EnemyAI.ClearWebs(); EndObjective(); Elites.ClearRings();
             if (run) ApplyBiome(sector);
+            if (CohesiveZone.For(this)) FirstCryoFx.Get();
             // (the old floors' generated textures are freed at the run's end: unloading here hitched ~0.3 s)
         }
 
@@ -271,8 +274,10 @@ namespace Maze
                 float under = Mathf.Clamp(Meta.RecommendedAt(sector, Meta.Difficulty) / (float)Mathf.Max(1, Progress.Power()), 1f, 2f);
                 swarm.DmgScale *= under * under; swarm.HpScale *= under;
             }   // hero HP is only half of CP (sqrt(D x H)): linear damage made late zones ~3x as lethal a hit
+            swarm.SpeedScale = 1; if (FirstZoneTuning.On(this)) { swarm.HpScale *= FirstZoneTuning.Hp(f); swarm.DmgScale *= FirstZoneTuning.Dmg(f); swarm.SpeedScale = FirstZoneTuning.Speed(f); }   // the first deploy's pressure (no-reload pass)
             wave = compWave; toSpawn = 0; spawnT = 1.0f; breakT = 99;
             goalT = 0; goalCount = 0; goalTotal = 0; purgeWave = 0; escRoom = 0; slamPending = -1; nests.Clear(); boss = null;
+            ApplyReloadSwitch();
             for (int i = 0; i < player.ammo.Length; i++) { player.ammo[i] = cfg.weapons[i].magSize; player.reloadLeft[i] = 0; }
             switch (goal)
             {
@@ -290,6 +295,7 @@ namespace Maze
                     goalNeed = (liftAt - player.p).magnitude; hackT = 0; EscTarget(); break;
                 case Goal.Hunt:
                     swarm.NestEvery = 2.6f - 0.1f * tier; swarm.NestCap = 20 + 2 * f;
+                    if (FirstZoneTuning.On(this)) { swarm.NestEvery = FirstZoneTuning.HuntNestEvery; swarm.NestCap = FirstZoneTuning.HuntNestCap; }   // the first deploy's Hunt: a softer nest stream
                     foreach (var at in MazeMap.nestSpots) { if (nests.Count >= 3) break; var n = swarm.Spawn(at, compWave, swarm.NestType); n.p = at; nests.Add(n); if (MazeMap.V2) n.hp = n.maxHp = ZoneCells.RH(this) * 30f; }   // spec: 30 RH
                     goalTotal = nests.Count; break;
                 case Goal.Boss:
@@ -320,7 +326,7 @@ namespace Maze
         {
             if (purgeWave > 0) events.Wave(purgeWave, false);
             purgeWave++; events.Wave(purgeWave, true);
-            toSpawn = goalTotal = Mathf.RoundToInt((9 + 3 * floor + 3 * purgeWave) * (ZoneMods.On[ZoneMods.Brood] ? 1.4f : 1f)); spawnT = 0.8f;   // BROOD SURGE: +40%
+            toSpawn = goalTotal = Mathf.RoundToInt((9 + 3 * floor + 3 * purgeWave) * (ZoneMods.On[ZoneMods.Brood] ? 1.4f : 1f) * (FirstZoneTuning.On(this) ? FirstZoneTuning.PurgeCountMul : 1f)); spawnT = 0.8f;   // BROOD SURGE: +40%
             if (purgeWave > 1) hud.ShowBanner($"WAVE {purgeWave}/{PurgeWaves}");
         }
 
@@ -335,7 +341,7 @@ namespace Maze
         void SpawnOne(bool preferBehind = false)
         {
             if (floorT < (floor == 1 ? 2.5f : 1.5f)) return;   // drop-in: the first spawns wait
-            if (zoneFloor != null && goal != Goal.Purge && goal != Goal.Boss && floorTotal >= FloorBudget) return;   // the spec's counts are the floor's whole swarm
+            if (zoneFloor != null && goal != Goal.Purge && goal != Goal.Boss && !(goal == Goal.Hold && shownGoal != Goal.Defend) && floorTotal >= FloorBudget) return;   // the spec's counts are the floor's whole swarm (HOLD THE ZONE: the swarm keeps coming until the upload completes, 2026-10-14)
             var pts = MazeMap.spawnPoints; if (pts.Count == 0) return;
             Vector2 at = pts[0]; int count = 0; int myRoom = MazeMap.Facility ? MazeMap.RoomAt(player.p) : -1;
             foreach (var s in pts)
@@ -395,8 +401,7 @@ namespace Maze
         // kill feedback by size (2.2) + the chain (2.3) + the run score (3.2)
         public int RunScore; public float damageTaken; float sKillHaptic, floorDamage; int flawlessFloors;
         public int XpGained, ShardsGained; public bool FirstClear; public string ShardHero; public List<string> RankUps = new(), StarTrack = new(), OpsToasts = new();
-        static readonly string[] Featured = { "sentinel", "vanguard", "sentinel", "vanguard", "sentinel", "scout", "sentinel", "vanguard", "scout", "sentinel", "vanguard", "scout", "sentinel", "vanguard", "scout", "sentinel", "vanguard", "scout" };
-        public static string FeaturedHero(int zone) => Featured[Mathf.Clamp(zone, 1, 18) - 1];
+        public static string FeaturedHero(int zone)=>"vanguard";
         public string Grade, GradeVerdict; public float GradePoints; public int GradeBonus;
         public enum Size { S, M, L, Elite, Mini, Boss }
         public static Size SizeOf(Enemy e)
@@ -430,6 +435,7 @@ namespace Maze
         void UpdateFloor(float dt)
         {
             floorT += dt;
+            if (PlaygroundMode.Active) return;   // (the playground: no waves, no goal; only what the picker spawns)
             if (floor == 1 && floorT >= 0.9f && floorT - dt < 0.9f && !SimRun)
             {   // drop-in impact (2.9): dust ring, shake, flash, heavy haptic
                 Feel.Shake(0.25f, 0.5f); Feel.Flash(Color.white, 0.2f, 0.1f); Haptics.Heavy();
@@ -441,7 +447,7 @@ namespace Maze
             {
                 case Goal.Purge:
                 case Goal.Boss:
-                    if (toSpawn > 0 && (spawnT -= dt) <= 0 && alive < (goal == Goal.Boss ? 16 : cfg.waves.maxAlive)) { SpawnOne(); toSpawn--; spawnT = goal == Goal.Boss ? 0.9f : 0.3f; }
+                    if (toSpawn > 0 && (spawnT -= dt) <= 0 && alive < (goal == Goal.Boss ? 16 : cfg.waves.maxAlive)) { SpawnOne(); toSpawn--; spawnT = goal == Goal.Boss ? (FirstZoneTuning.On(this) ? FirstZoneTuning.BossGap : 0.9f) : 0.3f; }
                     // soft-lock guard: the last few out of reach (cut off by a fallen walkway, wedged) for 15 s get swept
                     if (goal == Goal.Purge && toSpawn == 0 && alive > 0 && alive <= 8 && kills == sweepKills) { if ((sweepT += dt) > 15f) { foreach (var e in swarm.enemies.ToArray()) if (!e.dead && !e.type.nest) KillEnemy(e); hud.ShowBanner("AREA SWEPT"); } }
                     else { sweepT = 0; sweepKills = kills; }
@@ -456,7 +462,8 @@ namespace Maze
                 {
                     goalT += dt;
                     float k = Mathf.Clamp01(goalT / goalNeed);                       // spawns ramp up
-                    if ((spawnT -= dt) <= 0 && alive < 14 + 22 * k) { SpawnOne(); spawnT = Mathf.Lerp(0.55f, 0.22f, k); }
+                    bool fz = FirstZoneTuning.On(this);
+                    if ((spawnT -= dt) <= 0 && alive < (fz ? FirstZoneTuning.SurviveAlive0 + FirstZoneTuning.SurviveAliveRamp * k : 14 + 22 * k)) { SpawnOne(); spawnT = fz ? Mathf.Lerp(FirstZoneTuning.SurviveGap0, FirstZoneTuning.SurviveGap1, k) : Mathf.Lerp(0.55f, 0.22f, k); }
                     if (goalT >= goalNeed) GoalDone("SURVIVED");
                     break;
                 }
@@ -474,8 +481,9 @@ namespace Maze
                 {
                     bool inside = (player.p - goalAt).magnitude < 3.6f;
                     if (inside) goalT += dt;
-                    if (SimRun && (holdDbg += dt) > 10f) { holdDbg = 0; Debug.Log($"Maze hold: F{floor} goalT {goalT:0.0} need {goalNeed} inside {inside} param '{zoneFloor?.param}'"); }
-                    if ((spawnT -= dt) <= 0 && alive < 18) { SpawnOne(); spawnT = inside ? 0.42f : 0.6f; }  // the swarm comes hard
+                    if (SimRun && (holdDbg += dt) > 5f) { holdDbg = 0; Debug.Log($"Maze hold: F{floor} t {floorT:0} goalT {goalT:0.0} need {goalNeed} inside {inside} alive {alive} spawned {floorTotal} budget {FloorBudget} param '{zoneFloor?.param}'"); }
+                    bool fz = FirstZoneTuning.On(this);
+                    if ((spawnT -= dt) <= 0 && alive < (fz ? FirstZoneTuning.HoldAlive : 18)) { SpawnOne(); spawnT = inside ? (fz ? FirstZoneTuning.HoldGapInside : 0.42f) : 0.6f; }  // the swarm comes hard
                     if (goalT >= goalNeed) GoalDone("UPLOAD COMPLETE");
                     break;
                 }
@@ -531,7 +539,7 @@ namespace Maze
             if (pendingLevels > 0) { floorDonePending = true; OpenChoice(Choice.LevelUp); } else FloorCleared();
         }
         bool floorDonePending, instantXp; int slamPending = -1;
-        void GainXpQuiet(int v) { xp += v; while (xp >= XpNeed) { xp -= XpNeed; level++; pendingLevels++; } }
+        void GainXpQuiet(int v) { if (level >= MaxLevel) { xp = 0; return; } xp += v; while (level < MaxLevel && xp >= XpNeed) { xp -= XpNeed; level++; pendingLevels++; } if (level >= MaxLevel) xp = 0; }
 
         void FloorCleared()
         {
@@ -778,8 +786,10 @@ namespace Maze
         void GainXp(int v)
         {
             if (!run) return;
+            if (level >= MaxLevel) { xp = 0; return; }   // capped: nothing more this run
             xp += v;
-            while (xp >= XpNeed) { xp -= XpNeed; level++; pendingLevels++; }
+            while (level < MaxLevel && xp >= XpNeed) { xp -= XpNeed; level++; pendingLevels++; }
+            if (level >= MaxLevel) xp = 0;
             if (pendingLevels > 0 && choosing == Choice.None && state == State.Playing) OpenChoice(Choice.LevelUp);
         }
 
@@ -844,7 +854,7 @@ namespace Maze
             if (was == Choice.Cache && (Ops.Mut(1) || TS(8, 1)) && !supplyPick && k.id != "cache_card" && offer.Count > 1)
             {   // Hot Zone SUPPLY LINES: take a second crate
                 supplyPick = true; if (k.id == "cache_heal") player.hp = player.maxHp; else if (k.id == "cache_credits") bonusCredits += k.max;
-                offer.RemoveAt(i); Sfx.Toggle(); runUi?.ShowChoice(Choice.Cache, offer); return;
+                offer.RemoveAt(i); if (!FirstCryoAudio.Accept(this)) Sfx.Toggle(); runUi?.ShowChoice(Choice.Cache, offer); return;
             }
             supplyPick = false;
             choosing = Choice.None; state = State.Playing; Time.timeScale = 1;
@@ -861,7 +871,7 @@ namespace Maze
                     if (k.evo) Evolve(k);
                     break;
             }
-            Sfx.Toggle(); Haptics.Light();
+            if (!FirstCryoAudio.Accept(this)) Sfx.Toggle(); Haptics.Light();
             if ((was == Choice.Cache || was == Choice.Rare) && (floor < Floors || Endless)) StartFloor(floor + 1); // the cache sits between floors
             if (was == Choice.LevelUp && pendingLevels == 0) Feel.Dip(0.5f, 0.3f, exempt: true);
             if (was == Choice.LevelUp && Meta.Leg(4)) player.hp = Mathf.Min(player.maxHp, player.hp + player.maxHp * 0.1f * Meta.AffixMul(4));   // implant: level-ups heal   // the level-up ease back in
@@ -901,7 +911,7 @@ namespace Maze
             runT += dt; lastBreathT -= dt;
             Chain.Tick(dt); Feel.TelegraphNear = EnemyAI.Tele.Danger(player.p, out _);
             CardTick(dt); Elites.TickRings(this); if (obRun > 0 || HintsOn) OnboardTick(dt);
-            Hazards.Tick(this, dt);
+            Hazards.Tick(this, dt); CryoHeroTurret.StepAll(this, dt); FeelFx.Tick(this, dt);   // the Cryo floors' hero turrets (none elsewhere)
             events.Tick(dt); events.TickBlocks();
             EnemyAI.TickGlobal(dt);
             EnemySlow = EnemyAI.LatchSlow * EnemyAI.WebSlow(player, dt) * PowerUps.MoveMul * GearMoveMul;

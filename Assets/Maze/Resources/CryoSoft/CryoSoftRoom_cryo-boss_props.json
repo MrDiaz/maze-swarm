@@ -1,0 +1,105 @@
+{
+ "layout": "cryo-boss",
+ "anchors": [
+  {
+   "prop": "cryo-blast-door",
+   "x": 24,
+   "y": 0.0,
+   "z": -1.0,
+   "yaw": 180,
+   "name": "blast_door",
+   "fw": 0,
+   "fd": 0,
+   "maxh": 3.4
+  },
+  {
+   "prop": "cryo-gun-turret",
+   "x": 13.0,
+   "y": 0.33,
+   "z": -8.0,
+   "yaw": 180,
+   "name": "gun_turret",
+   "fw": 1.9,
+   "fd": 1.9,
+   "maxh": 2.2
+  },
+  {
+   "prop": "cryo-supply-crate",
+   "x": 11.1,
+   "y": 0.33,
+   "z": -8.0,
+   "yaw": 170,
+   "name": "turret_crate",
+   "fw": 1.6,
+   "fd": 1.6,
+   "maxh": 3.4
+  },
+  {
+   "prop": "cryo-supply-crate",
+   "x": 35.0,
+   "y": 0.33,
+   "z": -7.0,
+   "yaw": 180,
+   "name": "crate_a",
+   "fw": 1.55,
+   "fd": 1.85,
+   "maxh": 3.4
+  },
+  {
+   "prop": "cryo-supply-crate",
+   "x": 37.0,
+   "y": 0.33,
+   "z": -9.0,
+   "yaw": 170,
+   "name": "crate_b",
+   "fw": 1.55,
+   "fd": 1.85,
+   "maxh": 3.4
+  },
+  {
+   "prop": "cryo-flamethrower-turret",
+   "x": 13.0,
+   "y": 0.33,
+   "z": -22.0,
+   "yaw": 180,
+   "name": "flame_turret",
+   "fw": 1.9,
+   "fd": 1.9,
+   "maxh": 2.2
+  },
+  {
+   "prop": "cryo-supply-crate",
+   "x": 11.1,
+   "y": 0.33,
+   "z": -22.0,
+   "yaw": 170,
+   "name": "turret_crate",
+   "fw": 1.6,
+   "fd": 1.6,
+   "maxh": 3.4
+  },
+  {
+   "prop": "cryo-low-coolant-tank",
+   "x": 36.0,
+   "y": 0.33,
+   "z": -21.52,
+   "yaw": 180,
+   "name": "cryo-low-coolant-tank",
+   "fw": 3.1,
+   "fd": 1.86,
+   "maxh": 3.4
+  },
+  {
+   "prop": "cryo-freeze-canister",
+   "x": 37.2,
+   "y": 0.33,
+   "z": -23.2,
+   "yaw": 200,
+   "name": "canister_a",
+   "fw": 1.1,
+   "fd": 1.1,
+   "maxh": 1.8
+  }
+ ],
+ "door_x": 24
+}

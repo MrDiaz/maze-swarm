@@ -9,7 +9,7 @@ namespace Maze
     // The "Orbital drop" start screen: the dropship bridge over an infested planet (a painted plate
     // with live parallax, pulsing hive glow, dust motes and scanlines), holographic panel buttons,
     // the LOADOUT / SQUAD / RESEARCH / settings sheets, and the DEPLOY drop-hatch transition.
-    public class MainMenu : MonoBehaviour
+    public partial class MainMenu : MonoBehaviour
     {
         Game game;
         Canvas canvas;
@@ -22,13 +22,14 @@ namespace Maze
         readonly List<Mote> motes = new();
         readonly List<(HoloButton b, CanvasGroup cg, float delay)> mainButtons = new();
         HoloButton deployBtn, loadoutBtn, squadBtn, researchBtn, gearBtn, opsBtn;
+        TitleScreenView titleView;
         Text telemetry;
         Vector2 tilt, accBase, drift;
         float t, introT, shake, teleT;
         const float BgAspect = 2340f / 1080f;
         static readonly Color Metal = new Color(0.045f, 0.07f, 0.095f, 1);
 
-        class Sheet { public RectTransform rt; public CanvasGroup cg; public float k, width; public bool open; public Action onOpen, onClose; }
+        class Sheet { public RectTransform rt; public CanvasGroup cg; public float k, width; public bool open, fullScreen; public string key; public Action onOpen, onClose; }
         readonly Dictionary<string, Sheet> sheets = new();
         Sheet current;
 
@@ -40,7 +41,7 @@ namespace Maze
         float dropT = -1; bool impact, landed;
 
         public bool Busy => dropT >= 0;
-        public bool SheetOpen => current != null;
+        public bool SheetOpen => current != null || (menuPresentation != null && menuPresentation.SubscreenOpen);
         public void SetCanvasVisible(bool on) { if (canvas != null) canvas.enabled = on; } // map select covers the menu
         public bool Visible => canvas != null && canvas.enabled;
         public bool Dropping => dropT >= 0; bool podFall;
@@ -76,6 +77,10 @@ namespace Maze
             Show();
             var ms = new GameObject("MapSelect"); ms.transform.SetParent(transform, false);
             ms.AddComponent<MapSelect>().Init(g, this);
+            menuPresentation = gameObject.AddComponent<MenuPresentation>();
+            menuPresentation.Init(this, g, shakeRoot, () => deployBtn.onClick?.Invoke());
+            titleView = gameObject.AddComponent<TitleScreenView>();
+            titleView.Init(this, g, shakeRoot, () => menuPresentation.EnterHangar());
         }
 
         // ------------------------------------------------------------ background
@@ -219,7 +224,7 @@ namespace Maze
             crt.anchorMin = crt.anchorMax = crt.pivot = new Vector2(1, 1); crt.anchoredPosition = new Vector2(-20, -18);
             close.onClick = CloseSheet;
             content = Holo.Stretch(Holo.Rect(rt, "Content"), 44, 34, 44, 184);
-            var s = new Sheet { rt = rt, cg = cg, width = width };
+            var s = new Sheet { rt = rt, cg = cg, width = width, key = key };
             sheets[key] = s;
             rt.gameObject.SetActive(false);
             return s;
@@ -230,6 +235,7 @@ namespace Maze
             if (Busy || !sheets.TryGetValue(key, out var s)) return;
             if (Progress.D.runs == 0 && key != "settings") { Sfx.Deny(); ShowToast("UNLOCKS AFTER YOUR FIRST DROP"); return; }
             if (current != null && current != s) { current.open = false; current.k = 0; current.rt.gameObject.SetActive(false); current.onClose?.Invoke(); }
+            if (key == "gear" && current != s) gearReturnKey = current != null && current != s ? current.key : null;
             current = s; s.open = true;
             s.rt.gameObject.SetActive(true);
             dim.gameObject.SetActive(true);
@@ -253,7 +259,7 @@ namespace Maze
                 if (!s.rt.gameObject.activeSelf) continue;
                 s.k = Mathf.MoveTowards(s.k, s.open ? 1 : 0, dt * (s.open ? 3.6f : 5f));
                 float e = s.open ? 1 - Mathf.Pow(1 - s.k, 3) : s.k * s.k;
-                s.rt.anchoredPosition = new Vector2(-26 + (1 - e) * (s.width + 260), 0);
+                s.rt.anchoredPosition = new Vector2((s.fullScreen ? 0 : -26) + (1 - e) * (s.width + 260), 0);
                 s.cg.alpha = Mathf.Clamp01(s.k * 1.6f);
                 s.cg.interactable = s.cg.blocksRaycasts = s.open;
                 dimK = Mathf.Max(dimK, e);
@@ -321,7 +327,7 @@ namespace Maze
             if (arPivot != null) arPivot.gameObject.SetActive(!heavy || mgPivot == null);
             if (mgPivot != null) { mgPivot.gameObject.SetActive(heavy); }
             gunPivot = heavy && mgPivot != null ? mgPivot : arPivot;
-            if (loadoutHint != null) loadoutHint.text = heavy ? "Iron Vanguard's minigun. Tap RELOAD during a run to reload early." : "Your starting weapon. Tap the weapon button during a run to swap.";
+            if (loadoutHint != null) loadoutHint.text = heavy ? (Game.ReloadEnabled ? "Iron Vanguard's minigun. Tap RELOAD during a run to reload early." : "Iron Vanguard's minigun. It never runs dry.") : "Your starting weapon. Tap the weapon button during a run to swap.";
         }
         readonly Bar[] bars = new Bar[4];
         Text previewName, dpsText;
@@ -442,7 +448,8 @@ namespace Maze
             previewCam.targetTexture = previewRt;
             previewCam.enabled = false;
             Light(new Vector3(1.3f, 0.9f, 1.4f), Holo.Cyan, 5f);
-            Light(new Vector3(-1.6f, 1.1f, -1.4f), new Color(1f, 0.93f, 0.85f), 3f);
+            Light(new Vector3(-1.6f, 1.1f, -1.4f), new Color(1f, 0.93f, 0.85f), 9f);   // (2026-10-15) the white key 3 -> 9 and a front fill: at 3 the dark gunmetal read black
+            Light(new Vector3(0.9f, 0.7f, -1.6f), new Color(0.92f, 0.96f, 1f), 5f);
             Light(new Vector3(0.2f, -1.2f, -0.6f), Holo.Acid, 1.5f);
             previewRoot.gameObject.SetActive(false);
         }
@@ -522,102 +529,44 @@ namespace Maze
 
         // ---- GEAR (Armory): 5 slots, the inventory (by slot, best first), the selected piece: EQUIP / LEVEL UP (Alloy) /
         // MERGE (3 of the same slot + rarity into the next rarity)
-        RectTransform gearSlots, gearGrid; Text gearWallet, gearSelName, gearSelStat; HoloButton gearEquip, gearLevel, gearMerge, gearLock, gearSalvage, relicBtn, relicLv; int gearSelUid;
+        GearView gearView;
+        string gearReturnKey;
+        public GearView Gear => gearView;
+        public bool GearOpen => current != null && current.key == "gear" && current.open;
         void BuildGear()
         {
-            var s = MakeSheet("gear", "ARMORY  //  HELMET  VEST  GLOVES  BOOTS  IMPLANT", "GEAR", 1250, out var c);
-            gearWallet = Holo.Label(Holo.Rect(s.rt, "Wallet", new Vector2(1, 1), new Vector2(-180, -64), new Vector2(760, 44)), "", 28, Holo.Ink, TextAnchor.MiddleRight);
-            gearWallet.rectTransform.pivot = new Vector2(1, 0.5f); gearWallet.supportRichText = true; gearWallet.gameObject.SetActive(false);
-            MakeWallet(s.rt);
-            s.onOpen = () => { if (Tut == 1) { int best = 0, br = -1; foreach (var g in Progress.D.gear) if (g.slot == 2 && g.rarity > br) { br = g.rarity; best = g.uid; } if (best != 0) { gearSelUid = best; ShowToast("TAP EQUIP ON THE GLOVES"); } } RefreshGear(); if (Tut == 1 && gearEquip != null) gearEquip.selected = true; };
-            gearSlots = Holo.Rect(c, "Slots", new Vector2(0, 1), Vector2.zero, new Vector2(470, 700)); gearSlots.pivot = new Vector2(0, 1);
-            gearGrid = Holo.Rect(c, "Grid", new Vector2(1, 1), Vector2.zero, new Vector2(640, 470)); gearGrid.pivot = new Vector2(1, 1);
-            var sel = Holo.Rect(c, "Sel", new Vector2(1, 0), Vector2.zero, new Vector2(640, 300)); sel.pivot = new Vector2(1, 0);
-            Holo.Img(sel, Holo.FillSprite, Holo.A(Holo.Glass, 1), true);
-            Holo.Img(Holo.Fill(sel, "Edge"), Holo.EdgeSprite, Holo.A(Holo.Cyan, 0.5f), true);
-            gearSelName = Holo.Label(Holo.Rect(sel, "N", new Vector2(0, 1), new Vector2(24, -18), new Vector2(600, 46)), "SELECT A PIECE", 34, Holo.Ink, TextAnchor.UpperLeft); gearSelName.fontStyle = FontStyle.Bold;
-            gearSelStat = Holo.Label(Holo.Rect(sel, "S", new Vector2(0, 1), new Vector2(24, -66), new Vector2(600, 60)), "", 24, Holo.Muted, TextAnchor.UpperLeft);
-            HoloButton B(string n, string label, string icon, float x) { var b = Holo.Button(sel, n, new Vector2(118, 96), label, null, 22); var rt = (RectTransform)b.transform; rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0, 0); rt.anchoredPosition = new Vector2(x, 16); return b; }
-            gearEquip = B("Equip", "EQUIP", "check", 12); gearLevel = B("Level", "LEVEL", "bolt", 136); gearMerge = B("Merge", "MERGE", "quality", 260);
-            gearLock = B("Lock", "LOCK", "lock", 384); gearSalvage = B("Salvage", "SCRAP", "close", 508);
-            gearLock.onClick = () => { var g = Progress.Item(gearSelUid); if (g != null) { g.locked = !g.locked; Progress.Save(); Sfx.Toggle(); RefreshGear(); } };
-            gearSalvage.onClick = () => { var g = Progress.Item(gearSelUid); int a = g != null ? Meta.SalvageItem(g) : 0; if (a > 0) { gearSelUid = 0; Sfx.Close(); ShowToast($"+{a} ALLOY"); RefreshGear(); RefreshLabels(); } else { Sfx.Deny(); ShowToast("EQUIPPED OR LOCKED"); } };
-            var ma = Holo.Button(c, "MergeAll", new Vector2(470, 84), "MERGE ALL", "quality", 28);
-            var mart = (RectTransform)ma.transform; mart.anchorMin = mart.anchorMax = mart.pivot = new Vector2(0, 1); mart.anchoredPosition = new Vector2(0, -560);
-            relicBtn = Holo.Button(c, "Relic", new Vector2(340, 110), "RELIC", null, 22);
-            var rrt = (RectTransform)relicBtn.transform; rrt.anchorMin = rrt.anchorMax = rrt.pivot = new Vector2(0, 1); rrt.anchoredPosition = new Vector2(0, -656);
-            relicBtn.onClick = () =>
-            {   // cycle the owned relics (and none)
-                if (!Meta.RelicSlotOpen) { Sfx.Deny(); ShowToast("RELIC SLOT OPENS AT 60 STARS"); return; }
-                int cur = Progress.D.equippedRelic, n = Meta.Relics.Length;
-                for (int k = 1; k <= n + 1; k++) { int i = (cur + 1 + k) % (n + 1) - 1; if (i < 0 || Meta.RelicLv(i) > 0) { Progress.D.equippedRelic = i; break; } }
-                Progress.Save(); Sfx.Toggle(); RefreshGear(); RefreshLabels();
+            var root = Holo.Fill(shakeRoot, "FullScreenGear");
+            var cg = root.gameObject.AddComponent<CanvasGroup>();
+            gearView = root.gameObject.AddComponent<GearView>();
+            gearView.Init(this, GearBack, GearChanged);
+            var s = new Sheet { rt = root, cg = cg, width = 1849, key = "gear", fullScreen = true };
+            s.onOpen = () =>
+            {
+                gearView.Open();
+                if (Tut == 1 && !Progress.Sim)
+                {
+                    GearItem best = null;
+                    foreach (var item in Progress.D.gear)
+                        if (item.slot == 2 && (best == null || item.rarity > best.rarity)) best = item;
+                    if (best != null) { gearView.SelectItem(best.uid, true); gearView.ShowNotice("TAP EQUIP ON THE GLOVES"); }
+                }
             };
-            relicLv = Holo.Button(c, "RelicLv", new Vector2(120, 110), "LV UP", null, 24);
-            var rlt = (RectTransform)relicLv.transform; rlt.anchorMin = rlt.anchorMax = rlt.pivot = new Vector2(0, 1); rlt.anchoredPosition = new Vector2(350, -656);
-            relicLv.onClick = () => { if (Meta.EquippedRelic >= 0 && Meta.LevelRelic(Meta.EquippedRelic)) { Sfx.Open(); Haptics.Medium(); RefreshGear(); RefreshLabels(); } else { Sfx.Deny(); ShowToast(Meta.EquippedRelic < 0 ? "NO RELIC EQUIPPED" : "MAX LEVEL OR NOT ENOUGH ALLOY"); } };
-            ma.onClick = () => { int n = Meta.MergeAll(); if (n > 0) { Sfx.Open(); Haptics.Heavy(); ShowToast($"{n} MERGED"); RefreshGear(); RefreshLabels(); } else { Sfx.Deny(); ShowToast("NO FULL STACKS (3 / 3 / 4 / 5)"); } };
-            gearEquip.onClick = () => { var g = Progress.Item(gearSelUid); if (g != null) { Progress.Equip(g); Sfx.Toggle(); RefreshGear(); RefreshLabels(); if (Tut == 1) { Tut = 2; gearEquip.selected = false; ShowToast($"UPGRADES RAISE YOUR POWER: {Progress.Power():N0}"); } } };
-            gearLevel.onClick = () => { var g = Progress.Item(gearSelUid); if (g != null && Progress.LevelGear(g)) { Sfx.Toggle(); Haptics.Light(); RefreshGear(); RefreshLabels(); } else { Sfx.Deny(); Haptics.Warn(); } };
-            gearMerge.onClick = () => { var g = Progress.Item(gearSelUid); var n = g != null ? Progress.Merge(g) : null; if (n != null) { gearSelUid = n.uid; Sfx.Open(); Haptics.Heavy(); RefreshGear(); RefreshLabels(); } else { Sfx.Deny(); Haptics.Warn(); } };
+            s.onClose = gearView.Close;
+            sheets["gear"] = s; root.gameObject.SetActive(false);
         }
-
-        void RefreshGear()
+        void GearBack()
         {
-            if (gearSlots == null) return;
-            RefreshWallets();
-            if (relicBtn != null)
-            {   // the 6th slot: the relic
-                int ri = Meta.EquippedRelic;
-                if (relicBtn.label != null) relicBtn.label.text = !Meta.RelicSlotOpen ? "RELIC  ★ 60" : ri < 0 ? $"RELIC  ({Meta.RelicsOwned} OWNED)" : Meta.Relics[ri];
-                relicBtn.SetSub(!Meta.RelicSlotOpen ? "LOCKED: 60 STARS" : ri < 0 ? (Meta.RelicsOwned > 0 ? "TAP TO EQUIP" : "HARD / NIGHTMARE BOSS DROPS") : $"LV {Meta.RelicLv(ri)}  //  +{Meta.RelicLv(ri) * 2}% CP  //  TAP: NEXT", ri < 0 ? Holo.Muted : new Color(1f, 0.48f, 0.85f), 20);
-                relicBtn.dimmed = !Meta.RelicSlotOpen;
-                relicLv.dimmed = ri < 0 || Meta.RelicCost(ri) == 0 || Progress.D.alloy < Meta.RelicCost(ri);
-                relicLv.SetSub(ri < 0 || Meta.RelicCost(ri) == 0 ? "" : $"{Meta.RelicCost(ri)} AL", Holo.Muted, 18);
-            }
-            for (int i = gearSlots.childCount - 1; i >= 0; i--) Destroy(gearSlots.GetChild(i).gameObject);
-            for (int i = gearGrid.childCount - 1; i >= 0; i--) Destroy(gearGrid.GetChild(i).gameObject);
-            for (int sl = 0; sl < 5; sl++)
-            {
-                var g = Progress.Equipped(sl);
-                var b = Holo.Button(gearSlots, "Slot" + sl, new Vector2(470, 100), Progress.Slots[sl], "squad", 32);
-                if (b.icon != null) { Holo.SetIcon(b.icon, "gear_" + Progress.Slots[sl].ToLower(), "squad", Holo.Ink); if (g == null) b.icon.color = new Color(1, 1, 1, 0.35f); }
-                var rt = (RectTransform)b.transform; rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0, 1); rt.anchoredPosition = new Vector2(0, -sl * 112);
-                b.SetSub(g == null ? "EMPTY" : $"{Progress.Rarities[g.rarity]} LV {g.level}  {Progress.StatText(g)}", g == null ? Holo.Muted : Progress.RarityColors[g.rarity], 22);
-                if (g != null) { b.tint = Progress.RarityColors[g.rarity]; int uid = g.uid; b.onClick = () => { gearSelUid = uid; RefreshGear(); }; }
-            }
-            var list = new List<GearItem>(Progress.D.gear);
-            list.Sort((x, y) => x.slot != y.slot ? x.slot.CompareTo(y.slot) : y.rarity != x.rarity ? y.rarity.CompareTo(x.rarity) : y.level.CompareTo(x.level));
-            int n = 0;
-            foreach (var g in list)
-            {
-                if (n >= 24) break;
-                bool eq = Progress.D.equipped[g.slot] == g.uid;
-                var b = Holo.Button(gearGrid, "G" + g.uid, new Vector2(98, 110), null, "squad");
-                if (b.icon != null) { Holo.SetIcon(b.icon, "gear_" + Progress.Slots[g.slot].ToLower(), "squad", Holo.Ink); b.icon.rectTransform.sizeDelta = new Vector2(62, 62); }
-                var rt = (RectTransform)b.transform; rt.anchorMin = rt.anchorMax = rt.pivot = new Vector2(0, 1); rt.anchoredPosition = new Vector2((n % 6) * 106, -(n / 6) * 118);
-                b.tint = Progress.RarityColors[g.rarity]; b.selected = g.uid == gearSelUid;
-                Holo.Label(Holo.Rect(b.body, "Sl", new Vector2(0.5f, 0), new Vector2(0, 6), new Vector2(96, 26)), Progress.Slots[g.slot].Substring(0, 4) + (eq ? " ✓" : ""), 18, Progress.RarityColors[g.rarity]).fontStyle = FontStyle.Bold;
-                Holo.Label(Holo.Rect(b.body, "Lv", new Vector2(0.5f, 1), new Vector2(0, -4), new Vector2(96, 24)), "LV " + g.level, 18, Holo.Ink);
-                int uid = g.uid; b.onClick = () => { gearSelUid = uid; RefreshGear(); };
-                n++;
-            }
-            if (list.Count == 0) Holo.Label(Holo.Rect(gearGrid, "Empty", new Vector2(0, 1), new Vector2(0, -10), new Vector2(620, 80)), "No gear yet: clear floors and beat bosses to find some.", 26, Holo.Muted, TextAnchor.UpperLeft);
-            var s = Progress.Item(gearSelUid);
-            gearEquip.dimmed = gearLevel.dimmed = gearMerge.dimmed = gearLock.dimmed = gearSalvage.dimmed = s == null;
-            // active set bonuses, always shown
-            var bonus = new List<string>(); if (Meta.EquippedRelic >= 0) bonus.Add($"{Meta.Relics[Meta.EquippedRelic]}: {Meta.RelicDesc(Meta.EquippedRelic)}"); for (int k = 0; k < Meta.Sets.Length; k++) { int pc = Meta.SetPieces(k); if (pc >= 2) bonus.Add($"{Meta.Sets[k]} {pc}/4: {Meta.Set2[k]}" + (pc >= 4 ? $" + {Meta.Set4[k]}" : "")); }
-            if (s == null) { gearSelName.text = "SELECT A PIECE"; gearSelStat.text = (bonus.Count > 0 ? string.Join("\n", bonus) : "Merge 3 / 3 / 4 / 5 of the same slot and rarity into the next rarity.\n2 or 4 pieces of one set turn on its bonus."); return; }
-            gearSelName.text = $"{Progress.Rarities[s.rarity]} {Progress.Slots[s.slot]}{(s.set >= 0 ? "  //  " + Meta.Sets[s.set] : "")}{(s.locked ? "  [LOCKED]" : "")}"; gearSelName.color = Progress.RarityColors[s.rarity];
-            var set = Progress.MergeSet(s); int need = Meta.MergeNeed[s.rarity];
-            gearSelStat.text = $"LV {s.level}/{Progress.MaxLevel(s.rarity)}  {Progress.StatText(s)}  {Meta.Affixes(s)}\nLEVEL {Meta.GearCredits(s):N0} CR + {Meta.GearAlloy(s)} ALLOY  //  MERGE {(set != null ? "READY" : $"{CountSame(s)}/{need}")}  //  SALVAGE {Meta.Salvage(s)} ALLOY" + (bonus.Count > 0 ? "\n" + bonus[0] : "");
-            if (gearLock.label != null) gearLock.label.text = s.locked ? "UNLOCK" : "LOCK";
-            gearEquip.dimmed = Progress.D.equipped[s.slot] == s.uid;
-            gearLevel.dimmed = s.level >= Progress.MaxLevel(s.rarity) || Progress.D.alloy < Meta.GearAlloy(s) || Progress.D.credits < Meta.GearCredits(s);
-            gearSalvage.dimmed = s.locked || Progress.D.equipped[s.slot] == s.uid;
-            gearMerge.dimmed = set == null;
+            string target = gearReturnKey; CloseSheet();
+            if (!string.IsNullOrEmpty(target) && target != "gear") OpenSheet(target);
         }
-        static int CountSame(GearItem g) { int c = 0; foreach (var o in Progress.D.gear) if (o.slot == g.slot && o.rarity == g.rarity) c++; return c; }
+        void GearChanged(bool equipped)
+        {
+            RefreshLabels();
+            if (equipped && Tut == 1 && !Progress.Sim)
+            {
+                Tut = 2; gearView.ShowNotice($"UPGRADES RAISE YOUR POWER: {Progress.Power():N0}");
+            }
+        }
 
         // ---- SQUAD
         void BuildSquad()
@@ -628,27 +577,14 @@ namespace Maze
             sq.onOpen = () => sqPower.text = $"COMBAT POWER  {Progress.Power():N0}   COHESION +{Meta.Cohesion(Meta.HeroId) * 100:0}% HP";
             var sqi = Holo.Img(Holo.Rect(sq.rt, "PowerIc", new Vector2(1, 1), new Vector2(-508, -64), new Vector2(44, 44)), Holo.WhiteSprite, Color.white); sqi.rectTransform.pivot = new Vector2(1, 0.5f);
             Holo.SetIcon(sqi, "ui_power", "bolt", Holo.Acid);
-            var bgTex = Resources.Load<Texture2D>("UI/menu_bg");
             heroCards.Clear();
-            heroCards.Add(("sentinel", Card(c, 0, "ARCTIC SENTINEL", "RIFLEMAN  //  BALANCED", "HP 100  //  DASH 6 S\nAuto-aims anything inside the range circle.", false, Resources.Load<Texture2D>("UI/hero_portrait") ?? Resources.Load<Texture2D>("UI/Portraits/hero") ?? bgTex)));
-            // Iron Vanguard (the Heavy): rigged in Blender on the Sentinel's skeleton (Tools/vanguard_rig.py), carries the minigun
-            heroCards.Add(("vanguard", Card(c, 1, "IRON VANGUARD", "HEAVY  //  MINIGUN", "Giant in an exo-frame.\nShreds crowds with the minigun.", false, Resources.Load<Texture2D>("UI/vanguard_portrait") ?? Resources.Load<Texture2D>("UI/Portraits/vanguard"))));
-            foreach (var (key, card) in heroCards) { var k = key; card.onClick = () => PickHero(k); }
-            // compare the Heavy's two rigs (Meshy's own / the Blender fit): a small toggle under his card
-            rigBtn = Holo.Button(c, "VanguardRig", new Vector2(354, 96), "RIG: MESHY", "squad", 30);
-            var rrt = (RectTransform)rigBtn.transform; rrt.anchorMin = rrt.anchorMax = rrt.pivot = new Vector2(0, 1); rrt.anchoredPosition = new Vector2(382, -744);
-            rigBtn.onClick = () => { Prefs.VanguardMeshy = !Prefs.VanguardMeshy; if (Prefs.Vanguard) game.player.RebuildHero(game.cfg); RigLabel(); Sfx.Toggle(); };
-            RigLabel();
-            var tb = Holo.Button(c, "Talents", new Vector2(354, 96), "TALENTS", "quality", 30);
-            var tbt = (RectTransform)tb.transform; tbt.anchorMin = tbt.anchorMax = tbt.pivot = new Vector2(0, 1); tbt.anchoredPosition = new Vector2(0, -744);
-            tb.onClick = () => OpenSheet("talents");
-            PickHero(Prefs.Hero, false);
-            scoutCard = Card(c, 2, "SCOUT", "TWIN NEEDLERS  //  FAST", "Decoy hologram, double dash.\nSHARDS DROP FROM DROWNED CITY", true, null);
-            scoutCard.onClick = () => { if (Meta.HeroStars("scout") > 0) PickHero("scout"); else { Sfx.Deny(); ShowToast($"SCOUT: {Meta.Shards("scout")} / 30 SHARDS"); } };
-            heroCards.Add(("scout", scoutCard));
+            heroCards.Add(("vanguard",Card(c,0,"HEAVY","HEAVY  //  MINIGUN","The Heavy. Shreds crowds with the minigun.",false,Prefs.HeroPortrait("vanguard"))));
+            heroCards.Add(("engineer",Card(c,1,"ENGINEER","ENGINEER  //  MINIGUN","A field engineer ready for the drop.",false,Prefs.HeroPortrait("engineer"))));
+            foreach(var row in heroCards){string id=row.key;row.card.onClick=()=>PickHero(id);}
+            var tb=Holo.Button(c,"Talents",new Vector2(354,128),"TALENTS","quality",30);var tbt=(RectTransform)tb.transform;tbt.anchorMin=tbt.anchorMax=tbt.pivot=new Vector2(0,1);tbt.anchoredPosition=new Vector2(0,-744);tb.onClick=()=>OpenSheet("talents");PickHero(Prefs.Hero,false);
             // hero levels (+2% damage and HP a level; the cap is 10 x stars) and stars (shards from the zone bosses)
-            string[] ids = { "sentinel", "vanguard", "scout" };
-            for (int i = 0; i < 3; i++)
+            string[] ids = { "vanguard" };
+            for (int i = 0; i < ids.Length; i++)
             {
                 string h = ids[i]; int col = i;
                 var lv = Holo.Button(c, "HeroLv_" + h, new Vector2(172, 100), "LEVEL", null, 26);
@@ -661,7 +597,7 @@ namespace Maze
             }
             sq.onOpen += RefreshHeroes;
         }
-        HoloButton scoutCard; readonly List<(string h, HoloButton lv, HoloButton st)> heroBtns = new();
+        readonly List<(string h, HoloButton lv, HoloButton st)> heroBtns = new();
         void RefreshHeroes()
         {
             foreach (var (h, lv, st) in heroBtns)
@@ -672,11 +608,7 @@ namespace Maze
                 st.SetSub(S >= 5 ? "★★★★★" : $"{new string('★', S)}  {Meta.Shards(h)}/{Meta.StarCost(h)}", Holo.Acid, 16);
                 st.dimmed = Meta.StarCost(h) == 0 || Meta.Shards(h) < Meta.StarCost(h);
             }
-            if (scoutCard != null)
-            {
-                bool owned = Meta.HeroStars("scout") > 0; scoutCard.locked = !owned;
-                var tag = scoutCard.body.Find("Tag")?.GetComponent<Text>(); if (tag != null) tag.text = owned ? (Prefs.Scout ? "SELECTED" : "TAP TO SELECT") : $"SHARDS {Meta.Shards("scout")} / 30";
-            }
+
         }
 
         // the remembered Squad pick: highlights its card and swaps the hero model in place
@@ -685,6 +617,7 @@ namespace Maze
         void RigLabel() { if (rigBtn != null && rigBtn.label != null) rigBtn.label.text = Prefs.VanguardMeshy ? "RIG: MESHY" : "RIG: BLENDER"; }
         public void PickHero(string key, bool save = true)
         {
+            if (key != "vanguard" && key != "engineer") return;
             if (save && key != Prefs.Hero) { Prefs.Hero = key; game.player.RebuildHero(game.cfg); RefreshLabels(); Sfx.Toggle(); }
             foreach (var (k, card) in heroCards)
             {
@@ -963,6 +896,8 @@ namespace Maze
 
         public void Deploy()
         {
+            if (titleView != null && titleView.Visible) { titleView.Play(); return; }
+            if (menuPresentation != null && menuPresentation.Visible && menuPresentation.Current == MenuPresentation.Screen.Home) { menuPresentation.Deploy(); return; }
             if (Busy || !Visible) return;
             if (current != null) { current.open = false; current.onClose?.Invoke(); }
             dropT = 0; impact = landed = false;
@@ -1017,6 +952,7 @@ namespace Maze
             current = null; dim.gameObject.SetActive(false);
             introT = 0; dropT = -1; shake = 0; MenuAudio.Hold = false;
             RefreshLabels();
+            menuPresentation?.ShowHome();
             Prefs.ApplySound();
             Update();
         }
@@ -1039,7 +975,7 @@ namespace Maze
         }
 
         Text toast; float toastT;
-        public void ShowToast(string s) { if (toast == null) return; toast.text = s.ToUpperInvariant(); toastT = 2.2f; toast.transform.SetAsLastSibling(); }
+        public void ShowToast(string s) { if (GearOpen && gearView != null) { gearView.ShowNotice(s); return; } if (menuPresentation != null) { menuPresentation.Notice(s); return; } if (toast == null) return; toast.text = s.ToUpperInvariant(); toastT = 2.2f; toast.transform.SetAsLastSibling(); }
         void Update()
         {
             if (canvas == null || !canvas.enabled) return;
@@ -1121,7 +1057,7 @@ namespace Maze
             TickSheets(dt);
             TickLoadout(dt);
             TickSettings(dt);
-            if (current != null && current.open && Input.GetKeyDown(KeyCode.Escape)) CloseSheet();
+            if (current != null && current.open && Input.GetKeyDown(KeyCode.Escape)) { if (GearOpen && gearView != null) gearView.Back(); else CloseSheet(); }
         }
     }
 }

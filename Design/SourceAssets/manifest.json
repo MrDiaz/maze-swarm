@@ -1,0 +1,385 @@
+{
+  "scope": "Selected editable authoring sources and contracts. Current runtime assets remain under Assets. Original external asset libraries and archives were not modified.",
+  "files": [
+    {
+      "path": "Design/SourceAssets/Engineer/engineer-gait-review.blend",
+      "bytes": 4288228,
+      "sha256": "da7ae9138308540a026eb5049b6078f4068e3bb8ccfc15789a32f9fbc0811a4b"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/CONTACT-MANIFEST.json",
+      "bytes": 1255806,
+      "sha256": "e4a0e663fb06450b29c1f08b186e7e621ee42d54fd1008828f1cd98a96c32ce7"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/CONTACTS.json",
+      "bytes": 2288976,
+      "sha256": "a7fa137567bce2421608dde1e6fcae258332077bade638a55598de56199298e4"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/INTEGRATION.json",
+      "bytes": 8052,
+      "sha256": "0869062f4a547d16c24c3b9c92b62739e1457cbe8fcbcb1239e812910cbb4f6d"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/README-GAIT.txt",
+      "bytes": 1458,
+      "sha256": "b7bc5e622ade883f93de533a922977b127ee2a4ee204bebad5f8f1cecad38640"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/authoring-source/audit_export.py",
+      "bytes": 8218,
+      "sha256": "260d9b72266884a7bc66fe5887bd1d0acaeb6330b3df2b4d093686923858a059"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/authoring-source/author_motion.py",
+      "bytes": 10282,
+      "sha256": "dcd9926b3c1347c76e17d9022c494ef770dcd6fdea464c00252217e65e144cf5"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/authoring-source/baseline-rig009.glb",
+      "bytes": 3826440,
+      "sha256": "67efe1187f47d8706d4910cdfc57f95ded0b56748731ceff323ca01744fc2c93"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/authoring-source/build_derivative.py",
+      "bytes": 9567,
+      "sha256": "c0f990e5be3045790f74132eb5610915cc771ff26e2c01a7cfff820148761602"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/authoring-source/gltf_model.py",
+      "bytes": 2550,
+      "sha256": "c6ba8699f7b6d053da7c8943698ef2b06e00bd4965c7766d39092095b7eeb399"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/authoring-source/package_gait.py",
+      "bytes": 12824,
+      "sha256": "55ee707b55bcc31b5053e6195929ceec80449d50b371ce4248ea01c8f1dfcd17"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/authoring-source/preserved-rig009-authoring.py",
+      "bytes": 17430,
+      "sha256": "f883d7f091089d2eb5ccffa79e19717d3b9c5a90f6da640326d60cb9ddb5d57b"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/authoring-source/review_moving.py",
+      "bytes": 6298,
+      "sha256": "7214800681f23f8c62a5571fbd2cfb304887a68f12caf2244f36104e1d8bf406"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/authoring-source/review_preflight.py",
+      "bytes": 4534,
+      "sha256": "4427c56e07bce13e61213fb717d373d5868ddc41ffd0b4f47a12fe030195e3b4"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/authoring-source/rig009-skeleton-utilities.py",
+      "bytes": 17430,
+      "sha256": "f883d7f091089d2eb5ccffa79e19717d3b9c5a90f6da640326d60cb9ddb5d57b"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/production/PRODUCTION-INTEGRATION.json",
+      "bytes": 11399,
+      "sha256": "8071abc65a54cd8f70ce9e4bf380cc2c71be128d1d4beb4fdd29b41782e647b1"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/production/COMPACT-BYTE-PROOF.json",
+      "bytes": 155088,
+      "sha256": "554d9c792acbb8e0b556bbb0d9ae33539d5486638c4cc0bb932edc7cff058b97"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/production/README-PRODUCTION.txt",
+      "bytes": 863,
+      "sha256": "0dd8d3d060bcb087a23fc206af1b43e33701b9575c4e0afc8b9c524c93037ec4"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/production/compact_production.py",
+      "bytes": 15348,
+      "sha256": "e1316114ae3b9c5bd107cae70fc8686513de5948bf7df754ce5aa4ba125c47cc"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/palette/engineer-clean-palette-2k.png",
+      "bytes": 1083201,
+      "sha256": "a288a75db064f25660ef28d8d252fd4fe822d832f2b3f531e7d9431bcfc61426"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/palette/original-albedo.png",
+      "bytes": 2213322,
+      "sha256": "e0f12a61ac48e5be694fcf71e1d3a5a87dc5ef2372d804eb47dbd09e517a2811"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/palette/APPEARANCE-COMPARISON.json",
+      "bytes": 5126,
+      "sha256": "5ea0862a31b8e82ef74ca574a00f5ed5619ee4c137b8adfe15474180f806d895"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/concept/exec-d852f044-d8b8-4795-bc9a-6f43ea5bcffd.png",
+      "bytes": 1335451,
+      "sha256": "712e7ca65e4de41841e40e67bb4b58ea8bb5c3448374fc114613764de338793e"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/concept/purple-engineer-prepared.png",
+      "bytes": 1212503,
+      "sha256": "dd5341fde0f2afee9c6748df62a5c1065b3dfa3670e40dd6c440f398a06f05af"
+    },
+    {
+      "path": "Design/SourceAssets/Engineer/concept/purple-engineer-prepared.preparation.json",
+      "bytes": 1195,
+      "sha256": "e86f211c20ecf89d210556d1727b521021cf64c7a1f6fa3cb378a16641f70f66"
+    },
+    {
+      "path": "Design/SourceAssets/LavenderSpitter/lavender-spitter-authored.blend",
+      "bytes": 551748,
+      "sha256": "d3e5b58c8795b220f00aa6c2ae1bf62b841fdf34eea7472c9eb72fb0df07f6b6"
+    },
+    {
+      "path": "Design/SourceAssets/LavenderSpitter/INTEGRATION.json",
+      "bytes": 4173,
+      "sha256": "6f7928d76f7c46ef041a9e72d7dfdf6e1bcbed7b449f8aca67f9cb019c035e74"
+    },
+    {
+      "path": "Design/SourceAssets/LavenderSpitter/README-INTEGRATION.txt",
+      "bytes": 5946,
+      "sha256": "4d3064147e311a88d7d4de9dbd4bfe05ceaac7ace118bb5ec16b1fb2a3f2eacc"
+    },
+    {
+      "path": "Design/SourceAssets/LavenderSpitter/semantic-colors.json",
+      "bytes": 344862,
+      "sha256": "fda309fcb58bcd9c1642f7ddc349dc4e9a12106d39a6ba782f3b02f3af998103"
+    },
+    {
+      "path": "Design/SourceAssets/LavenderSpitter/refined-skin-weights.json",
+      "bytes": 222086,
+      "sha256": "e7a2defedd92ede12b630dbaef65fca0caa94729329331704ddc727ae8ee9af9"
+    },
+    {
+      "path": "Design/SourceAssets/LavenderSpitter/contact-schedule.json",
+      "bytes": 91434,
+      "sha256": "33c2c2c14d973726f81d5d13a0a3fbb5eba68f77d07a7ee0b66494c63e757b82"
+    },
+    {
+      "path": "Design/SourceAssets/LavenderSpitter/build_rig.py",
+      "bytes": 13633,
+      "sha256": "4854dcc5d32289a4ac2073d14b7a71884d25360b191dce88293eaffe84875371"
+    },
+    {
+      "path": "Design/SourceAssets/LavenderSpitter/skin_weights.py",
+      "bytes": 1904,
+      "sha256": "dae7162a6f3fc3970775f036a43b0f0ebb03b427dcc31b389bf57b82ac6cfe60"
+    },
+    {
+      "path": "Design/SourceAssets/LavenderSpitter/refine_weights.py",
+      "bytes": 2281,
+      "sha256": "38d2a796bdfecc3e7799e2613150e64d206faebb384d52bcadacc0f6afe303d4"
+    },
+    {
+      "path": "Design/SourceAssets/LavenderSpitter/sync_blend_weights.py",
+      "bytes": 797,
+      "sha256": "6d84837344fcdfb1ffecf48b2db291a30984c7f882be1a98afe4f722b7f922f4"
+    },
+    {
+      "path": "Design/SourceAssets/LavenderSpitter/measure_semantics.py",
+      "bytes": 1191,
+      "sha256": "b001897c861f73894f1591ac8a4ffc5b5fd50d7b671f069ca4dd55a76c5705e2"
+    },
+    {
+      "path": "Design/SourceAssets/LavenderSpitter/audit_skin.py",
+      "bytes": 6597,
+      "sha256": "995ccafe1226d9a2bf8b5f8527cefad9326edc18109f0dfb22f3e4065ed233ce"
+    },
+    {
+      "path": "Design/SourceAssets/LavenderSpitter/audit_glb.py",
+      "bytes": 3469,
+      "sha256": "731c1d8314012b9dfd238563f5819477933e26a6033b890407d58e10d7c72034"
+    },
+    {
+      "path": "Design/SourceAssets/LavenderSpitter/mobile-006-source.glb",
+      "bytes": 379856,
+      "sha256": "3618f6d18b6968572899bbabd285c250dce7b3c15d93f6ecc7a227b9f6c3730c"
+    },
+    {
+      "path": "Design/SourceAssets/CargoEnemyFamily/grunt/cargo-family-grunt.blend",
+      "bytes": 607873,
+      "sha256": "d8df586ee657b8896e58cb0f499a97af15e0214964ee71b6af2ef04aa969e902"
+    },
+    {
+      "path": "Design/SourceAssets/CargoEnemyFamily/runner/cargo-family-runner.blend",
+      "bytes": 691702,
+      "sha256": "64a4ddd23bea9b61c1bb7997b471e55906990c0d21572e116baaaf78b91e9781"
+    },
+    {
+      "path": "Design/SourceAssets/CargoEnemyFamily/tick/cargo-family-tick.blend",
+      "bytes": 607891,
+      "sha256": "f6092aa89ec67e7b6c07ef39caecdf2a94b1d909a72e3b07adbeeaa2be1da706"
+    },
+    {
+      "path": "Design/SourceAssets/CargoEnemyFamily/carrier/cargo-family-carrier.blend",
+      "bytes": 697791,
+      "sha256": "2ccb122be18fec2716ab1b4157bb5136e31eba61ef1ced4ed41944c2503b9a8a"
+    },
+    {
+      "path": "Design/SourceAssets/CargoEnemyFamily/carapace/cargo-family-carapace.blend",
+      "bytes": 698781,
+      "sha256": "37ddc9d522a12e384fe8b5cb6885335922adc08d5e88fb2f17f6ecce7cb2e55b"
+    },
+    {
+      "path": "Design/SourceAssets/CargoEnemyFamily/INTEGRATION.json",
+      "bytes": 15929,
+      "sha256": "cbc5a0d55edab10dd748e33f7790ae7b0f955c8e4e3a5f0e1db4a3c75377ee26"
+    },
+    {
+      "path": "Design/SourceAssets/CargoEnemyFamily/README-INTEGRATION.txt",
+      "bytes": 11209,
+      "sha256": "d79aa6ad50ecf0a2fdc6b6bb70fd357de7fff3ecbec4b47c2b9b0bac9780e232"
+    },
+    {
+      "path": "Design/SourceAssets/CargoEnemyFamily/family_geometry.py",
+      "bytes": 7457,
+      "sha256": "3b8549a8a43081fa59a54f28ebe1c34836a84302ad214adfca48d7eaaa2f432b"
+    },
+    {
+      "path": "Design/SourceAssets/CargoEnemyFamily/build_family.py",
+      "bytes": 5355,
+      "sha256": "0a5824e8278fdf86b165bc44234b77e529eb503d4495c600bfd1cccb8cff2bf0"
+    },
+    {
+      "path": "Design/SourceAssets/CargoEnemyFamily/family_animation.py",
+      "bytes": 6981,
+      "sha256": "19d15050ee0d1512e4a6c23631e8154382ee998963ff9462b269d53843d10cd4"
+    },
+    {
+      "path": "Design/SourceAssets/CargoEnemyFamily/palettes.json",
+      "bytes": 1145,
+      "sha256": "dddf54d2927fef47cc9a9cc9a6632a73e6a083e346c97e891ab92056623e0e8f"
+    },
+    {
+      "path": "Design/SourceAssets/CargoEnemyFamily/source-vertex-colors.json",
+      "bytes": 205602,
+      "sha256": "23f21301660de42a9220fddae5f79587b594cd532d2006fbe8c74aeaf0c4a678"
+    },
+    {
+      "path": "Design/SourceAssets/CargoEnemyFamily/prepare_palettes.py",
+      "bytes": 1980,
+      "sha256": "b428625cc0803009ef46e5af0fb3b24fe16d52e6c85d7d3b7ddd4365c399347d"
+    },
+    {
+      "path": "Design/SourceAssets/CargoEnemyFamily/gltf_cpu.py",
+      "bytes": 3349,
+      "sha256": "474a2a23c03be5616ad3c688c14ef93294c9bc348a8f5d86b20bef40280da559"
+    },
+    {
+      "path": "Design/SourceAssets/CargoEnemyFamily/audit_family.py",
+      "bytes": 5148,
+      "sha256": "efd58a5e8fcd21800f7366d035f05413b462dc82931fa643c48e3be668f5612f"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/orange-cargo-crate/orange-cargo-crate_mobile-source.blend",
+      "bytes": 2453191,
+      "sha256": "4c0420088e6c8fb9acc2ba5d9c1c8db6a122db523e5bcf8e8c28a8250b04600a"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/orange-cargo-crate/INTEGRATION.json",
+      "bytes": 6348,
+      "sha256": "b077b02abf8e0d47832f84823693370ce386b360557db475d4fa86c473d593b0"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/orange-cargo-crate/README-INTEGRATION.txt",
+      "bytes": 2414,
+      "sha256": "24306f6af74628ee7adcf4afbc15c50fa0962c8b2a135cedb4e2af7507779467"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/orange-cargo-crate/orange-cargo-crate_LOD1.glb",
+      "bytes": 153084,
+      "sha256": "f96d9af63d923058d4da792ed0d0d92afdd878f05945b8354463c0fd56afb1c3"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/navy-cyan-battery-stack/navy-cyan-battery-stack_mobile-source.blend",
+      "bytes": 2471868,
+      "sha256": "766e391f998de5bd1fc5ff1b349d8c0b73cbd1cb16d2326026c0f25cf7c1758c"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/navy-cyan-battery-stack/INTEGRATION.json",
+      "bytes": 6304,
+      "sha256": "f33dc29abab1f736d195a955830bb1cce08ef847c37c69900dc309646704b91c"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/navy-cyan-battery-stack/README-INTEGRATION.txt",
+      "bytes": 2337,
+      "sha256": "d619f9838386f72e0d2746d94412aeaae9643d332da05264aaa6800423eeac40"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/navy-cyan-battery-stack/navy-cyan-battery-stack_LOD1.glb",
+      "bytes": 183092,
+      "sha256": "639e73bd27d6c6eb2a1da92994496f627f8b416f64b8547d70fbd1ae4c988c2b"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/rounded-utility-tank/rounded-utility-tank_mobile-source.blend",
+      "bytes": 2334904,
+      "sha256": "a757acd992a7b03a91f8eede72f1112eb1e64be3bd8884c15a21157871f7b58c"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/rounded-utility-tank/INTEGRATION.json",
+      "bytes": 6437,
+      "sha256": "0649802e38bf6869186d0b3919fa983ecdb648cfba30356fafa3e9da9c82d518"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/rounded-utility-tank/README-INTEGRATION.txt",
+      "bytes": 2491,
+      "sha256": "345333595172077929d5dbb39fb78b569a02212e56278c5ba43e9e6cad6531cb"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/rounded-utility-tank/rounded-utility-tank_LOD1.glb",
+      "bytes": 183092,
+      "sha256": "fcea7d6da42af42f4e97f99f86948f03d098f988d23e6ff08694c205e9f5d93c"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/cream-orange-cover-barrier/cream-orange-cover-barrier_mobile-source.blend",
+      "bytes": 2996181,
+      "sha256": "697d3bae86ca27c65e9879819930a878f122b744b1032d408301f624f484d63d"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/cream-orange-cover-barrier/INTEGRATION.json",
+      "bytes": 6730,
+      "sha256": "31cb0e583f83f1626b90c328c1863e1d4d449f22bb6c125651b6fb32e0c640bc"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/cream-orange-cover-barrier/README-INTEGRATION.txt",
+      "bytes": 2697,
+      "sha256": "de4c53d5d1f0d9678b2459606876114b52c96a38ee874d55ee942a305366f6ca"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/cream-orange-cover-barrier/cream-orange-cover-barrier_LOD1.glb",
+      "bytes": 228096,
+      "sha256": "b15d958f0f05e1b80babd1d6f6a772d3dfb1ef08f394bdc2f24e61c570aece7d"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/compact-loading-conveyor/compact-loading-conveyor_mobile-source.blend",
+      "bytes": 2471761,
+      "sha256": "81523f6455f544266769a681b065ad7a0602064a6e8bc1bfb8d5ca4a9c439ffe"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/compact-loading-conveyor/INTEGRATION.json",
+      "bytes": 6703,
+      "sha256": "9be6ee9b1ba4bfe28d07199f63ea368ce7037a1f766ebdafdeb956915a0ef2d1"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/compact-loading-conveyor/README-INTEGRATION.txt",
+      "bytes": 2689,
+      "sha256": "4208bfca2bac62debf1281ac0a8b9fc1c752e3c900dc2ab5cf3a85e2421aa529"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/compact-loading-conveyor/compact-loading-conveyor_LOD1.glb",
+      "bytes": 228096,
+      "sha256": "f1e2c93f6acd2cac87d62cb18e2f30b33c2c1febf95efac471f3d19115f0ab3e"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/chibi-cargo-depot-KIT-INTEGRATION.json",
+      "bytes": 31723,
+      "sha256": "e6eefaad538f8dc94da900eb07e1120f5f2f11b8d58ce3765dcfa9a73045e753"
+    },
+    {
+      "path": "Design/SourceAssets/CargoProps/chibi-cargo-depot-README.txt",
+      "bytes": 4601,
+      "sha256": "d4386057ba090134fcf692856f964e90c165bea5be7eee3ecb54322e77f98d7a"
+    }
+  ]
+}

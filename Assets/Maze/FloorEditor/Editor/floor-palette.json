@@ -1,0 +1,2621 @@
+{
+  "schema": "maze-floor-editor-palette/v1",
+  "canonicalProject": "/Volumes/T7 Shield/Projects/Maze Swarm",
+  "coordinateSystem": {
+    "unit": "metre",
+    "cellSize": 2.0,
+    "gameplayPlane": "Vector2(x,column world; y,row world)",
+    "unityWorld": "(plane.x,height,-plane.y)",
+    "cellCentre": "((column+.5)*2,height,-(row+.5)*2)",
+    "gltfUp": "+Y",
+    "gltfForward": "+Z",
+    "pivot": "ground centre"
+  },
+  "collisionPolicy": "Visual prop placement never silently changes the grid. Solid prop footprints must be covered by existing B/C/# occupancy, or require explicit grid edit. Runtime visual fit is not navigation validation.",
+  "cryoMirrorConvention": "Room FBX root is (-1,1,1). CryoProps child box cancels with (-1,1,1), so anchor x/y/z are ordinary world metres. Avoid applying either mirror twice.",
+  "defaultPreviewPolicy": "Prefer copied previewPath for recognizable palette; exact material/lighting match requires current Unity rendering. Do not run CryoSoftSceneInfo or gameplay components in edit-mode preview.",
+  "entries": [
+    {
+      "id": "cryo-pod",
+      "label": "Closed cryo pod",
+      "category": "Current Cryo objects",
+      "assetPath": "Assets/Maze/CryoProps/Resources/CryoProps/cryo-pod.glb",
+      "resourcePath": "CryoProps/cryo-pod",
+      "assetGuid": "446eeb4af12bb41a29f17cb10d48df9b",
+      "assetSha256": "ac1797c2d8eb485423436964253efa3f34c56bf9262e4dfd83d41f3283011d05",
+      "previewPath": "previews/cryo-pod.png",
+      "conceptPreviewPath": "previews/cryo-pod-concept.png",
+      "defaultFootprintXZ": [
+        3.35,
+        3.1
+      ],
+      "defaultY": 0.33,
+      "defaultYaw": 180,
+      "defaultMaxHeight": 3.4,
+      "defaultUniformScale": 1.0,
+      "maxUniformScale": 1.3,
+      "scalePolicy": "Door preserves authored scale; others fit rotated renderer bounds to fw/fd/maxh then cap multiplier at CryoProps.RealCap=1.3. No nonuniform scaling.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; GLB spawn adds no colliders",
+      "runtimeBehavior": "CryoPropMotion for modelled wheels/rotor/valve; otherwise static visual.",
+      "baseTextureResource": "CryoProps/cryo-pod_base",
+      "normalTextureResource": "CryoProps/cryo-pod_normal",
+      "shader": "Maze/CryoSoftSurface",
+      "existingAnchors": [
+        {
+          "layout": "cryo-b",
+          "prop": "cryo-pod",
+          "x": 30.0,
+          "y": 0.33,
+          "z": -6.0,
+          "yaw": 180,
+          "name": "pod_a",
+          "fw": 3.35,
+          "fd": 3.1,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-b",
+          "prop": "cryo-pod",
+          "x": 34.0,
+          "y": 0.33,
+          "z": -6.0,
+          "yaw": 180,
+          "name": "pod_b",
+          "fw": 3.35,
+          "fd": 3.1,
+          "maxh": 3.4
+        }
+      ],
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Resource loading is zone-independent; current automatic spawn path is Cryo only. Must remap external textures/materials and explicitly choose whether to enable existing turret or goal-linked motion behavior.",
+      "nativeSizeXYZ": [
+        1.16741,
+        2.10027,
+        1.04999
+      ],
+      "nativeBoundsMinXYZ": [
+        -0.58376,
+        6e-05,
+        -0.52512
+      ],
+      "nativeBoundsMaxXYZ": [
+        0.58365,
+        2.10033,
+        0.52487
+      ],
+      "triangles": 17999,
+      "meshPartNames": [
+        "pod"
+      ],
+      "boundsSource": "Transformed POSITION vertices of the exact integrated GLB; Unity handedness does not change dimensions."
+    },
+    {
+      "id": "cryo-cooling-reactor",
+      "label": "Large cooling reactor",
+      "category": "Current Cryo objects",
+      "assetPath": "Assets/Maze/CryoProps/Resources/CryoProps/cryo-cooling-reactor.glb",
+      "resourcePath": "CryoProps/cryo-cooling-reactor",
+      "assetGuid": "6782607540a404d568873a2a18f968cf",
+      "assetSha256": "20fee0fcd0f9450691a9b8569f654c8ef49026379742485301dbfa6211fbd420",
+      "previewPath": "previews/cryo-cooling-reactor.png",
+      "conceptPreviewPath": "previews/cryo-cooling-reactor-concept.png",
+      "defaultFootprintXZ": [
+        5.1,
+        3.1
+      ],
+      "defaultY": 0.33,
+      "defaultYaw": 180,
+      "defaultMaxHeight": 3.4,
+      "defaultUniformScale": 1.0,
+      "maxUniformScale": 1.3,
+      "scalePolicy": "Door preserves authored scale; others fit rotated renderer bounds to fw/fd/maxh then cap multiplier at CryoProps.RealCap=1.3. No nonuniform scaling.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; GLB spawn adds no colliders",
+      "runtimeBehavior": "CryoPropMotion for modelled wheels/rotor/valve; otherwise static visual.",
+      "baseTextureResource": "CryoProps/cryo-cooling-reactor_base",
+      "normalTextureResource": "CryoProps/cryo-cooling-reactor_normal",
+      "shader": "Maze/CryoSoftSurface",
+      "existingAnchors": [
+        {
+          "layout": "cryo-a",
+          "prop": "cryo-cooling-reactor",
+          "x": 23.0,
+          "y": 0.33,
+          "z": -12.0,
+          "yaw": 180,
+          "name": "cryo-cooling-reactor",
+          "fw": 5.1,
+          "fd": 3.1,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-b",
+          "prop": "cryo-cooling-reactor",
+          "x": 12.0,
+          "y": 0.33,
+          "z": -6.0,
+          "yaw": 180,
+          "name": "cryo-cooling-reactor",
+          "fw": 7.1,
+          "fd": 3.1,
+          "maxh": 3.4
+        }
+      ],
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Resource loading is zone-independent; current automatic spawn path is Cryo only. Must remap external textures/materials and explicitly choose whether to enable existing turret or goal-linked motion behavior.",
+      "nativeSizeXYZ": [
+        2.59882,
+        1.73125,
+        1.49656
+      ],
+      "nativeBoundsMinXYZ": [
+        -1.29905,
+        0.00061,
+        -0.74854
+      ],
+      "nativeBoundsMaxXYZ": [
+        1.29977,
+        1.73186,
+        0.74802
+      ],
+      "triangles": 24999,
+      "meshPartNames": [
+        "cooling_reactor"
+      ],
+      "boundsSource": "Transformed POSITION vertices of the exact integrated GLB; Unity handedness does not change dimensions."
+    },
+    {
+      "id": "cryo-coolant-pumping-station",
+      "label": "Coolant pumping station",
+      "category": "Current Cryo objects",
+      "assetPath": "Assets/Maze/CryoProps/Resources/CryoProps/cryo-coolant-pumping-station.glb",
+      "resourcePath": "CryoProps/cryo-coolant-pumping-station",
+      "assetGuid": "dbea34616b86e4785ae65c5649306d88",
+      "assetSha256": "fb93078ae5c4fd7d6517d4f52675b46f7f77b34daf9da041e53120a3ec032865",
+      "previewPath": "previews/cryo-coolant-pumping-station.png",
+      "conceptPreviewPath": "previews/cryo-coolant-pumping-station-concept.png",
+      "defaultFootprintXZ": [
+        7.1,
+        3.1
+      ],
+      "defaultY": 0.33,
+      "defaultYaw": 180,
+      "defaultMaxHeight": 3.4,
+      "defaultUniformScale": 1.0,
+      "maxUniformScale": 1.3,
+      "scalePolicy": "Door preserves authored scale; others fit rotated renderer bounds to fw/fd/maxh then cap multiplier at CryoProps.RealCap=1.3. No nonuniform scaling.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; GLB spawn adds no colliders",
+      "runtimeBehavior": "CryoPropMotion for modelled wheels/rotor/valve; otherwise static visual.",
+      "baseTextureResource": "CryoProps/cryo-coolant-pumping-station_base",
+      "normalTextureResource": "CryoProps/cryo-coolant-pumping-station_normal",
+      "shader": "Maze/CryoSoftSurface",
+      "existingAnchors": [
+        {
+          "layout": "cryo-b",
+          "prop": "cryo-coolant-pumping-station",
+          "x": 12.0,
+          "y": 0.33,
+          "z": -24.0,
+          "yaw": 180,
+          "name": "cryo-coolant-pumping-station",
+          "fw": 7.1,
+          "fd": 3.1,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-c",
+          "prop": "cryo-coolant-pumping-station",
+          "x": 36.0,
+          "y": 0.33,
+          "z": -8.0,
+          "yaw": 180,
+          "name": "cryo-coolant-pumping-station",
+          "fw": 3.1,
+          "fd": 3.1,
+          "maxh": 3.4
+        }
+      ],
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Resource loading is zone-independent; current automatic spawn path is Cryo only. Must remap external textures/materials and explicitly choose whether to enable existing turret or goal-linked motion behavior.",
+      "nativeSizeXYZ": [
+        2.59934,
+        1.417,
+        1.11141
+      ],
+      "nativeBoundsMinXYZ": [
+        -1.29933,
+        0.0001,
+        -0.55597
+      ],
+      "nativeBoundsMaxXYZ": [
+        1.30001,
+        1.4171,
+        0.55544
+      ],
+      "triangles": 22000,
+      "meshPartNames": [
+        "station_body",
+        "pump_rotor"
+      ],
+      "boundsSource": "Transformed POSITION vertices of the exact integrated GLB; Unity handedness does not change dimensions."
+    },
+    {
+      "id": "cryo-low-coolant-tank",
+      "label": "Low coolant tank",
+      "category": "Current Cryo objects",
+      "assetPath": "Assets/Maze/CryoProps/Resources/CryoProps/cryo-low-coolant-tank.glb",
+      "resourcePath": "CryoProps/cryo-low-coolant-tank",
+      "assetGuid": "9a3dca085624c489cb4ad50e275588a3",
+      "assetSha256": "76b9866872db7677a605a890eea7d0708206fb5d7f618a89f0935ebad6910ce0",
+      "previewPath": "previews/cryo-low-coolant-tank.png",
+      "conceptPreviewPath": "previews/cryo-low-coolant-tank-concept.png",
+      "defaultFootprintXZ": [
+        4.97,
+        3.1
+      ],
+      "defaultY": 0.33,
+      "defaultYaw": 180,
+      "defaultMaxHeight": 3.4,
+      "defaultUniformScale": 1.0,
+      "maxUniformScale": 1.3,
+      "scalePolicy": "Door preserves authored scale; others fit rotated renderer bounds to fw/fd/maxh then cap multiplier at CryoProps.RealCap=1.3. No nonuniform scaling.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; GLB spawn adds no colliders",
+      "runtimeBehavior": "CryoPropMotion for modelled wheels/rotor/valve; otherwise static visual.",
+      "baseTextureResource": "CryoProps/cryo-low-coolant-tank_base",
+      "normalTextureResource": "CryoProps/cryo-low-coolant-tank_normal",
+      "shader": "Maze/CryoSoftSurface",
+      "existingAnchors": [
+        {
+          "layout": "cryo-b",
+          "prop": "cryo-low-coolant-tank",
+          "x": 31.04,
+          "y": 0.33,
+          "z": -24.0,
+          "yaw": 180,
+          "name": "cryo-low-coolant-tank",
+          "fw": 4.97,
+          "fd": 3.1,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-boss",
+          "prop": "cryo-low-coolant-tank",
+          "x": 36.0,
+          "y": 0.33,
+          "z": -21.52,
+          "yaw": 180,
+          "name": "cryo-low-coolant-tank",
+          "fw": 3.1,
+          "fd": 1.86,
+          "maxh": 3.4
+        }
+      ],
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Resource loading is zone-independent; current automatic spawn path is Cryo only. Must remap external textures/materials and explicitly choose whether to enable existing turret or goal-linked motion behavior.",
+      "nativeSizeXYZ": [
+        2.19946,
+        0.97388,
+        0.79172
+      ],
+      "nativeBoundsMinXYZ": [
+        -1.10002,
+        0.00019,
+        -0.39581
+      ],
+      "nativeBoundsMaxXYZ": [
+        1.09944,
+        0.97407,
+        0.39592
+      ],
+      "triangles": 15000,
+      "meshPartNames": [
+        "low_coolant_tank"
+      ],
+      "boundsSource": "Transformed POSITION vertices of the exact integrated GLB; Unity handedness does not change dimensions."
+    },
+    {
+      "id": "cryo-supply-crate",
+      "label": "Supply crate",
+      "category": "Current Cryo objects",
+      "assetPath": "Assets/Maze/CryoProps/Resources/CryoProps/cryo-supply-crate.glb",
+      "resourcePath": "CryoProps/cryo-supply-crate",
+      "assetGuid": "dc50f1a3afaa8432ebd5e58be08ee7b7",
+      "assetSha256": "c5f78f4c692a6f43d0cf07d4635e5a08703dad1b04e43e134568b12665ef64dd",
+      "previewPath": "previews/cryo-supply-crate.png",
+      "conceptPreviewPath": "previews/cryo-supply-crate-concept.png",
+      "defaultFootprintXZ": [
+        1.6,
+        1.6
+      ],
+      "defaultY": 0.33,
+      "defaultYaw": 170,
+      "defaultMaxHeight": 3.4,
+      "defaultUniformScale": 1.0,
+      "maxUniformScale": 1.3,
+      "scalePolicy": "Door preserves authored scale; others fit rotated renderer bounds to fw/fd/maxh then cap multiplier at CryoProps.RealCap=1.3. No nonuniform scaling.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; GLB spawn adds no colliders",
+      "runtimeBehavior": "CryoPropMotion for modelled wheels/rotor/valve; otherwise static visual.",
+      "baseTextureResource": "CryoProps/cryo-supply-crate_base",
+      "normalTextureResource": "CryoProps/cryo-supply-crate_normal",
+      "shader": "Maze/CryoSoftSurface",
+      "existingAnchors": [
+        {
+          "layout": "cryo-a",
+          "prop": "cryo-supply-crate",
+          "x": 14.0,
+          "y": 0.33,
+          "z": -26.9,
+          "yaw": 170,
+          "name": "turret_crate",
+          "fw": 1.6,
+          "fd": 1.6,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-a",
+          "prop": "cryo-supply-crate",
+          "x": 32.9,
+          "y": 0.33,
+          "z": -26.0,
+          "yaw": 170,
+          "name": "turret_crate",
+          "fw": 1.6,
+          "fd": 1.6,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-a",
+          "prop": "cryo-supply-crate",
+          "x": 7.0,
+          "y": 0.33,
+          "z": -9.0,
+          "yaw": 180,
+          "name": "crate_a",
+          "fw": 1.55,
+          "fd": 1.85,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-a",
+          "prop": "cryo-supply-crate",
+          "x": 9.0,
+          "y": 0.33,
+          "z": -11.0,
+          "yaw": 170,
+          "name": "crate_b",
+          "fw": 1.55,
+          "fd": 1.85,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-b",
+          "prop": "cryo-supply-crate",
+          "x": 7.1,
+          "y": 0.33,
+          "z": -14.0,
+          "yaw": 170,
+          "name": "turret_crate",
+          "fw": 1.6,
+          "fd": 1.6,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-b",
+          "prop": "cryo-supply-crate",
+          "x": 35.0,
+          "y": 0.33,
+          "z": -13.0,
+          "yaw": 180,
+          "name": "crate_a",
+          "fw": 1.55,
+          "fd": 1.85,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-b",
+          "prop": "cryo-supply-crate",
+          "x": 37.0,
+          "y": 0.33,
+          "z": -15.0,
+          "yaw": 170,
+          "name": "crate_b",
+          "fw": 1.55,
+          "fd": 1.85,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-boss",
+          "prop": "cryo-supply-crate",
+          "x": 11.1,
+          "y": 0.33,
+          "z": -8.0,
+          "yaw": 170,
+          "name": "turret_crate",
+          "fw": 1.6,
+          "fd": 1.6,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-boss",
+          "prop": "cryo-supply-crate",
+          "x": 35.0,
+          "y": 0.33,
+          "z": -7.0,
+          "yaw": 180,
+          "name": "crate_a",
+          "fw": 1.55,
+          "fd": 1.85,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-boss",
+          "prop": "cryo-supply-crate",
+          "x": 37.0,
+          "y": 0.33,
+          "z": -9.0,
+          "yaw": 170,
+          "name": "crate_b",
+          "fw": 1.55,
+          "fd": 1.85,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-boss",
+          "prop": "cryo-supply-crate",
+          "x": 11.1,
+          "y": 0.33,
+          "z": -22.0,
+          "yaw": 170,
+          "name": "turret_crate",
+          "fw": 1.6,
+          "fd": 1.6,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-c",
+          "prop": "cryo-supply-crate",
+          "x": 11.1,
+          "y": 0.33,
+          "z": -8.0,
+          "yaw": 170,
+          "name": "turret_crate",
+          "fw": 1.6,
+          "fd": 1.6,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-c",
+          "prop": "cryo-supply-crate",
+          "x": 11.1,
+          "y": 0.33,
+          "z": -24.0,
+          "yaw": 170,
+          "name": "turret_crate",
+          "fw": 1.6,
+          "fd": 1.6,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-c",
+          "prop": "cryo-supply-crate",
+          "x": 17.0,
+          "y": 0.33,
+          "z": -3.12,
+          "yaw": 180,
+          "name": "cargo_crate",
+          "fw": 1.3,
+          "fd": 1.3,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-c",
+          "prop": "cryo-supply-crate",
+          "x": 27.0,
+          "y": 0.33,
+          "z": -3.12,
+          "yaw": 180,
+          "name": "cargo_crate",
+          "fw": 1.3,
+          "fd": 1.3,
+          "maxh": 3.4
+        }
+      ],
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Resource loading is zone-independent; current automatic spawn path is Cryo only. Must remap external textures/materials and explicitly choose whether to enable existing turret or goal-linked motion behavior.",
+      "nativeSizeXYZ": [
+        1.19892,
+        0.76766,
+        1.07377
+      ],
+      "nativeBoundsMinXYZ": [
+        -0.59953,
+        6e-05,
+        -0.53695
+      ],
+      "nativeBoundsMaxXYZ": [
+        0.59938,
+        0.76772,
+        0.53682
+      ],
+      "triangles": 11999,
+      "meshPartNames": [
+        "supply_crate"
+      ],
+      "boundsSource": "Transformed POSITION vertices of the exact integrated GLB; Unity handedness does not change dimensions."
+    },
+    {
+      "id": "cryo-freeze-canister",
+      "label": "Canister",
+      "category": "Current Cryo objects",
+      "assetPath": "Assets/Maze/CryoProps/Resources/CryoProps/cryo-freeze-canister.glb",
+      "resourcePath": "CryoProps/cryo-freeze-canister",
+      "assetGuid": "33a5e21d0bf874a1b9d64f46c0db725f",
+      "assetSha256": "13c0fff5115b83058a02df31dc2cc1c56c2a701991208f8621ba920433eb86f8",
+      "previewPath": "previews/cryo-freeze-canister.png",
+      "conceptPreviewPath": "previews/cryo-freeze-canister-concept.png",
+      "defaultFootprintXZ": [
+        1.0,
+        1.0
+      ],
+      "defaultY": 0.33,
+      "defaultYaw": 180,
+      "defaultMaxHeight": 1.8,
+      "defaultUniformScale": 1.0,
+      "maxUniformScale": 1.3,
+      "scalePolicy": "Door preserves authored scale; others fit rotated renderer bounds to fw/fd/maxh then cap multiplier at CryoProps.RealCap=1.3. No nonuniform scaling.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; GLB spawn adds no colliders",
+      "runtimeBehavior": "CryoPropMotion for modelled wheels/rotor/valve; otherwise static visual.",
+      "baseTextureResource": "CryoProps/cryo-freeze-canister_base",
+      "normalTextureResource": "CryoProps/cryo-freeze-canister_normal",
+      "shader": "Maze/CryoSoftSurface",
+      "existingAnchors": [
+        {
+          "layout": "cryo-a",
+          "prop": "cryo-freeze-canister",
+          "x": 39.36,
+          "y": 0.33,
+          "z": -11.0,
+          "yaw": 180,
+          "name": "canister",
+          "fw": 1.0,
+          "fd": 1.0,
+          "maxh": 1.8
+        },
+        {
+          "layout": "cryo-b",
+          "prop": "cryo-freeze-canister",
+          "x": 34.4,
+          "y": 0.33,
+          "z": -24.0,
+          "yaw": 200,
+          "name": "canister_a",
+          "fw": 1.562,
+          "fd": 1.86,
+          "maxh": 2.0
+        },
+        {
+          "layout": "cryo-boss",
+          "prop": "cryo-freeze-canister",
+          "x": 37.2,
+          "y": 0.33,
+          "z": -23.2,
+          "yaw": 200,
+          "name": "canister_a",
+          "fw": 1.1,
+          "fd": 1.1,
+          "maxh": 1.8
+        },
+        {
+          "layout": "cryo-c",
+          "prop": "cryo-freeze-canister",
+          "x": 37.36,
+          "y": 0.33,
+          "z": -25.0,
+          "yaw": 180,
+          "name": "canister",
+          "fw": 1.0,
+          "fd": 1.0,
+          "maxh": 1.8
+        },
+        {
+          "layout": "cryo-c",
+          "prop": "cryo-freeze-canister",
+          "x": 17.0,
+          "y": 0.33,
+          "z": -5.12,
+          "yaw": 180,
+          "name": "cargo_canister",
+          "fw": 1.0,
+          "fd": 1.0,
+          "maxh": 1.8
+        },
+        {
+          "layout": "cryo-c",
+          "prop": "cryo-freeze-canister",
+          "x": 27.0,
+          "y": 0.33,
+          "z": -5.12,
+          "yaw": 180,
+          "name": "cargo_canister",
+          "fw": 1.0,
+          "fd": 1.0,
+          "maxh": 1.8
+        }
+      ],
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Resource loading is zone-independent; current automatic spawn path is Cryo only. Must remap external textures/materials and explicitly choose whether to enable existing turret or goal-linked motion behavior.",
+      "nativeSizeXYZ": [
+        0.58587,
+        0.9995,
+        0.49865
+      ],
+      "nativeBoundsMinXYZ": [
+        -0.29259,
+        0.00022,
+        -0.2493
+      ],
+      "nativeBoundsMaxXYZ": [
+        0.29328,
+        0.99973,
+        0.24935
+      ],
+      "triangles": 12000,
+      "meshPartNames": [
+        "canister_body",
+        "valve_wheel"
+      ],
+      "boundsSource": "Transformed POSITION vertices of the exact integrated GLB; Unity handedness does not change dimensions."
+    },
+    {
+      "id": "cryo-maintenance-cart",
+      "label": "Utility cart",
+      "category": "Current Cryo objects",
+      "assetPath": "Assets/Maze/CryoProps/Resources/CryoProps/cryo-maintenance-cart.glb",
+      "resourcePath": "CryoProps/cryo-maintenance-cart",
+      "assetGuid": "8d2fbfb250e5e4b67b7c7486fe590c88",
+      "assetSha256": "455d23edb822e49f5f1364de748fb1dae6caadfbb528939807e590aeedc8c941",
+      "previewPath": "previews/cryo-maintenance-cart.png",
+      "conceptPreviewPath": "previews/cryo-maintenance-cart-concept.png",
+      "defaultFootprintXZ": [
+        2.17,
+        2.48
+      ],
+      "defaultY": 0.33,
+      "defaultYaw": 200,
+      "defaultMaxHeight": 3.4,
+      "defaultUniformScale": 1.0,
+      "maxUniformScale": 1.3,
+      "scalePolicy": "Door preserves authored scale; others fit rotated renderer bounds to fw/fd/maxh then cap multiplier at CryoProps.RealCap=1.3. No nonuniform scaling.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; GLB spawn adds no colliders",
+      "runtimeBehavior": "CryoPropMotion for modelled wheels/rotor/valve; otherwise static visual.",
+      "baseTextureResource": "CryoProps/cryo-maintenance-cart_base",
+      "normalTextureResource": "CryoProps/cryo-maintenance-cart_normal",
+      "shader": "Maze/CryoSoftSurface",
+      "existingAnchors": [
+        {
+          "layout": "cryo-a",
+          "prop": "cryo-maintenance-cart",
+          "x": 37.52,
+          "y": 0.33,
+          "z": -10.0,
+          "yaw": 200,
+          "name": "cart",
+          "fw": 2.17,
+          "fd": 2.48,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-c",
+          "prop": "cryo-maintenance-cart",
+          "x": 35.52,
+          "y": 0.33,
+          "z": -24.0,
+          "yaw": 200,
+          "name": "cart",
+          "fw": 2.17,
+          "fd": 2.48,
+          "maxh": 3.4
+        }
+      ],
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Resource loading is zone-independent; current automatic spawn path is Cryo only. Must remap external textures/materials and explicitly choose whether to enable existing turret or goal-linked motion behavior.",
+      "nativeSizeXYZ": [
+        1.39961,
+        0.95803,
+        0.84549
+      ],
+      "nativeBoundsMinXYZ": [
+        -0.69967,
+        0.00033,
+        -0.42283
+      ],
+      "nativeBoundsMaxXYZ": [
+        0.69994,
+        0.95837,
+        0.42267
+      ],
+      "triangles": 21200,
+      "meshPartNames": [
+        "cart_body",
+        "wheel_front_left",
+        "wheel_front_right",
+        "wheel_rear_left",
+        "wheel_rear_right"
+      ],
+      "boundsSource": "Transformed POSITION vertices of the exact integrated GLB; Unity handedness does not change dimensions."
+    },
+    {
+      "id": "cryo-blast-door",
+      "label": "Blast door",
+      "category": "Current Cryo objects",
+      "assetPath": "Assets/Maze/CryoProps/Resources/CryoProps/cryo-blast-door.glb",
+      "resourcePath": "CryoProps/cryo-blast-door",
+      "assetGuid": "f28e04574f7ff4bc19fcb4f4da4d7474",
+      "assetSha256": "4fc4be53d4a703792e4813787a7fd189acc6fd1c701e87df22071ae432fbb1a7",
+      "previewPath": "previews/cryo-blast-door.png",
+      "conceptPreviewPath": "previews/cryo-blast-door-concept.png",
+      "defaultFootprintXZ": [
+        0,
+        0
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 180,
+      "defaultMaxHeight": 3.4,
+      "defaultUniformScale": 1.0,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Door preserves authored scale; others fit rotated renderer bounds to fw/fd/maxh then cap multiplier at CryoProps.RealCap=1.3. No nonuniform scaling.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "north-wall-decorative-goal-linked-facade",
+      "collisionAuthority": "MazeMap base cells; GLB spawn adds no colliders",
+      "runtimeBehavior": "CryoPropMotion: slides leaves when GoalProgress >= .999. Does not create D cells or collision.",
+      "baseTextureResource": "CryoProps/cryo-blast-door_base",
+      "normalTextureResource": "CryoProps/cryo-blast-door_normal",
+      "shader": "Maze/CryoSoftSurface",
+      "existingAnchors": [
+        {
+          "layout": "cryo-a",
+          "prop": "cryo-blast-door",
+          "x": 16,
+          "y": 0.0,
+          "z": -1.0,
+          "yaw": 180,
+          "name": "blast_door",
+          "fw": 0,
+          "fd": 0,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-b",
+          "prop": "cryo-blast-door",
+          "x": 14,
+          "y": 0.0,
+          "z": -1.0,
+          "yaw": 180,
+          "name": "blast_door",
+          "fw": 0,
+          "fd": 0,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-boss",
+          "prop": "cryo-blast-door",
+          "x": 24,
+          "y": 0.0,
+          "z": -1.0,
+          "yaw": 180,
+          "name": "blast_door",
+          "fw": 0,
+          "fd": 0,
+          "maxh": 3.4
+        },
+        {
+          "layout": "cryo-c",
+          "prop": "cryo-blast-door",
+          "x": 22,
+          "y": 0.0,
+          "z": -1.0,
+          "yaw": 180,
+          "name": "blast_door",
+          "fw": 0,
+          "fd": 0,
+          "maxh": 3.4
+        }
+      ],
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Resource loading is zone-independent; current automatic spawn path is Cryo only. Must remap external textures/materials and explicitly choose whether to enable existing turret or goal-linked motion behavior.",
+      "nativeSizeXYZ": [
+        4.59857,
+        2.60879,
+        1.54825
+      ],
+      "nativeBoundsMinXYZ": [
+        -2.29887,
+        0.00024,
+        -0.77376
+      ],
+      "nativeBoundsMaxXYZ": [
+        2.2997,
+        2.60903,
+        0.7745
+      ],
+      "triangles": 29999,
+      "meshPartNames": [
+        "frame",
+        "leaf_left",
+        "leaf_right"
+      ],
+      "boundsSource": "Transformed POSITION vertices of the exact integrated GLB; Unity handedness does not change dimensions."
+    },
+    {
+      "id": "cryo-gun-turret",
+      "label": "Gun turret",
+      "category": "Current Cryo objects",
+      "assetPath": "Assets/Maze/CryoProps/Resources/CryoProps/cryo-gun-turret.glb",
+      "resourcePath": "CryoProps/cryo-gun-turret",
+      "assetGuid": "921b4a55408a040df9035a488e891011",
+      "assetSha256": "eb411fc0be914802bc5358d6241a3259b7c9770a4a27a29186486c74f711710e",
+      "previewPath": "previews/cryo-gun-turret.png",
+      "conceptPreviewPath": "previews/cryo-gun-turret-concept.png",
+      "defaultFootprintXZ": [
+        1.9,
+        1.9
+      ],
+      "defaultY": 0.33,
+      "defaultYaw": 180,
+      "defaultMaxHeight": 2.2,
+      "defaultUniformScale": 1.0,
+      "maxUniformScale": 1.3,
+      "scalePolicy": "Door preserves authored scale; others fit rotated renderer bounds to fw/fd/maxh then cap multiplier at CryoProps.RealCap=1.3. No nonuniform scaling.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-with-adjacent-walkable-activation-edge",
+      "collisionAuthority": "MazeMap base cells; GLB spawn adds no colliders",
+      "runtimeBehavior": "CryoHeroTurret.Init(flame) in runtime CryoProps.Spawn; game-step combat/capture, nearest-target aim. Preview without gameplay components.",
+      "baseTextureResource": "CryoProps/cryo-gun-turret_base",
+      "normalTextureResource": "CryoProps/cryo-gun-turret_normal",
+      "shader": "Maze/CryoSoftSurface",
+      "existingAnchors": [
+        {
+          "layout": "cryo-a",
+          "prop": "cryo-gun-turret",
+          "x": 14.0,
+          "y": 0.33,
+          "z": -25.0,
+          "yaw": 180,
+          "name": "gun_turret",
+          "fw": 1.9,
+          "fd": 1.9,
+          "maxh": 2.2
+        },
+        {
+          "layout": "cryo-b",
+          "prop": "cryo-gun-turret",
+          "x": 9.0,
+          "y": 0.33,
+          "z": -14.0,
+          "yaw": 180,
+          "name": "gun_turret",
+          "fw": 1.9,
+          "fd": 1.9,
+          "maxh": 2.2
+        },
+        {
+          "layout": "cryo-boss",
+          "prop": "cryo-gun-turret",
+          "x": 13.0,
+          "y": 0.33,
+          "z": -8.0,
+          "yaw": 180,
+          "name": "gun_turret",
+          "fw": 1.9,
+          "fd": 1.9,
+          "maxh": 2.2
+        },
+        {
+          "layout": "cryo-c",
+          "prop": "cryo-gun-turret",
+          "x": 13.0,
+          "y": 0.33,
+          "z": -8.0,
+          "yaw": 180,
+          "name": "gun_turret",
+          "fw": 1.9,
+          "fd": 1.9,
+          "maxh": 2.2
+        }
+      ],
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Resource loading is zone-independent; current automatic spawn path is Cryo only. Must remap external textures/materials and explicitly choose whether to enable existing turret or goal-linked motion behavior.",
+      "nativeSizeXYZ": [
+        1.60921,
+        1.51336,
+        1.9
+      ],
+      "nativeBoundsMinXYZ": [
+        -0.8046,
+        -0.00025,
+        -0.95003
+      ],
+      "nativeBoundsMaxXYZ": [
+        0.80461,
+        1.51311,
+        0.94996
+      ],
+      "triangles": 30496,
+      "meshPartNames": [
+        "base",
+        "yaw_head",
+        "pitch_assembly",
+        "barrel_cluster"
+      ],
+      "boundsSource": "Transformed POSITION vertices of the exact integrated GLB; Unity handedness does not change dimensions."
+    },
+    {
+      "id": "cryo-flamethrower-turret",
+      "label": "Flamethrower turret",
+      "category": "Current Cryo objects",
+      "assetPath": "Assets/Maze/CryoProps/Resources/CryoProps/cryo-flamethrower-turret.glb",
+      "resourcePath": "CryoProps/cryo-flamethrower-turret",
+      "assetGuid": "449a3882172cb4d93ba48d9242b9ba7f",
+      "assetSha256": "982ae0ae7b7c893324a9d502554cb40b53b0665cb91a8ef23e0030267c6d670b",
+      "previewPath": "previews/cryo-flamethrower-turret.png",
+      "conceptPreviewPath": "previews/cryo-flamethrower-turret-concept.png",
+      "defaultFootprintXZ": [
+        1.9,
+        1.9
+      ],
+      "defaultY": 0.33,
+      "defaultYaw": 180,
+      "defaultMaxHeight": 2.2,
+      "defaultUniformScale": 1.0,
+      "maxUniformScale": 1.3,
+      "scalePolicy": "Door preserves authored scale; others fit rotated renderer bounds to fw/fd/maxh then cap multiplier at CryoProps.RealCap=1.3. No nonuniform scaling.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-with-adjacent-walkable-activation-edge",
+      "collisionAuthority": "MazeMap base cells; GLB spawn adds no colliders",
+      "runtimeBehavior": "CryoHeroTurret.Init(flame) in runtime CryoProps.Spawn; game-step combat/capture, nearest-target aim. Preview without gameplay components.",
+      "baseTextureResource": "CryoProps/cryo-flamethrower-turret_base",
+      "normalTextureResource": "CryoProps/cryo-flamethrower-turret_normal",
+      "shader": "Maze/CryoSoftSurface",
+      "existingAnchors": [
+        {
+          "layout": "cryo-a",
+          "prop": "cryo-flamethrower-turret",
+          "x": 31.0,
+          "y": 0.33,
+          "z": -26.0,
+          "yaw": 180,
+          "name": "flame_turret",
+          "fw": 1.9,
+          "fd": 1.9,
+          "maxh": 2.2
+        },
+        {
+          "layout": "cryo-boss",
+          "prop": "cryo-flamethrower-turret",
+          "x": 13.0,
+          "y": 0.33,
+          "z": -22.0,
+          "yaw": 180,
+          "name": "flame_turret",
+          "fw": 1.9,
+          "fd": 1.9,
+          "maxh": 2.2
+        },
+        {
+          "layout": "cryo-c",
+          "prop": "cryo-flamethrower-turret",
+          "x": 13.0,
+          "y": 0.33,
+          "z": -24.0,
+          "yaw": 180,
+          "name": "flame_turret",
+          "fw": 1.9,
+          "fd": 1.9,
+          "maxh": 2.2
+        }
+      ],
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Resource loading is zone-independent; current automatic spawn path is Cryo only. Must remap external textures/materials and explicitly choose whether to enable existing turret or goal-linked motion behavior.",
+      "nativeSizeXYZ": [
+        1.75287,
+        1.41398,
+        1.90054
+      ],
+      "nativeBoundsMinXYZ": [
+        -0.87624,
+        0.00011,
+        -0.95061
+      ],
+      "nativeBoundsMaxXYZ": [
+        0.87662,
+        1.41409,
+        0.94993
+      ],
+      "triangles": 29998,
+      "meshPartNames": [
+        "base",
+        "yaw_head",
+        "pitch_assembly"
+      ],
+      "boundsSource": "Transformed POSITION vertices of the exact integrated GLB; Unity handedness does not change dimensions."
+    },
+    {
+      "id": "cryo-kit-01-wall-module",
+      "label": "Modular service wall",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/01_wall_module.prefab",
+      "resourcePath": "CryoKit/Prefabs/01_wall_module",
+      "assetGuid": "6bd5065938c94431eb14dd147cece7ae",
+      "assetSha256": "83b6bcc2b72b6c6e923493d46bdcdbf34590f6b5b017b712ef44438d14873aa7",
+      "nativeSizeXYZ": [
+        4.0,
+        3.6,
+        0.4
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-01_wall_module.png",
+      "defaultFootprintXZ": [
+        4.0,
+        0.4
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 180,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.5,
+      "rotationSnapDegrees": 90,
+      "placementRule": "wall-mounted-within-solid-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 3392,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-02-inside-corner",
+      "label": "Inside corner wall junction",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/02_inside_corner.prefab",
+      "resourcePath": "CryoKit/Prefabs/02_inside_corner",
+      "assetGuid": "3d42d1cea25c04cdba54b69958151d32",
+      "assetSha256": "33896738afab4a2fd210fc1722741c4aeacd463910ee3a6a76e2f1a58442a1e1",
+      "nativeSizeXYZ": [
+        2.0,
+        3.6,
+        2.0
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-02_inside_corner.png",
+      "defaultFootprintXZ": [
+        2.0,
+        2.0
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 180,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.5,
+      "rotationSnapDegrees": 90,
+      "placementRule": "wall-mounted-within-solid-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 13572,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-03-support-pillar",
+      "label": "Four-face support pillar",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/03_support_pillar.prefab",
+      "resourcePath": "CryoKit/Prefabs/03_support_pillar",
+      "assetGuid": "c3e9a3e38a1e04858b5a3d120a846759",
+      "assetSha256": "ffa49e4ace60d36dfaaef765a43e0e1d4689343aded487275b79e36a72d4b74a",
+      "nativeSizeXYZ": [
+        0.7,
+        3.8,
+        0.7
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-03_support_pillar.png",
+      "defaultFootprintXZ": [
+        0.7,
+        0.7
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 0,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.5,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 1116,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-04-floor-panel",
+      "label": "Flush floor panel",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/04_floor_panel.prefab",
+      "resourcePath": "CryoKit/Prefabs/04_floor_panel",
+      "assetGuid": "e0126089141bc4182898c81a7387bf9c",
+      "assetSha256": "b7254cc3afd0b8aa769e3a5320944082848bcef77f42e94bdbb4e4a95a414650",
+      "nativeSizeXYZ": [
+        2.0,
+        0.12,
+        2.0
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-04_floor_panel.png",
+      "defaultFootprintXZ": [
+        2.0,
+        2.0
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 0,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 2.0,
+      "rotationSnapDegrees": 90,
+      "placementRule": "decorative-floor-only",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 110,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-05-floor-trench-grate",
+      "label": "Service trench grate",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/05_floor_trench_grate.prefab",
+      "resourcePath": "CryoKit/Prefabs/05_floor_trench_grate",
+      "assetGuid": "29afdf6faaef9471eb417bc37c189eec",
+      "assetSha256": "fc62368bd15dac4ac50fa8c8c1d5623415385a3172558a1ac5e93a094726a88a",
+      "nativeSizeXYZ": [
+        2.0,
+        0.16,
+        1.2
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-05_floor_trench_grate.png",
+      "defaultFootprintXZ": [
+        2.0,
+        1.2
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 0,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.2,
+      "rotationSnapDegrees": 90,
+      "placementRule": "decorative-floor-only",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 520,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-06-sliding-bulkhead",
+      "label": "Sealed sliding bulkhead",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/06_sliding_bulkhead.prefab",
+      "resourcePath": "CryoKit/Prefabs/06_sliding_bulkhead",
+      "assetGuid": "2e8823abd655b4127b60f956fa7c704c",
+      "assetSha256": "1597938eb3baa669cd67c801177725f4e5480be1e2519618664a6413f71d2cb6",
+      "nativeSizeXYZ": [
+        4.0,
+        3.6,
+        0.65
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-06_sliding_bulkhead.png",
+      "defaultFootprintXZ": [
+        4.0,
+        0.65
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 180,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.5,
+      "rotationSnapDegrees": 90,
+      "placementRule": "wall-mounted-within-solid-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 17368,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-07-hero-pod-cradle",
+      "label": "Approved cryopod and substantial cradle",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/07_hero_pod_cradle.prefab",
+      "resourcePath": "CryoKit/Prefabs/07_hero_pod_cradle",
+      "assetGuid": "b4f6575787849417486cb945e3e2e5f6",
+      "assetSha256": "136f71e0efa85275de64504a9be07ecd3d9b1755af73bcc5fcf746b828c79a43",
+      "nativeSizeXYZ": [
+        3.3,
+        3.901,
+        2.2245
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-07_hero_pod_cradle.png",
+      "defaultFootprintXZ": [
+        3.3,
+        2.225
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 0,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 17508,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-08-cryo-service-cabinet",
+      "label": "Cryo isolation service cabinet",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/08_cryo_service_cabinet.prefab",
+      "resourcePath": "CryoKit/Prefabs/08_cryo_service_cabinet",
+      "assetGuid": "ad03c6d26dcae48a4a5528e21abdfa9c",
+      "assetSha256": "d3a2b6ddaac8b5820bc75937c546c0c19bd76407eac80089416709526c1c1365",
+      "nativeSizeXYZ": [
+        1.077,
+        2.05,
+        0.848
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-08_cryo_service_cabinet.png",
+      "defaultFootprintXZ": [
+        1.077,
+        0.848
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 0,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 10248,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-09-cooling-reservoir-pumps",
+      "label": "Dual-circuit reservoir and pump assembly",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/09_cooling_reservoir_pumps.prefab",
+      "resourcePath": "CryoKit/Prefabs/09_cooling_reservoir_pumps",
+      "assetGuid": "a243336a9e55247c5af89e93934f65aa",
+      "assetSha256": "0abd0301e09572434f7d7f9bbaa2eff3464dda9bd37ea0a28a2718eece1d638f",
+      "nativeSizeXYZ": [
+        3.48,
+        3.14811,
+        2.656
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-09_cooling_reservoir_pumps.png",
+      "defaultFootprintXZ": [
+        3.48,
+        2.656
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 0,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 17470,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-10-coolant-manifold-elbow",
+      "label": "Coolant elbow and isolation manifold",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/10_coolant_manifold_elbow.prefab",
+      "resourcePath": "CryoKit/Prefabs/10_coolant_manifold_elbow",
+      "assetGuid": "d9af956a3c21b488493b9d4849b9196f",
+      "assetSha256": "a9db64d55e2eb4f6bb7dc386874d630fda05ad355f0a09f2fd6de944356585f1",
+      "nativeSizeXYZ": [
+        1.94,
+        1.155,
+        0.573
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-10_coolant_manifold_elbow.png",
+      "defaultFootprintXZ": [
+        1.94,
+        0.573
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 0,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.25,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 28896,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-11-overhead-cable-tray",
+      "label": "Open overhead cable tray",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/11_overhead_cable_tray.prefab",
+      "resourcePath": "CryoKit/Prefabs/11_overhead_cable_tray",
+      "assetGuid": "588216dffebf04714938093d1600a396",
+      "assetSha256": "cab47e11cfed020f51740fafce0ff7b2490b2be90ac42e05242d3c7184d48093",
+      "nativeSizeXYZ": [
+        2.0,
+        0.2485,
+        0.588
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-11_overhead_cable_tray.png",
+      "defaultFootprintXZ": [
+        2.0,
+        0.588
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 180,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.5,
+      "rotationSnapDegrees": 90,
+      "placementRule": "wall-mounted-within-solid-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 14276,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-12-vent-fan-unit",
+      "label": "Guarded wall extraction fan",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/12_vent_fan_unit.prefab",
+      "resourcePath": "CryoKit/Prefabs/12_vent_fan_unit",
+      "assetGuid": "345877c500c3f432e93eb69a576b6bce",
+      "assetSha256": "3311253a618a59f99e05a71fd8bf2e3880778bdfa2be9cc860846a3f2b3748a0",
+      "nativeSizeXYZ": [
+        1.2,
+        1.2,
+        0.322
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-12_vent_fan_unit.png",
+      "defaultFootprintXZ": [
+        1.2,
+        0.322
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 180,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.25,
+      "rotationSnapDegrees": 90,
+      "placementRule": "wall-mounted-within-solid-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 10248,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-13-research-workstation",
+      "label": "Life-support research workstation",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/13_research_workstation.prefab",
+      "resourcePath": "CryoKit/Prefabs/13_research_workstation",
+      "assetGuid": "8da138507459149eb93f895c90ecac2f",
+      "assetSha256": "daa91713564365a00e3acdc7e8b9ec57b5a52966f82b282d07a4f1ca9b8a5882",
+      "nativeSizeXYZ": [
+        1.34,
+        1.24632,
+        0.83714
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-13_research_workstation.png",
+      "defaultFootprintXZ": [
+        1.34,
+        0.837
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 0,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 1934,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-14-wall-control-terminal",
+      "label": "Wall-mounted cryo control terminal",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/14_wall_control_terminal.prefab",
+      "resourcePath": "CryoKit/Prefabs/14_wall_control_terminal",
+      "assetGuid": "45e7b73802ff640649e00c4acc725866",
+      "assetSha256": "99aac0c8b033cdf1133956bb156c6e4cd98d47950a26c1df9b3ca4ec08b8a2b7",
+      "nativeSizeXYZ": [
+        0.8,
+        0.6,
+        0.1765
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-14_wall_control_terminal.png",
+      "defaultFootprintXZ": [
+        0.8,
+        0.176
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 180,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 90,
+      "placementRule": "wall-mounted-within-solid-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 5272,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-15-low-cover-cabinet",
+      "label": "Low maintenance drawer cabinet",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/15_low_cover_cabinet.prefab",
+      "resourcePath": "CryoKit/Prefabs/15_low_cover_cabinet",
+      "assetGuid": "26a4b6a1a90b74226a5332acbed357f9",
+      "assetSha256": "8d165e2c1099234f86c09e75395da39fc8f0bd44bc43a598941fd40879099921",
+      "nativeSizeXYZ": [
+        2.0145,
+        1.1245,
+        0.829
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-15_low_cover_cabinet.png",
+      "defaultFootprintXZ": [
+        2.015,
+        0.829
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 0,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 9100,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-16-cargo-crate",
+      "label": "Stackable insulated equipment case",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/16_cargo_crate.prefab",
+      "resourcePath": "CryoKit/Prefabs/16_cargo_crate",
+      "assetGuid": "98155c2d5380947098fd76b823addb9c",
+      "assetSha256": "1591a8f827f9f0de1034dea903c7ee0865718258551fb7a1f7054dd7e15054ce",
+      "nativeSizeXYZ": [
+        1.2,
+        0.8585,
+        0.833
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-16_cargo_crate.png",
+      "defaultFootprintXZ": [
+        1.2,
+        0.833
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 0,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 6332,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-17-coolant-canister",
+      "label": "Portable coolant pressure canister",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/17_coolant_canister.prefab",
+      "resourcePath": "CryoKit/Prefabs/17_coolant_canister",
+      "assetGuid": "c674929a3035c4aabbbb50b9ea3e7ee1",
+      "assetSha256": "08eb9424d2c62f64f3f20cb01f24d5e32af339b934d6ff3d7ded4b93baea3dab",
+      "nativeSizeXYZ": [
+        0.494,
+        0.93,
+        0.424
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-17_coolant_canister.png",
+      "defaultFootprintXZ": [
+        0.494,
+        0.424
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 0,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 6144,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-18-ceiling-light-fixture",
+      "label": "Recessed linear ceiling luminaire",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/18_ceiling_light_fixture.prefab",
+      "resourcePath": "CryoKit/Prefabs/18_ceiling_light_fixture",
+      "assetGuid": "ff24ae011998f42fb9e7251da71ada05",
+      "assetSha256": "cc072ba409b9bc5b4748f05ec7d888ff6f3d76b43a1389533c865b9a1e5a7a00",
+      "nativeSizeXYZ": [
+        2.0,
+        0.18,
+        0.4
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-18_ceiling_light_fixture.png",
+      "defaultFootprintXZ": [
+        2.0,
+        0.4
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 180,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.5,
+      "rotationSnapDegrees": 90,
+      "placementRule": "wall-mounted-within-solid-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 3580,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-19-emergency-beacon",
+      "label": "Guarded amber emergency beacon",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/19_emergency_beacon.prefab",
+      "resourcePath": "CryoKit/Prefabs/19_emergency_beacon",
+      "assetGuid": "cb93b484d5d764cf08531a7d7dd58b3c",
+      "assetSha256": "2a08f310446a87679d79812a06da573ccb1da09a48b8f235aa34504d814d5621",
+      "nativeSizeXYZ": [
+        0.25,
+        0.35,
+        0.19934
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-19_emergency_beacon.png",
+      "defaultFootprintXZ": [
+        0.25,
+        0.199
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 180,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.05,
+      "rotationSnapDegrees": 90,
+      "placementRule": "wall-mounted-within-solid-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 8040,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "cryo-kit-20-fractured-cryo-breach",
+      "label": "Fractured pressure-glass and ice breach",
+      "category": "Earlier modular Cryo kit",
+      "assetPath": "Assets/Maze/Resources/CryoKit/Prefabs/20_fractured_cryo_breach.prefab",
+      "resourcePath": "CryoKit/Prefabs/20_fractured_cryo_breach",
+      "assetGuid": "d3adcb65d9a514a14ab9b5693757bdfc",
+      "assetSha256": "01668bd34d260fffd50dbb4591a00666ffe994d6766be33235d2579d0863cb08",
+      "nativeSizeXYZ": [
+        1.8,
+        1.6,
+        0.9
+      ],
+      "boundsSource": "Existing kit manifest-final.json dimensions in metres; prefab instantiated natively by CryoKitEnvironment.",
+      "previewPath": "previews/cryo-kit-20_fractured_cryo_breach.png",
+      "defaultFootprintXZ": [
+        1.8,
+        0.9
+      ],
+      "defaultY": 0.0,
+      "defaultYaw": 0,
+      "defaultUniformScale": 1.0,
+      "minUniformScale": 0.65,
+      "maxUniformScale": 1.0,
+      "scalePolicy": "Existing CryoKitEnvironment.Place only shrinks to allowed XZ footprint, rejects fit < .65; preserve dimensions for structural pieces.",
+      "snapMetres": 0.1,
+      "rotationSnapDegrees": 15,
+      "placementRule": "solid-island-footprint",
+      "collisionAuthority": "MazeMap base cells; native prefabs have no colliders",
+      "runtimeBehavior": "Static art; sliding_bulkhead is a sealed service facade, not a gameplay door.",
+      "canInstantiateOutsideCryo": true,
+      "outsideCryoCaveat": "Native prefab material references are already integrated. Current automatic dressing is Cryo scoped; keep geometry inside existing blocked cells or explicitly author matching grid occupancy.",
+      "triangles": 2936,
+      "shader": "Maze/CryoKit PBR",
+      "status": "Integrated earlier art kit, superseded by rounded Cryo room for current Cryo runtime; not globally user-approved as current direction."
+    },
+    {
+      "id": "facility-cargo-crate",
+      "label": "Cargo crate",
+      "category": "Existing facility assets",
+      "assetPath": "Assets/Maze/Resources/Models/cargo_crate.glb",
+      "resourcePath": "Models/cargo_crate",
+      "assetSha256": "d093a2e523c6b3513e7e68ad88d23f1cc12834d7055dc63c1f041838a0507bcf",
+      "previewPath": "",
+      "previewFallback": "UnityEditor.AssetPreview of integrated asset",
+      "defaultUniformScale": 1.0,
+      "defaultY": 0.0,
+      "defaultYaw": 0.0,
+      "canInstantiateOutsideCryo": true,
+      "shader": "Mats.ConvertGltf to integrated URP materials",
+      "collisionAuthority": "Place matching MazeMap gameplay cells; model itself is visual.",
+      "nativeSizeXYZ": [
+        1.41266,
+        1.41266,
+        1.41266
+      ],
+      "nativeBoundsMinXYZ": [
+        -0.70633,
+        -0.00633,
+        -0.70633
+      ],
+      "nativeBoundsMaxXYZ": [
+        0.70633,
+        1.40633,
+        0.70633
+      ],
+      "triangles": 6000,
+      "meshPartNames": [
+        "CargoCrate"
+      ],
+      "boundsSource": "Transformed POSITION vertices of the exact integrated GLB; Unity handedness does not change dimensions.",
+      "placementRule": "solid-C-cell",
+      "defaultFootprintXZ": [
+        1.9,
+        1.9
+      ],
+      "snapMetres": 2.0,
+      "rotationSnapDegrees": 90,
+      "scalePolicy": "LevelBuilder uses uniform multiplier (1.9/1.4) * deterministic [.97,1] to fill 2m C cell. Optional stacked crate is decorative.",
+      "runtimeBehavior": "C cell collision and LevelBuilder.CrateProps visual; use grid tool for gameplay authoring."
+    },
+    {
+      "id": "facility-barrel",
+      "label": "Explosive barrel model",
+      "category": "Existing facility assets",
+      "assetPath": "Assets/Maze/Resources/Models/barrel.glb",
+      "resourcePath": "Models/barrel",
+      "assetSha256": "0d61fd48242904a691128d68f4677fd9d4c74127af19a66789631a5a13db6047",
+      "previewPath": "",
+      "previewFallback": "UnityEditor.AssetPreview of integrated asset",
+      "defaultUniformScale": 1.0,
+      "defaultY": 0.0,
+      "defaultYaw": 0.0,
+      "canInstantiateOutsideCryo": true,
+      "shader": "Mats.ConvertGltf to integrated URP materials",
+      "collisionAuthority": "Place matching MazeMap gameplay cells; model itself is visual.",
+      "nativeSizeXYZ": [
+        1.29169,
+        1.89922,
+        1.31336
+      ],
+      "nativeBoundsMinXYZ": [
+        -0.64584,
+        -0.95046,
+        -0.65753
+      ],
+      "nativeBoundsMaxXYZ": [
+        0.64584,
+        0.94876,
+        0.65583
+      ],
+      "triangles": 7928,
+      "meshPartNames": [
+        "0"
+      ],
+      "boundsSource": "Transformed POSITION vertices of the exact integrated GLB; Unity handedness does not change dimensions.",
+      "placementRule": "X-gameplay-marker",
+      "defaultFootprintXZ": [
+        1.0,
+        1.0
+      ],
+      "snapMetres": 2.0,
+      "rotationSnapDegrees": 15,
+      "scalePolicy": "Barrels.Normalize grounds and fits to MazeConfig.barrels.height; do not arbitrarily scale gameplay radius.",
+      "runtimeBehavior": "X markers generate perSpot destructible barrels; current Cryo substitutes LivingEnvironments/CryoExplosiveBarrel."
+    },
+    {
+      "id": "facility-door-frame",
+      "label": "Gameplay door frame",
+      "category": "Existing facility assets",
+      "assetPath": "Assets/Maze/Resources/Models/door_frame.glb",
+      "resourcePath": "Models/door_frame",
+      "assetSha256": "5fdc6fe0f1a52d34a9ca08c53a2036a22559c2a9ce3230f880e77faa8405f973",
+      "previewPath": "",
+      "previewFallback": "UnityEditor.AssetPreview of integrated asset",
+      "defaultUniformScale": 1.0,
+      "defaultY": 0.0,
+      "defaultYaw": 0.0,
+      "canInstantiateOutsideCryo": true,
+      "shader": "Mats.ConvertGltf to integrated URP materials",
+      "collisionAuthority": "Place matching MazeMap gameplay cells; model itself is visual.",
+      "nativeSizeXYZ": [
+        1.90158,
+        1.57006,
+        0.36334
+      ],
+      "nativeBoundsMinXYZ": [
+        -0.95127,
+        -0.78548,
+        -0.18214
+      ],
+      "nativeBoundsMaxXYZ": [
+        0.95032,
+        0.78457,
+        0.1812
+      ],
+      "triangles": 12546,
+      "meshPartNames": [
+        "Mesh_0",
+        "Lens"
+      ],
+      "boundsSource": "Transformed POSITION vertices of the exact integrated GLB; Unity handedness does not change dimensions.",
+      "placementRule": "door-composite-only",
+      "defaultFootprintXZ": [
+        2.0,
+        2.0
+      ],
+      "snapMetres": 2.0,
+      "rotationSnapDegrees": 90,
+      "scalePolicy": "Do not free-scale; EscapeRun stretches paired frame/panels from D-cell rectangle, DoorH and DoorAlongX.",
+      "runtimeBehavior": "Do not offer raw component as standalone functional door. Paint/resize D-cell region and let EscapeRun build the composite."
+    },
+    {
+      "id": "facility-door-panel",
+      "label": "Gameplay door panel",
+      "category": "Existing facility assets",
+      "assetPath": "Assets/Maze/Resources/Models/door_panel.glb",
+      "resourcePath": "Models/door_panel",
+      "assetSha256": "6199955f2fc0caf0f639192c94876d7cdde81ca1da27081ecca32de22c3c9dfb",
+      "previewPath": "",
+      "previewFallback": "UnityEditor.AssetPreview of integrated asset",
+      "defaultUniformScale": 1.0,
+      "defaultY": 0.0,
+      "defaultYaw": 0.0,
+      "canInstantiateOutsideCryo": true,
+      "shader": "Mats.ConvertGltf to integrated URP materials",
+      "collisionAuthority": "Place matching MazeMap gameplay cells; model itself is visual.",
+      "nativeSizeXYZ": [
+        1.04993,
+        1.903,
+        0.15015
+      ],
+      "nativeBoundsMinXYZ": [
+        -0.52384,
+        -0.95227,
+        -0.075
+      ],
+      "nativeBoundsMaxXYZ": [
+        0.52609,
+        0.95073,
+        0.07515
+      ],
+      "triangles": 12252,
+      "meshPartNames": [
+        "Mesh_0"
+      ],
+      "boundsSource": "Transformed POSITION vertices of the exact integrated GLB; Unity handedness does not change dimensions.",
+      "placementRule": "door-composite-only",
+      "defaultFootprintXZ": [
+        2.0,
+        2.0
+      ],
+      "snapMetres": 2.0,
+      "rotationSnapDegrees": 90,
+      "scalePolicy": "Do not free-scale; EscapeRun stretches paired frame/panels from D-cell rectangle, DoorH and DoorAlongX.",
+      "runtimeBehavior": "Do not offer raw component as standalone functional door. Paint/resize D-cell region and let EscapeRun build the composite."
+    },
+    {
+      "id": "cryo-explosive-barrel",
+      "label": "Rounded red explosive barrel",
+      "category": "Current Cryo objects",
+      "assetPath": "Assets/Maze/LivingEnvironments/Resources/LivingEnvironments/CryoExplosiveBarrel.prefab",
+      "resourcePath": "LivingEnvironments/CryoExplosiveBarrel",
+      "assetSha256": "edebc2a6dcb5a0dac1f2dd0222ae9f4ce9a6f6e0ad97b80f742c4e45833be817",
+      "previewPath": "",
+      "previewFallback": "UnityEditor.AssetPreview of integrated prefab",
+      "nativeHeightMetres": 1.42,
+      "triangles": 2752,
+      "boundsSource": "Tools/LivingEnvironments/exports/CryoExplosiveBarrel.json; preview should measure actual renderer bounds.",
+      "defaultFootprintXZ": [
+        1.0,
+        1.0
+      ],
+      "defaultUniformScale": 1.0,
+      "defaultY": 0.0,
+      "defaultYaw": 0.0,
+      "snapMetres": 2.0,
+      "rotationSnapDegrees": 15,
+      "placementRule": "X-gameplay-marker",
+      "scalePolicy": "Barrels.Normalize fits model to MazeConfig.barrels.height; gameplay radius stays under Barrels.",
+      "runtimeBehavior": "Current Cryo X marker visual selected by Barrels.Init; do not spawn as inert substitute for gameplay barrel.",
+      "collisionAuthority": "Barrels.MarkCells plus gameplay collision data, not a mesh collider.",
+      "canInstantiateOutsideCryo": true
+    },
+    {
+      "id": "local-20261016-charging-brute",
+      "label": "Charging Brute",
+      "category": "Enemies \u00b7 unrigged previews",
+      "resourcePath": "FloorModels/charging-brute",
+      "previewPath": "previews/local-20261016-charging-brute.png",
+      "defaultFootprintXZ": [
+        2.353942394256592,
+        3.1712710857391357
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 2.014998435974121,
+      "unrigged": true,
+      "mobileTriangles": 5000,
+      "selectedVersion": "001"
+    },
+    {
+      "id": "local-20261016-ranged-spitter",
+      "label": "Ranged Spitter",
+      "category": "Enemies \u00b7 unrigged previews",
+      "resourcePath": "FloorModels/ranged-spitter",
+      "previewPath": "previews/local-20261016-ranged-spitter.png",
+      "defaultFootprintXZ": [
+        1.307210922241211,
+        1.9090051651000977
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 1.7203221321105957,
+      "unrigged": true,
+      "mobileTriangles": 4000,
+      "selectedVersion": "002"
+    },
+    {
+      "id": "local-20261016-nest-carrier",
+      "label": "Nest Carrier",
+      "category": "Enemies \u00b7 unrigged previews",
+      "resourcePath": "FloorModels/nest-carrier",
+      "previewPath": "previews/local-20261016-nest-carrier.png",
+      "defaultFootprintXZ": [
+        2.6805129051208496,
+        2.5863287448883057
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 1.9177930355072021,
+      "unrigged": true,
+      "mobileTriangles": 6000,
+      "selectedVersion": "003"
+    },
+    {
+      "id": "local-20261016-cryo-relay-cabinet",
+      "label": "Cryo Electrical Relay Cabinet",
+      "category": "Cryo \u00b7 local batch",
+      "resourcePath": "FloorModels/cryo-relay-cabinet",
+      "previewPath": "previews/local-20261016-cryo-relay-cabinet.png",
+      "defaultFootprintXZ": [
+        1.422774314880371,
+        1.4886610507965088
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 1.610589623451233,
+      "unrigged": false,
+      "mobileTriangles": 3000,
+      "selectedVersion": "003"
+    },
+    {
+      "id": "local-20261016-cryo-diagnostic-console",
+      "label": "Cryo Diagnostic Console",
+      "category": "Cryo \u00b7 local batch",
+      "resourcePath": "FloorModels/cryo-diagnostic-console",
+      "previewPath": "previews/local-20261016-cryo-diagnostic-console.png",
+      "defaultFootprintXZ": [
+        1.2886409759521484,
+        0.9782388210296631
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 1.1559799909591675,
+      "unrigged": false,
+      "mobileTriangles": 4000,
+      "selectedVersion": "011"
+    },
+    {
+      "id": "local-20261016-cryo-ventilation-unit",
+      "label": "Cryo Ventilation Unit",
+      "category": "Cryo \u00b7 local batch",
+      "resourcePath": "FloorModels/cryo-ventilation-unit",
+      "previewPath": "previews/local-20261016-cryo-ventilation-unit.png",
+      "defaultFootprintXZ": [
+        1.2714757919311523,
+        0.7967319488525391
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 0.7070531845092773,
+      "unrigged": false,
+      "mobileTriangles": 2000,
+      "selectedVersion": "002"
+    },
+    {
+      "id": "local-20261016-cryo-emergency-cabinet",
+      "label": "Cryo Emergency Wall Cabinet",
+      "category": "Cryo \u00b7 local batch",
+      "resourcePath": "FloorModels/cryo-emergency-cabinet",
+      "previewPath": "previews/local-20261016-cryo-emergency-cabinet.png",
+      "defaultFootprintXZ": [
+        0.7699183225631714,
+        0.4928506016731262
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 0.9102404713630676,
+      "unrigged": false,
+      "mobileTriangles": 3534,
+      "selectedVersion": "023"
+    },
+    {
+      "id": "local-20261016-cryo-pipe-riser",
+      "label": "Cryo Insulated Pipe Riser",
+      "category": "Cryo \u00b7 local batch",
+      "resourcePath": "FloorModels/cryo-pipe-riser",
+      "previewPath": "previews/local-20261016-cryo-pipe-riser.png",
+      "defaultFootprintXZ": [
+        0.7560728788375854,
+        1.0550086498260498
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 1.8095561265945435,
+      "unrigged": false,
+      "mobileTriangles": 3000,
+      "selectedVersion": "003"
+    },
+    {
+      "id": "local-20261016-cryo-valve-manifold",
+      "label": "Cryo Valve Manifold",
+      "category": "Cryo \u00b7 local batch",
+      "resourcePath": "FloorModels/cryo-valve-manifold",
+      "previewPath": "previews/local-20261016-cryo-valve-manifold.png",
+      "defaultFootprintXZ": [
+        2.322397470474243,
+        1.3616000413894653
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 1.3607105016708374,
+      "unrigged": false,
+      "mobileTriangles": 3000,
+      "selectedVersion": "016"
+    },
+    {
+      "id": "local-20261016-cryo-pipe-elbow",
+      "label": "Cryo Pipe Elbow Module",
+      "category": "Cryo \u00b7 local batch",
+      "resourcePath": "FloorModels/cryo-pipe-elbow",
+      "previewPath": "previews/local-20261016-cryo-pipe-elbow.png",
+      "defaultFootprintXZ": [
+        0.4637410044670105,
+        0.7511813640594482
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 0.7378879189491272,
+      "unrigged": false,
+      "mobileTriangles": 1500,
+      "selectedVersion": "005"
+    },
+    {
+      "id": "local-20261016-cryo-trench-cover",
+      "label": "Cryo Floor Trench Cover",
+      "category": "Cryo \u00b7 local batch",
+      "resourcePath": "FloorModels/cryo-trench-cover",
+      "previewPath": "previews/local-20261016-cryo-trench-cover.png",
+      "defaultFootprintXZ": [
+        0.8105691075325012,
+        0.5525374412536621
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 0.1298808604478836,
+      "unrigged": false,
+      "mobileTriangles": 1000,
+      "selectedVersion": "005"
+    },
+    {
+      "id": "local-20261016-cryo-warning-bollard",
+      "label": "Cryo Warning Beacon Bollard",
+      "category": "Cryo \u00b7 local batch",
+      "resourcePath": "FloorModels/cryo-warning-bollard",
+      "previewPath": "previews/local-20261016-cryo-warning-bollard.png",
+      "defaultFootprintXZ": [
+        0.8628421425819397,
+        0.8752071857452393
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 1.0099999904632568,
+      "unrigged": false,
+      "mobileTriangles": 5992,
+      "selectedVersion": "005"
+    },
+    {
+      "id": "local-20261016-industrial-cover-barricade",
+      "label": "Industrial Cover Barricade",
+      "category": "Industrial \u00b7 local batch",
+      "resourcePath": "FloorModels/industrial-cover-barricade",
+      "previewPath": "previews/local-20261016-industrial-cover-barricade.png",
+      "defaultFootprintXZ": [
+        2.4586188793182373,
+        0.9384251236915588
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 1.0082778930664062,
+      "unrigged": false,
+      "mobileTriangles": 3000,
+      "selectedVersion": "002"
+    },
+    {
+      "id": "local-20261016-industrial-cable-spool",
+      "label": "Industrial Cable Spool",
+      "category": "Industrial \u00b7 local batch",
+      "resourcePath": "FloorModels/industrial-cable-spool",
+      "previewPath": "previews/local-20261016-industrial-cable-spool.png",
+      "defaultFootprintXZ": [
+        1.3167475461959839,
+        1.2660783529281616
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 1.1182652711868286,
+      "unrigged": false,
+      "mobileTriangles": 3000,
+      "selectedVersion": "003"
+    },
+    {
+      "id": "local-20261016-industrial-parts-hopper",
+      "label": "Industrial Parts Hopper",
+      "category": "Industrial \u00b7 local batch",
+      "resourcePath": "FloorModels/industrial-parts-hopper",
+      "previewPath": "previews/local-20261016-industrial-parts-hopper.png",
+      "defaultFootprintXZ": [
+        1.8329806327819824,
+        1.511357069015503
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 1.2630000114440918,
+      "unrigged": false,
+      "mobileTriangles": 4230,
+      "selectedVersion": "012"
+    },
+    {
+      "id": "local-20261016-industrial-battery-rack",
+      "label": "Industrial Battery Rack",
+      "category": "Industrial \u00b7 local batch",
+      "resourcePath": "FloorModels/industrial-battery-rack",
+      "previewPath": "previews/local-20261016-industrial-battery-rack.png",
+      "defaultFootprintXZ": [
+        2.448988199234009,
+        1.2654995918273926
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 1.5098315477371216,
+      "unrigged": false,
+      "mobileTriangles": 4000,
+      "selectedVersion": "003"
+    },
+    {
+      "id": "local-20261016-fungal-spore-vent",
+      "label": "Fungal Spore Vent",
+      "category": "Fungal \u00b7 local batch",
+      "resourcePath": "FloorModels/fungal-spore-vent",
+      "previewPath": "previews/local-20261016-fungal-spore-vent.png",
+      "defaultFootprintXZ": [
+        1.0773063898086548,
+        0.9684956073760986
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 1.1096419095993042,
+      "unrigged": false,
+      "mobileTriangles": 4000,
+      "selectedVersion": "001"
+    },
+    {
+      "id": "local-20261016-fungal-biomass-boulder",
+      "label": "Fungal Biomass Boulder",
+      "category": "Fungal \u00b7 local batch",
+      "resourcePath": "FloorModels/fungal-biomass-boulder",
+      "previewPath": "previews/local-20261016-fungal-biomass-boulder.png",
+      "defaultFootprintXZ": [
+        1.1550960540771484,
+        1.2214796543121338
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 0.8596459627151489,
+      "unrigged": false,
+      "mobileTriangles": 2000,
+      "selectedVersion": "001"
+    },
+    {
+      "id": "local-20261016-ruins-reinforced-pillar",
+      "label": "Ruins Reinforced Pillar",
+      "category": "Ruins \u00b7 local batch",
+      "resourcePath": "FloorModels/ruins-reinforced-pillar",
+      "previewPath": "previews/local-20261016-ruins-reinforced-pillar.png",
+      "defaultFootprintXZ": [
+        1.245457649230957,
+        1.2504900693893433
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 2.015082359313965,
+      "unrigged": false,
+      "mobileTriangles": 2000,
+      "selectedVersion": "002"
+    },
+    {
+      "id": "local-20261016-ruins-broken-wall-cover",
+      "label": "Ruins Broken Wall Cover",
+      "category": "Ruins \u00b7 local batch",
+      "resourcePath": "FloorModels/ruins-broken-wall-cover",
+      "previewPath": "previews/local-20261016-ruins-broken-wall-cover.png",
+      "defaultFootprintXZ": [
+        2.9704601764678955,
+        0.8881934881210327
+      ],
+      "defaultY": 0,
+      "defaultYaw": 0,
+      "defaultMaxHeight": 1.111617922782898,
+      "unrigged": false,
+      "mobileTriangles": 3000,
+      "selectedVersion": "001"
+    }
+  ],
+  "excludedAssets": [
+    {
+      "resourcePath": "CryoKit/Prefabs/21_structural_thermal_island_6x4",
+      "reason": "Existing taller machinery preview is deliberately disabled because it hides rear-lane actors. Do not re-enable through palette by default."
+    }
+  ],
+  "gridTools": [
+    {
+      "id": "grid-wall",
+      "letter": "#",
+      "label": "Wall",
+      "heightMetres": 3.4
+    },
+    {
+      "id": "grid-building",
+      "letter": "B",
+      "label": "Solid building / machinery island",
+      "heightRangeMetres": [
+        2.4,
+        3.6
+      ]
+    },
+    {
+      "id": "grid-crate",
+      "letter": "C",
+      "label": "Cargo / low solid island",
+      "heightMetres": 1.4
+    },
+    {
+      "id": "grid-railing",
+      "letter": "r",
+      "label": "Railing: walking blocked, bullets pass"
+    },
+    {
+      "id": "grid-door",
+      "letter": "D",
+      "label": "Functional door",
+      "note": "Rectangular contiguous group, axis derives from surrounding walls; use existing door reachability/room validation."
+    },
+    {
+      "id": "grid-barrel",
+      "letter": "X",
+      "label": "Explosive barrel spot"
+    }
+  ],
+  "previewReceipts": [
+    {
+      "file": "previews/cryo-pod.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/Models/cryo-pod/phone_cryo-pod.png",
+      "sha256": "1dd41159d64f262fd0292c56a8829f18b00a93df7a2bb36028175d34ca271dd7",
+      "kind": "Blender render of optimized phone model, not Unity runtime screenshot"
+    },
+    {
+      "file": "previews/cryo-pod-concept.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/cryo-pod.png",
+      "sha256": "ed132f7399488dee17b68a5bbbf775a3d0ca3f358025b569a4507439337e1e7c",
+      "kind": "Original concept reference; not mesh preview"
+    },
+    {
+      "file": "previews/cryo-cooling-reactor.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/Models/cryo-cooling-reactor/phone_cryo-cooling-reactor.png",
+      "sha256": "1daa3bd44e79c72ddad8de8ef607ed3ce60314608ff8ddb745112c5830dcd22f",
+      "kind": "Blender render of optimized phone model, not Unity runtime screenshot"
+    },
+    {
+      "file": "previews/cryo-cooling-reactor-concept.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/cryo-cooling-reactor.png",
+      "sha256": "f7dbe1208bbdb62893fbcb40eb9c26418614387f8b1f1c03a01bd014d2dd9fb4",
+      "kind": "Original concept reference; not mesh preview"
+    },
+    {
+      "file": "previews/cryo-coolant-pumping-station.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/Models/cryo-coolant-pumping-station/phone_cryo-coolant-pumping-station.png",
+      "sha256": "d3b20744986eb0252c5b993ad9de4c9ac6a11714216375de07044f97660694c6",
+      "kind": "Blender render of optimized phone model, not Unity runtime screenshot"
+    },
+    {
+      "file": "previews/cryo-coolant-pumping-station-concept.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/cryo-coolant-pumping-station.png",
+      "sha256": "b188dd38264575df245f9cc22003826681619e3d812047c64820b14b68cdce4b",
+      "kind": "Original concept reference; not mesh preview"
+    },
+    {
+      "file": "previews/cryo-low-coolant-tank.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/Models/cryo-low-coolant-tank/phone_cryo-low-coolant-tank.png",
+      "sha256": "19f52bc3978248508d81a26d65652021398b0229f947c94d333e579052566dee",
+      "kind": "Blender render of optimized phone model, not Unity runtime screenshot"
+    },
+    {
+      "file": "previews/cryo-low-coolant-tank-concept.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/cryo-low-coolant-tank.png",
+      "sha256": "0772c79450d83db58d6083d80b8c0095d80a2da7ed02d473e8dde1f1d8a1cad4",
+      "kind": "Original concept reference; not mesh preview"
+    },
+    {
+      "file": "previews/cryo-supply-crate.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/Models/cryo-supply-crate/phone_cryo-supply-crate.png",
+      "sha256": "be637378d1c72c3cbb4bb47093a8210596f27b5f45deca93579e68506a2dbf73",
+      "kind": "Blender render of optimized phone model, not Unity runtime screenshot"
+    },
+    {
+      "file": "previews/cryo-supply-crate-concept.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/cryo-supply-crate.png",
+      "sha256": "bbf2cf4ee7d2c0dd4849648320ca3696ab79915e0be6950ecfb1a5aeae4e2cb9",
+      "kind": "Original concept reference; not mesh preview"
+    },
+    {
+      "file": "previews/cryo-freeze-canister.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/Models/cryo-freeze-canister/phone_cryo-freeze-canister.png",
+      "sha256": "24f0c5764ea1140edb3683ff85e69f64bd6c9bb3b4a9a4a02075d623c76a78d5",
+      "kind": "Blender render of optimized phone model, not Unity runtime screenshot"
+    },
+    {
+      "file": "previews/cryo-freeze-canister-concept.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/cryo-freeze-canister.png",
+      "sha256": "70865d86eaf2a2c77fec0233164c4aaa0dfdf4644de3717c09169a7e572dfe1d",
+      "kind": "Original concept reference; not mesh preview"
+    },
+    {
+      "file": "previews/cryo-maintenance-cart.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/Models/cryo-maintenance-cart/phone_cryo-maintenance-cart.png",
+      "sha256": "92b45e34fa1a7c0121aae4570d440392aaa93a8990172c063051bb1601f21554",
+      "kind": "Blender render of optimized phone model, not Unity runtime screenshot"
+    },
+    {
+      "file": "previews/cryo-maintenance-cart-concept.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/cryo-maintenance-cart.png",
+      "sha256": "70ee463904edd1f5726efa657eb8d1c2c2c5ddcba1f9bf8a78d3d282954efcd6",
+      "kind": "Original concept reference; not mesh preview"
+    },
+    {
+      "file": "previews/cryo-blast-door.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/Models/cryo-blast-door/phone_cryo-blast-door.png",
+      "sha256": "108dfea01604699fbb110d9903bd4220716c74083c933667dc446d86129d0e27",
+      "kind": "Blender render of optimized phone model, not Unity runtime screenshot"
+    },
+    {
+      "file": "previews/cryo-blast-door-concept.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/cryo-blast-door.png",
+      "sha256": "e73a110bd9ae3d51ae203959d8e4777140626c35379b4f3caef16332d5e6abcf",
+      "kind": "Original concept reference; not mesh preview"
+    },
+    {
+      "file": "previews/cryo-gun-turret.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/Models/cryo-gun-turret/phone_cryo-gun-turret.png",
+      "sha256": "8e063506885b25e01fb02283fde68fe382b8b5a16ebd17fc4d3085ee3e4b3f7d",
+      "kind": "Blender render of optimized phone model, not Unity runtime screenshot"
+    },
+    {
+      "file": "previews/cryo-gun-turret-concept.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/cryo-gun-turret.png",
+      "sha256": "db31212d8eea7de2808d1b19c8f9e03b7c49ed34918c3dec50b96ecd6027abf0",
+      "kind": "Original concept reference; not mesh preview"
+    },
+    {
+      "file": "previews/cryo-flamethrower-turret.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/Models/cryo-flamethrower-turret/phone_cryo-flamethrower-turret.png",
+      "sha256": "7bacf1a4debda1d228f33dbe0ce96de4bb8d5f5ed8188d485baf77f0edaedb0a",
+      "kind": "Blender render of optimized phone model, not Unity runtime screenshot"
+    },
+    {
+      "file": "previews/cryo-flamethrower-turret-concept.png",
+      "source": "/Volumes/T7 Shield/Assets/Objects/cryo-flamethrower-turret.png",
+      "sha256": "b6afc39edb7ffd6291c61a7c3ffb85783dd3c530caf95fc2cbfe6b9a81a6104e",
+      "kind": "Original concept reference; not mesh preview"
+    },
+    {
+      "file": "previews/cryo-kit-01_wall_module.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-01-wall_module.png",
+      "sha256": "2c56203814d282042ca4dea2cc8b930b1353b135d43963ec36c4c05a059a58c0",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-02_inside_corner.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-02-inside_corner.png",
+      "sha256": "b0d22463490ce7bc659b9bffa5cd7f144771b5b9dbcb0d2a8793f7029275fa1a",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-03_support_pillar.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-03-support_pillar.png",
+      "sha256": "74afd0d633a312c245770830a0b02882ff7a95419c3c5a5ff99d7ae6f9e7a991",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-04_floor_panel.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-04-floor_panel.png",
+      "sha256": "cf14222d10ced7528399385242c5f347ffad755cd8ac60084e31e1c57bc88203",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-05_floor_trench_grate.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-05-floor_trench_grate.png",
+      "sha256": "e25eea710a61b887331c135b2b6a16d9a8e04791426fb070e35658fdf271bc74",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-06_sliding_bulkhead.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-06-sliding_bulkhead.png",
+      "sha256": "c95aa297f88fb145e42cc8a816a765099ef6e4d6064ac52068b4144bcbb391c3",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-07_hero_pod_cradle.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-07-hero_pod_cradle.png",
+      "sha256": "3f357ecca4f40731985cf65eff6f90908c812c43f94a8bb3ed4fe1567a852053",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-08_cryo_service_cabinet.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-08-cryo_service_cabinet.png",
+      "sha256": "be76bda7b2e1dbb67cdff05ecb9c2efb8164c728c855b11ab7e74608e8cfaa41",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-09_cooling_reservoir_pumps.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-09-cooling_reservoir_pumps.png",
+      "sha256": "cb822ea3ea8d318334d048ac9ce45a43bb8dd78ff324247f87c3c93dda022685",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-10_coolant_manifold_elbow.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-10-coolant_manifold_elbow.png",
+      "sha256": "c766613c2f420e33979d7ec737199d4ad2dd5f4bbec8037698861bfd1259acfc",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-11_overhead_cable_tray.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-11-overhead_cable_tray.png",
+      "sha256": "f7cd72035b90fde9883c7b95f2de9bf974609b3ac48d0d055b821c33c40c5bf9",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-12_vent_fan_unit.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-12-vent_fan_unit.png",
+      "sha256": "8422bb7cc87b34a7190f7ee86628fa03795215de89dbecd19ea523a65c4fe1c2",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-13_research_workstation.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-13-research_workstation.png",
+      "sha256": "78acbc16a869cee5c85010a082a250ed05f545ec69abe971053781dde9c98241",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-14_wall_control_terminal.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-14-wall_control_terminal.png",
+      "sha256": "5f40bb44a803e3625a31d79fb3a6f85a45f7e28832cb8bc102925344190c696b",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-15_low_cover_cabinet.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-15-low_cover_cabinet.png",
+      "sha256": "65be90abb0a4576e1d450ffe70dfedfcba7f2f7c3d2ab269b3ed2b13f5d7d234",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-16_cargo_crate.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-16-cargo_crate.png",
+      "sha256": "b5e53c8dce855e3a5c7b1f7599201f00cec1eba86c5ef0a4bf0f489e68f4bc04",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-17_coolant_canister.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-17-coolant_canister.png",
+      "sha256": "4e8725f9b19b58957be07c5897fa2a216e4b56bcc2535e14436bf3a9fb6d9b5f",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-18_ceiling_light_fixture.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-18-ceiling_light_fixture.png",
+      "sha256": "488ff700c40ae35410103ad76d239816fff45b10b2a6574cee905adbf30fbd6c",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-19_emergency_beacon.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-19-emergency_beacon.png",
+      "sha256": "f92ec75d62497382f972b25016beade83f29d0ca01030c5f7b3fa6f4dca8691d",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    },
+    {
+      "file": "previews/cryo-kit-20_fractured_cryo_breach.png",
+      "source": "/Users/manuel.diaz/Documents/Codex/2026-10-12/task-3/cryo-slice/evidence/slice-final-kit-20-fractured_cryo_breach.png",
+      "sha256": "1aaabb50a50eff1671c7d70865307668228f4b3bb54022945d39875caff05238",
+      "kind": "Existing source-kit rendered proof; not current Cryo gameplay screenshot"
+    }
+  ]
+}

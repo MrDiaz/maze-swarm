@@ -22,7 +22,7 @@ namespace Maze
         public static bool Escape => MapIndex == 1;
         public static bool Facility => MapIndex >= 1;  // the escape look: worn floor, cargo crates, blast doors
         public const int FirstFloorMap = 2;
-        public static string[] Rows => MapIndex >= ZoneBase ? ZoneLayouts[MapIndex - ZoneBase] : MapIndex == 0 ? CryoRows : MapIndex == 1 ? EscapeRows : FloorTemplates[MapIndex - FirstFloorMap];
+        public static string[] Rows => MapIndex >= ZoneBase ? FloorEditing.FloorDocuments.GetRowsOrOriginal(LayoutName(MapIndex), ZoneLayouts[MapIndex - ZoneBase]) : MapIndex == 0 ? CryoRows : MapIndex == 1 ? EscapeRows : FloorTemplates[MapIndex - FirstFloorMap];
 
         // the drop-zone specs' authored layouts (ZoneData.Layouts), map indices ZoneBase+; they use the v2 legend
         // (Design/drop-zones-core.json): mechanic letters are kept in `tag` (the hazards read them), the grid gets the

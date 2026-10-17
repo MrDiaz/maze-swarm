@@ -16,6 +16,7 @@ namespace Maze
         readonly Transform root;
 
         public Material side, roof, concrete, crate, crateCap, trim, door, hvac, glass, yellow, dark, sign, ground, floor;
+        public CryoKitEnvironment cryoKit; // optional art-only replacement for Cryo solid footprints
         public float floorWorldTile;   // > 0: the floor quad's UVs are world metres / this (a tiling deck, Cryo Station)
         // Cryo Station "Frosted lab" dressing (null = the old warehouse look)
         public Material cryoPad, icicle, wallLight, drift, creep, sac;
@@ -85,7 +86,7 @@ namespace Maze
             Box(new Vector3(mapW / 2, -0.06f, -mapH / 2), new Vector3(600, 0.1f, 600), ground, ground, false, false);
 
             BuildBlocks('B', 2.4f, 3.6f, true, side, roof);
-            if (!(MazeMap.Facility && UseCrateProps && CrateProps())) BuildBlocks('C', 1.4f, 1.4f, false, crate, crateCap ?? crate);
+            if (cryoKit != null || !(MazeMap.Facility && !FloorEditing.FloorRuntime.TryCurrent(out _) && UseCrateProps && CrateProps())) BuildBlocks('C', 1.4f, 1.4f, false, crate, crateCap ?? crate);
             BuildBlocks('#', 3.4f, 3.4f, false, concrete, roof);
             if (Cryo) CryoDressing();
 
@@ -105,12 +106,14 @@ namespace Maze
                 }
             }
 
+            cryoKit?.Complete();
+
             foreach (var kv in accums)
             {
                 var a = kv.Value;
                 var mesh = new Mesh { indexFormat = IndexFormat.UInt32, name = "Maze_" + kv.Key.name };
                 mesh.SetVertices(a.v); mesh.SetNormals(a.n); mesh.SetUVs(0, a.uv); mesh.SetTriangles(a.t, 0);
-                if (kv.Key == floor && floorWorldTile > 0) mesh.RecalculateTangents();   // the tiled deck's normal map
+                if (cryoKit != null || (kv.Key == floor && floorWorldTile > 0)) mesh.RecalculateTangents();   // the tiled deck's normal map
                 mesh.RecalculateBounds();
                 var go = new GameObject(mesh.name);
                 go.transform.SetParent(root, false);
@@ -305,8 +308,9 @@ namespace Maze
         void BuildBlocks(char ch, float hMin, float hMax, bool decor, Material sideMat, Material capMat)
         {
             float C = MazeMap.C;
-            foreach (var r in MazeMap.Rects(c => c == ch))
+            foreach (var r in FloorEditing.FloorRuntime.VisibleBlocks(ch))
             {
+                if (cryoKit != null && cryoKit.TryBuildObstacle(ch, r)) continue;
                 float w = r.width * C, d = r.height * C;
                 var ctr = MazeMap.ToWorld(new Vector2((r.x + r.width / 2f) * C, (r.y + r.height / 2f) * C));
                 float h = hMin + R * (hMax - hMin);

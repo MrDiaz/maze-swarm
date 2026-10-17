@@ -7,7 +7,7 @@ import { ALL_EXTENSIONS } from '@gltf-transform/extensions';
 import { prune } from '@gltf-transform/functions';
 import sharp from 'sharp'; import fs from 'fs'; import path from 'path';
 const io = new NodeIO().registerExtensions(ALL_EXTENSIONS);
-const [src, out, matName] = process.argv.slice(2), SIZE = 2048, name = matName || 'VanguardMeshyMat';   // also the Scout: ... hero_scout.glb ScoutMat
+const [src, out, matName] = process.argv.slice(2), SIZE = 2048, name = matName || 'VanguardMeshyMat';
 const doc = await io.read(src), root = doc.getRoot(), buf = root.listBuffers()[0];
 for (const mesh of root.listMeshes()) for (const p of mesh.listPrimitives()) {
   const sets = []; for (let s = 0; p.getAttribute('JOINTS_' + s); s++) sets.push([p.getAttribute('JOINTS_' + s), p.getAttribute('WEIGHTS_' + s)]);

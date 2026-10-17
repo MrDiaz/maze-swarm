@@ -1,0 +1,12 @@
+{
+  "utc": "2026-10-16T23:45:02.055767+00:00",
+  "source": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack/mobile-002/LOD0/navy-cyan-battery-stack_LOD0.glb",
+  "selected": "mobile-002/LOD0",
+  "sha256": "a1d734b501f24f1eac76ae5cf9f300a296a1ce3773433cd65c0924f59b77036e",
+  "resource": "CohesiveZone/Models/cargo-battery",
+  "triangles": 2500,
+  "sourceHeightMeters": 1.2,
+  "originalsUnchanged": true,
+  "sourceManifest": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack/deliverables/INTEGRATION.json",
+  "visualReview": "Actual approved comparison inspected by integration owner; Unity and phone proof pending"
+}

@@ -310,7 +310,7 @@ namespace Maze
             if (bOpName == null) return;
             // the Iron Vanguard: the concept's original cutout (its torso ends where the concept's ABILITIES panel starts,
             // source y 572; on a shorter phone panel it scales down so that edge still sits behind the ABILITIES panel)
-            bool cut = Prefs.Vanguard && bHero.texture != null;
+            bool cut = Prefs.Hero == "vanguard" && bHero.texture != null;
             bHero.gameObject.SetActive(cut); bPortrait.gameObject.SetActive(!cut);
             FitHero();
             var tex = Prefs.HeroPortrait(); if (!cut && tex != null) {

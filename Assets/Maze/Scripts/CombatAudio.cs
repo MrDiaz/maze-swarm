@@ -13,6 +13,7 @@ namespace Maze
     public class CombatAudio : MonoBehaviour
     {
         public static CombatAudio I;
+        public static System.Action<string> Log;
 
         enum Kind { Shot, Smg, Pump, Squish, Hit, Drip, Goo, Gear, Bloat }
         public enum GearSound { DryClick, MagOut, MagIn, ShellIn, Rack }
@@ -84,18 +85,20 @@ namespace Maze
             v.kind = k; v.src.clip = clip;
             v.src.pitch = Random.Range(0.94f, 1.06f);
             v.baseVol = vol * Random.Range(0.9f, 1.1f);
-            v.src.volume = v.baseVol * (IsGunfire(k) ? duck : 1);
-            v.src.Play();
+            v.src.volume = v.baseVol * (IsGunfire(k) ? duck : 1) * FirstCryoAudio.CombatGain;
+            v.src.Play(); Log?.Invoke(clip.name + " kind=" + k + " gain=" + v.src.volume.ToString("0.000"));
         }
 
         // pump: rack the shotgun after the shot (not after the last shell: the reload racks it)
+        public static float LastFire = -9;   // (RunMusic's combat duck)
         public void Fire(string weapon, bool pump = true)
         {
+            LastFire = Time.unscaledTime;
             switch (weapon)
             {
                 case "SMG": Play(Any(smg), Kind.Smg, 0.25f); break;
                 case "SHOTGUN": Play(Any(shotgun), Kind.Shot, 0.5f); if (pump) pumpT = 0.34f; break;
-                default: Play(Any(rifle), Kind.Shot, 0.42f); break;
+                default: Play(Any(rifle), Kind.Shot, 0.55f); break;   // (2026-10-15 polish) 0.42 -> 0.55, +2.3 dB: the minigun sat ~5 dB under the Cryo music + bed
             }
         }
 
@@ -128,7 +131,7 @@ namespace Maze
         {
             if (Time.time - lastHit < 0.035f) return; // the SMG lands ~16 hits a second
             lastHit = Time.time;
-            Play(Any(hit), Kind.Hit, 0.32f);
+            Play(Any(hit), Kind.Hit, 0.42f);   // 0.32 -> 0.42, +2.4 dB
         }
 
         // a goo blob landing (Fx calls this when a blob splats)
@@ -149,8 +152,12 @@ namespace Maze
             if (squishesT >= 0) { squishesT -= Time.deltaTime; if (squishesT < 0 && squishesLeft-- > 0) { Play(Any(squish), Kind.Squish, 0.5f); Play(Any(goo), Kind.Goo, 0.4f); squishesT = Random.Range(0.07f, 0.14f); } }
             if (pumpT >= 0) { pumpT -= Time.deltaTime; if (pumpT < 0) Play(Any(pump), Kind.Pump, 0.4f); } // waits while paused
             duck = Mathf.MoveTowards(duck, 1, Time.unscaledDeltaTime * 1.4f);
+            RefreshMix();
+        }
+        public void RefreshMix()
+        {
             foreach (var v in voices)
-                if (v.src.isPlaying && IsGunfire(v.kind)) v.src.volume = v.baseVol * duck;
+                if (v.src.isPlaying) v.src.volume = v.baseVol * (IsGunfire(v.kind) ? duck : 1) * FirstCryoAudio.CombatGain;
         }
     }
 }

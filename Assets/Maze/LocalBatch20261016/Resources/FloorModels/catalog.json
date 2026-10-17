@@ -1,0 +1,466 @@
+{
+    "entries": [
+        {
+            "id": "local-20261016-charging-brute",
+            "slug": "charging-brute",
+            "label": "Charging Brute",
+            "category": "Enemies · unrigged previews",
+            "resourcePath": "FloorModels/charging-brute",
+            "selectedVersion": "001",
+            "unrigged": true,
+            "sizeX": 2.353942394256592,
+            "sizeY": 2.014998435974121,
+            "sizeZ": 3.1712710857391357,
+            "centerY": 1.0074992179870605,
+            "mobileFirstLevel": 1,
+            "sourceLevels": [
+                0,
+                1,
+                2
+            ],
+            "triangles": [
+                10000,
+                5000,
+                2500
+            ]
+        },
+        {
+            "id": "local-20261016-ranged-spitter",
+            "slug": "ranged-spitter",
+            "label": "Ranged Spitter",
+            "category": "Enemies · unrigged previews",
+            "resourcePath": "FloorModels/ranged-spitter",
+            "selectedVersion": "002",
+            "unrigged": true,
+            "sizeX": 1.307210922241211,
+            "sizeY": 1.7203221321105957,
+            "sizeZ": 1.9090051651000977,
+            "centerY": 0.8601610660552979,
+            "mobileFirstLevel": 1,
+            "sourceLevels": [
+                0,
+                1,
+                2
+            ],
+            "triangles": [
+                7998,
+                4000,
+                2000
+            ]
+        },
+        {
+            "id": "local-20261016-nest-carrier",
+            "slug": "nest-carrier",
+            "label": "Nest Carrier",
+            "category": "Enemies · unrigged previews",
+            "resourcePath": "FloorModels/nest-carrier",
+            "selectedVersion": "003",
+            "unrigged": true,
+            "sizeX": 2.6805129051208496,
+            "sizeY": 1.9177930355072021,
+            "sizeZ": 2.5863287448883057,
+            "centerY": 0.9588965177536011,
+            "mobileFirstLevel": 1,
+            "sourceLevels": [
+                0,
+                1,
+                2
+            ],
+            "triangles": [
+                12000,
+                6000,
+                3000
+            ]
+        },
+        {
+            "id": "local-20261016-cryo-relay-cabinet",
+            "slug": "cryo-relay-cabinet",
+            "label": "Cryo Electrical Relay Cabinet",
+            "category": "Cryo · local batch",
+            "resourcePath": "FloorModels/cryo-relay-cabinet",
+            "selectedVersion": "003",
+            "unrigged": false,
+            "sizeX": 1.422774314880371,
+            "sizeY": 1.610589623451233,
+            "sizeZ": 1.4886610507965088,
+            "centerY": 0.8052948117256165,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0,
+                1,
+                2
+            ],
+            "triangles": [
+                3000,
+                1500,
+                750
+            ]
+        },
+        {
+            "id": "local-20261016-cryo-diagnostic-console",
+            "slug": "cryo-diagnostic-console",
+            "label": "Cryo Diagnostic Console",
+            "category": "Cryo · local batch",
+            "resourcePath": "FloorModels/cryo-diagnostic-console",
+            "selectedVersion": "011",
+            "unrigged": false,
+            "sizeX": 1.2886409759521484,
+            "sizeY": 1.1559799909591675,
+            "sizeZ": 0.9782388210296631,
+            "centerY": 0.5779899954795837,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0,
+                1
+            ],
+            "triangles": [
+                4000,
+                2000
+            ]
+        },
+        {
+            "id": "local-20261016-cryo-ventilation-unit",
+            "slug": "cryo-ventilation-unit",
+            "label": "Cryo Ventilation Unit",
+            "category": "Cryo · local batch",
+            "resourcePath": "FloorModels/cryo-ventilation-unit",
+            "selectedVersion": "002",
+            "unrigged": false,
+            "sizeX": 1.2714757919311523,
+            "sizeY": 0.7070531845092773,
+            "sizeZ": 0.7967319488525391,
+            "centerY": 0.35352659225463867,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0,
+                1,
+                2
+            ],
+            "triangles": [
+                2000,
+                1000,
+                500
+            ]
+        },
+        {
+            "id": "local-20261016-cryo-emergency-cabinet",
+            "slug": "cryo-emergency-cabinet",
+            "label": "Cryo Emergency Wall Cabinet",
+            "category": "Cryo · local batch",
+            "resourcePath": "FloorModels/cryo-emergency-cabinet",
+            "selectedVersion": "023",
+            "unrigged": false,
+            "sizeX": 0.7699183225631714,
+            "sizeY": 0.9102404713630676,
+            "sizeZ": 0.4928506016731262,
+            "centerY": 0.4551202356815338,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0,
+                1
+            ],
+            "triangles": [
+                3534,
+                1808
+            ]
+        },
+        {
+            "id": "local-20261016-cryo-pipe-riser",
+            "slug": "cryo-pipe-riser",
+            "label": "Cryo Insulated Pipe Riser",
+            "category": "Cryo · local batch",
+            "resourcePath": "FloorModels/cryo-pipe-riser",
+            "selectedVersion": "003",
+            "unrigged": false,
+            "sizeX": 0.7560728788375854,
+            "sizeY": 1.8095561265945435,
+            "sizeZ": 1.0550086498260498,
+            "centerY": 0.9047780632972717,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0,
+                1,
+                2
+            ],
+            "triangles": [
+                3000,
+                1500,
+                750
+            ]
+        },
+        {
+            "id": "local-20261016-cryo-valve-manifold",
+            "slug": "cryo-valve-manifold",
+            "label": "Cryo Valve Manifold",
+            "category": "Cryo · local batch",
+            "resourcePath": "FloorModels/cryo-valve-manifold",
+            "selectedVersion": "016",
+            "unrigged": false,
+            "sizeX": 2.322397470474243,
+            "sizeY": 1.3607105016708374,
+            "sizeZ": 1.3616000413894653,
+            "centerY": 0.6803552508354187,
+            "mobileFirstLevel": 1,
+            "sourceLevels": [
+                0,
+                1,
+                2
+            ],
+            "triangles": [
+                7212,
+                3000,
+                2200
+            ]
+        },
+        {
+            "id": "local-20261016-cryo-pipe-elbow",
+            "slug": "cryo-pipe-elbow",
+            "label": "Cryo Pipe Elbow Module",
+            "category": "Cryo · local batch",
+            "resourcePath": "FloorModels/cryo-pipe-elbow",
+            "selectedVersion": "005",
+            "unrigged": false,
+            "sizeX": 0.4637410044670105,
+            "sizeY": 0.7378879189491272,
+            "sizeZ": 0.7511813640594482,
+            "centerY": 0.3689439594745636,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0,
+                1
+            ],
+            "triangles": [
+                1500,
+                750
+            ]
+        },
+        {
+            "id": "local-20261016-cryo-trench-cover",
+            "slug": "cryo-trench-cover",
+            "label": "Cryo Floor Trench Cover",
+            "category": "Cryo · local batch",
+            "resourcePath": "FloorModels/cryo-trench-cover",
+            "selectedVersion": "005",
+            "unrigged": false,
+            "sizeX": 0.8105691075325012,
+            "sizeY": 0.1298808604478836,
+            "sizeZ": 0.5525374412536621,
+            "centerY": 0.0649404302239418,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0,
+                1
+            ],
+            "triangles": [
+                1000,
+                500
+            ]
+        },
+        {
+            "id": "local-20261016-cryo-warning-bollard",
+            "slug": "cryo-warning-bollard",
+            "label": "Cryo Warning Beacon Bollard",
+            "category": "Cryo · local batch",
+            "resourcePath": "FloorModels/cryo-warning-bollard",
+            "selectedVersion": "005",
+            "unrigged": false,
+            "sizeX": 0.8628421425819397,
+            "sizeY": 1.0099999904632568,
+            "sizeZ": 0.8752071857452393,
+            "centerY": 0.5049999952316284,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0
+            ],
+            "triangles": [
+                5992
+            ]
+        },
+        {
+            "id": "local-20261016-industrial-cover-barricade",
+            "slug": "industrial-cover-barricade",
+            "label": "Industrial Cover Barricade",
+            "category": "Industrial · local batch",
+            "resourcePath": "FloorModels/industrial-cover-barricade",
+            "selectedVersion": "002",
+            "unrigged": false,
+            "sizeX": 2.4586188793182373,
+            "sizeY": 1.0082778930664063,
+            "sizeZ": 0.9384251236915588,
+            "centerY": 0.5041389465332031,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0,
+                1,
+                2
+            ],
+            "triangles": [
+                3000,
+                1500,
+                750
+            ]
+        },
+        {
+            "id": "local-20261016-industrial-cable-spool",
+            "slug": "industrial-cable-spool",
+            "label": "Industrial Cable Spool",
+            "category": "Industrial · local batch",
+            "resourcePath": "FloorModels/industrial-cable-spool",
+            "selectedVersion": "003",
+            "unrigged": false,
+            "sizeX": 1.3167475461959839,
+            "sizeY": 1.1182652711868286,
+            "sizeZ": 1.2660783529281616,
+            "centerY": 0.5591326355934143,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0,
+                1,
+                2
+            ],
+            "triangles": [
+                3000,
+                1500,
+                750
+            ]
+        },
+        {
+            "id": "local-20261016-industrial-parts-hopper",
+            "slug": "industrial-parts-hopper",
+            "label": "Industrial Parts Hopper",
+            "category": "Industrial · local batch",
+            "resourcePath": "FloorModels/industrial-parts-hopper",
+            "selectedVersion": "012",
+            "unrigged": false,
+            "sizeX": 1.8329806327819824,
+            "sizeY": 1.2630000114440918,
+            "sizeZ": 1.511357069015503,
+            "centerY": 0.6315000057220459,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0,
+                1
+            ],
+            "triangles": [
+                4230,
+                2000
+            ]
+        },
+        {
+            "id": "local-20261016-industrial-battery-rack",
+            "slug": "industrial-battery-rack",
+            "label": "Industrial Battery Rack",
+            "category": "Industrial · local batch",
+            "resourcePath": "FloorModels/industrial-battery-rack",
+            "selectedVersion": "003",
+            "unrigged": false,
+            "sizeX": 2.448988199234009,
+            "sizeY": 1.5098315477371216,
+            "sizeZ": 1.2654995918273926,
+            "centerY": 0.7549157738685608,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0,
+                1
+            ],
+            "triangles": [
+                4000,
+                2000
+            ]
+        },
+        {
+            "id": "local-20261016-fungal-spore-vent",
+            "slug": "fungal-spore-vent",
+            "label": "Fungal Spore Vent",
+            "category": "Fungal · local batch",
+            "resourcePath": "FloorModels/fungal-spore-vent",
+            "selectedVersion": "001",
+            "unrigged": false,
+            "sizeX": 1.0773063898086548,
+            "sizeY": 1.1096419095993042,
+            "sizeZ": 0.9684956073760986,
+            "centerY": 0.5548209547996521,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0,
+                1,
+                2
+            ],
+            "triangles": [
+                4000,
+                2000,
+                1000
+            ]
+        },
+        {
+            "id": "local-20261016-fungal-biomass-boulder",
+            "slug": "fungal-biomass-boulder",
+            "label": "Fungal Biomass Boulder",
+            "category": "Fungal · local batch",
+            "resourcePath": "FloorModels/fungal-biomass-boulder",
+            "selectedVersion": "001",
+            "unrigged": false,
+            "sizeX": 1.1550960540771484,
+            "sizeY": 0.8596459627151489,
+            "sizeZ": 1.2214796543121338,
+            "centerY": 0.42982298135757446,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0,
+                1,
+                2
+            ],
+            "triangles": [
+                2000,
+                1000,
+                500
+            ]
+        },
+        {
+            "id": "local-20261016-ruins-reinforced-pillar",
+            "slug": "ruins-reinforced-pillar",
+            "label": "Ruins Reinforced Pillar",
+            "category": "Ruins · local batch",
+            "resourcePath": "FloorModels/ruins-reinforced-pillar",
+            "selectedVersion": "002",
+            "unrigged": false,
+            "sizeX": 1.245457649230957,
+            "sizeY": 2.015082359313965,
+            "sizeZ": 1.2504900693893433,
+            "centerY": 1.0075411796569824,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0,
+                1
+            ],
+            "triangles": [
+                2000,
+                1000
+            ]
+        },
+        {
+            "id": "local-20261016-ruins-broken-wall-cover",
+            "slug": "ruins-broken-wall-cover",
+            "label": "Ruins Broken Wall Cover",
+            "category": "Ruins · local batch",
+            "resourcePath": "FloorModels/ruins-broken-wall-cover",
+            "selectedVersion": "001",
+            "unrigged": false,
+            "sizeX": 2.9704601764678955,
+            "sizeY": 1.111617922782898,
+            "sizeZ": 0.8881934881210327,
+            "centerY": 0.555808961391449,
+            "mobileFirstLevel": 0,
+            "sourceLevels": [
+                0,
+                1,
+                2
+            ],
+            "triangles": [
+                3000,
+                1500,
+                750
+            ]
+        }
+    ]
+}

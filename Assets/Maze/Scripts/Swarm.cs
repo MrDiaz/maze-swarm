@@ -54,7 +54,7 @@ namespace Maze
     public class Swarm : MonoBehaviour
     {
         public readonly List<Enemy> enemies = new();
-        public float HpScale = 1, DmgScale = 1; // a run's sector x floor scaling (1 outside runs)
+        public float HpScale = 1, DmgScale = 1, SpeedScale = 1; // a run's sector x floor scaling (1 outside runs)
         public float NestEvery = 2.4f; public int NestCap = 40; readonly List<Vector2> nestOut = new();
         // where a nest lets a Drone out: on an open cell clear of its body, the side facing the hero first. A random point on
         // the ring could land in the wall of a corner nest; the wall pushed the Drone back into the nest and it stayed there
@@ -143,7 +143,7 @@ namespace Maze
             for (int i = 0; i < types.Length; i++)
             {
                 if (string.IsNullOrEmpty(types[i].model)) continue;
-                modelPrefabs[i] = Resources.Load<GameObject>("Models/" + types[i].model);
+                modelPrefabs[i] = CohesiveCharacterPolicy.EnemyPrefab(types[i], "Models/" + types[i].model);
                 if (modelPrefabs[i] == null) { Debug.LogWarning($"Maze: Resources/Models/{types[i].model} not found, {types[i].name} uses the blocky robot."); continue; }
                 modelPools[i] = new Stack<EnemyView>();
                 int warm = types[i].ai != null ? 3 : types[i].bloater || types[i].leaper ? 4 : types[i].mini ? 12 : 24;
@@ -156,7 +156,7 @@ namespace Maze
                         m.SetColor("_BaseColor", new Color(1.9f, 0.75f, 0.32f));
                         typeMats[i] = m; SetSkin(v, m);
                     }
-                    if (k == 0 && types[i].mini)
+                    if (k == 0 && types[i].mini && !CohesiveZone.For(game))
                     {   // the mini: a greener copy of the Drone's shared material
                         var m = new Material(typeMats[i]) { name = "MiniDrone" };
                         m.SetColor("_BaseColor", m.GetColor("_BaseColor") * new Color(0.62f, 1.15f, 0.5f));
@@ -247,7 +247,7 @@ namespace Maze
             var v = new EnemyView { nest = true, typeIndex = ti };
             var skin = new List<Renderer>();
             v.root = new GameObject("Nest").transform; v.root.SetParent(transform, false);
-            nestGlow ??= Mats.Unlit(new Color(0.55f, 1f, 0.3f));
+            nestGlow ??= Mats.Unlit(CohesiveZone.Enabled ? new Color(.38f, .87f, .91f) : new Color(0.55f, 1f, 0.3f));
             var tmp = GameObject.CreatePrimitive(PrimitiveType.Sphere); var sphere = tmp.GetComponent<MeshFilter>().sharedMesh; Destroy(tmp);
             v.body = new GameObject("Sacs").transform; v.body.SetParent(v.root, false);
             var rng = new System.Random(ti * 31);
@@ -272,15 +272,20 @@ namespace Maze
             v.root = new GameObject(game.cfg.enemyTypes[ti].name).transform;
             v.root.SetParent(transform, false);
             var go = Instantiate(modelPrefabs[ti]);
+            bool cargo = CohesiveZone.For(game);
+            bool authoredSpitter = cargo && CohesiveCharacterPolicy.IsAuthoredSpitterPrefab(modelPrefabs[ti]);
+            bool authoredFamily = cargo && CohesiveCharacterPolicy.IsAuthoredFamilyPrefab(modelPrefabs[ti]);
+            bool authored = authoredSpitter || authoredFamily;
             Mats.ConvertGltf(go); // shared URP material (cached per glTF material)
             v.model = go.transform;
             v.model.SetParent(v.root, false);
             var rs = go.GetComponentsInChildren<SkinnedMeshRenderer>(true);
             foreach (var r in rs)
             {
-                r.quality = SkinQuality.Bone2;
+                r.quality = authored ? SkinQuality.Bone4 : SkinQuality.Bone2;
                 r.updateWhenOffscreen = false;
                 r.skinnedMotionVectors = false;
+                if (authored) { var culling = r.localBounds; culling.Expand(.24f); r.localBounds = culling; }
                 r.shadowCastingMode = ShadowCastingMode.On;
                 var tex = r.sharedMaterial != null ? r.sharedMaterial.GetTexture("_BaseMap") : null;
                 if (tex != null && tex.width <= 128) tex.filterMode = FilterMode.Point; // flat-colour atlas: one texel per triangle
@@ -290,11 +295,12 @@ namespace Maze
             {
                 // footprint in model space (bind pose), facing +Z; lift it if the feet hang below y = 0
                 var b = rs.Length > 0 ? rs[0].sharedMesh.bounds : new Bounds(Vector3.zero, Vector3.one);
+                if (CohesiveZone.For(game) && CohesiveCharacterPolicy.TryMeshBounds(go.transform, out var measured)) b = measured;
                 modelFit[ti] = 2.4f * game.cfg.enemy.radius / Mathf.Max(0.01f, Mathf.Max(b.size.x, b.size.z));
-                modelLift[ti] = b.min.y < -0.05f ? -b.min.y * modelFit[ti] : 0;
+                modelLift[ti] = CohesiveZone.For(game) ? -b.min.y * modelFit[ti] : b.min.y < -0.05f ? -b.min.y * modelFit[ti] : 0;
                 if (rs.Length > 0) typeMats[ti] = rs[0].sharedMaterial;
                 var tt = game.cfg.enemyTypes[ti];
-                if (rs.Length > 0 && tt.ai != null && tt.ai != "boss")
+                if (!CohesiveZone.For(game) && rs.Length > 0 && tt.ai != null && tt.ai != "boss")
                 {   // the enemies.json roster's placeholder look: the base model, tinted its own colour
                     var m = new Material(rs[0].sharedMaterial) { name = tt.name + "_tint" };
                     var c = Color.Lerp(tt.color, Color.white, 0.15f) * 1.6f; c.a = 1;
@@ -302,12 +308,13 @@ namespace Maze
                     typeMats[ti] = m;
                 }
             }
-            if (game.cfg.enemyTypes[ti].ai != null && game.cfg.enemyTypes[ti].ai != "boss") SetSkin(v, typeMats[ti]);   // the roster's tint
+            if (!CohesiveZone.For(game) && game.cfg.enemyTypes[ti].ai != null && game.cfg.enemyTypes[ti].ai != "boss") SetSkin(v, typeMats[ti]);   // the roster's tint
             v.model.localScale = Vector3.one * modelFit[ti];
             v.model.localPosition = new Vector3(0, modelLift[ti], 0);
             if (game.cfg.enemyTypes[ti].bloater)
             {
-                foreach (var t in go.GetComponentsInChildren<Transform>()) if (t.name == "Belly") v.belly = t;
+                foreach (var t in go.GetComponentsInChildren<Transform>())
+                    if (t.name == (authoredFamily ? "CarrierBelly" : "Belly")) { v.belly = t; break; }
                 var ring = new GameObject("Ooze");
                 ring.transform.SetParent(v.root, false);
                 ring.transform.localPosition = new Vector3(0, 0.03f, 0);
@@ -317,7 +324,7 @@ namespace Maze
                 v.ooze = ring.AddComponent<MeshRenderer>(); v.ooze.sharedMaterial = oozeMat;
                 v.ooze.shadowCastingMode = ShadowCastingMode.Off; v.ooze.receiveShadows = false;
             }
-            if (typeMats[ti] != null) SetSkin(v, typeMats[ti]);
+            if (!CohesiveZone.For(game) && typeMats[ti] != null) SetSkin(v, typeMats[ti]);
             var anim = go.GetComponentInChildren<Animation>();
             if (anim != null)
             {
@@ -325,11 +332,44 @@ namespace Maze
                 foreach (AnimationState st in anim) if (v.walk == null || st.name.ToLower().Contains("walk")) v.walk = st;
                 if (v.walk != null) { v.walk.wrapMode = WrapMode.Loop; anim.Play(v.walk.name); }
             }
-            else Debug.LogWarning("Maze: enemy model has no legacy Animation component. Run Maze > Setup Project.");
+            else Debug.LogWarning("Maze: enemy model has no legacy Animation component: " + game.cfg.enemyTypes[ti].name + " / " + game.cfg.enemyTypes[ti].model + ".");
+            if (cargo) CohesiveEnemyStyle.Attach(go, game.cfg.enemyTypes[ti].name, authored);
+            if (authoredFamily) CohesiveFamilyPlayback.Attach(go, CohesiveCharacterPolicy.RoleFor(game.cfg.enemyTypes[ti]));
             return v;
         }
 
-        void SetSkin(EnemyView v, Material m) { foreach (var r in v.skin) r.sharedMaterial = m; }
+        // Called before a pool pop. Route changes already Clear live actors. Retire only
+        // inactive pooled views, and defer a switch if an active actor of this type remains.
+        void EnsureModelPresentation(int ti)
+        {
+            var type = game.cfg.enemyTypes[ti]; if (string.IsNullOrEmpty(type.model)) return;
+            var wanted = CohesiveCharacterPolicy.EnemyPrefab(type, "Models/" + type.model);
+            if (wanted == modelPrefabs[ti]) return;
+            foreach (var actor in enemies)
+                if (actor.typeIndex == ti && actor.view != null && actor.view.root.gameObject.activeSelf) return;
+            foreach (var actor in pendingAdd)
+                if (actor.typeIndex == ti && actor.view != null && actor.view.root.gameObject.activeSelf) return;
+            foreach (var death in dying)
+                if (death.v.typeIndex == ti && death.v.root.gameObject.activeSelf) return;
+            if (modelPools[ti] != null)
+            {
+                while (modelPools[ti].Count > 0)
+                {
+                    var stale = modelPools[ti].Pop();
+                    if (stale.root != null) Destroy(stale.root.gameObject);
+                }
+            }
+            modelPrefabs[ti] = wanted;
+            modelPools[ti] = wanted != null ? new Stack<EnemyView>() : null;
+            modelFit[ti] = modelLift[ti] = 0;
+        }
+
+        void SetSkin(EnemyView v, Material m)
+        {
+            var styled = v.model != null ? v.model.GetComponent<CohesiveEnemyStyle>() : null;
+            if (styled != null) { styled.SetFlash(m == flashMat || m == pusFlashMat); return; }
+            foreach (var r in v.skin) r.sharedMaterial = m;
+        }
 
         int deferDepth; readonly List<Enemy> pendingAdd = new();
         bool iterating => deferDepth > 0;
@@ -347,10 +387,11 @@ namespace Maze
             {
                 p = at + new Vector2(Random.Range(-0.6f, 0.6f), Random.Range(-0.6f, 0.6f)),
                 hp = hp, maxHp = hp, type = t, typeIndex = ti, scale = t.scale, r = cfg.enemy.radius * t.scale,
-                speed = cfg.enemy.speed * t.speed * Mathf.Min(cfg.waves.maxSpeedMult, 1 + cfg.waves.speedGrowth * n) * Random.Range(0.9f, 1.1f),
+                speed = SpeedScale * cfg.enemy.speed * t.speed * Mathf.Min(cfg.waves.maxSpeedMult, 1 + cfg.waves.speedGrowth * n) * Random.Range(0.9f, 1.1f),
                 damage = cfg.enemy.damage * t.damage * DmgScale, atkCd = Random.Range(0f, 0.5f),
                 yaw = Random.Range(0f, 6.28f), walk = Random.Range(0f, 6.28f),
             };
+            EnsureModelPresentation(ti);
             var mp = modelPools[ti];
             if (t.nest) { e.view = nestPool.Count > 0 ? nestPool.Pop() : NewNestView(ti); e.spawnCd = 1.5f + Random.value; }
             else if (mp != null) e.view = mp.Count > 0 ? mp.Pop() : NewModelView(ti);
@@ -809,35 +850,39 @@ namespace Maze
         // and up to 3 green lights pulsing with the sacs (the clip swells them twice a cycle)
         void LateUpdate()
         {
+            bool cargo = CohesiveZone.For(game);
             int li = 0;
             foreach (var e in enemies)
             {
                 if (!e.type.bloater || e.view.model == null) continue;
                 var v = e.view;
-                float ph = v.walk != null ? v.walk.normalizedTime % 1f : Time.time % 1f;
+                var family = cargo ? v.model.GetComponent<CohesiveFamilyPlayback>() : null;
+                float ph = family != null ? family.LegacyBloaterPhase : v.walk != null ? v.walk.normalizedTime % 1f : Time.time % 1f;
                 float pulse = Mathf.Pow(Mathf.Max(0, Mathf.Sin(ph * Mathf.PI * 4)), 2);
                 if (v.belly != null && e.cast > 0)
                 {
                     float k = 1 - e.cast / game.cfg.bloater.castTime, sw = 1 + 0.35f * Mathf.SmoothStep(0, 1, k);
                     var sc = v.belly.localScale * sw;
                     sc += Vector3.one * (Random.Range(-0.03f, 0.03f) * k);
-                    v.belly.localScale = sc;
+                    if (family == null && (!cargo || e.frozen <= 0)) v.belly.localScale = sc; // Keep visual RNG consumption, but hold a frozen sampled pose.
                     pulse = Mathf.Max(pulse, k);
                 }
                 if (v.ooze != null)
                 {
-                    oozeMpb.SetColor("_BaseColor", new Color(0.5f, 1f, 0.2f, 0.25f + 0.35f * pulse));
+                    oozeMpb.SetColor("_BaseColor", cargo ? new Color(.39f, .52f, .24f, .10f + .10f * pulse) : new Color(0.5f, 1f, 0.2f, 0.25f + 0.35f * pulse));
                     v.ooze.SetPropertyBlock(oozeMpb);
-                    v.ooze.transform.localScale = Vector3.one * (1.4f + 0.12f * pulse);
+                    v.ooze.transform.localScale = Vector3.one * (cargo ? 1.15f + .05f * pulse : 1.4f + 0.12f * pulse);
                 }
                 if (li < pusLights.Length && e.spawnT >= 1)
                 {
                     var l = pusLights[li++]; l.enabled = true;
                     l.transform.position = v.root.position + Vector3.up * (1.2f * e.scale);
-                    l.intensity = 0.9f + 1.4f * pulse; l.range = 2.2f * e.scale;
+                    l.color = cargo ? new Color(.55f, .69f, .38f) : new Color(.5f, 1f, .25f);
+                    l.intensity = cargo ? (.15f + .20f * pulse) * (Feel.ReduceFlashes ? .45f : 1f) : .9f + 1.4f * pulse;
+                    l.range = cargo ? Mathf.Min(2.8f, 1.25f * e.scale) : 2.2f * e.scale;
                 }
                 // a low wet thud as each diagonal pair of feet lands (phase 0 and 0.5), now and then
-                if (CombatAudio.I != null && v.walk != null && v.walk.speed > 0.3f)
+                if (CombatAudio.I != null && v.walk != null && (family != null ? family.LegacyBloaterSpeed : v.walk.speed) > 0.3f && !(cargo && e.frozen > 0))
                 {
                     bool step = (v.lastPhase < 0.5f && ph >= 0.5f) || ph < v.lastPhase;
                     if (step && Random.value < 0.6f) CombatAudio.I.BloaterStep((e.p - game.player.p).magnitude);
@@ -854,12 +899,14 @@ namespace Maze
             {
                 var v = e.view;
                 float grow = 1 - Mathf.Pow(1 - e.spawnT, 3);
-                float s = e.scale * Mathf.Max(0.01f, grow);
+                float s = e.scale * ReadabilityFx.EnemyScaleNow * Mathf.Max(0.01f, grow);   // (readability: bodies drawn bigger, radius unchanged)
                 float hopY = e.hop < 1 ? 4f * 0.8f * e.hop * (1 - e.hop) : 0; // a mini's arc out of the sac
                 if (e.leap == 2) { float u = Mathf.Clamp01(e.leapT / game.cfg.leaper.time); hopY = 4f * 1.1f * u * (1 - u); } // the pounce arc
                 v.root.SetPositionAndRotation(MazeMap.ToWorld(e.p, -(1 - grow) * 1.2f * e.scale + hopY), Quaternion.Euler(0, MazeMap.YawDeg(e.yaw), 0));
                 v.root.localScale = Vector3.one * s;
-                if (e.type.leaper && e.type.model == "drone")
+                bool authoredFamily = CohesiveZone.For(game) && v.model != null && v.model.GetComponent<CohesiveFamilyPlayback>() != null;
+                if (!authoredFamily && FeelFx.Squash && e.flash > 0.05f) { float q = 0.14f * e.flash; v.root.localScale = new Vector3(s * (1 + q), s * (1 - q), s * (1 + q)); }   // (feel: squash on hit)
+                if (!authoredFamily && e.type.leaper && e.type.model == "drone")
                 {   // (the placeholder Drone) long and lean; squashes down in the crouch, stretches out in the air, wobbles when stunned
                     float sy = 0.85f, sz = 1.35f, sx = 0.82f;
                     if (e.leap == 1) { float c = Mathf.Clamp01(e.leapT / 0.15f); sy *= 1 - 0.28f * c; sz *= 1 + 0.12f * c; sx *= 1 + 0.08f * c; }
@@ -873,7 +920,7 @@ namespace Maze
                     float t = e.squash, y = t < 0.07f ? Mathf.Lerp(1, 0.9f, t / 0.07f) : t < 0.17f ? Mathf.Lerp(0.9f, 1.1f, (t - 0.07f) / 0.1f) : Mathf.Lerp(1.1f, 1, (t - 0.17f) / 0.18f);
                     if (t > 0.35f) { e.squash = -1; y = 1; }
                     float xz = 1 / Mathf.Sqrt(y);
-                    v.root.localScale = new Vector3(s * xz, s * y, s * xz);
+                    if (!authoredFamily) v.root.localScale = new Vector3(s * xz, s * y, s * xz);
                 }
                 if (v.nest)
                 {   // breathing sacs, a shudder when hit
@@ -933,6 +980,36 @@ namespace Maze
         // skinned model: Walk speed follows the ground speed (feet roughly planted), lunge on attack
         void SyncModel(Enemy e, EnemyView v)
         {
+            if (CohesiveZone.For(game) && CohesiveCharacterPolicy.IsAuthoredFamilyPrefab(modelPrefabs[e.typeIndex]))
+            {
+                var family = CohesiveFamilyPlayback.Attach(v.model.gameObject, CohesiveCharacterPolicy.RoleFor(e.type));
+                if (family != null)
+                {
+                    v.model.localRotation = Quaternion.identity;
+                    v.model.localPosition = new Vector3(0, modelLift[e.typeIndex], 0);
+                    bool nearMelee = Vector2.Distance(e.p, game.player.p) < e.r + game.cfg.player.radius + game.cfg.enemy.attackReach
+                        && e.spawnT >= 1 && e.leap == 0 && !e.under && e.aiState == 0 && e.type.ai != "lancer";
+                    if (family.Sync(e, game.cfg, Time.deltaTime, v.model.lossyScale.x, nearMelee)) return;
+                }
+            }
+            if (CohesiveZone.Active && CohesiveCharacterPolicy.HasAuthoredSpitter && e.type.ai == "spitter")
+            {
+                var motion = CohesiveSpitterPlayback.Attach(v.model.gameObject);
+                if (motion != null)
+                {
+                    v.model.localRotation = Quaternion.identity;
+                    v.model.localPosition = new Vector3(0, modelLift[e.typeIndex], 0);
+                    var toward = game.player.p - e.p;
+                    if (motion.Casting && toward.sqrMagnitude > .001f) v.model.rotation = Quaternion.LookRotation(MazeMap.ToWorld(toward));
+                    bool reverse = motion.Casting && Vector2.Dot(e.v, toward) < 0;
+                    if (motion.Sync(Time.deltaTime, e.v.magnitude, v.model.lossyScale.x, e.frozen > 0, e.spawnT >= 1, reverse)) return;
+                }
+            }
+            if (CohesiveZone.Active && v.anim != null)
+            {
+                v.anim.enabled = e.frozen <= 0;
+                if (e.frozen > 0) return;
+            }
             if (e.type.leaper && v.anim != null && v.anim["Crouch"] != null) { SyncLeaper(e, v); return; }
             float atk = e.atkAnim > 0 ? Mathf.Sin(Mathf.Clamp01(1 - e.atkAnim / 0.25f) * Mathf.PI) : 0;
             v.model.localRotation = Quaternion.Euler(atk * 20f, 0, 0);

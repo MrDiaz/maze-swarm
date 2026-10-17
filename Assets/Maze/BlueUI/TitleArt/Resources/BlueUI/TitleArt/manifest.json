@@ -1,0 +1,228 @@
+{
+  "schema_version": 2,
+  "canvas": {
+    "width": 1672,
+    "height": 941,
+    "origin": "top-left",
+    "units": "pixels"
+  },
+  "background_resource": "BlueUI/Art/scene_title",
+  "resource_root": "BlueUI/TitleArt",
+  "background": "",
+  "source_reference": {
+    "library_file_id": "libfile_7f0d6e09ae288191bee3b5c15aea4897",
+    "sha256": "e411c4eaaaf545c94ed49479deaf716af053d7abd12fbbd624e75342baf5fc38"
+  },
+  "glyphs": [
+    {
+      "id": "maze_01_M",
+      "file": "glyphs/maze_01_M.png",
+      "rect_top_left": [
+        277,
+        119,
+        247,
+        193
+      ],
+      "center_on_canvas": [
+        400.5,
+        215.5
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "letter": "M",
+      "word": "MAZE",
+      "index_in_word": 0
+    },
+    {
+      "id": "maze_02_A",
+      "file": "glyphs/maze_02_A.png",
+      "rect_top_left": [
+        493,
+        128,
+        166,
+        173
+      ],
+      "center_on_canvas": [
+        576.0,
+        214.5
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "letter": "A",
+      "word": "MAZE",
+      "index_in_word": 1
+    },
+    {
+      "id": "maze_03_Z",
+      "file": "glyphs/maze_03_Z.png",
+      "rect_top_left": [
+        629,
+        104,
+        165,
+        192
+      ],
+      "center_on_canvas": [
+        711.5,
+        200.0
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "letter": "Z",
+      "word": "MAZE",
+      "index_in_word": 2
+    },
+    {
+      "id": "maze_04_E",
+      "file": "glyphs/maze_04_E.png",
+      "rect_top_left": [
+        773,
+        130,
+        152,
+        178
+      ],
+      "center_on_canvas": [
+        849.0,
+        219.0
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "letter": "E",
+      "word": "MAZE",
+      "index_in_word": 3
+    },
+    {
+      "id": "swarm_01_S",
+      "file": "glyphs/swarm_01_S.png",
+      "rect_top_left": [
+        189,
+        270,
+        187,
+        252
+      ],
+      "center_on_canvas": [
+        282.5,
+        396.0
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "letter": "S",
+      "word": "SWARM",
+      "index_in_word": 0
+    },
+    {
+      "id": "swarm_02_W",
+      "file": "glyphs/swarm_02_W.png",
+      "rect_top_left": [
+        345,
+        285,
+        222,
+        216
+      ],
+      "center_on_canvas": [
+        456.0,
+        393.0
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "letter": "W",
+      "word": "SWARM",
+      "index_in_word": 1
+    },
+    {
+      "id": "swarm_03_A",
+      "file": "glyphs/swarm_03_A.png",
+      "rect_top_left": [
+        496,
+        285,
+        191,
+        220
+      ],
+      "center_on_canvas": [
+        591.5,
+        395.0
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "letter": "A",
+      "word": "SWARM",
+      "index_in_word": 2
+    },
+    {
+      "id": "swarm_04_R",
+      "file": "glyphs/swarm_04_R.png",
+      "rect_top_left": [
+        652,
+        281,
+        166,
+        227
+      ],
+      "center_on_canvas": [
+        735.0,
+        394.5
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "letter": "R",
+      "word": "SWARM",
+      "index_in_word": 3
+    },
+    {
+      "id": "swarm_05_M",
+      "file": "glyphs/swarm_05_M.png",
+      "rect_top_left": [
+        794,
+        293,
+        213,
+        233
+      ],
+      "center_on_canvas": [
+        900.5,
+        409.5
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ],
+      "letter": "M",
+      "word": "SWARM",
+      "index_in_word": 4
+    }
+  ],
+  "ui": [
+    {
+      "id": "play",
+      "file": "ui/play.png",
+      "rect_top_left": [
+        396,
+        666,
+        524,
+        186
+      ],
+      "center_on_canvas": [
+        658.0,
+        759.0
+      ],
+      "pivot_normalized": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "mask_notes": "Original RGB retained, manually bounded blue-contour mask plus closed-hole fill. Visible overlapping glyphs are partitioned by distance to their source colored faces across shared navy valleys. Hidden backs of touching letters are not recoverable from the concept. Independent transforms support assembly; arbitrary separation exposes these inferred ownership cuts."
+}

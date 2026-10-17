@@ -48,7 +48,7 @@ namespace Maze.EditorTools
         class Sim
         {
             Game game; int sc = -1, seed; float time; (int tier, int lv)[] runs; int seeds;
-            readonly StringBuilder log = new(); int wins; float floorSum, lvSum, timeSum, floorStart;
+            readonly StringBuilder log = new(), lvTrace = new(), hpTrace = new(); int tk0, kills0; int wins; float floorSum, lvSum, timeSum, floorStart;
             readonly float[] floorTimes = new float[15]; readonly int[] floorN = new int[15]; string[] zones;
             public void Update()
             {
@@ -76,7 +76,7 @@ namespace Maze.EditorTools
                 {
                     int fl = game.floor; var gl = game.goal;
                     game.Tick(Dt); time += Dt;
-                    if (game.floor != fl && game.floor > fl) { floorTimes[(int)gl] += time - floorStart; floorN[(int)gl]++; floorStart = time; }
+                    if (game.floor != fl && game.floor > fl) { floorTimes[(int)gl] += time - floorStart; floorN[(int)gl]++; floorStart = time; lvTrace.Append($" F{fl}:{game.level}"); hpTrace.Append($" F{fl}:{game.player.hp:0}/{game.player.maxHp:0}"); }   // the level at the end of each floor
                     if (game.state == Game.State.Won || game.state == Game.State.Dead || time >= MaxTime) { Record(); if (!Next()) { Finish(); return; } break; }
                 }
             }
@@ -94,6 +94,7 @@ namespace Maze.EditorTools
                 Ops.SimWeekly = SessionState.GetBool(Key + ".weekly", false);
                 Random.InitState(1000 + seed);
                 Prefs.HeroOverride = SessionState.GetBool(Key + ".tal", false) && seed % 4 >= 2 ? "vanguard" : "sentinel"; Prefs.Weapon = "RIFLE";
+                CryoSoftEnvironment.Enabled = System.Environment.GetEnvironmentVariable("CRYO_SOFT") == "1";   // the CryoSoft kit rooms on every Cryo floor (as device builds)
                 Game.PendingTier = tier; Game.PendingSector = zones != null ? SectorDefs.Get(zones[sc]) : null;
                 var simHero = System.Environment.GetEnvironmentVariable("SIM_HERO"); if (!string.IsNullOrEmpty(simHero)) { Prefs.HeroOverride = simHero; if (!sd.heroStars.Exists(x => x.StartsWith(simHero + ":"))) sd.heroStars.Add(simHero + ":1"); }
                 float atRec = SessionState.GetFloat(Key + ".atrec", 0f);
@@ -123,7 +124,7 @@ namespace Maze.EditorTools
                 var simW = System.Environment.GetEnvironmentVariable("SIM_WEAPON"); int simWi = string.IsNullOrEmpty(simW) ? 0 : Mathf.Max(0, System.Array.FindIndex(game.cfg.weapons, x => x.name == simW));
                 if (!string.IsNullOrEmpty(simW)) { Progress.D.blueprints.Add(simW + ".dev:1"); log.AppendLine("weapon " + simW); }
                 game.menu.Hide(); game.Restart(); game.demo = true; game.demoWeapon = simWi; game.godMode = SessionState.GetBool(Key + ".god", false);
-                time = 0; floorStart = 0; return true;
+                time = 0; floorStart = 0; lvTrace.Clear(); hpTrace.Clear(); tk0 = CryoHeroTurret.Kills; CryoHeroTurret.Off = System.Environment.GetEnvironmentVariable("SIM_NOTURRETS") == "1"; return true;
             }
             void Record()
             {
@@ -143,6 +144,9 @@ namespace Maze.EditorTools
                     log.AppendLine(sb.ToString());
                 }
                 log.AppendLine($"{tier,4} {lv,7} {Progress.Power(),5}/{Progress.Recommended(tier),-5} {seed,4}  {(won ? "WIN" : time >= MaxTime ? "time cap" : "died"),-9} {(won ? Game.Floors : game.floor),5} {game.level,3} {game.kills,6} {time,5:F0}s  {string.Join(">", System.Array.ConvertAll(game.plan, g => Game.GoalNames[(int)g].Substring(0, 3)))}{(won ? "" : "  died on " + Game.GoalNames[(int)game.goal])}");
+                log.AppendLine($"    levels by floor:{lvTrace} end:{game.level}");
+                log.AppendLine($"    hp at floor end:{hpTrace} end:{game.player.hp:0}/{game.player.maxHp:0}");
+                if (CryoSoftEnvironment.Enabled) log.AppendLine($"    cryo hero turrets{(CryoHeroTurret.Off ? " OFF" : "")}: this run kills {CryoHeroTurret.Kills - tk0} of {game.kills} ({100f * (CryoHeroTurret.Kills - tk0) / Mathf.Max(1, game.kills):0}%); running totals activations {CryoHeroTurret.Activations}, gun shots {CryoHeroTurret.Shots}, flame ticks {CryoHeroTurret.FlameTicks}");
             }
             void Summary()
             {

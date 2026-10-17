@@ -1,0 +1,440 @@
+{
+  "status": "ACTUAL_MATERIAL_SKIN_REVIEW_APPROVED_READY_FOR_OWNER_INTEGRATION",
+  "canonicalWrites": false,
+  "sourceSpitterSha256": "7bc01d38c339ad7d7e5cf4f7e67c19e2b6ccfb3d18533f015af5e3935c60a814",
+  "resourceAliases": {
+    "grunt": "Models/cargo-family-grunt",
+    "runner": "Models/cargo-family-runner",
+    "carrier": "Models/cargo-family-carrier",
+    "carapace": "Models/cargo-family-carapace",
+    "tick": "Models/cargo-family-tick"
+  },
+  "productionCases": {
+    "grunt": "grunt",
+    "mini": "grunt",
+    "tick": "tick",
+    "leaper": "runner",
+    "bloater": "carrier",
+    "boss_bloater": "carrier",
+    "carapace": "carapace",
+    "spitter": "unchanged Models/cohesive_lavender_spitter"
+  },
+  "runtimeProposal": "integration/",
+  "compilePassed": true,
+  "independentCpuAuditPassed": true,
+  "actualMaterialRenderApproved": true,
+  "unityDeviceVerified": false,
+  "randomStreamBitIdentityVerified": false,
+  "assets": [
+    {
+      "role": "grunt",
+      "asset": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/grunt/cargo-family-grunt.glb",
+      "sha256": "b4c335e6fde7614e13b12d70d5d55f68813a17e17829677927fa17fd259895ae",
+      "editableScene": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/grunt/cargo-family-grunt.blend",
+      "sourceSpitter": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/lavender-spitter-animated/lavender-spitter-animated_LOD0.glb",
+      "sourceSpitterSha256Unchanged": "7bc01d38c339ad7d7e5cf4f7e67c19e2b6ccfb3d18533f015af5e3935c60a814",
+      "geometry": {
+        "mouthSourceFacesRemoved": 660,
+        "mouthBoundaryVertices": 34,
+        "closedMouthCapTriangles": 170,
+        "bodyTopologyBoundaryEdges": 0,
+        "bodyTopologyNonmanifoldEdges": 0,
+        "triangles": 3602,
+        "verticesWelded": 1805,
+        "signedVolume": 0.18545981108090026,
+        "pods": []
+      },
+      "boundsBlenderXYZ": [
+        [
+          -0.49392759799957275,
+          -0.24355751276016235,
+          0.0
+        ],
+        [
+          0.5281996726989746,
+          0.3152896761894226,
+          0.8674953579902649
+        ]
+      ],
+      "dimensionsGltfXYZ": [
+        1.0221272706985474,
+        0.8674953579902649,
+        0.558847188949585
+      ],
+      "skinBones": 14,
+      "motion": {
+        "fps": 60,
+        "clips": {
+          "Idle": 2.0,
+          "Walk": 0.8,
+          "MeleeWindup": 0.15,
+          "Melee": 0.25
+        },
+        "walkCycleSeconds": 0.8,
+        "strideMetersPerCycle": 0.28,
+        "nativeGroundSpeedMetersPerSecond": 0.35000000000000003,
+        "allLegTargetsReachable": true,
+        "rootMotion": false,
+        "localScaleBones": [],
+        "meleeContactTimeSeconds": 0,
+        "crouchSeconds": null,
+        "leapSeconds": null,
+        "bloatReleaseSeconds": null
+      },
+      "material": "One matte opaque PBR material, flat source-derived sRGB atlas; no normal/noise/emission maps",
+      "safeCarrierBellyContract": null,
+      "readyForCanonicalIntegration": true,
+      "actualRenderedReview": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/render-review/grunt-actual-pose-sheet.png",
+      "actualMaterialRenderApproved": true,
+      "resource": "Models/cargo-family-grunt",
+      "currentFileHashVerified": true
+    },
+    {
+      "role": "runner",
+      "asset": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/runner/cargo-family-runner.glb",
+      "sha256": "d60b7d1523fbe65167440efc5b22369fd80330aa07119c8e0b4b9fbde024f717",
+      "editableScene": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/runner/cargo-family-runner.blend",
+      "sourceSpitter": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/lavender-spitter-animated/lavender-spitter-animated_LOD0.glb",
+      "sourceSpitterSha256Unchanged": "7bc01d38c339ad7d7e5cf4f7e67c19e2b6ccfb3d18533f015af5e3935c60a814",
+      "geometry": {
+        "mouthSourceFacesRemoved": 660,
+        "mouthBoundaryVertices": 34,
+        "closedMouthCapTriangles": 170,
+        "bodyTopologyBoundaryEdges": 0,
+        "bodyTopologyNonmanifoldEdges": 0,
+        "triangles": 3602,
+        "verticesWelded": 1805,
+        "signedVolume": 0.1593217365996165,
+        "pods": []
+      },
+      "boundsBlenderXYZ": [
+        [
+          -0.4188162684440613,
+          -0.24563857913017273,
+          0.0
+        ],
+        [
+          0.44897571206092834,
+          0.2957940697669983,
+          0.9505059719085693
+        ]
+      ],
+      "dimensionsGltfXYZ": [
+        0.8677919805049896,
+        0.9505059719085693,
+        0.541432648897171
+      ],
+      "skinBones": 14,
+      "motion": {
+        "fps": 60,
+        "clips": {
+          "Idle": 2.0,
+          "Walk": 0.6666666666666666,
+          "MeleeWindup": 0.15,
+          "Melee": 0.25,
+          "Crouch": 0.6,
+          "Leap": 0.4666666666666667,
+          "Land": 0.8,
+          "Sidestep": 0.35
+        },
+        "walkCycleSeconds": 0.6666666666666666,
+        "strideMetersPerCycle": 0.3136,
+        "nativeGroundSpeedMetersPerSecond": 0.4704,
+        "allLegTargetsReachable": true,
+        "rootMotion": false,
+        "localScaleBones": [],
+        "meleeContactTimeSeconds": 0,
+        "crouchSeconds": 0.6,
+        "leapSeconds": 0.4666666666666667,
+        "bloatReleaseSeconds": null
+      },
+      "material": "One matte opaque PBR material, flat source-derived sRGB atlas; no normal/noise/emission maps",
+      "safeCarrierBellyContract": null,
+      "readyForCanonicalIntegration": true,
+      "actualRenderedReview": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/render-review/runner-actual-pose-sheet.png",
+      "actualMaterialRenderApproved": true,
+      "resource": "Models/cargo-family-runner",
+      "currentFileHashVerified": true
+    },
+    {
+      "role": "carrier",
+      "asset": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/carrier/cargo-family-carrier.glb",
+      "sha256": "2b22e2583d0a1ca7f71098658d8968117d860d80d4bfb0be269e2e57d8da5480",
+      "editableScene": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/carrier/cargo-family-carrier.blend",
+      "sourceSpitter": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/lavender-spitter-animated/lavender-spitter-animated_LOD0.glb",
+      "sourceSpitterSha256Unchanged": "7bc01d38c339ad7d7e5cf4f7e67c19e2b6ccfb3d18533f015af5e3935c60a814",
+      "geometry": {
+        "mouthSourceFacesRemoved": 660,
+        "mouthBoundaryVertices": 34,
+        "closedMouthCapTriangles": 170,
+        "bodyTopologyBoundaryEdges": 0,
+        "bodyTopologyNonmanifoldEdges": 0,
+        "triangles": 3962,
+        "verticesWelded": 1991,
+        "signedVolume": 0.2247940658272629,
+        "pods": [
+          {
+            "name": "CarrierPod.L",
+            "centre": [
+              0.31360000371932983,
+              0.23499999940395355,
+              0.4000000059604645
+            ],
+            "radii": [
+              0.15,
+              0.145,
+              0.17
+            ]
+          },
+          {
+            "name": "CarrierPod.R",
+            "centre": [
+              -0.31360000371932983,
+              0.23499999940395355,
+              0.4000000059604645
+            ],
+            "radii": [
+              0.15,
+              0.145,
+              0.17
+            ]
+          },
+          {
+            "name": "CarrierPod.Back",
+            "centre": [
+              0.0,
+              0.25999999046325684,
+              0.5480000376701355
+            ],
+            "radii": [
+              0.17,
+              0.17,
+              0.19
+            ]
+          }
+        ]
+      },
+      "boundsBlenderXYZ": [
+        [
+          -0.47592759132385254,
+          -0.28009113669395447,
+          0.0
+        ],
+        [
+          0.5101996660232544,
+          0.4300000071525574,
+          0.820604681968689
+        ]
+      ],
+      "dimensionsGltfXYZ": [
+        0.9861272573471069,
+        0.820604681968689,
+        0.7100911438465118
+      ],
+      "skinBones": 18,
+      "motion": {
+        "fps": 60,
+        "clips": {
+          "Idle": 2.0,
+          "Walk": 1.0,
+          "MeleeWindup": 0.15,
+          "Melee": 0.25,
+          "Bloat": 0.7,
+          "Burst": 0.35
+        },
+        "walkCycleSeconds": 1.0,
+        "strideMetersPerCycle": 0.24,
+        "nativeGroundSpeedMetersPerSecond": 0.24,
+        "allLegTargetsReachable": true,
+        "rootMotion": false,
+        "localScaleBones": [
+          "CarrierBelly"
+        ],
+        "meleeContactTimeSeconds": 0,
+        "crouchSeconds": null,
+        "leapSeconds": null,
+        "bloatReleaseSeconds": 0.7
+      },
+      "material": "One matte opaque PBR material, flat source-derived sRGB atlas; no normal/noise/emission maps",
+      "safeCarrierBellyContract": "CarrierBelly",
+      "readyForCanonicalIntegration": true,
+      "actualRenderedReview": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/render-review/carrier-actual-pose-sheet.png",
+      "actualMaterialRenderApproved": true,
+      "resource": "Models/cargo-family-carrier",
+      "currentFileHashVerified": true
+    },
+    {
+      "role": "carapace",
+      "asset": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/carapace/cargo-family-carapace.glb",
+      "sha256": "5074f8ae09d54f31a9a7159d24843c079256c7ac462e17c8a70ba8c1cc301ffb",
+      "editableScene": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/carapace/cargo-family-carapace.blend",
+      "sourceSpitter": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/lavender-spitter-animated/lavender-spitter-animated_LOD0.glb",
+      "sourceSpitterSha256Unchanged": "7bc01d38c339ad7d7e5cf4f7e67c19e2b6ccfb3d18533f015af5e3935c60a814",
+      "geometry": {
+        "mouthSourceFacesRemoved": 660,
+        "mouthBoundaryVertices": 34,
+        "closedMouthCapTriangles": 170,
+        "bodyTopologyBoundaryEdges": 0,
+        "bodyTopologyNonmanifoldEdges": 0,
+        "triangles": 3962,
+        "verticesWelded": 1991,
+        "signedVolume": 0.2247940658272629,
+        "pods": [
+          {
+            "name": "CarrierPod.L",
+            "centre": [
+              0.31360000371932983,
+              0.23499999940395355,
+              0.4000000059604645
+            ],
+            "radii": [
+              0.15,
+              0.145,
+              0.17
+            ]
+          },
+          {
+            "name": "CarrierPod.R",
+            "centre": [
+              -0.31360000371932983,
+              0.23499999940395355,
+              0.4000000059604645
+            ],
+            "radii": [
+              0.15,
+              0.145,
+              0.17
+            ]
+          },
+          {
+            "name": "CarrierPod.Back",
+            "centre": [
+              0.0,
+              0.25999999046325684,
+              0.5480000376701355
+            ],
+            "radii": [
+              0.17,
+              0.17,
+              0.19
+            ]
+          }
+        ]
+      },
+      "boundsBlenderXYZ": [
+        [
+          -0.47592759132385254,
+          -0.28009113669395447,
+          0.0
+        ],
+        [
+          0.5101996660232544,
+          0.4300000071525574,
+          0.820604681968689
+        ]
+      ],
+      "dimensionsGltfXYZ": [
+        0.9861272573471069,
+        0.820604681968689,
+        0.7100911438465118
+      ],
+      "skinBones": 18,
+      "motion": {
+        "fps": 60,
+        "clips": {
+          "Idle": 2.0,
+          "Walk": 1.0,
+          "MeleeWindup": 0.15,
+          "Melee": 0.25,
+          "Bloat": 0.7,
+          "Burst": 0.35
+        },
+        "walkCycleSeconds": 1.0,
+        "strideMetersPerCycle": 0.24,
+        "nativeGroundSpeedMetersPerSecond": 0.24,
+        "allLegTargetsReachable": true,
+        "rootMotion": false,
+        "localScaleBones": [
+          "CarrierBelly"
+        ],
+        "meleeContactTimeSeconds": 0,
+        "crouchSeconds": null,
+        "leapSeconds": null,
+        "bloatReleaseSeconds": 0.7
+      },
+      "material": "One matte opaque PBR material, flat source-derived sRGB atlas; no normal/noise/emission maps",
+      "safeCarrierBellyContract": "CarrierBelly",
+      "readyForCanonicalIntegration": true,
+      "actualRenderedReview": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/render-review/carapace-actual-pose-sheet.png",
+      "actualMaterialRenderApproved": true,
+      "resource": "Models/cargo-family-carapace",
+      "currentFileHashVerified": true
+    },
+    {
+      "role": "tick",
+      "asset": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/tick/cargo-family-tick.glb",
+      "sha256": "61ec8474954bb0ef1390cd2eed65a8f90687ff08346b4c5fb010cb2ae5ff03f1",
+      "editableScene": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/tick/cargo-family-tick.blend",
+      "sourceSpitter": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/lavender-spitter-animated/lavender-spitter-animated_LOD0.glb",
+      "sourceSpitterSha256Unchanged": "7bc01d38c339ad7d7e5cf4f7e67c19e2b6ccfb3d18533f015af5e3935c60a814",
+      "geometry": {
+        "mouthSourceFacesRemoved": 660,
+        "mouthBoundaryVertices": 34,
+        "closedMouthCapTriangles": 170,
+        "bodyTopologyBoundaryEdges": 0,
+        "bodyTopologyNonmanifoldEdges": 0,
+        "triangles": 3602,
+        "verticesWelded": 1805,
+        "signedVolume": 0.18545981108090026,
+        "pods": []
+      },
+      "boundsBlenderXYZ": [
+        [
+          -0.49392759799957275,
+          -0.24355751276016235,
+          0.0
+        ],
+        [
+          0.5281996726989746,
+          0.3152896761894226,
+          0.8674953579902649
+        ]
+      ],
+      "dimensionsGltfXYZ": [
+        1.0221272706985474,
+        0.8674953579902649,
+        0.558847188949585
+      ],
+      "skinBones": 14,
+      "motion": {
+        "fps": 60,
+        "clips": {
+          "Idle": 2.0,
+          "Walk": 0.8,
+          "MeleeWindup": 0.15,
+          "Melee": 0.25
+        },
+        "walkCycleSeconds": 0.8,
+        "strideMetersPerCycle": 0.28,
+        "nativeGroundSpeedMetersPerSecond": 0.35000000000000003,
+        "allLegTargetsReachable": true,
+        "rootMotion": false,
+        "localScaleBones": [],
+        "meleeContactTimeSeconds": 0,
+        "crouchSeconds": null,
+        "leapSeconds": null,
+        "bloatReleaseSeconds": null
+      },
+      "material": "One matte opaque PBR material, flat source-derived sRGB atlas; no normal/noise/emission maps",
+      "safeCarrierBellyContract": null,
+      "readyForCanonicalIntegration": true,
+      "actualRenderedReview": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/render-review/tick-actual-pose-sheet.png",
+      "actualMaterialRenderApproved": true,
+      "resource": "Models/cargo-family-tick",
+      "currentFileHashVerified": true
+    }
+  ],
+  "actualRenderManifest": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/render-review/REVIEW-MANIFEST.json",
+  "actualMaterialSheet": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/cargo-enemy-family/render-review/family-actual-material-sheet.png",
+  "actualFrameCount": 62
+}

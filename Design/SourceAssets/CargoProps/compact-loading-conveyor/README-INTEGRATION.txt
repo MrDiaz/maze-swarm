@@ -1,0 +1,13 @@
+Compact Conveyor Loading Unit — LOCAL ASSET HANDOFF
+
+Selected mobile-002; static prop, no animations or rig.
+LOD0: 3000tri, /Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/mobile-002/LOD0/compact-loading-conveyor_LOD0.glb
+LOD1: 1500tri, /Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/mobile-002/LOD1/compact-loading-conveyor_LOD1.glb
+Height 0.85m; dimensions and SHA256 in INTEGRATION.json. +Yup, +Zfront; common floor/base-footprint center pivot. Source-quarter rendered at-45degrees. All original sources/raw geometry/raw paint retained. One local Hunyuan geometry pass 129.44s and one separate texture pass 219.21s. No remote/paid inference, installs or downloads.
+
+Final material uses the shared128px four-color palette: orange/cream/navy/cyan. Neural texture color registration selects broad face classes; shared palette removes baked lighting and desaturated shading. Original1024px maps are preserved in raw-texture-job. Actual geometry normals plus deliberate flat1x1 tangent normal; no noisy dense sculpt bake. Matte roughness184/255, metallic0. sRGB base color; linear data maps. Each LOD has textures.zip. ~85KiB uncompressed RGBA+mips per set, before engine-specific formats/deduplication; this is an estimate.
+
+Mesh and map checks pass: finite UVs/unit normals/tangents, one material/primitive, closed consistently wound connected surface, no boundary/nonmanifold/degenerate geometry. Embedded PBR maps match archives exactly. Sampled shape deviation and each LOD author-height error limit are recorded in the manifest; primary limits are1.5%, with any larger distant-LOD limit explicitly recorded. No self-intersection proof, device profiling or game integration.
+
+Visual assessment: Actual source-quarter/front/side/back and1500-triangle distant LOD inspected. All four large orange rollers, cream rails and navy frame/bolt forms read clearly in the shared palette. Rounded static silhouette retained. Primary3000tri sampled max error1.31%height under1.5%; distant1500tri2.23% under explicitly recorded2.5%limit. First2500tri export stopped at primary shape gate and remains preserved. Mild asymmetry, slight roller waviness and small polygon-aligned color steps remain close up; all machine parts are fused into one solid, no moving rollers or operational conveyor mechanism. Closed/wound connected topology, embedded maps, exact palette and nondegenerate tiny swatch-UV checks passed. No rig/animation or phone-performance claim.
+Rear is inferred from a single source. Machine/conveyor parts form one static mesh; moving rollers/operational mechanics are not provided.

@@ -1,0 +1,19 @@
+{
+  "utc": "2026-10-17T01:48:56.757232+00:00",
+  "sourceLibraryId": "libfile_b74fe125ee348191b66d5a53f5e15181",
+  "sourceOriginal": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/source/exec-d852f044-d8b8-4795-bc9a-6f43ea5bcffd.png",
+  "originalSha256": "712e7ca65e4de41841e40e67bb4b58ea8bb5c3448374fc114613764de338793e",
+  "prepared": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/source/purple-engineer-prepared.png",
+  "preparedSha256": "dd5341fde0f2afee9c6748df62a5c1065b3dfa3670e40dd6c440f398a06f05af",
+  "dimensionsPixels": [
+    965,
+    1630
+  ],
+  "alphaComponentsBefore": 1,
+  "removedAlphaPixels": 71974,
+  "removedVisiblePixels": 0,
+  "rgbPixelsPreserved": true,
+  "visuallyInspectedBeforeInference": true,
+  "method": "Keep the single connected alpha>=16 foreground, remove only disconnected sub16alpha noise; preserve every RGB pixel and every visiblealpha>=128 pixel",
+  "observations": "Very large swept purple hair; head about half total height, short legs and mitten gloves; teal overalls/boots, cream shirt, yellow gloves/backpack, dark navy oval eyes and small warm smile. Rounded backpack rear is only partially visible and will be inferred."
+}

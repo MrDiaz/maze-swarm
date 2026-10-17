@@ -1,0 +1,576 @@
+{
+  "schema": "cryo-shared-resources/v1",
+  "format": "glTF 2.0 JSON + external BIN + exact shared PNGs",
+  "units": "metres",
+  "up": "+Y",
+  "deterministic": true,
+  "notes": [
+    "Names and bytes are deterministic for identical source GLBs.",
+    "Each texture file is named by its full SHA256; byte-identical maps share one file.",
+    "Original nodes, materials, textures, extras, attributes, normals, UVs and indices are preserved.",
+    "Only buffers, bufferView offsets/indexes and image resource storage change.",
+    "Independent standalone BINs repeat geometry between kit, room, assets and LODs.",
+    "Runtime cache sharing depends on importer implementation and is not claimed by packaging."
+  ],
+  "sourceFiles": [
+    {
+      "file": "01_wall_module.glb",
+      "bytes": 1469844,
+      "sha256": "6fe7eb79eaea0c4344ad1e9a8821c5fb9a858b4e1622c16a809897bbc4d6866d"
+    },
+    {
+      "file": "02_inside_corner.glb",
+      "bytes": 1684156,
+      "sha256": "0d5ab9fb1e62f1a7a783503cf27c7b21bd164e7bcaf3ba9f3013966450202872"
+    },
+    {
+      "file": "03_support_pillar.glb",
+      "bytes": 1055160,
+      "sha256": "351c2799046c0a78fddcda3102464c2a17c8ea80d9f54449e841275e8330b41b"
+    },
+    {
+      "file": "04_floor_panel.glb",
+      "bytes": 432684,
+      "sha256": "1ad371112d5f28a09e2692c0717118fde7ca6dcc6b313f008c6bff883be4daea"
+    },
+    {
+      "file": "05_floor_trench_grate.glb",
+      "bytes": 350280,
+      "sha256": "f2bd6424f3e3b44000b93ef237c83e9957e9496cf5691acef2354cd2af0adc4f"
+    },
+    {
+      "file": "06_sliding_bulkhead.glb",
+      "bytes": 2429832,
+      "sha256": "5b43c4395505a6180df1ef7f7ceb650c1ac53779dc933a61c6eb5b19d3220f92"
+    },
+    {
+      "file": "07_hero_pod_cradle.glb",
+      "bytes": 2976668,
+      "sha256": "7bbe76c0b0b7ca7d067f57a7e2d29c50b9231d208f19da56da0ba146012b3759"
+    },
+    {
+      "file": "08_cryo_service_cabinet.glb",
+      "bytes": 1265984,
+      "sha256": "fa3f14c9c1f6beff466497ea4db87eaf6e0d379a4577f2a8172a611af3927d85"
+    },
+    {
+      "file": "09_cooling_reservoir_pumps.glb",
+      "bytes": 3696684,
+      "sha256": "373ef32a7f4d441beb8286f1a77c5cac3b0d2ef7c6fd1ac24fd61c138bd51f80"
+    },
+    {
+      "file": "10_coolant_manifold_elbow.glb",
+      "bytes": 2476492,
+      "sha256": "3da153ef60277836a7df468a07a24de4de78331dc299e81f2aa9e88362e77d9f"
+    },
+    {
+      "file": "11_overhead_cable_tray.glb",
+      "bytes": 1549792,
+      "sha256": "0ed1ac961fe201ce594ce1955798f34cf77c9391e2b7e20c3f5a31595864457d"
+    },
+    {
+      "file": "12_vent_fan_unit.glb",
+      "bytes": 1338356,
+      "sha256": "b74b17c6e799aea9ee9409454befd10f1160b84bc313b1137eaae5a96cff88ad"
+    },
+    {
+      "file": "13_research_workstation.glb",
+      "bytes": 1064064,
+      "sha256": "b6bbb561c8ea503fbfaca8c07c6aa3c1128fbb2384b0eb498f35c8c87bdffd33"
+    },
+    {
+      "file": "14_wall_control_terminal.glb",
+      "bytes": 990352,
+      "sha256": "224fc72216f047dec8e1f153e7a84960dd4e56901452888a6259eebeee8917b9"
+    },
+    {
+      "file": "15_low_cover_cabinet.glb",
+      "bytes": 1245192,
+      "sha256": "6fa1aca52709981279c67c59d3b6460d8ff2bd452bef5d9fc70edca64edca586"
+    },
+    {
+      "file": "16_cargo_crate.glb",
+      "bytes": 1093316,
+      "sha256": "e843db18b26e4b18932f2a96966de66d8c4c11c77bd7878ccc9e488506bec01a"
+    },
+    {
+      "file": "17_coolant_canister.glb",
+      "bytes": 1073740,
+      "sha256": "55c0f3807d7593ba6d80e3736ebcdb181dad53ec429e73183b7e258c318fa13d"
+    },
+    {
+      "file": "18_ceiling_light_fixture.glb",
+      "bytes": 738968,
+      "sha256": "0a8c8ef458ee8f42e84e304fc3c7dc042b05bac65614d0a196b7fc7eb943185a"
+    },
+    {
+      "file": "19_emergency_beacon.glb",
+      "bytes": 1182676,
+      "sha256": "8f97c379d4b6e2e1faf6ae3c9d6c0c7c2a4971227c038be2a668ba85f1473c66"
+    },
+    {
+      "file": "20_fractured_cryo_breach.glb",
+      "bytes": 1095972,
+      "sha256": "10bc5399037c171c004de2f196ba014e48702f4c38edc9b10ce05c12a984f984"
+    }
+  ],
+  "resources": {
+    "all": {
+      "files": 20,
+      "sourceGLBBytes": 29210212,
+      "geometryBINBytes": 12136796,
+      "glTFJSONBytes": 608215,
+      "uniqueImages": 46,
+      "uniqueImageBytes": 6112078,
+      "sharedResourceBytes": 18857089,
+      "savedBytes": 10353123,
+      "savedPercent": 35.443505,
+      "accounting": "Resource bytes exclude manifest. BINs retain all non-image bufferViews unchanged; they can contain non-geometry data. PNGs are exact source image bytes."
+    },
+    "comparableLOD0": {
+      "files": 20,
+      "sourceGLBBytes": 29210212,
+      "geometryBINBytes": 12136796,
+      "glTFJSONBytes": 608215,
+      "uniqueImages": 46,
+      "uniqueImageBytes": 6112078,
+      "sharedResourceBytes": 18857089,
+      "savedBytes": 10353123,
+      "savedPercent": 35.443505,
+      "accounting": "Resource bytes exclude manifest. BINs retain all non-image bufferViews unchanged; they can contain non-geometry data. PNGs are exact source image bytes.",
+      "selection": "No LOD suffixes present: all non-collision GLB exports (legacy baseline)."
+    }
+  },
+  "files": [
+    {
+      "path": "01_wall_module.bin",
+      "bytes": 434080,
+      "sha256": "1de24e5509b3faf69f9ca758a0823f46cf28199cb4a8c245c3a37bcd11c16412"
+    },
+    {
+      "path": "01_wall_module.gltf",
+      "bytes": 28232,
+      "sha256": "a138b3c7b3017ec61923e25345f9e28f677fb7c40de87b6c351ec3432dc2dbff"
+    },
+    {
+      "path": "02_inside_corner.bin",
+      "bytes": 799184,
+      "sha256": "b6535a86013766f16ae0da9366dd2e9e58fb2ea9176038b9080c7d87dc29061e"
+    },
+    {
+      "path": "02_inside_corner.gltf",
+      "bytes": 27758,
+      "sha256": "0ac87e09f5bfe927206c06dbce3611b8b8f03f971507519a41fa7c16b652d009"
+    },
+    {
+      "path": "03_support_pillar.bin",
+      "bytes": 145152,
+      "sha256": "653435ad1bd54a23e5fc3b97f363880f52c71fb649e53cce677cc586120ce457"
+    },
+    {
+      "path": "03_support_pillar.gltf",
+      "bytes": 25402,
+      "sha256": "56848c6da407faae44460b08a1dc97a3f33a5e551829898eafe0f5a03651f553"
+    },
+    {
+      "path": "04_floor_panel.bin",
+      "bytes": 10964,
+      "sha256": "ea5ffd184c06d06d98373b0002cbdbc57a04aa2760f56594e019b43c18a70af2"
+    },
+    {
+      "path": "04_floor_panel.gltf",
+      "bytes": 14347,
+      "sha256": "96e533f63c21b84623da6c7b685b0626bcc11300344e813e437d7b6a1fa22d50"
+    },
+    {
+      "path": "05_floor_trench_grate.bin",
+      "bytes": 63600,
+      "sha256": "f931825d8abce2cb3322461385e3fc2f9475a997871cb1938fc74f61509c3a63"
+    },
+    {
+      "path": "05_floor_trench_grate.gltf",
+      "bytes": 10338,
+      "sha256": "df15aa3827c43854e8ac33aa98637b57b1670e2457bd3d260d9fceda7d843932"
+    },
+    {
+      "path": "06_sliding_bulkhead.bin",
+      "bytes": 1215568,
+      "sha256": "fd9b9e7244e39e546949e38333fc0c5829424d1ec11799d6146155d803915401"
+    },
+    {
+      "path": "06_sliding_bulkhead.gltf",
+      "bytes": 60368,
+      "sha256": "868032684c9fbb29801d81de89eaf9deeaa711ea3c6af61c71bfe9e4679a08fa"
+    },
+    {
+      "path": "07_hero_pod_cradle.bin",
+      "bytes": 1506912,
+      "sha256": "eb43ba5b4aa7b229968e993c60804cd9279e370a9a4925557d19e6116ec47b7e"
+    },
+    {
+      "path": "07_hero_pod_cradle.gltf",
+      "bytes": 45390,
+      "sha256": "cd2359988f705e9bcd2992e8d2bc2dd2311d602944ab3e257359ec03676bd518"
+    },
+    {
+      "path": "08_cryo_service_cabinet.bin",
+      "bytes": 603008,
+      "sha256": "caf32181f4b85bbda9a31263bd218e09595c63e4f7f80e5a58e809639795e5c4"
+    },
+    {
+      "path": "08_cryo_service_cabinet.gltf",
+      "bytes": 32362,
+      "sha256": "766bd3e68f5a6e3694c534daef85b1eba147bd0e5b478a4ad6e5adcd671e0592"
+    },
+    {
+      "path": "09_cooling_reservoir_pumps.bin",
+      "bytes": 1618668,
+      "sha256": "25b6e45ba81244955f4ebc921c14d73d483ef9fa1bd1723f5d40dd4679341fd0"
+    },
+    {
+      "path": "09_cooling_reservoir_pumps.gltf",
+      "bytes": 50637,
+      "sha256": "c55d8aabe2807ce6c9252aaef3afbac7222790929ab33870fede169c349020fb"
+    },
+    {
+      "path": "10_coolant_manifold_elbow.bin",
+      "bytes": 1667736,
+      "sha256": "20a1d6951bacef1b201621d08ef39decefcb599a2bfeba1e643f9307d53ac89d"
+    },
+    {
+      "path": "10_coolant_manifold_elbow.gltf",
+      "bytes": 31208,
+      "sha256": "3d282fb400aa8ae5ff937a6674f9a87f18858a7b8f10742e03d05087c98da3ae"
+    },
+    {
+      "path": "11_overhead_cable_tray.bin",
+      "bytes": 835272,
+      "sha256": "d3ac33d309798bd6550e6f86180132a99434fc81da49fd93607d6131552b5112"
+    },
+    {
+      "path": "11_overhead_cable_tray.gltf",
+      "bytes": 22462,
+      "sha256": "2821f8bc394dfeacff3ea4592d1e177792d0cbfea90bbf435969b672ebf5fbc5"
+    },
+    {
+      "path": "12_vent_fan_unit.bin",
+      "bytes": 602112,
+      "sha256": "be1ded5773027d3614fb45af747d00c14c521aa40b95546047721c23b2939743"
+    },
+    {
+      "path": "12_vent_fan_unit.gltf",
+      "bytes": 29008,
+      "sha256": "54b560d01dce2efc07304cc2d21e5b45d5162ed02489e25d68813db206c77435"
+    },
+    {
+      "path": "13_research_workstation.bin",
+      "bytes": 171764,
+      "sha256": "c9c7edffb5b53707e62f724b8d2c602f79aa6d13a1a3c338ed1752215493ed78"
+    },
+    {
+      "path": "13_research_workstation.gltf",
+      "bytes": 37730,
+      "sha256": "bae61cdf5ab7a56e7f911e2373fc960e0ad85b8f9114d3a6c8ab592b160f6912"
+    },
+    {
+      "path": "14_wall_control_terminal.bin",
+      "bytes": 320424,
+      "sha256": "4e75927aa05029d4add4991abce1abfb2e448171085324e9de5ae9d1598fcda7"
+    },
+    {
+      "path": "14_wall_control_terminal.gltf",
+      "bytes": 31877,
+      "sha256": "fa47aac0793089180bd05089d1bf7a925e91444f142b7f494fb341acc544a59b"
+    },
+    {
+      "path": "15_low_cover_cabinet.bin",
+      "bytes": 578928,
+      "sha256": "24c662f3cfd8749b8d82e5ce9fd3d868400e11adc07c1fc293c3ceb00a7fb639"
+    },
+    {
+      "path": "15_low_cover_cabinet.gltf",
+      "bytes": 26682,
+      "sha256": "b0f09b6181e14fc132124069c056e521e3d4b076d3efd0f10d7f859d336d9654"
+    },
+    {
+      "path": "16_cargo_crate.bin",
+      "bytes": 402272,
+      "sha256": "ca1f391f69e1dd465b537f9f5dcddf1b9a94f7833d2eae923fae48c4ad7b0deb"
+    },
+    {
+      "path": "16_cargo_crate.gltf",
+      "bytes": 25838,
+      "sha256": "cf8122bdd6dee6711a84130d13ea7de9af3863923263539afb7b4b3c0b84539c"
+    },
+    {
+      "path": "17_coolant_canister.bin",
+      "bytes": 332208,
+      "sha256": "b4d1619959b4005cc3ef780be428b14f26df8bd6b4c6ec273bd18f3ff5f7bdb1"
+    },
+    {
+      "path": "17_coolant_canister.gltf",
+      "bytes": 27919,
+      "sha256": "c8276dbdbb221b30f3661f14ced0070eeaa0f2cc41eebc9298bcce730e393a79"
+    },
+    {
+      "path": "18_ceiling_light_fixture.bin",
+      "bytes": 194296,
+      "sha256": "201cff11209e1da823c87b586d5205afe559b23735fed6a83899cdd337280674"
+    },
+    {
+      "path": "18_ceiling_light_fixture.gltf",
+      "bytes": 27219,
+      "sha256": "2ae2bbc97670c63417a5e0b61a1db6578fedd499fdcd4497d4134862001f7a1e"
+    },
+    {
+      "path": "19_emergency_beacon.bin",
+      "bytes": 461800,
+      "sha256": "5a55a7ebc83bd35f05cd8eedd14a17c297c624b90a05595813c1a214b11071b2"
+    },
+    {
+      "path": "19_emergency_beacon.gltf",
+      "bytes": 29049,
+      "sha256": "4afc94baac499ceff5e0953056834bece3883f56952c54ec4f8972ada1790d06"
+    },
+    {
+      "path": "20_fractured_cryo_breach.bin",
+      "bytes": 172848,
+      "sha256": "4724beb9442d7f197ba576f0562a51308279070dcf1d52b0d11fd633f2025ad8"
+    },
+    {
+      "path": "20_fractured_cryo_breach.gltf",
+      "bytes": 24389,
+      "sha256": "75e4a172aca6fc0061f712528d35a3546d26eded7057c906e80551363850e537"
+    },
+    {
+      "path": "sharedtextures/031c399db34ddc4d3f37ed589d0c13f5cce4608f7af40321df0414ea0dbbce4b.png",
+      "bytes": 469327,
+      "sha256": "031c399db34ddc4d3f37ed589d0c13f5cce4608f7af40321df0414ea0dbbce4b"
+    },
+    {
+      "path": "sharedtextures/0a1a5dcb5be51a72e02614fd199c44ca35a3bfb43b3556b5f2dcd9690fc345e5.png",
+      "bytes": 25857,
+      "sha256": "0a1a5dcb5be51a72e02614fd199c44ca35a3bfb43b3556b5f2dcd9690fc345e5"
+    },
+    {
+      "path": "sharedtextures/0b53de2ad9923b1de38e20e7de10e89d33e0636c518e0e0d413277c3291379d6.png",
+      "bytes": 49044,
+      "sha256": "0b53de2ad9923b1de38e20e7de10e89d33e0636c518e0e0d413277c3291379d6"
+    },
+    {
+      "path": "sharedtextures/0cf749a9e09b317c58a81c46811f38f76294e613368e39d0001d71d58043fb35.png",
+      "bytes": 5307,
+      "sha256": "0cf749a9e09b317c58a81c46811f38f76294e613368e39d0001d71d58043fb35"
+    },
+    {
+      "path": "sharedtextures/0d860988842aef97a091e35ddb137f27d5c9ae83e0806eabdf28d3ac88d62930.png",
+      "bytes": 123359,
+      "sha256": "0d860988842aef97a091e35ddb137f27d5c9ae83e0806eabdf28d3ac88d62930"
+    },
+    {
+      "path": "sharedtextures/0dc96f82e92c75d1eed8ef3773e6586ca483cc8c358bc3acabb22be5b8a4eb1e.png",
+      "bytes": 70655,
+      "sha256": "0dc96f82e92c75d1eed8ef3773e6586ca483cc8c358bc3acabb22be5b8a4eb1e"
+    },
+    {
+      "path": "sharedtextures/1259c125f1a82060e21d147b4ef0869aa7fc9614a27ffe34eaa1bf81b0289ec2.png",
+      "bytes": 63485,
+      "sha256": "1259c125f1a82060e21d147b4ef0869aa7fc9614a27ffe34eaa1bf81b0289ec2"
+    },
+    {
+      "path": "sharedtextures/1298aca3ed46d281dc45a7406855e2501529f0d3c4949ef44259e758462be37f.png",
+      "bytes": 314698,
+      "sha256": "1298aca3ed46d281dc45a7406855e2501529f0d3c4949ef44259e758462be37f"
+    },
+    {
+      "path": "sharedtextures/149a4844f509996775195de511d125969cd0dd37943587b90c52d5c8d1a6ff56.png",
+      "bytes": 605571,
+      "sha256": "149a4844f509996775195de511d125969cd0dd37943587b90c52d5c8d1a6ff56"
+    },
+    {
+      "path": "sharedtextures/248af97824c300b61ea20b3876c1a04b46b8718b32b20382205e9b30aa993046.png",
+      "bytes": 181948,
+      "sha256": "248af97824c300b61ea20b3876c1a04b46b8718b32b20382205e9b30aa993046"
+    },
+    {
+      "path": "sharedtextures/33d230f911a9ee33a47296107b1f8b1eb583342c7c5ef720f2c59e72748783c1.png",
+      "bytes": 69979,
+      "sha256": "33d230f911a9ee33a47296107b1f8b1eb583342c7c5ef720f2c59e72748783c1"
+    },
+    {
+      "path": "sharedtextures/427532214502b552a99f27a0e72eeb1437480878b23045aa3eb279d7e83a47ab.png",
+      "bytes": 19810,
+      "sha256": "427532214502b552a99f27a0e72eeb1437480878b23045aa3eb279d7e83a47ab"
+    },
+    {
+      "path": "sharedtextures/4419062318a3c5f12babf3f2af056a9074cb7a96da6a65567483d16e798b3267.png",
+      "bytes": 63378,
+      "sha256": "4419062318a3c5f12babf3f2af056a9074cb7a96da6a65567483d16e798b3267"
+    },
+    {
+      "path": "sharedtextures/4502f8cede87f42a715cac29ba3ac5fb9922c225e2a45ba051df8272589d4877.png",
+      "bytes": 63589,
+      "sha256": "4502f8cede87f42a715cac29ba3ac5fb9922c225e2a45ba051df8272589d4877"
+    },
+    {
+      "path": "sharedtextures/475c7a3ba541f4bb2363bd3904e74c7ab5a009f8d1c7be1630fab13146cdf930.png",
+      "bytes": 67415,
+      "sha256": "475c7a3ba541f4bb2363bd3904e74c7ab5a009f8d1c7be1630fab13146cdf930"
+    },
+    {
+      "path": "sharedtextures/51224f0311506673ab81578a2d0cfa3c7bfd749c487424192003425abc124443.png",
+      "bytes": 29984,
+      "sha256": "51224f0311506673ab81578a2d0cfa3c7bfd749c487424192003425abc124443"
+    },
+    {
+      "path": "sharedtextures/6105a5d09da7d803b1030d1392df3909e5bfe809163dc928ae3e2f5d60ef73f7.png",
+      "bytes": 215632,
+      "sha256": "6105a5d09da7d803b1030d1392df3909e5bfe809163dc928ae3e2f5d60ef73f7"
+    },
+    {
+      "path": "sharedtextures/614e831a54e8364ab41269fda335b2066ebe8879c0fa52f79a3e6322cdbfd036.png",
+      "bytes": 119895,
+      "sha256": "614e831a54e8364ab41269fda335b2066ebe8879c0fa52f79a3e6322cdbfd036"
+    },
+    {
+      "path": "sharedtextures/6462918a07ccd71d55aa41c067fd03519f8f7be48579102dc0f309a78a734aa9.png",
+      "bytes": 35378,
+      "sha256": "6462918a07ccd71d55aa41c067fd03519f8f7be48579102dc0f309a78a734aa9"
+    },
+    {
+      "path": "sharedtextures/64698204ec6855837ecc6471e423fa41157068a5fae4cefc2f3ad8bb4684294a.png",
+      "bytes": 1880,
+      "sha256": "64698204ec6855837ecc6471e423fa41157068a5fae4cefc2f3ad8bb4684294a"
+    },
+    {
+      "path": "sharedtextures/64885a934d95429708a1ee79f133e1825321d1ed9e79dc8de02c102c5e500081.png",
+      "bytes": 95369,
+      "sha256": "64885a934d95429708a1ee79f133e1825321d1ed9e79dc8de02c102c5e500081"
+    },
+    {
+      "path": "sharedtextures/6a918f58c32fa2e3f83d5c5e44d9830395ea45bc5c6e503a2a835c1d8152b2ef.png",
+      "bytes": 36420,
+      "sha256": "6a918f58c32fa2e3f83d5c5e44d9830395ea45bc5c6e503a2a835c1d8152b2ef"
+    },
+    {
+      "path": "sharedtextures/6c4f4efc395d6185af8855046958c47caad7a6450dbc63eeffe9abf00886220c.png",
+      "bytes": 14436,
+      "sha256": "6c4f4efc395d6185af8855046958c47caad7a6450dbc63eeffe9abf00886220c"
+    },
+    {
+      "path": "sharedtextures/72735b11f1a88ae2d8a9c3db1d19cae889fb2d34257546b84909c35a0ba6c6c8.png",
+      "bytes": 209608,
+      "sha256": "72735b11f1a88ae2d8a9c3db1d19cae889fb2d34257546b84909c35a0ba6c6c8"
+    },
+    {
+      "path": "sharedtextures/7b5f5721e675f6ab8548f306825a712fa9377d12382cbf1e0ce302d6a4126162.png",
+      "bytes": 9219,
+      "sha256": "7b5f5721e675f6ab8548f306825a712fa9377d12382cbf1e0ce302d6a4126162"
+    },
+    {
+      "path": "sharedtextures/869a5c73a83bf75fb88e416ba45145c43816f5b1b5310c585f07fcccfebfc601.png",
+      "bytes": 219171,
+      "sha256": "869a5c73a83bf75fb88e416ba45145c43816f5b1b5310c585f07fcccfebfc601"
+    },
+    {
+      "path": "sharedtextures/8d77006ae5b6be72fadf79b23fdea24d351460da5f585c0fe1a24868139df652.png",
+      "bytes": 32108,
+      "sha256": "8d77006ae5b6be72fadf79b23fdea24d351460da5f585c0fe1a24868139df652"
+    },
+    {
+      "path": "sharedtextures/90e57cc6087c7ffc0c3acf154b098857d63cb160a3f6c1bce1435ce5e0d6d2f3.png",
+      "bytes": 71291,
+      "sha256": "90e57cc6087c7ffc0c3acf154b098857d63cb160a3f6c1bce1435ce5e0d6d2f3"
+    },
+    {
+      "path": "sharedtextures/92860edcb9ebc8c4becc339394a8c39c4f651c27cd730215ed680c11e0c01f2f.png",
+      "bytes": 46288,
+      "sha256": "92860edcb9ebc8c4becc339394a8c39c4f651c27cd730215ed680c11e0c01f2f"
+    },
+    {
+      "path": "sharedtextures/951f4b90bb7dd63768c7c89226d3878554f9afffdedfc85634dc73b74543f544.png",
+      "bytes": 6028,
+      "sha256": "951f4b90bb7dd63768c7c89226d3878554f9afffdedfc85634dc73b74543f544"
+    },
+    {
+      "path": "sharedtextures/a2109c62d08d3ab2f35e944acda1e377e5e641f97ae70ea893905692bbaf241e.png",
+      "bytes": 46655,
+      "sha256": "a2109c62d08d3ab2f35e944acda1e377e5e641f97ae70ea893905692bbaf241e"
+    },
+    {
+      "path": "sharedtextures/b48fe7033bcf293d184897afa4c3f4f839c2f8c4eb292623a90ca9e84dfc5acf.png",
+      "bytes": 426675,
+      "sha256": "b48fe7033bcf293d184897afa4c3f4f839c2f8c4eb292623a90ca9e84dfc5acf"
+    },
+    {
+      "path": "sharedtextures/c7c55bf7f01648a134d924210a76ea93dd6472a98804301031519365fc92e5f3.png",
+      "bytes": 67615,
+      "sha256": "c7c55bf7f01648a134d924210a76ea93dd6472a98804301031519365fc92e5f3"
+    },
+    {
+      "path": "sharedtextures/c9ee9f8c3c1e896f7db6fa86521a643ce3ebdc8ec554db9503a12cc4e3849b8d.png",
+      "bytes": 740884,
+      "sha256": "c9ee9f8c3c1e896f7db6fa86521a643ce3ebdc8ec554db9503a12cc4e3849b8d"
+    },
+    {
+      "path": "sharedtextures/cb10877daa52b19ca6e3c62d66dc1cb680bf8226b5e54130ebc5e96cf9f9aa66.png",
+      "bytes": 81093,
+      "sha256": "cb10877daa52b19ca6e3c62d66dc1cb680bf8226b5e54130ebc5e96cf9f9aa66"
+    },
+    {
+      "path": "sharedtextures/d68173408183a29c48efbc985304a7ece9a11c2d6d727c1d6836cbdcc712bed7.png",
+      "bytes": 144802,
+      "sha256": "d68173408183a29c48efbc985304a7ece9a11c2d6d727c1d6836cbdcc712bed7"
+    },
+    {
+      "path": "sharedtextures/da0a15ce2ef582580ceff3697619cbf1acdb4321ae433570b6925b01e512905a.png",
+      "bytes": 5858,
+      "sha256": "da0a15ce2ef582580ceff3697619cbf1acdb4321ae433570b6925b01e512905a"
+    },
+    {
+      "path": "sharedtextures/e355325a6fa192caf5944bcb92b2c526c2e5d48cb29a1f1aed2b46a0061bea51.png",
+      "bytes": 287894,
+      "sha256": "e355325a6fa192caf5944bcb92b2c526c2e5d48cb29a1f1aed2b46a0061bea51"
+    },
+    {
+      "path": "sharedtextures/e95a63f830cbd3aa25ad98d4a04a912f68abc89a901074b2ae0fb31386cd47f5.png",
+      "bytes": 200816,
+      "sha256": "e95a63f830cbd3aa25ad98d4a04a912f68abc89a901074b2ae0fb31386cd47f5"
+    },
+    {
+      "path": "sharedtextures/e9a675a3f3924505c1fa18455e006438b78b08e5ea99739d81e6bad35980a44e.png",
+      "bytes": 10814,
+      "sha256": "e9a675a3f3924505c1fa18455e006438b78b08e5ea99739d81e6bad35980a44e"
+    },
+    {
+      "path": "sharedtextures/ea019d222413e36292189096c530875f02f24c219fe9f0f9d6a86afadad11640.png",
+      "bytes": 41272,
+      "sha256": "ea019d222413e36292189096c530875f02f24c219fe9f0f9d6a86afadad11640"
+    },
+    {
+      "path": "sharedtextures/eea7eb60bb08529fe028b40e8aefadb12c7a52e9490557402b8275cee33e7523.png",
+      "bytes": 138717,
+      "sha256": "eea7eb60bb08529fe028b40e8aefadb12c7a52e9490557402b8275cee33e7523"
+    },
+    {
+      "path": "sharedtextures/ef1eaf60131628c944bd0434e652fe9122207beef7c19ae580700d4817f35c6d.png",
+      "bytes": 8310,
+      "sha256": "ef1eaf60131628c944bd0434e652fe9122207beef7c19ae580700d4817f35c6d"
+    },
+    {
+      "path": "sharedtextures/f788a7f634eb001df88aa82ad8df77591b730c0ce06a80db17df76045811899a.png",
+      "bytes": 135745,
+      "sha256": "f788a7f634eb001df88aa82ad8df77591b730c0ce06a80db17df76045811899a"
+    },
+    {
+      "path": "sharedtextures/f96cb788fee1e28222b1ba1a16c2df599e68b0262f9fa69c2bde9a5908ea1279.png",
+      "bytes": 310371,
+      "sha256": "f96cb788fee1e28222b1ba1a16c2df599e68b0262f9fa69c2bde9a5908ea1279"
+    },
+    {
+      "path": "sharedtextures/ff139d66de5937b1eb8416440b61cef032f21067aa7c6797a5150c5177cb595d.png",
+      "bytes": 128428,
+      "sha256": "ff139d66de5937b1eb8416440b61cef032f21067aa7c6797a5150c5177cb595d"
+    }
+  ]
+}

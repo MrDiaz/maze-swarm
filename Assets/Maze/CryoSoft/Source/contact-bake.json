@@ -1,0 +1,11 @@
+{
+  "floorMap": [
+    512,
+    384
+  ],
+  "samples": 12,
+  "radiusMetres": 1.65,
+  "surfaceVertexRadiusMetres": 0.9,
+  "source": "Blender geometry BVH; smooth ambient contact only; no albedo noise",
+  "textureCount": 1
+}

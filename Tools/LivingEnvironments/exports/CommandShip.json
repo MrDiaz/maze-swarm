@@ -1,0 +1,32 @@
+{
+  "room": "CommandShip",
+  "objects": 381,
+  "polygons": 77385,
+  "materials": [
+    "Ivory",
+    "White",
+    "Navy",
+    "Blue",
+    "Floor",
+    "Seam",
+    "Gold",
+    "Cyan",
+    "Glass",
+    "Wood",
+    "Leaf",
+    "LeafDark",
+    "Earth",
+    "Garden",
+    "Ice",
+    "Rock",
+    "Desert",
+    "Cloud",
+    "Sky",
+    "Ceiling",
+    "LightWarm",
+    "LightCyan",
+    "HoloGlass",
+    "Deck"
+  ],
+  "recipe_sha256": "9c2d420406b85565dfbb166be2d4d7b8a72eaac1c162df770cb7787957133068"
+}

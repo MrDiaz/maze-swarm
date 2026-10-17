@@ -1,0 +1,398 @@
+{
+  "metres": true,
+  "layout": "cryo-a",
+  "unityBoundsExpected": [
+    0,
+    44,
+    -32,
+    0
+  ],
+  "textureCount": 0,
+  "materials": {
+    "Ivory": {
+      "hex": "#cbdce9",
+      "roughness": 0.7
+    },
+    "White": {
+      "hex": "#e7eef4",
+      "roughness": 0.62
+    },
+    "Blue": {
+      "hex": "#355a97",
+      "roughness": 0.64
+    },
+    "Navy": {
+      "hex": "#162c4f",
+      "roughness": 0.72
+    },
+    "Floor": {
+      "hex": "#8393aa",
+      "roughness": 0.82
+    },
+    "FloorLight": {
+      "hex": "#899bb1",
+      "roughness": 0.82
+    },
+    "FloorShade": {
+      "hex": "#7b8da5",
+      "roughness": 0.82
+    },
+    "Seam": {
+      "hex": "#6e819f",
+      "roughness": 0.84
+    },
+    "Ice": {
+      "hex": "#9dd1e7",
+      "roughness": 0.72
+    },
+    "Dock": {
+      "hex": "#4063b0",
+      "roughness": 0.74
+    },
+    "Cyan": {
+      "hex": "#45d7ef",
+      "roughness": 0.32
+    },
+    "Glass": {
+      "hex": "#4bdaef",
+      "roughness": 0.32
+    },
+    "Amber": {
+      "hex": "#ffc266",
+      "roughness": 0.48
+    }
+  },
+  "objects": [
+    {
+      "name": "SC_floor_Soft_Seam",
+      "category": "floor",
+      "triangles": 588,
+      "boundsMin": [
+        0.0,
+        -0.24000000953674316,
+        -32.0
+      ],
+      "boundsMax": [
+        44.0,
+        -0.03999999910593033,
+        -0.0
+      ]
+    },
+    {
+      "name": "SC_floor_Soft_Floor",
+      "category": "floor",
+      "triangles": 7056,
+      "boundsMin": [
+        0.05500006675720215,
+        -0.1599999964237213,
+        -31.94499969482422
+      ],
+      "boundsMax": [
+        39.94499969482422,
+        0.0,
+        -0.05500006675720215
+      ]
+    },
+    {
+      "name": "SC_floor_Soft_FloorLight",
+      "category": "floor",
+      "triangles": 3528,
+      "boundsMin": [
+        8.055000305175781,
+        -0.1599999964237213,
+        -31.94499969482422
+      ],
+      "boundsMax": [
+        43.94499969482422,
+        0.0,
+        -0.05500006675720215
+      ]
+    },
+    {
+      "name": "SC_floor_Soft_FloorShade",
+      "category": "floor",
+      "triangles": 3528,
+      "boundsMin": [
+        8.055000305175781,
+        -0.1599999964237213,
+        -31.94499969482422
+      ],
+      "boundsMax": [
+        43.94499969482422,
+        0.0,
+        -0.05500006675720215
+      ]
+    },
+    {
+      "name": "SC_wall_Soft_Blue",
+      "category": "wall",
+      "triangles": 24552,
+      "boundsMin": [
+        0.05000007152557373,
+        0.0,
+        -31.950000762939453
+      ],
+      "boundsMax": [
+        43.95000076293945,
+        2.1700000762939453,
+        -0.050000011920928955
+      ]
+    },
+    {
+      "name": "SC_wall_Soft_Ivory",
+      "category": "wall",
+      "triangles": 22932,
+      "boundsMin": [
+        0.08000004291534424,
+        0.5199999809265137,
+        -31.920000076293945
+      ],
+      "boundsMax": [
+        43.91999816894531,
+        3.0999999046325684,
+        -0.19999998807907104
+      ]
+    },
+    {
+      "name": "SC_wall_Soft_Amber",
+      "category": "wall",
+      "triangles": 13524,
+      "boundsMin": [
+        1.4833333492279053,
+        0.23000001907348633,
+        -30.350000381469727
+      ],
+      "boundsMax": [
+        42.084999084472656,
+        1.2799999713897705,
+        -1.9100000858306885
+      ]
+    },
+    {
+      "name": "SC_wall_Soft_Navy",
+      "category": "wall",
+      "triangles": 1176,
+      "boundsMin": [
+        4.25,
+        0.0,
+        -1.96999990940094
+      ],
+      "boundsMax": [
+        18.200000762939453,
+        2.299999952316284,
+        -0.03999999165534973
+      ]
+    },
+    {
+      "name": "SC_wall_Soft_Ice",
+      "category": "wall",
+      "triangles": 588,
+      "boundsMin": [
+        4.420000076293945,
+        1.125,
+        -1.9950000047683716
+      ],
+      "boundsMax": [
+        9.579999923706055,
+        2.0350000858306885,
+        -1.966999888420105
+      ]
+    },
+    {
+      "name": "SC_wall_Soft_Cyan",
+      "category": "wall",
+      "triangles": 588,
+      "boundsMin": [
+        26.82000160217285,
+        1.6399999856948853,
+        -1.996999979019165
+      ],
+      "boundsMax": [
+        27.739999771118164,
+        1.959999918937683,
+        -1.9749999046325684
+      ]
+    },
+    {
+      "name": "SC_obstacle_Soft_Navy",
+      "category": "obstacle",
+      "triangles": 2940,
+      "boundsMin": [
+        6.030000686645508,
+        0.0,
+        -27.970001220703125
+      ],
+      "boundsMax": [
+        39.970001220703125,
+        0.2199999988079071,
+        -8.029999732971191
+      ]
+    },
+    {
+      "name": "SC_obstacle_Soft_Blue",
+      "category": "obstacle",
+      "triangles": 7644,
+      "boundsMin": [
+        6.100000381469727,
+        0.14999999105930328,
+        -27.90999984741211
+      ],
+      "boundsMax": [
+        39.900001525878906,
+        0.5699999928474426,
+        -8.09000015258789
+      ]
+    },
+    {
+      "name": "SC_obstacle_Soft_White",
+      "category": "obstacle",
+      "triangles": 2352,
+      "boundsMin": [
+        20.06999969482422,
+        0.20000001788139343,
+        -13.930000305175781
+      ],
+      "boundsMax": [
+        25.93000030517578,
+        0.8999999761581421,
+        -10.069999694824219
+      ]
+    },
+    {
+      "name": "SC_obstacle_Soft_Ivory",
+      "category": "obstacle",
+      "triangles": 4704,
+      "boundsMin": [
+        6.079999923706055,
+        0.20000000298023224,
+        -27.799999237060547
+      ],
+      "boundsMax": [
+        39.91999816894531,
+        0.6800000071525574,
+        -8.200000762939453
+      ]
+    },
+    {
+      "name": "SC_obstacle_Soft_Amber",
+      "category": "obstacle",
+      "triangles": 4704,
+      "boundsMin": [
+        6.25,
+        0.3100000023841858,
+        -27.869998931884766
+      ],
+      "boundsMax": [
+        39.75,
+        0.6100000143051147,
+        -11.729999542236328
+      ]
+    },
+    {
+      "name": "SC_rail_Soft_Ivory",
+      "category": "rail",
+      "triangles": 1176,
+      "boundsMin": [
+        16.860000610351562,
+        0.0,
+        -21.850000381469727
+      ],
+      "boundsMax": [
+        29.139999389648438,
+        1.0800000429153442,
+        -16.149999618530273
+      ]
+    },
+    {
+      "name": "SC_rail_Soft_Blue",
+      "category": "rail",
+      "triangles": 1176,
+      "boundsMin": [
+        16.825000762939453,
+        0.009999990463256836,
+        -21.869998931884766
+      ],
+      "boundsMax": [
+        29.174999237060547,
+        0.3100000023841858,
+        -16.130001068115234
+      ]
+    },
+    {
+      "name": "SC_marking_Soft_Ice",
+      "category": "marking",
+      "triangles": 252,
+      "boundsMin": [
+        4.010000228881836,
+        0.04899999871850014,
+        -25.989999771118164
+      ],
+      "boundsMax": [
+        39.9900016784668,
+        0.04899999871850014,
+        -4.010000228881836
+      ]
+    },
+    {
+      "name": "SC_marking_Soft_Dock",
+      "category": "marking",
+      "triangles": 432,
+      "boundsMin": [
+        2.009999990463257,
+        0.04899999871850014,
+        -29.989999771118164
+      ],
+      "boundsMax": [
+        41.9900016784668,
+        0.04899999871850014,
+        -2.009999990463257
+      ]
+    },
+    {
+      "name": "SC_marking_Soft_Ivory",
+      "category": "marking",
+      "triangles": 11760,
+      "boundsMin": [
+        5.565000057220459,
+        0.015000000596046448,
+        -30.434999465942383
+      ],
+      "boundsMax": [
+        38.435001373291016,
+        0.07500000298023224,
+        -1.565000057220459
+      ]
+    },
+    {
+      "name": "SC_marking_Soft_Navy",
+      "category": "marking",
+      "triangles": 2352,
+      "boundsMin": [
+        14.300000190734863,
+        0.0625,
+        -23.709999084472656
+      ],
+      "boundsMax": [
+        31.700000762939453,
+        0.09749999642372131,
+        -8.289999961853027
+      ]
+    },
+    {
+      "name": "SC_marking_Soft_Blue",
+      "category": "marking",
+      "triangles": 11760,
+      "boundsMin": [
+        14.364999771118164,
+        0.08699999749660492,
+        -23.575000762939453
+      ],
+      "boundsMax": [
+        31.635000228881836,
+        0.1210000067949295,
+        -8.444999694824219
+      ]
+    }
+  ],
+  "triangles": 129312
+}

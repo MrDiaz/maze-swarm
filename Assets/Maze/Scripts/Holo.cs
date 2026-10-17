@@ -634,14 +634,18 @@ namespace Maze
             get => PlayerPrefs.GetInt("ms.quality", 1) == 1;
             set { PlayerPrefs.SetInt("ms.quality", value ? 1 : 0); PlayerPrefs.Save(); }
         }
-        // SQUAD pick: "sentinel" (default) or "vanguard" (Iron Vanguard, the Heavy)
+        // The selectable hero is a presentation identity. Both use the retained Heavy combat,
+        // talents and progression baseline; changing appearance never migrates or resets a save.
+        public static bool IsPlayableHero(string id) => id == "vanguard" || id == "engineer";
+        public static string NormalizeHero(string id) => string.Equals(id?.Trim(), "engineer", StringComparison.OrdinalIgnoreCase) ? "engineer" : "vanguard";
         public static string Hero
         {
-            get => HeroOverride ?? PlayerPrefs.GetString("ms.hero", "sentinel");
-            set { PlayerPrefs.SetString("ms.hero", value); PlayerPrefs.Save(); }
+            get => NormalizeHero(string.IsNullOrEmpty(HeroOverride) ? PlayerPrefs.GetString("ms.hero", "vanguard") : HeroOverride);
+            set { PlayerPrefs.SetString("ms.hero", NormalizeHero(value)); PlayerPrefs.Save(); }
         }
-        public static bool Vanguard => Hero == "vanguard";
-        public static bool Scout => Hero == "scout";
+        public static bool Engineer => Hero == "engineer";
+        public static bool Vanguard => true; // shared Heavy gameplay role, independent of the selected presentation
+        public static bool Scout => false; // compatibility for historical card/save data, never a selectable model
         // TEST MODE (Settings / Sandbox): every pin selectable, runs never touch the progression save. Local keys, default off.
         public static bool TestMode { get => PlayerPrefs.GetInt("ms.test.mode", 0) == 1; set { PlayerPrefs.SetInt("ms.test.mode", value ? 1 : 0); PlayerPrefs.Save(); } }
         public static bool TestPower { get => PlayerPrefs.GetInt("ms.test.power", 0) == 1; set { PlayerPrefs.SetInt("ms.test.power", value ? 1 : 0); PlayerPrefs.Save(); } }   // (test runs: the zone scaled to the hero's CP)
@@ -653,17 +657,22 @@ namespace Maze
             set { PlayerPrefs.SetInt("ms.vgrig", value ? 1 : 0); PlayerPrefs.Save(); }
         }
         public static string HeroOverride; // perf runs (MAZE_HERO=vanguard) pick a hero without touching the saved pick
-        // the selected hero, for every screen that shows or names him (one source: Squad pick)
-        public static string HeroName => Vanguard ? "IRON VANGUARD" : Scout ? "WANDERER SCOUT" : "ARCTIC SENTINEL";
-        public static string HeroRole => Vanguard ? "HEAVY  //  MINIGUN" : Scout ? "SKIRMISHER  //  TWIN NEEDLERS" : "RIFLEMAN  //  BALANCED";
-        public static Texture2D HeroPortrait() => Vanguard
-            ? Resources.Load<Texture2D>("UI/vanguard_portrait") ?? Resources.Load<Texture2D>("UI/Portraits/vanguard")
-            : Scout ? Resources.Load<Texture2D>("UI/scout_portrait") ?? Resources.Load<Texture2D>("UI/Portraits/scout") ?? Resources.Load<Texture2D>("UI/Portraits/hero")
-            : Resources.Load<Texture2D>("UI/hero_portrait") ?? Resources.Load<Texture2D>("UI/Portraits/hero");
-        // the bridge painting (main menu, sector select, briefing) shows the hero at the window: a Vanguard version
-        // (UI/menu_bg_vanguard.png) is used once it exists, else the Sentinel's
-        public static Texture2D HeroDropBay() => (Vanguard ? Resources.Load<Texture2D>("UI/drop_bay_vanguard") : null) ?? Resources.Load<Texture2D>("UI/drop_bay");
-        public static Texture2D HeroBackdrop() => (Vanguard ? Resources.Load<Texture2D>("UI/menu_bg_vanguard") : null) ?? Resources.Load<Texture2D>("UI/menu_bg");
+        // The selected identity is shared by every screen. A missing Engineer portrait falls
+        // back to the retained Heavy art so a deployment never gains a missing-image surface.
+        public static string HeroName => Engineer ? "PURPLE ENGINEER" : "IRON VANGUARD";
+        public static string HeroRole => Engineer ? "ENGINEER  //  MINIGUN" : "HEAVY  //  MINIGUN";
+        public static Texture2D HeroPortrait() => HeroPortrait(Hero);
+        public static Texture2D HeroPortrait(string id)
+        {
+            if (NormalizeHero(id) == "engineer")
+            {
+                var engineer = Resources.Load<Texture2D>("UI/Portraits/engineer") ?? Resources.Load<Texture2D>("UI/engineer_portrait");
+                if (engineer != null) return engineer;
+            }
+            return Resources.Load<Texture2D>("UI/Portraits/heavy-chibi") ?? Resources.Load<Texture2D>("UI/vanguard_portrait") ?? Resources.Load<Texture2D>("UI/Portraits/vanguard");
+        }
+        public static Texture2D HeroDropBay()=>Resources.Load<Texture2D>("MenuStyle/Backgrounds/hangar");
+        public static Texture2D HeroBackdrop()=>Resources.Load<Texture2D>("MenuStyle/Backgrounds/hangar");
 
         public static string Weapon
         {
@@ -769,17 +778,27 @@ namespace Maze
 
         public static void Click() { if (!Rec("sfx_ui_tap", 0.35f)) SynthClick(); }
         static void SynthClick() => Play(ref click, () => Make("click", 0.06f, (t, n) => (Sweep(t, 2300, 850, 0.06f) * 0.8f + n * 0.25f) * Mathf.Exp(-t * 85)), 0.55f);
-        public static void Toggle() => Play(ref toggle, () => Make("toggle", 0.09f, (t, n) => Sweep(t, 1200, 2600, 0.09f) * Mathf.Exp(-t * 45) * 0.8f), 0.45f);
+        public static void Toggle()
+        {
+            if (CohesiveZone.Enabled)
+            { if (Prefs.Sound && !Game.SimRun) Rec("first_cryo_upgrade_accept", .45f); return; }
+            Play(ref toggle, () => Make("toggle", 0.09f, (t, n) => Sweep(t, 1200, 2600, 0.09f) * Mathf.Exp(-t * 45) * 0.8f), 0.45f);
+        }
         public static void Deny() { if (Rec("sfx_ui_locked", 0.35f)) Haptics.Warn(); else SynthDeny(); }
         static void SynthDeny() => Play(ref deny, () => Make("deny", 0.22f, (t, n) =>
         {
             float gate = (t < 0.08f || (t > 0.11f && t < 0.19f)) ? 1 : 0;
             return Mathf.Sign(Mathf.Sin(2 * Mathf.PI * 190 * t)) * 0.35f * gate * Mathf.Exp(-(t % 0.11f) * 18);
         }), 0.4f);
-        public static void Open() => Play(ref open, () => Make("open", 0.24f, (t, n) => (Sweep(t, 260, 1500, 0.24f) * 0.6f + n * 0.12f) * Mathf.Sin(Mathf.PI * t / 0.24f)), 0.35f);
+        public static void Open()
+        {
+            if (CohesiveZone.Enabled)
+            { if (Prefs.Sound && !Game.SimRun) Rec("sfx_ui_panel_open", .30f); return; }
+            Play(ref open, () => Make("open", 0.24f, (t, n) => (Sweep(t, 260, 1500, 0.24f) * 0.6f + n * 0.12f) * Mathf.Sin(Mathf.PI * t / 0.24f)), 0.35f);
+        }
         // Leaper: a rising hiss while it coils, a short whoosh as it pounces (placeholders until proper SFX exist)
-        public static void Hiss(float vol) { if (vol > 0.05f) Play(ref hiss, () => Make("hiss", 0.6f, (t, n) => n * 0.55f * Mathf.Clamp01(t / 0.08f) * Mathf.Clamp01((0.6f - t) / 0.12f) * (0.6f + 0.4f * Mathf.Sin(t * 90f))), 0.35f * vol); }
-        public static void Pounce(float vol) { if (vol > 0.05f) Play(ref pounce, () => Make("pounce", 0.3f, (t, n) => (n * 0.6f + Sweep(t, 180, 90, 0.3f) * 0.4f) * Mathf.Sin(Mathf.PI * t / 0.3f)), 0.45f * vol); }
+        public static void Hiss(float vol) { if (CohesiveZone.Active) { CargoLeaperAudio.Windup(vol); return; } if (vol > 0.05f) Play(ref hiss, () => Make("hiss", 0.6f, (t, n) => n * 0.55f * Mathf.Clamp01(t / 0.08f) * Mathf.Clamp01((0.6f - t) / 0.12f) * (0.6f + 0.4f * Mathf.Sin(t * 90f))), 0.35f * vol); }
+        public static void Pounce(float vol) { if (CohesiveZone.Active) { CargoLeaperAudio.Pounce(vol); return; } if (vol > 0.05f) Play(ref pounce, () => Make("pounce", 0.3f, (t, n) => (n * 0.6f + Sweep(t, 180, 90, 0.3f) * 0.4f) * Mathf.Sin(Mathf.PI * t / 0.3f)), 0.45f * vol); }
         public static void Close() { if (!Rec("sfx_ui_back", 0.3f)) SynthClose(); }
         static void SynthClose() => Play(ref close, () => Make("close", 0.2f, (t, n) => (Sweep(t, 1300, 240, 0.2f) * 0.6f + n * 0.1f) * Mathf.Sin(Mathf.PI * t / 0.2f)), 0.3f);
         public static void Drop() => Play(ref drop, () =>

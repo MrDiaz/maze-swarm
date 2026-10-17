@@ -67,7 +67,7 @@ namespace Maze
             selectRt = MakeScreen("Select", bgTex, 0.5f, out selectCg);
             briefRt = MakeScreen("Brief", bgTex, 0.84f, out briefCg);
             dropRt = Holo.Fill(canvas.transform, "Drop"); dropCg = dropRt.gameObject.AddComponent<CanvasGroup>();
-            BuildSelect(); BuildBrief(); BuildDrop();
+            BuildSelect(); BuildBrief(); BuildDrop(); BuildStyledScreens();
             wind = gameObject.AddComponent<AudioSource>(); wind.playOnAwake = false; wind.loop = false;
             wind.clip = Resources.Load<AudioClip>("Audio/drop_wind");
             SetMode(Mode.Hidden);
@@ -101,7 +101,7 @@ namespace Maze
         {
             var bd = Prefs.HeroBackdrop();
             foreach (var r in bgRaws) if (r != null && bd != null && r.texture != bd) { r.texture = bd; r.GetComponent<CoverUv>().aspect = (float)bd.width / bd.height; }
-            var bay = Prefs.HeroDropBay();
+            var bay = CohesiveZone.For(Sectors[Selected].def) ? CohesiveMenuArt.Hangar : Prefs.HeroDropBay();
             if (dropBg != null && bay != null && dropBg.texture != bay) { dropBg.texture = bay; var cu = dropBg.GetComponent<CoverUv>(); if (cu != null) cu.aspect = (float)bay.width / bay.height; }
             RefreshOperative();
         }
@@ -132,7 +132,7 @@ namespace Maze
             game.LoadMap(Sectors[Selected].map); // rebuilds the level behind the countdown
             Game.PendingTier = Sectors[Selected].tier; // a progression sector: the drop starts a 5-floor run
             Game.PendingSector = Sectors[Selected].def;
-            dropSector.text = Sectors[Selected].name;
+            dropSector.text = CohesiveMenuArt.SectorName(Sectors[Selected].def, Sectors[Selected].name);
             SetMode(Mode.Drop);
             lastCount = -1;
             MenuAudio.Hold = true;   // the menu music fades out (0.2 s)
@@ -262,7 +262,7 @@ namespace Maze
 
         void BuildDrop()
         {
-            var tex = Prefs.HeroDropBay(); // the drop-bay painting shows the hero too (a Vanguard version once it exists)
+            var tex = CohesiveZone.For(Sectors[Selected].def) ? CohesiveMenuArt.Hangar : Prefs.HeroDropBay();
             dropBg = Holo.Raw(Holo.Fill(dropRt, "Bay"), tex, Color.white);
             if (tex != null) dropBg.gameObject.AddComponent<CoverUv>().aspect = (float)tex.width / tex.height;
             dropBg.raycastTarget = true;
@@ -288,6 +288,7 @@ namespace Maze
         // ---------------------------------------------------------------- frame
         void Update()
         {
+            TickStyledScreens();
             if (mode == Mode.Hidden)
             {
                 if (waitingLoadout && !menu.SheetOpen) { waitingLoadout = false; canvas.enabled = true; RefreshLoadout(); }
@@ -325,6 +326,9 @@ namespace Maze
             for (int i = 0; i < clouds.Count; i++)
             {
                 var c = clouds[i];
+                bool cargo = CohesiveZone.For(Sectors[Selected].def);
+                c.rt.gameObject.SetActive(!cargo);
+                if (cargo) continue;
                 float x = Mathf.Repeat(k * c.speed + i * 517f, W + 1800) - 900;
                 c.rt.anchoredPosition = new Vector2(x, c.y);
             }

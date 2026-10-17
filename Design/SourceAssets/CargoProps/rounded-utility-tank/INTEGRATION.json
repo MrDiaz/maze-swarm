@@ -1,0 +1,176 @@
+{
+  "utc": "2026-10-17T00:08:51.155950+00:00",
+  "asset": "rounded-utility-tank",
+  "name": "Rounded Cream Orange Utility Tank",
+  "readyForIntegrationReview": true,
+  "root": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank",
+  "selectedVersion": "002",
+  "sourceLibraryId": "libfile_28bf4f04b29c8191828d21d7ebe4685b",
+  "sourceOriginalSha256": "c15869e8f79f810d56642d40e91e7954e4c158f59b8423f30e313a8f0e09e6d2",
+  "backend": "Existing local Hunyuan3D2.1 AppleMPS / CPU rasterizer",
+  "jobId": "a8ac7175-7556-4e71-bb3c-e59286e5bc5a",
+  "geometry": {
+    "steps": 40,
+    "density": 256,
+    "triangles": 16000,
+    "seed": 260119
+  },
+  "texture": {
+    "steps": 12,
+    "size": 1024,
+    "enhance": false,
+    "seed": 260119
+  },
+  "geometryWorkerSeconds": 307.79,
+  "textureWorkerSeconds": 337.67,
+  "peakSampledRssGiB": 16.281997680664062,
+  "oneGeometryAndOneTexturePass": true,
+  "noDownloadsInstallsOrCredentials": true,
+  "rawAndOriginalPreserved": true,
+  "heightMeters": 1.2,
+  "orientation": "+Yup/+Zfront author convention; source-quarter camera -45degrees; static prop can be rotated by integration owner",
+  "pivot": "shared base-footprint floor center",
+  "paletteSrgb8": {
+    "orange": [
+      255,
+      129,
+      35
+    ],
+    "cream": [
+      244,
+      232,
+      212
+    ],
+    "navy": [
+      46,
+      61,
+      92
+    ],
+    "cyan": [
+      56,
+      199,
+      231
+    ]
+  },
+  "paletteMethod": "7interior UV samples per reduced triangle vote raw neural hue family; apply shared exact source-style orange/cream/navy/cyan swatches; no baked light or noise",
+  "textureAndMaterial": "128x128 shared four-color sRGB atlas, intentional1x1 flat tangent normal/ORM linear, roughness184/255 and metallic0; clean vertex-normal shape, no baked albedo lighting or dense noisy normal detail",
+  "lods": [
+    {
+      "level": 0,
+      "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank/mobile-002/LOD0/rounded-utility-tank_LOD0.glb",
+      "sha256": "e8b40e3390288c5bbb006c26e8fd7aaa14c897667b2e29c326fe88c0c0f283b8",
+      "bytes": 378080,
+      "triangles": 2500,
+      "dimensionsXYZMeters": [
+        1.4320019483566284,
+        1.198996901512146,
+        1.0426768064498901
+      ],
+      "topology": {
+        "boundaryEdges": 0,
+        "nonmanifoldEdges": 0,
+        "degenerateFaces": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2
+      },
+      "sourceSampledShapeMaxErrorMeters": 0.0035664818715304136,
+      "sourceShapeP95ErrorMeters": 0.0017446095938794316,
+      "shapeErrorIsSampledNotExactHausdorff": true,
+      "floorMinY": 0.0,
+      "adjustedFloorVertices": 0,
+      "materialCount": 1,
+      "primitiveCount": 1,
+      "baseColorSize": 128,
+      "normalSize": 1,
+      "ormSize": 1,
+      "paletteFaceCounts": {
+        "orange": 1395,
+        "cream": 581,
+        "navy": 424,
+        "cyan": 100
+      },
+      "textureGpuRgbaWithMipsEstimateBytes": 87392,
+      "pbr": {
+        "maps": [
+          "albedo.png",
+          "normal.png",
+          "roughness.png",
+          "metallic.png",
+          "metallic-roughness.png"
+        ],
+        "normal_embedded": true,
+        "tangents_exported": true,
+        "metallic_roughness_channels": {
+          "roughness": "G",
+          "metallic": "B"
+        }
+      }
+    },
+    {
+      "level": 1,
+      "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank/mobile-002/LOD1/rounded-utility-tank_LOD1.glb",
+      "sha256": "fcea7d6da42af42f4e97f99f86948f03d098f988d23e6ff08694c205e9f5d93c",
+      "bytes": 183092,
+      "triangles": 1200,
+      "dimensionsXYZMeters": [
+        1.4311279654502869,
+        1.1988966464996338,
+        1.0454476475715637
+      ],
+      "topology": {
+        "boundaryEdges": 0,
+        "nonmanifoldEdges": 0,
+        "degenerateFaces": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2
+      },
+      "sourceSampledShapeMaxErrorMeters": 0.005598940420895815,
+      "sourceShapeP95ErrorMeters": 0.00341455879388377,
+      "shapeErrorIsSampledNotExactHausdorff": true,
+      "floorMinY": 0.0,
+      "adjustedFloorVertices": 1,
+      "materialCount": 1,
+      "primitiveCount": 1,
+      "baseColorSize": 128,
+      "normalSize": 1,
+      "ormSize": 1,
+      "paletteFaceCounts": {
+        "orange": 657,
+        "cream": 280,
+        "navy": 206,
+        "cyan": 57
+      },
+      "textureGpuRgbaWithMipsEstimateBytes": 87392,
+      "pbr": {
+        "maps": [
+          "albedo.png",
+          "normal.png",
+          "roughness.png",
+          "metallic.png",
+          "metallic-roughness.png"
+        ],
+        "normal_embedded": true,
+        "tangents_exported": true,
+        "metallic_roughness_channels": {
+          "roughness": "G",
+          "metallic": "B"
+        }
+      }
+    }
+  ],
+  "offlineValidation": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank/mobile-002/offline-validation.json",
+  "visualReview": {
+    "frontQuarterSideBack": true,
+    "sourceComparison": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank/deliverables/rounded-utility-tank-comparison.png",
+    "actualMultiview": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/rounded-utility-tank/deliverables/rounded-utility-tank-multiview.png",
+    "notes": "Actual front/quarter/side/back and 1200-triangle lower LOD inspected. Orange lid/base/collars, navy elbow and rim, cream tank and cyan window match the approved source. Bounded color-only window cleanup removes the first candidate navy intrusion; raw neural outputs and mobile-001 remain intact. Rounded silhouette and one-piece feet read clearly. Mild vertical waviness/faceting on the cylindrical wall, simplified inferred rear and face-aligned color steps around the window at extreme close-up/lower LOD remain. Static solid; no operating tank mechanism, rig or animation. All topology, PBR-map, exact palette and tiny nondegenerate swatch-UV checks passed."
+  },
+  "limitations": [
+    "Single-view rear inference",
+    "Static mesh; no moving machine or conveyor mechanism",
+    "No rig or animation",
+    "No game edit/import or device profiling",
+    "Self-intersections not formally tested"
+  ],
+  "integrationOwner": "01a13737-9ca8-728a-9baa-fc7ac2c030ee"
+}

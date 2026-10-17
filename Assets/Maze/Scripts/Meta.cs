@@ -15,8 +15,8 @@ namespace Maze
         static void Set(List<string> l, string k, int v) { for (int i = 0; i < l.Count; i++) { int j = l[i].LastIndexOf(':'); if (j > 0 && l[i].Substring(0, j) == k) { l[i] = k + ":" + v; return; } } l.Add(k + ":" + v); }
 
         // ================= heroes
-        public static readonly string[] Heroes = { "sentinel", "vanguard", "scout" };
-        public static string HeroId => Prefs.Vanguard ? "vanguard" : Prefs.Scout ? "scout" : "sentinel";
+        public static readonly string[] Heroes = { "vanguard" };
+        public static string HeroId=>"vanguard";
         public static int HeroLevel(string h) => Mathf.Max(1, Get(D.heroLv, h));
         public static int HeroStars(string h) => h == "scout" ? Get(D.heroStars, h) : Mathf.Max(1, Get(D.heroStars, h));
         public static int Shards(string h) => Get(D.shards, h);
@@ -304,7 +304,7 @@ namespace Maze
         }
 
         // ================= the defeat screen: the 3 best affordable upgrades by CP per Credit (12)
-        public class Pick { public string name; public int credits, gain; public Func<bool> buy; }
+        public class Pick { public string name; public int credits, gain; public Func<bool> buy, canBuy; }
         public static List<Pick> BestUpgrades(int n)
         {   // greedy: the best CP per Credit that still fits the wallet, applied in place, then the next; all undone at the end
             var picks = new List<Pick>(); int w = Progress.HeroWeapon; string h = HeroId; int budget = D.credits, alloy = D.alloy;
@@ -312,24 +312,24 @@ namespace Maze
             for (int k = 0; k < n; k++)
             {
                 int cp0 = CP(); Pick best = null; float bestR = 0; Action apply = null, revert = null;
-                void Consider(string name, int c, Action up, Action down, Func<bool> buy)
+                void Consider(string name, int c, Action up, Action down, Func<bool> buy, Func<bool> canBuy)
                 {
                     up(); int g = CP() - cp0; down();
                     if (g <= 0) return; float r = g / (float)Mathf.Max(1, c);
                     bool fits = c <= budget, bestFits = best != null && best.credits <= budget;
-                    if (best == null || fits && !bestFits || fits == bestFits && r > bestR) { best = new Pick { name = name, credits = c, gain = g, buy = buy }; bestR = r; apply = up; revert = down; }
+                    if (best == null || fits && !bestFits || fits == bestFits && r > bestR) { best = new Pick { name = name, credits = c, gain = g, buy = buy, canBuy = canBuy }; bestR = r; apply = up; revert = down; }
                 }
-                if (Progress.Level(w) < WeaponCap(w)) { int lv = D.weaponLv[w]; Consider($"{Progress.WeaponModels[w]} LV {lv + 1}", LevelCredits(w), () => D.weaponLv[w] = lv + 1, () => D.weaponLv[w] = lv, () => UpgradeWeapon(w)); }
-                if (HeroLevel(h) < HeroCap(h)) { int L = HeroLevel(h); Consider($"{h.ToUpperInvariant()} LV {L + 1}", HeroLevelCost(L), () => Set(D.heroLv, h, L + 1), () => Set(D.heroLv, h, L), () => LevelHero(h)); }
+                if (Progress.Level(w) < WeaponCap(w)) { int lv = D.weaponLv[w]; Consider($"{Progress.WeaponModels[w]} LV {lv + 1}", LevelCredits(w), () => D.weaponLv[w] = lv + 1, () => D.weaponLv[w] = lv, () => UpgradeWeapon(w), () => Progress.CanUpgrade(w)); }
+                if (HeroLevel(h) < HeroCap(h)) { int L = HeroLevel(h); Consider($"{h.ToUpperInvariant()} LV {L + 1}", HeroLevelCost(L), () => Set(D.heroLv, h, L + 1), () => Set(D.heroLv, h, L), () => LevelHero(h), () => HeroLevel(h) < HeroCap(h) && D.credits >= HeroLevelCost(HeroLevel(h))); }
                 foreach (var nd in Nodes)
                 {
                     if (nd.branch > 1 || ResearchGate(nd) != null) continue;
-                    int L = ResearchLv(nd.id); var node = nd; Consider(nd.name, ResearchCost(nd), () => SetResearch(node.id, L + 1), () => SetResearch(node.id, L), () => BuyResearch(node));
+                    int L = ResearchLv(nd.id); var node = nd; Consider(nd.name, ResearchCost(nd), () => SetResearch(node.id, L + 1), () => SetResearch(node.id, L), () => BuyResearch(node), () => ResearchGate(node) == null && D.credits >= ResearchCost(node));
                 }
                 for (int sl = 0; sl < 5; sl++)
                 {   // equipped gear (Credits + Alloy)
                     var g = Progress.Equipped(sl); if (g == null || g.level >= GearCap[g.rarity] || GearAlloy(g) > alloy) continue;
-                    var gi = g; int L = g.level; Consider($"{Progress.Rarities[g.rarity]} {Progress.Slots[g.slot]} LV {L + 1}", GearCredits(g), () => gi.level = L + 1, () => gi.level = L, () => Progress.LevelGear(gi));
+                    var gi = g; int L = g.level; Consider($"{Progress.Rarities[g.rarity]} {Progress.Slots[g.slot]} LV {L + 1}", GearCredits(g), () => gi.level = L + 1, () => gi.level = L, () => Progress.LevelGear(gi), () => gi.level < GearCap[gi.rarity] && D.alloy >= GearAlloy(gi) && D.credits >= GearCredits(gi));
                 }
                 if (best == null || picks.Count > 0 && best.credits > budget) break;
                 picks.Add(best); budget -= best.credits; apply(); undo.Add(revert);

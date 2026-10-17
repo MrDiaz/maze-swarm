@@ -1,0 +1,26 @@
+{
+  "id": "21",
+  "slug": "structural_thermal_island_6x4",
+  "name": "Cryo thermal machinery island",
+  "dimensions": [
+    6.0,
+    3.808000087738037,
+    4.0
+  ],
+  "bounds": {
+    "min": [
+      -3.0,
+      0.0,
+      -2.0
+    ],
+    "max": [
+      3.0,
+      3.808000087738037,
+      2.0
+    ]
+  },
+  "triangles": 17202,
+  "pivot": {
+    "convention": "ground-centre"
+  }
+}

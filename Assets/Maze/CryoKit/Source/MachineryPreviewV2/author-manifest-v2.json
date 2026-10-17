@@ -1,0 +1,214 @@
+{
+  "name": "Cryo thermal machinery island",
+  "id": "21",
+  "slug": "structural_thermal_island_6x4",
+  "dimensions": [
+    6.0,
+    3.808000087738037,
+    4.0
+  ],
+  "boundsUnity": {
+    "min": [
+      -3.0,
+      0.0,
+      -2.0
+    ],
+    "max": [
+      3.0,
+      3.808000087738037,
+      2.0
+    ]
+  },
+  "trianglesAuthoring": 17202,
+  "authoringParts": 323,
+  "pivot": "Ground-centre (0,0,0)",
+  "units": "metres",
+  "orientation": "+Y up, +Z service face",
+  "obstacle": {
+    "layout": "cryo-station/cryo-a",
+    "letter": "B",
+    "grid": [
+      10,
+      5,
+      3,
+      2
+    ],
+    "footprint": [
+      6,
+      4
+    ],
+    "worldUnityXZ": [
+      20,
+      -14,
+      6,
+      4
+    ],
+    "centreUnity": [
+      23,
+      0,
+      -12
+    ]
+  },
+  "camera": {
+    "projection": "perspective",
+    "pitch": 57,
+    "yaw": -14,
+    "verticalFOV": 30,
+    "distance": 40,
+    "closeOptionDistance": 30,
+    "spawnTargetRelativeBlender": [
+      0,
+      7,
+      0
+    ]
+  },
+  "provenance": "New shell/detail geometry; copied approved Cryo coating maps",
+  "normalSource": "Same-surface tangent bake of approved analytic coating microheight normals; geometric bevels modeled, no high-to-low detail bake",
+  "status": "Isolated Blender proof; Unity preview pending",
+  "version": "v2",
+  "bodyHeightMetres": 3.0175,
+  "overallHeightMetres": 3.808000087738037,
+  "topEquipmentRiseAboveBodyMetres": 0.790500087738037,
+  "v1Dimensions": [
+    6,
+    2.408,
+    4
+  ],
+  "v1BodyHeightMetres": 1.6175,
+  "revision": "Increase body by 1.4m; unchanged top hardware dimensions, translated upward; taller structural panels; second original-size end radiator bank",
+  "scaleEvidence": {
+    "configuredCharacterHeight": 1.6,
+    "nativeCryoWallHeight": 3.56,
+    "bodyToCharacterHeightRatio": 1.8859375,
+    "referenceInterpretation": "Substantial raised shell; inferred from visible proportions, reference has no metric scale"
+  },
+  "triangles": 17202,
+  "renderMeshes": 1,
+  "materialSlots": 1,
+  "UVs": {
+    "UV0": "Nonoverlapping atlas; 8 px bake dilation",
+    "UV1": "Copy of UV0 for optional future lightmapping; AO uses UV0",
+    "exportOrder": [
+      "UV0",
+      "UV1"
+    ]
+  },
+  "textures": [
+    {
+      "file": "exports/textures/CryoIsland_BaseColor.png",
+      "resolution": [
+        2048,
+        2048
+      ],
+      "colorSpace": "sRGB"
+    },
+    {
+      "file": "exports/textures/CryoIsland_ORM.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "colorSpace": "Non-Color"
+    },
+    {
+      "file": "exports/textures/CryoIsland_Normal.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "colorSpace": "Non-Color"
+    },
+    {
+      "file": "exports/textures/CryoIsland_Emission.png",
+      "resolution": [
+        1024,
+        1024
+      ],
+      "colorSpace": "sRGB"
+    }
+  ],
+  "ORM": "R contact AO, G roughness, B metallic; linear",
+  "emissionFactor": 3,
+  "tangentFramesRepaired": 0,
+  "collapsedFacesRemoved": 0,
+  "mobileBudget": {
+    "triangles": 17202,
+    "materials": 1,
+    "textureASTC6x6MipEstimateBytes": 4366656,
+    "measuredOnDevice": false
+  },
+  "exports": [
+    "exports/CryoThermalIsland_6x4.glb",
+    "exports/CryoThermalIsland_6x4.fbx"
+  ],
+  "exportCulling": "single-sided opaque",
+  "bodyHeightDefinition": "Ground plane to broad main shell deck, including foundation/skirt",
+  "whiteShellHeightMetres": 2.6375,
+  "v1WhiteShellHeightMetres": 1.2375,
+  "topHardwarePreservation": {
+    "checkedComponents": 154,
+    "passed": true,
+    "translationUnityY": 1.4,
+    "geometryRotationScale": "unchanged",
+    "report": "evidence/fixture-preservation.json"
+  },
+  "validation": {
+    "GLB": "passed, zero errors or warnings",
+    "roundtrip": "GLB and FBX fresh Blender imports passed",
+    "reports": [
+      "evidence/glb-audit.json",
+      "evidence/roundtrip.json",
+      "evidence/fixture-preservation.json"
+    ],
+    "limits": [
+      "No Unity rendering/occlusion confirmation",
+      "No phone performance or residency measurement",
+      "LOD0 only",
+      "FBX material remapping required"
+    ]
+  },
+  "reference": {
+    "library_file_id": "libfile_1574f811915081918eec16041f233783",
+    "sha256": "f6bcfc2e1432c184dad33b4e2057a408a76ca1341b168e418a4b97c2456b030a",
+    "inspected": true,
+    "heightInference": "No metric scale in reference; substantial shell proportions interpreted"
+  },
+  "sourceEvidence": {
+    "character": "MazeConfig.cs modelHeight1.6",
+    "walls": "CryoKitEnvironment.cs # wallHeight3.56",
+    "camera": "Main.unity/Game.UpdateCamera pitch57 yaw-14 FOV30 distance40"
+  },
+  "comparisons": {
+    "cameraPitch": 57,
+    "cameraYaw": -14,
+    "projection": "orthographic for inspection",
+    "sameProjectionScale": true,
+    "left": "v1",
+    "right": "v2",
+    "markerHeightMetres": 1.6
+  },
+  "proofScope": "v2 height revision only, v1 preserved; no main checkout or Unity writes",
+  "nativeSources": [
+    "CryoThermalIsland_Authoring.blend",
+    "CryoThermalIsland_Export.blend",
+    "source/build_block.py",
+    "source/bake_export.py",
+    "source/finalize_export.py"
+  ],
+  "fileHashes": {
+    "CryoThermalIsland_Authoring.blend": "cf680824800646ce72aeaa08a5c9d127896495ec49483bd2ee5b5f593fbccb26",
+    "CryoThermalIsland_Export.blend": "1e01d5fb353c3de3b77bd48ca9395f2d02409069f0dc2c35d8becdc3046f6c51",
+    "exports/CryoThermalIsland_6x4.fbm/CryoIsland_BaseColor.png": "6b5ff60cea79ff6a3b3003847b2b52bad4181851245bec813c2231f13b996623",
+    "exports/CryoThermalIsland_6x4.fbm/CryoIsland_Emission.png": "4238cdc4477b1ae9d1fab6b66db5ee865d53036d9feb28e96417cd4bc363da07",
+    "exports/CryoThermalIsland_6x4.fbm/CryoIsland_Normal.png": "594139f498dcafb3537d0a2d3cd91a69da9eac1302d9780bfcb9387bfdf1d513",
+    "exports/CryoThermalIsland_6x4.fbx": "72a65dd579068cf3c1566576a31da7b87bdb1e6bf24bacbe6098a082956bafa2",
+    "exports/CryoThermalIsland_6x4.glb": "731f25662bd2ee9e0fe4df6edecd09219d5cfde27eda8d1edbdc7d15b51455c5",
+    "exports/textures/CryoIsland_BaseColor.png": "6b5ff60cea79ff6a3b3003847b2b52bad4181851245bec813c2231f13b996623",
+    "exports/textures/CryoIsland_Emission.png": "4238cdc4477b1ae9d1fab6b66db5ee865d53036d9feb28e96417cd4bc363da07",
+    "exports/textures/CryoIsland_Normal.png": "594139f498dcafb3537d0a2d3cd91a69da9eac1302d9780bfcb9387bfdf1d513",
+    "exports/textures/CryoIsland_ORM.png": "504fb14b7fbe86288dd4688be470bd2869ecaef164ee9d2bcc530b1beebf682f",
+    "renders/Blender_gameplay.png": "e51553639a0e84497b2c1c050aed5704d36cc85732032faea04293a8a13991d2",
+    "renders/Blender_v1_v2_finished_comparison.png": "79012cabf28a9d4fb830b90ce8c5414d0f931689da73886cefb26a7c71ad8e57",
+    "renders/Blender_v1_v2_neutral_comparison.png": "95e9c89b75ea93065943ffb5a7bddd91d0a1485a94db5877a88dfe811e67b684"
+  }
+}

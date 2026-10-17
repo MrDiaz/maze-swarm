@@ -1,0 +1,176 @@
+{
+  "utc": "2026-10-16T23:46:01.193767+00:00",
+  "asset": "orange-cargo-crate",
+  "name": "Chunky Orange Cargo Crate",
+  "readyForIntegrationReview": true,
+  "root": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate",
+  "selectedVersion": "003",
+  "sourceLibraryId": "libfile_f377f54fba108191b28bdd4afdfbd3b3",
+  "sourceOriginalSha256": "fd17e37e58230ab8d48cc827fbe65d2bcf6c0643866054da632dc8b98c5d9332",
+  "backend": "Existing local Hunyuan3D2.1 AppleMPS / CPU rasterizer",
+  "jobId": "a781152d-e0ee-4922-8442-2d61bed13da8",
+  "geometry": {
+    "steps": 40,
+    "density": 256,
+    "triangles": 16000,
+    "seed": 260117
+  },
+  "texture": {
+    "steps": 12,
+    "size": 1024,
+    "enhance": false,
+    "seed": 260117
+  },
+  "geometryWorkerSeconds": 322.93,
+  "textureWorkerSeconds": 374.53,
+  "peakSampledRssGiB": 20.3885498046875,
+  "oneGeometryAndOneTexturePass": true,
+  "noDownloadsInstallsOrCredentials": true,
+  "rawAndOriginalPreserved": true,
+  "heightMeters": 0.9,
+  "orientation": "+Yup/+Zfront author convention; source-quarter camera -45degrees; static prop can be rotated by integration owner",
+  "pivot": "shared base-footprint floor center",
+  "paletteSrgb8": {
+    "orange": [
+      255,
+      129,
+      35
+    ],
+    "cream": [
+      244,
+      232,
+      212
+    ],
+    "navy": [
+      46,
+      61,
+      92
+    ],
+    "cyan": [
+      56,
+      199,
+      231
+    ]
+  },
+  "paletteMethod": "7interior UV samples per reduced triangle vote raw neural hue family; apply shared exact source-style orange/cream/navy/cyan swatches; no baked light or noise",
+  "textureAndMaterial": "128x128 shared four-color sRGB atlas, intentional1x1 flat tangent normal/ORM linear, roughness184/255 and metallic0; clean vertex-normal shape, no baked albedo lighting or dense noisy normal detail",
+  "lods": [
+    {
+      "level": 0,
+      "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/mobile-003/LOD0/orange-cargo-crate_LOD0.glb",
+      "sha256": "c85f10b45a109506c4112d505829be893db882ffbc110c16a451ebf52a2da52d",
+      "bytes": 303076,
+      "triangles": 2000,
+      "dimensionsXYZMeters": [
+        1.0742038488388062,
+        0.9001451730728149,
+        1.0727316737174988
+      ],
+      "topology": {
+        "boundaryEdges": 0,
+        "nonmanifoldEdges": 0,
+        "degenerateFaces": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2
+      },
+      "sourceSampledShapeMaxErrorMeters": 0.005210059694945812,
+      "sourceShapeP95ErrorMeters": 0.0018846777558792383,
+      "shapeErrorIsSampledNotExactHausdorff": true,
+      "floorMinY": 0.0,
+      "adjustedFloorVertices": 0,
+      "materialCount": 1,
+      "primitiveCount": 1,
+      "baseColorSize": 128,
+      "normalSize": 1,
+      "ormSize": 1,
+      "paletteFaceCounts": {
+        "orange": 998,
+        "cream": 310,
+        "navy": 692,
+        "cyan": 0
+      },
+      "textureGpuRgbaWithMipsEstimateBytes": 87392,
+      "pbr": {
+        "maps": [
+          "albedo.png",
+          "normal.png",
+          "roughness.png",
+          "metallic.png",
+          "metallic-roughness.png"
+        ],
+        "normal_embedded": true,
+        "tangents_exported": true,
+        "metallic_roughness_channels": {
+          "roughness": "G",
+          "metallic": "B"
+        }
+      }
+    },
+    {
+      "level": 1,
+      "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/mobile-003/LOD1/orange-cargo-crate_LOD1.glb",
+      "sha256": "f96d9af63d923058d4da792ed0d0d92afdd878f05945b8354463c0fd56afb1c3",
+      "bytes": 153084,
+      "triangles": 1000,
+      "dimensionsXYZMeters": [
+        1.073571503162384,
+        0.899524450302124,
+        1.0689029693603516
+      ],
+      "topology": {
+        "boundaryEdges": 0,
+        "nonmanifoldEdges": 0,
+        "degenerateFaces": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2
+      },
+      "sourceSampledShapeMaxErrorMeters": 0.006526367738842964,
+      "sourceShapeP95ErrorMeters": 0.0033903258503414687,
+      "shapeErrorIsSampledNotExactHausdorff": true,
+      "floorMinY": 0.0,
+      "adjustedFloorVertices": 1,
+      "materialCount": 1,
+      "primitiveCount": 1,
+      "baseColorSize": 128,
+      "normalSize": 1,
+      "ormSize": 1,
+      "paletteFaceCounts": {
+        "orange": 486,
+        "cream": 166,
+        "navy": 348,
+        "cyan": 0
+      },
+      "textureGpuRgbaWithMipsEstimateBytes": 87392,
+      "pbr": {
+        "maps": [
+          "albedo.png",
+          "normal.png",
+          "roughness.png",
+          "metallic.png",
+          "metallic-roughness.png"
+        ],
+        "normal_embedded": true,
+        "tangents_exported": true,
+        "metallic_roughness_channels": {
+          "roughness": "G",
+          "metallic": "B"
+        }
+      }
+    }
+  ],
+  "offlineValidation": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/mobile-003/offline-validation.json",
+  "visualReview": {
+    "frontQuarterSideBack": true,
+    "sourceComparison": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/deliverables-003/orange-cargo-crate-comparison.png",
+    "actualMultiview": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/orange-cargo-crate/deliverables-003/orange-cargo-crate-multiview.png",
+    "notes": "Actual source-quarter/front/side/back and lowerLOD preserve the approved rounded orange crate/cream wrap/navy base. Triangle geometry and normals match002 exactly after canonicalizing UV-split vertices; raw vertex/index order may differ. Isolated tiny color components were cleaned without changing the source palette. Tiny nondegenerate swatch UVs span0.002 and reduce per-face texture derivatives130x to protect distant palette colors. The analytical mip scenario is documented and is not an on-device measurement. Small face-aligned color boundaries and panel-rim angularity remain at close zoom."
+  },
+  "limitations": [
+    "Single-view rear inference",
+    "Static mesh; no moving machine or conveyor mechanism",
+    "No rig or animation",
+    "No game edit/import or device profiling",
+    "Self-intersections not formally tested"
+  ],
+  "integrationOwner": "01a13737-9ca8-728a-9baa-fc7ac2c030ee"
+}

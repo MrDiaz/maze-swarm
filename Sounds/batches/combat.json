@@ -1,0 +1,180 @@
+{
+ "out_dir": "/Volumes/T7 Shield/Projects/Maze Swarm/Sounds/Combat",
+ "cues": [
+  {
+   "id": "sfx_kill_m",
+   "seconds": 0.5,
+   "where": "A medium alien dies (Leaper, Spitter, Weaver, Lancer, Stalker...)",
+   "note": "60%. Plays over the existing squish layer, so keep it short",
+   "prompt": "Wet alien creature death, juicy flesh squelch with a short high insect screech cut off, close, dry, no music"
+  },
+  {
+   "id": "sfx_kill_l",
+   "seconds": 0.8,
+   "where": "A large alien dies (Carapace and other big bodies)",
+   "note": "75%",
+   "prompt": "Large alien beast collapsing, deep wet splat with a heavy low body thump, thick chitin cracking, close, no music"
+  },
+  {
+   "id": "sfx_kill_elite",
+   "seconds": 0.9,
+   "where": "An elite dies (gold rim enemies)",
+   "note": "80%. The ring is the reward, so it should sit on top of the splat",
+   "prompt": "Heavy wet alien splat followed by a bright ringing brass metal ping, satisfying reward hit, close, no music"
+  },
+  {
+   "id": "sfx_chain_tier1",
+   "seconds": 0.4,
+   "where": "Swarm Chain tier-up (1, 2, 3)",
+   "note": "50%, 60%, 70%. One take is enough: the game can pitch it up a step per tier",
+   "prompt": "Short punchy sci-fi synth stab, rising, bright and energetic, single hit, clean digital tail, no melody, no music"
+  },
+  {
+   "id": "sfx_chain_tier4",
+   "seconds": 0.9,
+   "where": "Swarm Chain tier 4 (max)",
+   "note": "85%, medium haptic",
+   "prompt": "Big powerful sci-fi power-up stab, deep sub hit layered with a bright rising synth sweep, triumphant, electric crackle tail, no music"
+  },
+  {
+   "id": "sfx_perfect_dash",
+   "seconds": 0.6,
+   "where": "PERFECT dash through an attack",
+   "note": "70%. A tiny slow-mo hits at the same time, so leave a short tail",
+   "prompt": "Fast air whoosh ending in a bright crystal chime ping, slick and rewarding, close, no music"
+  },
+  {
+   "id": "sfx_last_breath",
+   "seconds": 1.4,
+   "where": "Last Breath saves the hero at 1 HP",
+   "note": "100%, music ducks 6 dB. Must read as \"you almost died\"",
+   "prompt": "Dramatic held low drone note swelling, then a heavy shockwave thump with air blast, tense heartbeat-like pulse, cinematic, no music"
+  },
+  {
+   "id": "sfx_levelup",
+   "seconds": 1.2,
+   "where": "Level-up (cards are about to show)",
+   "note": "80%",
+   "prompt": "Rising energy swell building up and ending in a clear bright metallic ring, sci-fi power-up, uplifting, no music"
+  },
+  {
+   "id": "sfx_card_pick",
+   "seconds": 0.4,
+   "where": "An upgrade card is chosen",
+   "note": "70%, medium haptic",
+   "prompt": "Solid heavy stamp on a metal table, firm mechanical thunk with a short holographic shimmer, satisfying, close, no music"
+  },
+  {
+   "id": "sfx_boss_roar",
+   "seconds": 2.5,
+   "where": "Boss intro",
+   "note": "100%, music ducks 6 dB, held rumble haptic",
+   "prompt": "Huge monstrous alien roar slowed down, guttural and wet, with a deep sub bass boom underneath, echo in a large metal hall, terrifying, no music"
+  },
+  {
+   "id": "sfx_boss_death",
+   "seconds": 3.0,
+   "where": "Boss dies",
+   "note": "100%. The game adds 0.4 s of silence after it, so the take should end clean",
+   "prompt": "Giant alien creature dying, long falling groan ending in a massive wet burst of flesh and fluid, then sudden silence, cinematic, no music"
+  },
+  {
+   "id": "sfx_cache_open",
+   "seconds": 1.2,
+   "where": "A loot cache opens",
+   "note": "75%",
+   "prompt": "Heavy metal crate latch unlocking, mechanical clack and lid hiss opening, followed by a soft sparkling shimmer, sci-fi, no music"
+  },
+  {
+   "id": "sfx_powerup_pickup_c",
+   "seconds": 0.3,
+   "where": "Common power-up picked up",
+   "note": "50%",
+   "prompt": "Simple short bright pickup chime, single clean tone, sci-fi, no music"
+  },
+  {
+   "id": "sfx_powerup_pickup_r",
+   "seconds": 0.5,
+   "where": "Rare power-up picked up",
+   "note": "65%",
+   "prompt": "Bright sparkling pickup chime, two quick rising tones with a glassy shimmer, sci-fi, no music"
+  },
+  {
+   "id": "sfx_powerup_pickup_e",
+   "seconds": 1.0,
+   "where": "Epic power-up picked up",
+   "note": "80%",
+   "prompt": "Grand rich power-up chime, rising cascade of bright crystal tones with a deep warm swell underneath, magical sci-fi, no music"
+  },
+  {
+   "id": "sfx_card_show",
+   "seconds": 0.6,
+   "where": "Upgrade cards slide in",
+   "note": "35%",
+   "prompt": "Three quick light holographic card slides, soft airy swipes with a faint digital sparkle, no music"
+  },
+  {
+   "id": "flash_freeze",
+   "seconds": 2.0,
+   "where": "Cryo Station floor 4: every vent erupts and freezes the room (\"FLASH FREEZE: UNLOAD\")",
+   "note": "100%, music ducks. The \"UNLOAD\" moment: the follow-up shots are the payoff, so leave the tail quiet",
+   "prompt": "Massive burst of freezing gas from many steam vents at once, sharp crackling of ice forming fast, deep frozen boom, crystals tinkling after, no music"
+  },
+  {
+   "id": "vault_purge",
+   "seconds": 3.0,
+   "where": "Helix Data Vault floor 2: lights go out and the purge starts (\"PURGE PROTOCOL: REACH THE LIFT\")",
+   "note": "95%. The alarm part could also loop for the run to the lift",
+   "prompt": "Large facility power shutting down with a descending electric whine, heavy relays clunking off, then a low pulsing purge alarm starts, ominous, no voice, no music"
+  },
+  {
+   "id": "lamps_dying",
+   "seconds": 2.5,
+   "where": "The Burrows floor 2: after relay 2 the lamp line behind you dies (\"THE LAMPS ARE DYING\")",
+   "note": "80%. Plays together with the fast heartbeat; the game thread needs to add the id",
+   "prompt": "Row of old electric mine lamps failing one after another, buzzing flicker and sharp filament pops fading into the dark, cave echo, no music"
+  },
+  {
+   "id": "sfx_lowhp_heartbeat",
+   "seconds": 1.0,
+   "where": "HP under 25%, and the Burrows Stalker cue",
+   "note": "60%. One beat; the game loops and speeds it up, so make it one clean lub-dub",
+   "prompt": "Single slow heavy human heartbeat, deep muffled double thump, close and intimate, dry, no music"
+  },
+  {
+   "id": "sfx_grade_stamp_c",
+   "seconds": 0.6,
+   "where": "Run summary: the grade letter lands",
+   "note": "80%. One take for C/B/A; the game can layer a brighter ring for A",
+   "prompt": "Heavy rubber stamp slammed on paper on a metal desk, solid thud with a short metallic ring, no music"
+  },
+  {
+   "id": "sfx_grade_stamp_s",
+   "seconds": 1.5,
+   "where": "Run summary: an S grade lands",
+   "note": "100%. The brass hit is the one musical note here; if ElevenLabs refuses or adds a melody, drop \"brass\" and use the music pass later",
+   "prompt": "Massive stamp slam with a bright metallic ring and a short triumphant brass hit, epic reward, no music"
+  },
+  {
+   "id": "sfx_shatter",
+   "seconds": 0.5,
+   "where": "A frozen enemy dies",
+   "note": "65%",
+   "prompt": "Crisp ice block shattering into small glass-like shards, bright and sharp, close, no music"
+  },
+  {
+   "id": "sfx_hero_hit",
+   "seconds": 0.5,
+   "where": "The hero takes damage",
+   "note": "80%. Make 4 takes so it doesn't repeat; heavy haptic over 25 HP",
+   "prompt": "Armored soldier taking a hit, short male grunt of pain with a heavy body impact on plate armor, close, no music"
+  },
+  {
+   "id": "sfx_dash",
+   "seconds": 0.3,
+   "where": "Every dash",
+   "note": "60%. Plays often, so keep it light",
+   "prompt": "Very quick sharp air whoosh with a light servo boost hiss, short, close, no music"
+  }
+ ]
+}

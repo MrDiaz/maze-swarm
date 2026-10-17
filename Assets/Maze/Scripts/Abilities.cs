@@ -61,7 +61,7 @@ namespace Maze
                     if (e.dead || (e.p - c).magnitude > R + e.r) continue;
                     if (e.boss) e.slowT = 2f; else if (!e.type.nest) e.frozen = fz;
                 }
-                if (!Game.SimRun) { Fx.I.Sparks(MazeMap.ToWorld(c, 0.6f), 30, new Color(0.75f, 0.92f, 1f), 7, 0.7f, 0.12f, 4); Fx.I.Smoke(MazeMap.ToWorld(c, 0.3f), 12, new Color(0.85f, 0.95f, 1f), 3, 0.9f, 0.6f, 1); }
+                if (!Game.SimRun) { if (FirstCryoFx.Active) FirstCryoFx.Get().FreezeBurst(MazeMap.ToWorld(c, .2f), R); else { Fx.I.Sparks(MazeMap.ToWorld(c, 0.6f), 30, new Color(0.75f, 0.92f, 1f), 7, 0.7f, 0.12f, 4); Fx.I.Smoke(MazeMap.ToWorld(c, 0.3f), 12, new Color(0.85f, 0.95f, 1f), 3, 0.9f, 0.6f, 1); } }
                 g.AddShake(0.15f);
             }, ring: true);
             }

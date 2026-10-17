@@ -1,0 +1,3243 @@
+{
+  "title": "Cryo Station \u201420-object aspirational art prototype",
+  "units": "metres",
+  "up": "+Y",
+  "front": "+Z",
+  "source": "kit/CryoKitFinished.blend + geometry factories + finish_materials_all.py",
+  "geometryPolicy": "Approved hero main forms preserved. Separate visual meshes and intended collision envelopes.",
+  "materialPolicy": "Physically scaled quarter-metre coating tiles: albedo variation, packed roughness/metallic and independently authored microheight normals; original per-asset UV1 CPU AO.07 has height-localized glass frost. Other glass uses refined scalar optics. No high-to-low bake or hand-painted wear.",
+  "unityStatus": "Blocked by authentication fetching4 URP template packages; engine render unavailable",
+  "phonePerformance": "unmeasured",
+  "assets": [
+    {
+      "id": "01",
+      "name": "Modular service wall",
+      "slug": "wall_module",
+      "dimensions": [
+        4.0,
+        3.599999961853026,
+        0.4000000059604645
+      ],
+      "nominalDimensions": [
+        4.0,
+        3.6,
+        0.4
+      ],
+      "bounds": {
+        "min": [
+          -2.0,
+          -5.7220457705398076e-08,
+          -0.20000000298023224
+        ],
+        "max": [
+          2.0,
+          3.5999999046325684,
+          0.20000000298023224
+        ],
+        "dimensions": [
+          4.0,
+          3.599999961853026,
+          0.4000000059604645
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "ground-centre"
+      },
+      "snap": 0.5,
+      "source": "V4 wall LOD0: structural spine, enamel bays, roof access, return vents",
+      "distinctPurpose": "Modular service wall",
+      "animation": "static",
+      "glb": "kit/final-exports/01_wall_module/01_wall_module.glb",
+      "fbx": "kit/final-exports/01_wall_module/01_wall_module.fbx",
+      "gltf": "kit/shared-final/01_wall_module.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 0,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -2.0,
+          -5.7220457705398076e-08,
+          -0.20000000298023224
+        ],
+        "max": [
+          2.0,
+          3.5999999046325684,
+          0.20000000298023224
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/01_ao_uv1.png",
+        "resolution": 1024,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.7578933204530971,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 3392,
+      "meshes": 7,
+      "materials": [
+        "CRYO_SHARED_SIGNAGE",
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Cobalt_Enamel",
+        "Cryo_Cyan_Practical",
+        "Cryo_EPDM_Gasket"
+      ],
+      "glbSHA256": "6fe7eb79eaea0c4344ad1e9a8821c5fb9a858b4e1622c16a809897bbc4d6866d",
+      "glbBytes": 1469844,
+      "fbxSHA256": "c9b88560d057a68c12581275ed68c3eabb1b12ee247b1680b16fdff7414b94a4",
+      "fbxBytes": 201628,
+      "proof": "evidence/slice-final-kit-01-wall_module.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/01_wall_module/01_wall_module.glb",
+      "collapsedTrianglesRemoved": 0,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "CRYO_SHARED_SIGNAGE": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cobalt_Enamel": {
+          "authoredMaps": [
+            "cryo_cobalt_enamel_basecolor.png",
+            "cryo_cobalt_enamel_roughness_metallic.png",
+            "cryo_cobalt_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cyan_Practical": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-01-wall_module.png",
+      "baselineLibraryFileId": "libfile_228352f0c3c48191af90cc754cb8ae79",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_89a9d0b1cc2881919180c3620aabb66a"
+    },
+    {
+      "id": "02",
+      "name": "Inside corner wall junction",
+      "slug": "inside_corner",
+      "dimensions": [
+        2.0,
+        3.6000001430511475,
+        2.0
+      ],
+      "nominalDimensions": [
+        2.0,
+        3.6,
+        2.0
+      ],
+      "bounds": {
+        "min": [
+          -1.0,
+          0.0,
+          -1.0
+        ],
+        "max": [
+          1.0,
+          3.6000001430511475,
+          1.0
+        ],
+        "dimensions": [
+          2.0,
+          3.6000001430511475,
+          2.0
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "ground-centre"
+      },
+      "snap": 0.5,
+      "source": "New genuine 90-degree L junction using V4 wall construction standards",
+      "distinctPurpose": "Inside corner wall junction",
+      "animation": "static",
+      "glb": "kit/final-exports/02_inside_corner/02_inside_corner.glb",
+      "fbx": "kit/final-exports/02_inside_corner/02_inside_corner.fbx",
+      "gltf": "kit/shared-final/02_inside_corner.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 12,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -1.0,
+          0.0,
+          -1.0
+        ],
+        "max": [
+          1.0,
+          3.6000001430511475,
+          1.0
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/02_ao_uv1.png",
+        "resolution": 1024,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.8600745748620526,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 13572,
+      "meshes": 6,
+      "materials": [
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Cobalt_Enamel",
+        "Cryo_Cyan_Practical",
+        "Cryo_EPDM_Gasket"
+      ],
+      "glbSHA256": "0d5ab9fb1e62f1a7a783503cf27c7b21bd164e7bcaf3ba9f3013966450202872",
+      "glbBytes": 1684156,
+      "fbxSHA256": "840d829f54835b23b6b66224217dbf22e4c8e20ab6d9c0884e573ca695b1460a",
+      "fbxBytes": 541836,
+      "proof": "evidence/slice-final-kit-02-inside_corner.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/02_inside_corner/02_inside_corner.glb",
+      "collapsedTrianglesRemoved": 0,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cyan_Practical": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cobalt_Enamel": {
+          "authoredMaps": [
+            "cryo_cobalt_enamel_basecolor.png",
+            "cryo_cobalt_enamel_roughness_metallic.png",
+            "cryo_cobalt_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-02-inside_corner.png",
+      "baselineLibraryFileId": "libfile_83fcfdc1a0d081919b2c14d4ff41b39a",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_372fe10f3f448191b2101886b17a627b"
+    },
+    {
+      "id": "03",
+      "name": "Four-face support pillar",
+      "slug": "support_pillar",
+      "dimensions": [
+        0.699999988079071,
+        3.799999951720238,
+        0.699999988079071
+      ],
+      "nominalDimensions": [
+        0.7,
+        3.8,
+        0.7
+      ],
+      "bounds": {
+        "min": [
+          -0.3499999940395355,
+          5.9604643443123e-10,
+          -0.3499999940395355
+        ],
+        "max": [
+          0.3499999940395355,
+          3.799999952316284,
+          0.3499999940395355
+        ],
+        "dimensions": [
+          0.699999988079071,
+          3.799999951720238,
+          0.699999988079071
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "ground-centre"
+      },
+      "snap": 0.5,
+      "source": "V4 corner LOD0, accurately classified as a support pillar",
+      "distinctPurpose": "Four-face support pillar",
+      "animation": "static",
+      "glb": "kit/final-exports/03_support_pillar/03_support_pillar.glb",
+      "fbx": "kit/final-exports/03_support_pillar/03_support_pillar.fbx",
+      "gltf": "kit/shared-final/03_support_pillar.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 0,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -0.3499999940395355,
+          5.9604643443123e-10,
+          -0.3499999940395355
+        ],
+        "max": [
+          0.3499999940395355,
+          3.799999952316284,
+          0.3499999940395355
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/03_ao_uv1.png",
+        "resolution": 1024,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.7000139467743983,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 1116,
+      "meshes": 6,
+      "materials": [
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Cobalt_Enamel",
+        "Cryo_Cyan_Practical",
+        "Cryo_EPDM_Gasket"
+      ],
+      "glbSHA256": "351c2799046c0a78fddcda3102464c2a17c8ea80d9f54449e841275e8330b41b",
+      "glbBytes": 1055160,
+      "fbxSHA256": "3a2aca8b0daf4611f3322b27acbccdaa6759c1847dcf55dad8b3ee10d0c3b99d",
+      "fbxBytes": 103036,
+      "proof": "evidence/slice-final-kit-03-support_pillar.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/03_support_pillar/03_support_pillar.glb",
+      "collapsedTrianglesRemoved": 0,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cobalt_Enamel": {
+          "authoredMaps": [
+            "cryo_cobalt_enamel_basecolor.png",
+            "cryo_cobalt_enamel_roughness_metallic.png",
+            "cryo_cobalt_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cyan_Practical": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-03-support_pillar.png",
+      "baselineLibraryFileId": "libfile_f8300d0e2ed081919599d34b2de8d47d",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_f13a5fb2dfa08191b9874ca11531c1af"
+    },
+    {
+      "id": "04",
+      "name": "Flush floor panel",
+      "slug": "floor_panel",
+      "dimensions": [
+        2.0,
+        0.11999999731779099,
+        2.0
+      ],
+      "nominalDimensions": [
+        2.0,
+        0.12,
+        2.0
+      ],
+      "bounds": {
+        "min": [
+          -1.0,
+          -0.11999999731779099,
+          -1.0
+        ],
+        "max": [
+          1.0,
+          0.0,
+          1.0
+        ],
+        "dimensions": [
+          2.0,
+          0.11999999731779099,
+          2.0
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "top-centre"
+      },
+      "snap": 2.0,
+      "source": "V4 floor LOD0 with actual recessed captive hex fasteners",
+      "distinctPurpose": "Flush floor panel",
+      "animation": "static",
+      "glb": "kit/final-exports/04_floor_panel/04_floor_panel.glb",
+      "fbx": "kit/final-exports/04_floor_panel/04_floor_panel.fbx",
+      "gltf": "kit/shared-final/04_floor_panel.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 8,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -1.0,
+          -0.11999999731779099,
+          -1.0
+        ],
+        "max": [
+          1.0,
+          0.0,
+          1.0
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/04_ao_uv1.png",
+        "resolution": 512,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.9554280098596858,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 110,
+      "meshes": 3,
+      "materials": [
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Quiet_Matte_Floor"
+      ],
+      "glbSHA256": "1ad371112d5f28a09e2692c0717118fde7ca6dcc6b313f008c6bff883be4daea",
+      "glbBytes": 432684,
+      "fbxSHA256": "13d4870c829aa2c66442160400ee492f5d4405a071da851cedd524ee20b10c47",
+      "fbxBytes": 42380,
+      "proof": "evidence/slice-final-kit-04-floor_panel.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/04_floor_panel/04_floor_panel.glb",
+      "collapsedTrianglesRemoved": 2,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Quiet_Matte_Floor": {
+          "authoredMaps": [
+            "cryo_quiet_matte_floor_basecolor.png",
+            "cryo_quiet_matte_floor_roughness_metallic.png",
+            "cryo_quiet_matte_floor_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-04-floor_panel.png",
+      "baselineLibraryFileId": "libfile_b5cf8071aba48191bf181015b419dc87",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_8ef4dc38a64c8191a7839be5591bae87"
+    },
+    {
+      "id": "05",
+      "name": "Service trench grate",
+      "slug": "floor_trench_grate",
+      "dimensions": [
+        2.0,
+        0.15999999663233758,
+        1.2000000476837158
+      ],
+      "nominalDimensions": [
+        2.0,
+        0.16,
+        1.2
+      ],
+      "bounds": {
+        "min": [
+          -1.0,
+          -0.1599999964237213,
+          -0.6000000238418579
+        ],
+        "max": [
+          1.0,
+          2.0861626315316073e-10,
+          0.6000000238418579
+        ],
+        "dimensions": [
+          2.0,
+          0.15999999663233758,
+          1.2000000476837158
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "top-centre"
+      },
+      "snap": 0.2,
+      "source": "V4 vent LOD0: actual open bars, return well and supporting frame",
+      "distinctPurpose": "Service trench grate",
+      "animation": "static",
+      "glb": "kit/final-exports/05_floor_trench_grate/05_floor_trench_grate.glb",
+      "fbx": "kit/final-exports/05_floor_trench_grate/05_floor_trench_grate.fbx",
+      "gltf": "kit/shared-final/05_floor_trench_grate.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 0,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -1.0,
+          -0.1599999964237213,
+          -0.6000000238418579
+        ],
+        "max": [
+          1.0,
+          2.0861626315316073e-10,
+          0.6000000238418579
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/05_ao_uv1.png",
+        "resolution": 512,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.7415982185262834,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 520,
+      "meshes": 2,
+      "materials": [
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel"
+      ],
+      "glbSHA256": "f2bd6424f3e3b44000b93ef237c83e9957e9496cf5691acef2354cd2af0adc4f",
+      "glbBytes": 350280,
+      "fbxSHA256": "53241998b2301839ee004b50822cd2c3bca99a8b8dc86d1a8daeab17b234e74d",
+      "fbxBytes": 52188,
+      "proof": "evidence/slice-final-kit-05-floor_trench_grate.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/05_floor_trench_grate/05_floor_trench_grate.glb",
+      "collapsedTrianglesRemoved": 0,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-05-floor_trench_grate.png",
+      "baselineLibraryFileId": "libfile_47c5005e7c9081919ab2ded2dd32e8a3",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_801be23b20a08191bb623a3faa7aef10"
+    },
+    {
+      "id": "06",
+      "name": "Sealed sliding bulkhead",
+      "slug": "sliding_bulkhead",
+      "dimensions": [
+        4.0,
+        3.5999999048188327,
+        0.6499999761581421
+      ],
+      "nominalDimensions": [
+        4.0,
+        3.6,
+        0.65
+      ],
+      "bounds": {
+        "min": [
+          -2.0,
+          -1.8626451769865326e-10,
+          -0.32499998807907104
+        ],
+        "max": [
+          2.0,
+          3.5999999046325684,
+          0.32499998807907104
+        ],
+        "dimensions": [
+          4.0,
+          3.5999999048188327,
+          0.6499999761581421
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "ground-centre"
+      },
+      "snap": 0.5,
+      "source": "V4 door-frame LOD0 plus two new separately parented pressure leaves",
+      "distinctPurpose": "Sealed sliding bulkhead",
+      "animation": "static",
+      "glb": "kit/final-exports/06_sliding_bulkhead/06_sliding_bulkhead.glb",
+      "fbx": "kit/final-exports/06_sliding_bulkhead/06_sliding_bulkhead.fbx",
+      "gltf": "kit/shared-final/06_sliding_bulkhead.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 0,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -2.0,
+          -1.8626451769865326e-10,
+          -0.32499998807907104
+        ],
+        "max": [
+          2.0,
+          3.5999999046325684,
+          0.32499998807907104
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/06_ao_uv1.png",
+        "resolution": 1024,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.6909259785746016,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 17368,
+      "meshes": 20,
+      "materials": [
+        "CRYO_SHARED_SIGNAGE",
+        "Cryo_Amber_Status",
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Cobalt_Enamel",
+        "Cryo_Cyan_Practical",
+        "Cryo_EPDM_Gasket"
+      ],
+      "glbSHA256": "5b43c4395505a6180df1ef7f7ceb650c1ac53779dc933a61c6eb5b19d3220f92",
+      "glbBytes": 2429832,
+      "fbxSHA256": "95eb7483de11a6d5c0dc8bad51bd83094496729f55c5d42d2d6c950b40572084",
+      "fbxBytes": 738684,
+      "proof": "evidence/slice-final-kit-06-sliding_bulkhead.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/06_sliding_bulkhead/06_sliding_bulkhead.glb",
+      "collapsedTrianglesRemoved": 0,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_Cobalt_Enamel": {
+          "authoredMaps": [
+            "cryo_cobalt_enamel_basecolor.png",
+            "cryo_cobalt_enamel_roughness_metallic.png",
+            "cryo_cobalt_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "CRYO_SHARED_SIGNAGE": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cyan_Practical": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Amber_Status": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-06-sliding_bulkhead.png",
+      "baselineLibraryFileId": "libfile_cd587b4c53cc8191805ce60f191acedb",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_f46c3cb45be4819183ad71f4c4145768"
+    },
+    {
+      "id": "07",
+      "name": "Approved cryopod and substantial cradle",
+      "slug": "hero_pod_cradle",
+      "dimensions": [
+        3.299999952316284,
+        3.9009997844696045,
+        2.224500060081482
+      ],
+      "nominalDimensions": [
+        3.3,
+        3.91,
+        2.18
+      ],
+      "bounds": {
+        "min": [
+          -1.649999976158142,
+          0.0,
+          -1.090000033378601
+        ],
+        "max": [
+          1.649999976158142,
+          3.9009997844696045,
+          1.1345000267028809
+        ],
+        "dimensions": [
+          3.299999952316284,
+          3.9009997844696045,
+          2.224500060081482
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "ground-centre"
+      },
+      "snap": 0.1,
+      "source": "Approved hero-source/CryoSlice.blend forms retained exactly; no character",
+      "distinctPurpose": "Approved cryopod and substantial cradle",
+      "animation": "static",
+      "glb": "kit/final-exports/07_hero_pod_cradle/07_hero_pod_cradle.glb",
+      "fbx": "kit/final-exports/07_hero_pod_cradle/07_hero_pod_cradle.fbx",
+      "gltf": "kit/shared-final/07_hero_pod_cradle.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 0,
+      "geometryApproved": true,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -1.649999976158142,
+          0.0,
+          -1.090000033378601
+        ],
+        "max": [
+          1.649999976158142,
+          3.9009997844696045,
+          1.1345000267028809
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/07_ao_uv1.png",
+        "resolution": 1024,
+        "samples": 64,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.5846000626472594,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 52,
+      "triangles": 17508,
+      "meshes": 12,
+      "materials": [
+        "CRYO_SHARED_SIGNAGE",
+        "Cryo_Amber_Status",
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Clear_Inspection_Glass",
+        "Cryo_Cobalt_Enamel",
+        "Cryo_Cyan_Practical",
+        "Cryo_EPDM_Gasket",
+        "Cryo_Safety_Paint",
+        "Cryo_Selective_Frost",
+        "Display / Stasis telemetry"
+      ],
+      "glbSHA256": "7bbe76c0b0b7ca7d067f57a7e2d29c50b9231d208f19da56da0ba146012b3759",
+      "glbBytes": 2976668,
+      "fbxSHA256": "5fbe480680e08d4e1e2ffef0ff20c0283d6f89e7f8abeaa7d71bba38a662ac04",
+      "fbxBytes": 896236,
+      "proof": "evidence/slice-final-kit-07-hero_pod_cradle.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/07_hero_pod_cradle/07_hero_pod_cradle.glb",
+      "collapsedTrianglesRemoved": 56,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Display / Stasis telemetry": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cobalt_Enamel": {
+          "authoredMaps": [
+            "cryo_cobalt_enamel_basecolor.png",
+            "cryo_cobalt_enamel_roughness_metallic.png",
+            "cryo_cobalt_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Clear_Inspection_Glass": {
+          "authoredMaps": [
+            "glass_edge_frost_basecolor.png",
+            "glass_edge_frost_roughness.png",
+            "glass_edge_frost_transmission.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "transmission glass excluded"
+        },
+        "Cryo_Amber_Status": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Safety_Paint": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Selective_Frost": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "CRYO_SHARED_SIGNAGE": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cyan_Practical": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-07-hero_pod_cradle.png",
+      "baselineLibraryFileId": "libfile_c223660a0fb48191bb9b1ef700b5b2a9",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_2678f002132881918b371ff2d818ee30"
+    },
+    {
+      "id": "08",
+      "name": "Cryo isolation service cabinet",
+      "slug": "cryo_service_cabinet",
+      "dimensions": [
+        1.0770000219345093,
+        2.049999952316284,
+        0.8480000197887421
+      ],
+      "nominalDimensions": [
+        1.1,
+        2.05,
+        0.9
+      ],
+      "bounds": {
+        "min": [
+          -0.5380000472068787,
+          0.0,
+          -0.4099999964237213
+        ],
+        "max": [
+          0.5389999747276306,
+          2.049999952316284,
+          0.43800002336502075
+        ],
+        "dimensions": [
+          1.0770000219345093,
+          2.049999952316284,
+          0.8480000197887421
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "ground-centre"
+      },
+      "snap": 0.1,
+      "source": "New independent geometry; matching approved cradle finish",
+      "distinctPurpose": "Cryo isolation service cabinet",
+      "animation": "static",
+      "glb": "kit/final-exports/08_cryo_service_cabinet/08_cryo_service_cabinet.glb",
+      "fbx": "kit/final-exports/08_cryo_service_cabinet/08_cryo_service_cabinet.fbx",
+      "gltf": "kit/shared-final/08_cryo_service_cabinet.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 0,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -0.5380000472068787,
+          0.0,
+          -0.4099999964237213
+        ],
+        "max": [
+          0.5389999747276306,
+          2.049999952316284,
+          0.43800002336502075
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/08_ao_uv1.png",
+        "resolution": 512,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.8925761552010044,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 10248,
+      "meshes": 8,
+      "materials": [
+        "Cryo_Amber_Status",
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Cobalt_Enamel",
+        "Cryo_Cyan_Practical",
+        "Cryo_EPDM_Gasket",
+        "Cryo_Selective_Frost"
+      ],
+      "glbSHA256": "fa3f14c9c1f6beff466497ea4db87eaf6e0d379a4577f2a8172a611af3927d85",
+      "glbBytes": 1265984,
+      "fbxSHA256": "07a4a6bf230ce87ff51b7003a62f324ec401211a126d84b1d8b029c545108cca",
+      "fbxBytes": 426092,
+      "proof": "evidence/slice-final-kit-08-cryo_service_cabinet.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/08_cryo_service_cabinet/08_cryo_service_cabinet.glb",
+      "collapsedTrianglesRemoved": 64,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Selective_Frost": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Amber_Status": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cobalt_Enamel": {
+          "authoredMaps": [
+            "cryo_cobalt_enamel_basecolor.png",
+            "cryo_cobalt_enamel_roughness_metallic.png",
+            "cryo_cobalt_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cyan_Practical": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-08-cryo_service_cabinet.png",
+      "baselineLibraryFileId": "libfile_1a8a67ef5c408191a5cdf3881ddab51b",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_b43baee1216c81918e79f5057a70e2eb"
+    },
+    {
+      "id": "09",
+      "name": "Dual-circuit reservoir and pump assembly",
+      "slug": "cooling_reservoir_pumps",
+      "dimensions": [
+        3.4800000190734863,
+        3.1481053864955904,
+        2.6559998989105225
+      ],
+      "nominalDimensions": [
+        3.6,
+        3.2,
+        2.8
+      ],
+      "bounds": {
+        "min": [
+          -1.7400000095367432,
+          -3.5762786065873797e-09,
+          -1.3459999561309814
+        ],
+        "max": [
+          1.7400000095367432,
+          3.1481053829193115,
+          1.309999942779541
+        ],
+        "dimensions": [
+          3.4800000190734863,
+          3.1481053864955904,
+          2.6559998989105225
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "ground-centre"
+      },
+      "snap": 0.1,
+      "source": "cryo_v4_coolant_lod0; local instrument stanchion added",
+      "distinctPurpose": "Dual-circuit reservoir and pump assembly",
+      "animation": "static",
+      "glb": "kit/final-exports/09_cooling_reservoir_pumps/09_cooling_reservoir_pumps.glb",
+      "fbx": "kit/final-exports/09_cooling_reservoir_pumps/09_cooling_reservoir_pumps.fbx",
+      "gltf": "kit/shared-final/09_cooling_reservoir_pumps.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 12,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -1.7400000095367432,
+          -3.5762786065873797e-09,
+          -1.3459999561309814
+        ],
+        "max": [
+          1.7400000095367432,
+          3.1481053829193115,
+          1.309999942779541
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/09_ao_uv1.png",
+        "resolution": 1024,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.3492552402555218,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 17470,
+      "meshes": 16,
+      "materials": [
+        "CRYO_SHARED_SIGNAGE",
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Cobalt_Enamel",
+        "Cryo_Cyan_Practical",
+        "Cryo_EPDM_Gasket",
+        "Cryo_Safety_Paint",
+        "Cryo_Selective_Frost",
+        "Metal / Recessed maintenance grate"
+      ],
+      "glbSHA256": "373ef32a7f4d441beb8286f1a77c5cac3b0d2ef7c6fd1ac24fd61c138bd51f80",
+      "glbBytes": 3696684,
+      "fbxSHA256": "7423d1ed2c5273d2e505e555eed2f0e519d59fe51cbe24e52c92294acc03ee9e",
+      "fbxBytes": 790972,
+      "proof": "evidence/slice-final-kit-09-cooling_reservoir_pumps.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/09_cooling_reservoir_pumps/09_cooling_reservoir_pumps.glb",
+      "collapsedTrianglesRemoved": 112,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_Cyan_Practical": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "CRYO_SHARED_SIGNAGE": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cobalt_Enamel": {
+          "authoredMaps": [
+            "cryo_cobalt_enamel_basecolor.png",
+            "cryo_cobalt_enamel_roughness_metallic.png",
+            "cryo_cobalt_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Metal / Recessed maintenance grate": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Safety_Paint": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Selective_Frost": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-09-cooling_reservoir_pumps.png",
+      "baselineLibraryFileId": "libfile_a892b31d81b0819195b314113322bf5e",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_d3afb31f92c48191846cb62001a4eb2d"
+    },
+    {
+      "id": "10",
+      "name": "Coolant elbow and isolation manifold",
+      "slug": "coolant_manifold_elbow",
+      "dimensions": [
+        1.9399999976158142,
+        1.1549999713897705,
+        0.5730000138282776
+      ],
+      "nominalDimensions": [
+        2.0,
+        1.2,
+        0.6
+      ],
+      "bounds": {
+        "min": [
+          -0.9700000286102295,
+          0.0,
+          -0.29500001668930054
+        ],
+        "max": [
+          0.9699999690055847,
+          1.1549999713897705,
+          0.27799999713897705
+        ],
+        "dimensions": [
+          1.9399999976158142,
+          1.1549999713897705,
+          0.5730000138282776
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "ground-centre"
+      },
+      "snap": 0.25,
+      "source": "New isolated module; V4 supply/return coupler and clean enamel language reused",
+      "distinctPurpose": "Coolant elbow and isolation manifold",
+      "animation": "static",
+      "glb": "kit/final-exports/10_coolant_manifold_elbow/10_coolant_manifold_elbow.glb",
+      "fbx": "kit/final-exports/10_coolant_manifold_elbow/10_coolant_manifold_elbow.fbx",
+      "gltf": "kit/shared-final/10_coolant_manifold_elbow.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 24,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -0.9700000286102295,
+          0.0,
+          -0.29500001668930054
+        ],
+        "max": [
+          0.9699999690055847,
+          1.1549999713897705,
+          0.27799999713897705
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/10_ao_uv1.png",
+        "resolution": 512,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.6084442245461796,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 28896,
+      "meshes": 7,
+      "materials": [
+        "Cryo_Amber_Status",
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Cobalt_Enamel",
+        "Cryo_EPDM_Gasket",
+        "Cryo_Selective_Frost"
+      ],
+      "glbSHA256": "3da153ef60277836a7df468a07a24de4de78331dc299e81f2aa9e88362e77d9f",
+      "glbBytes": 2476492,
+      "fbxSHA256": "a3a72c659d1d5862ecd406a7b9b63e0f097818a16582900b4df061ee600b7baf",
+      "fbxBytes": 1131452,
+      "proof": "evidence/slice-final-kit-10-coolant_manifold_elbow.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/10_coolant_manifold_elbow/10_coolant_manifold_elbow.glb",
+      "collapsedTrianglesRemoved": 192,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Selective_Frost": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cobalt_Enamel": {
+          "authoredMaps": [
+            "cryo_cobalt_enamel_basecolor.png",
+            "cryo_cobalt_enamel_roughness_metallic.png",
+            "cryo_cobalt_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Amber_Status": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-10-coolant_manifold_elbow.png",
+      "baselineLibraryFileId": "libfile_69c04e9ecdf08191b04c942ced7b4a46",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_f2232b5eb2b88191ab026dcc192904cc"
+    },
+    {
+      "id": "11",
+      "name": "Open overhead cable tray",
+      "slug": "overhead_cable_tray",
+      "dimensions": [
+        2.0,
+        0.24849998950958252,
+        0.5880000293254852
+      ],
+      "nominalDimensions": [
+        2.0,
+        0.25,
+        0.6
+      ],
+      "bounds": {
+        "min": [
+          -1.0,
+          -0.24849998950958252,
+          -0.2939999997615814
+        ],
+        "max": [
+          1.0,
+          0.0,
+          0.2940000295639038
+        ],
+        "dimensions": [
+          2.0,
+          0.24849998950958252,
+          0.5880000293254852
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "mount-centre"
+      },
+      "snap": 0.5,
+      "source": "New open ladder construction, matching V4 structural rail finish",
+      "distinctPurpose": "Open overhead cable tray",
+      "animation": "static",
+      "glb": "kit/final-exports/11_overhead_cable_tray/11_overhead_cable_tray.glb",
+      "fbx": "kit/final-exports/11_overhead_cable_tray/11_overhead_cable_tray.fbx",
+      "gltf": "kit/shared-final/11_overhead_cable_tray.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 72,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -1.0,
+          -0.24849998950958252,
+          -0.2939999997615814
+        ],
+        "max": [
+          1.0,
+          0.0,
+          0.2940000295639038
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/11_ao_uv1.png",
+        "resolution": 512,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.7655933900239943,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 14276,
+      "meshes": 5,
+      "materials": [
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_EPDM_Gasket",
+        "Cryo_Safety_Paint"
+      ],
+      "glbSHA256": "0ed1ac961fe201ce594ce1955798f34cf77c9391e2b7e20c3f5a31595864457d",
+      "glbBytes": 1549792,
+      "fbxSHA256": "ac64c81d22b63ecb26d32a9c0236e95ed67be19dd7fa1ea9cba3cf0c478ec04d",
+      "fbxBytes": 566652,
+      "proof": "evidence/slice-final-kit-11-overhead_cable_tray.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/11_overhead_cable_tray/11_overhead_cable_tray.glb",
+      "collapsedTrianglesRemoved": 0,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Safety_Paint": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-11-overhead_cable_tray.png",
+      "baselineLibraryFileId": "libfile_cce49145291c819190819de2965d2d85",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_4c22e1ba2d748191af10e02b4ef97ed0"
+    },
+    {
+      "id": "12",
+      "name": "Guarded wall extraction fan",
+      "slug": "vent_fan_unit",
+      "dimensions": [
+        1.199999988079071,
+        1.2000000476837158,
+        0.32200005650520325
+      ],
+      "nominalDimensions": [
+        1.2,
+        1.2,
+        0.35
+      ],
+      "bounds": {
+        "min": [
+          -0.5999999642372131,
+          -0.6000000238418579,
+          -0.0
+        ],
+        "max": [
+          0.6000000238418579,
+          0.6000000238418579,
+          0.32200005650520325
+        ],
+        "dimensions": [
+          1.199999988079071,
+          1.2000000476837158,
+          0.32200005650520325
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "mount-centre"
+      },
+      "snap": 0.25,
+      "source": "New independent guarded impeller; V4 vent palette and service fasteners reused",
+      "distinctPurpose": "Guarded wall extraction fan",
+      "animation": "static",
+      "glb": "kit/final-exports/12_vent_fan_unit/12_vent_fan_unit.glb",
+      "fbx": "kit/final-exports/12_vent_fan_unit/12_vent_fan_unit.fbx",
+      "gltf": "kit/shared-final/12_vent_fan_unit.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 0,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -0.5999999642372131,
+          -0.6000000238418579,
+          -0.0
+        ],
+        "max": [
+          0.6000000238418579,
+          0.6000000238418579,
+          0.32200005650520325
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/12_ao_uv1.png",
+        "resolution": 512,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.512328881668854,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 10248,
+      "meshes": 7,
+      "materials": [
+        "Cryo_Amber_Status",
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Cobalt_Enamel",
+        "Cryo_Cyan_Practical",
+        "Cryo_EPDM_Gasket"
+      ],
+      "glbSHA256": "b74b17c6e799aea9ee9409454befd10f1160b84bc313b1137eaae5a96cff88ad",
+      "glbBytes": 1338356,
+      "fbxSHA256": "2b0e09296bab0b2bb17404c3512981021b2be6c89325cfe8330eb8f6a3f20ade",
+      "fbxBytes": 445420,
+      "proof": "evidence/slice-final-kit-12-vent_fan_unit.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/12_vent_fan_unit/12_vent_fan_unit.glb",
+      "collapsedTrianglesRemoved": 0,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cobalt_Enamel": {
+          "authoredMaps": [
+            "cryo_cobalt_enamel_basecolor.png",
+            "cryo_cobalt_enamel_roughness_metallic.png",
+            "cryo_cobalt_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Amber_Status": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cyan_Practical": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-12-vent_fan_unit.png",
+      "baselineLibraryFileId": "libfile_5162aa1d10548191a5008d24e00f9932",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_5544112f6c6081918b27e67529b80bb0"
+    },
+    {
+      "id": "13",
+      "name": "Life-support research workstation",
+      "slug": "research_workstation",
+      "dimensions": [
+        1.340000033378601,
+        1.2463167913258075,
+        0.8371449410915375
+      ],
+      "nominalDimensions": [
+        1.4,
+        1.25,
+        0.9
+      ],
+      "bounds": {
+        "min": [
+          -0.6700000166893005,
+          -7.450580707946131e-10,
+          -0.42714494466781616
+        ],
+        "max": [
+          0.6700000166893005,
+          1.2463167905807495,
+          0.4099999964237213
+        ],
+        "dimensions": [
+          1.340000033378601,
+          1.2463167913258075,
+          0.8371449410915375
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "ground-centre"
+      },
+      "snap": 0.1,
+      "source": "cryo_v4_console_lod0; fitted rear service hatch added",
+      "distinctPurpose": "Life-support research workstation",
+      "animation": "static",
+      "glb": "kit/final-exports/13_research_workstation/13_research_workstation.glb",
+      "fbx": "kit/final-exports/13_research_workstation/13_research_workstation.fbx",
+      "gltf": "kit/shared-final/13_research_workstation.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 0,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -0.6700000166893005,
+          -7.450580707946131e-10,
+          -0.42714494466781616
+        ],
+        "max": [
+          0.6700000166893005,
+          1.2463167905807495,
+          0.4099999964237213
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/13_ao_uv1.png",
+        "resolution": 512,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.7761267254719552,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 1934,
+      "meshes": 11,
+      "materials": [
+        "CRYO_SHARED_SIGNAGE",
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Cobalt_Enamel",
+        "Cryo_EPDM_Gasket",
+        "Cryo_Safety_Paint",
+        "Display / Shared life-support diagnostics"
+      ],
+      "glbSHA256": "b6bbb561c8ea503fbfaca8c07c6aa3c1128fbb2384b0eb498f35c8c87bdffd33",
+      "glbBytes": 1064064,
+      "fbxSHA256": "3a251c90240e21de3b7169c5f5931085b51d502ba4db20ecd4f94557de20ff20",
+      "fbxBytes": 157996,
+      "proof": "evidence/slice-final-kit-13-research_workstation.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/13_research_workstation/13_research_workstation.glb",
+      "collapsedTrianglesRemoved": 0,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_Cobalt_Enamel": {
+          "authoredMaps": [
+            "cryo_cobalt_enamel_basecolor.png",
+            "cryo_cobalt_enamel_roughness_metallic.png",
+            "cryo_cobalt_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Safety_Paint": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "CRYO_SHARED_SIGNAGE": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Display / Shared life-support diagnostics": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-13-research_workstation.png",
+      "baselineLibraryFileId": "libfile_5a5f8d11da048191bc8b1423d6f0856e",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_b8e89b912b188191a436ee1c2d29f5c4"
+    },
+    {
+      "id": "14",
+      "name": "Wall-mounted cryo control terminal",
+      "slug": "wall_control_terminal",
+      "dimensions": [
+        0.800000011920929,
+        0.6000000238418579,
+        0.1764999993641565
+      ],
+      "nominalDimensions": [
+        0.8,
+        0.6,
+        0.18
+      ],
+      "bounds": {
+        "min": [
+          -0.4000000059604645,
+          -0.30000001192092896,
+          -6.7551324534065316e-09
+        ],
+        "max": [
+          0.4000000059604645,
+          0.30000001192092896,
+          0.17649999260902405
+        ],
+        "dimensions": [
+          0.800000011920929,
+          0.6000000238418579,
+          0.1764999993641565
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "mount-centre"
+      },
+      "snap": 0.1,
+      "source": "New geometry; shared equipment finish",
+      "distinctPurpose": "Wall-mounted cryo control terminal",
+      "animation": "static",
+      "glb": "kit/final-exports/14_wall_control_terminal/14_wall_control_terminal.glb",
+      "fbx": "kit/final-exports/14_wall_control_terminal/14_wall_control_terminal.fbx",
+      "gltf": "kit/shared-final/14_wall_control_terminal.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 0,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -0.4000000059604645,
+          -0.30000001192092896,
+          -6.7551324534065316e-09
+        ],
+        "max": [
+          0.4000000059604645,
+          0.30000001192092896,
+          0.17649999260902405
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/14_ao_uv1.png",
+        "resolution": 512,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.7562480208125993,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 5272,
+      "meshes": 8,
+      "materials": [
+        "Cryo_Amber_Status",
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Clear_Inspection_Glass",
+        "Cryo_Cobalt_Enamel",
+        "Cryo_Cyan_Practical",
+        "Cryo_EPDM_Gasket"
+      ],
+      "glbSHA256": "224fc72216f047dec8e1f153e7a84960dd4e56901452888a6259eebeee8917b9",
+      "glbBytes": 990352,
+      "fbxSHA256": "62e78531247435c0cb5955ce2dc5b3a863e2f8b0d9250b76812298e0bd8aec77",
+      "fbxBytes": 246860,
+      "proof": "evidence/slice-final-kit-14-wall_control_terminal.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/14_wall_control_terminal/14_wall_control_terminal.glb",
+      "collapsedTrianglesRemoved": 0,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Amber_Status": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Clear_Inspection_Glass": {
+          "authoredMaps": [],
+          "optics": "constant clear transmission.965/roughness.026/IOR1.46; no edge mask on this asset",
+          "AO": "transmission glass excluded"
+        },
+        "Cryo_Cyan_Practical": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cobalt_Enamel": {
+          "authoredMaps": [
+            "cryo_cobalt_enamel_basecolor.png",
+            "cryo_cobalt_enamel_roughness_metallic.png",
+            "cryo_cobalt_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-14-wall_control_terminal.png",
+      "baselineLibraryFileId": "libfile_f98ca7fce8648191a25a960822652f72",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_6315656bd1f48191aaa49be40250f80d"
+    },
+    {
+      "id": "15",
+      "name": "Low maintenance drawer cabinet",
+      "slug": "low_cover_cabinet",
+      "dimensions": [
+        2.0145000219345093,
+        1.124500036239624,
+        0.8290000259876251
+      ],
+      "nominalDimensions": [
+        2.05,
+        1.13,
+        0.85
+      ],
+      "bounds": {
+        "min": [
+          -1.0,
+          0.0,
+          -0.4099999964237213
+        ],
+        "max": [
+          1.0145000219345093,
+          1.124500036239624,
+          0.4190000295639038
+        ],
+        "dimensions": [
+          2.0145000219345093,
+          1.124500036239624,
+          0.8290000259876251
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "ground-centre"
+      },
+      "snap": 0.1,
+      "source": "New low, wide geometry; independent of tall cabinet 08",
+      "distinctPurpose": "Low maintenance drawer cabinet",
+      "animation": "static",
+      "glb": "kit/final-exports/15_low_cover_cabinet/15_low_cover_cabinet.glb",
+      "fbx": "kit/final-exports/15_low_cover_cabinet/15_low_cover_cabinet.fbx",
+      "gltf": "kit/shared-final/15_low_cover_cabinet.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 0,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -1.0,
+          0.0,
+          -0.4099999964237213
+        ],
+        "max": [
+          1.0145000219345093,
+          1.124500036239624,
+          0.4190000295639038
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/15_ao_uv1.png",
+        "resolution": 512,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.8858801655873215,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 9100,
+      "meshes": 6,
+      "materials": [
+        "Cryo_Amber_Status",
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Cobalt_Enamel",
+        "Cryo_EPDM_Gasket"
+      ],
+      "glbSHA256": "6fa1aca52709981279c67c59d3b6460d8ff2bd452bef5d9fc70edca64edca586",
+      "glbBytes": 1245192,
+      "fbxSHA256": "8168dfa9f0df24c0c9e1bf05e4b44788b96cb1b1679f74059898f06e7db6e13e",
+      "fbxBytes": 370780,
+      "proof": "evidence/slice-final-kit-15-low_cover_cabinet.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/15_low_cover_cabinet/15_low_cover_cabinet.glb",
+      "collapsedTrianglesRemoved": 0,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Amber_Status": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cobalt_Enamel": {
+          "authoredMaps": [
+            "cryo_cobalt_enamel_basecolor.png",
+            "cryo_cobalt_enamel_roughness_metallic.png",
+            "cryo_cobalt_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-15-low_cover_cabinet.png",
+      "baselineLibraryFileId": "libfile_ab7f90269e4c819186528eb076092a46",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_9bf6a447b29881918292e3815177ff6c"
+    },
+    {
+      "id": "16",
+      "name": "Stackable insulated equipment case",
+      "slug": "cargo_crate",
+      "dimensions": [
+        1.2000000476837158,
+        0.8585000038146973,
+        0.8330000042915344
+      ],
+      "nominalDimensions": [
+        1.2,
+        0.86,
+        0.88
+      ],
+      "bounds": {
+        "min": [
+          -0.6000000238418579,
+          0.0,
+          -0.4000000059604645
+        ],
+        "max": [
+          0.6000000238418579,
+          0.8585000038146973,
+          0.43299999833106995
+        ],
+        "dimensions": [
+          1.2000000476837158,
+          0.8585000038146973,
+          0.8330000042915344
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "ground-centre"
+      },
+      "snap": 0.1,
+      "source": "New transport-case geometry with stacking shoes and catches",
+      "distinctPurpose": "Stackable insulated equipment case",
+      "animation": "static",
+      "glb": "kit/final-exports/16_cargo_crate/16_cargo_crate.glb",
+      "fbx": "kit/final-exports/16_cargo_crate/16_cargo_crate.fbx",
+      "gltf": "kit/shared-final/16_cargo_crate.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 0,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -0.6000000238418579,
+          0.0,
+          -0.4000000059604645
+        ],
+        "max": [
+          0.6000000238418579,
+          0.8585000038146973,
+          0.43299999833106995
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/16_ao_uv1.png",
+        "resolution": 512,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.8526217939536207,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 6332,
+      "meshes": 6,
+      "materials": [
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Cobalt_Enamel",
+        "Cryo_EPDM_Gasket",
+        "Cryo_Safety_Paint"
+      ],
+      "glbSHA256": "e843db18b26e4b18932f2a96966de66d8c4c11c77bd7878ccc9e488506bec01a",
+      "glbBytes": 1093316,
+      "fbxSHA256": "305b0dbf011e8256f7d4ef38b6969dddbda4dedd9cda5b396f5a3bd95b03cd18",
+      "fbxBytes": 272716,
+      "proof": "evidence/slice-final-kit-16-cargo_crate.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/16_cargo_crate/16_cargo_crate.glb",
+      "collapsedTrianglesRemoved": 0,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cobalt_Enamel": {
+          "authoredMaps": [
+            "cryo_cobalt_enamel_basecolor.png",
+            "cryo_cobalt_enamel_roughness_metallic.png",
+            "cryo_cobalt_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Safety_Paint": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-16-cargo_crate.png",
+      "baselineLibraryFileId": "libfile_9507768609ac8191b0ced24c11284843",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_2f62402408648191948c034dba398135"
+    },
+    {
+      "id": "17",
+      "name": "Portable coolant pressure canister",
+      "slug": "coolant_canister",
+      "dimensions": [
+        0.49399998784065247,
+        0.9300000071525574,
+        0.42399999499320984
+      ],
+      "nominalDimensions": [
+        0.5,
+        0.93,
+        0.48
+      ],
+      "bounds": {
+        "min": [
+          -0.24699999392032623,
+          0.0,
+          -0.210999995470047
+        ],
+        "max": [
+          0.24699999392032623,
+          0.9300000071525574,
+          0.21299999952316284
+        ],
+        "dimensions": [
+          0.49399998784065247,
+          0.9300000071525574,
+          0.42399999499320984
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "ground-centre"
+      },
+      "snap": 0.1,
+      "source": "New spun-vessel profile and protected valve geometry",
+      "distinctPurpose": "Portable coolant pressure canister",
+      "animation": "static",
+      "glb": "kit/final-exports/17_coolant_canister/17_coolant_canister.glb",
+      "fbx": "kit/final-exports/17_coolant_canister/17_coolant_canister.fbx",
+      "gltf": "kit/shared-final/17_coolant_canister.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 0,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -0.24699999392032623,
+          0.0,
+          -0.210999995470047
+        ],
+        "max": [
+          0.24699999392032623,
+          0.9300000071525574,
+          0.21299999952316284
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/17_ao_uv1.png",
+        "resolution": 512,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.6605139447821319,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 6144,
+      "meshes": 7,
+      "materials": [
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Cobalt_Enamel",
+        "Cryo_EPDM_Gasket",
+        "Cryo_Safety_Paint",
+        "Cryo_Selective_Frost"
+      ],
+      "glbSHA256": "55c0f3807d7593ba6d80e3736ebcdb181dad53ec429e73183b7e258c318fa13d",
+      "glbBytes": 1073740,
+      "fbxSHA256": "6f02e01d2aabdb781e271dec6a9fa29e1432d173f04cd67a3e0b8029260e084e",
+      "fbxBytes": 276876,
+      "proof": "evidence/slice-final-kit-17-coolant_canister.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/17_coolant_canister/17_coolant_canister.glb",
+      "collapsedTrianglesRemoved": 0,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Safety_Paint": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Selective_Frost": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cobalt_Enamel": {
+          "authoredMaps": [
+            "cryo_cobalt_enamel_basecolor.png",
+            "cryo_cobalt_enamel_roughness_metallic.png",
+            "cryo_cobalt_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-17-coolant_canister.png",
+      "baselineLibraryFileId": "libfile_31c5813c456881918cdb7bc0eb7e383b",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_20e1013fe9608191bba01fc4e535f4a2"
+    },
+    {
+      "id": "18",
+      "name": "Recessed linear ceiling luminaire",
+      "slug": "ceiling_light_fixture",
+      "dimensions": [
+        2.0,
+        0.17999999225139618,
+        0.4000000059604645
+      ],
+      "nominalDimensions": [
+        2.0,
+        0.18,
+        0.4
+      ],
+      "bounds": {
+        "min": [
+          -1.0,
+          -0.17999999225139618,
+          -0.20000000298023224
+        ],
+        "max": [
+          1.0,
+          0.0,
+          0.20000000298023224
+        ],
+        "dimensions": [
+          2.0,
+          0.17999999225139618,
+          0.4000000059604645
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "mount-centre"
+      },
+      "snap": 0.5,
+      "source": "New serviceable fixture; restrained cyan practical and enamel material standards reused",
+      "distinctPurpose": "Recessed linear ceiling luminaire",
+      "animation": "static",
+      "glb": "kit/final-exports/18_ceiling_light_fixture/18_ceiling_light_fixture.glb",
+      "fbx": "kit/final-exports/18_ceiling_light_fixture/18_ceiling_light_fixture.fbx",
+      "gltf": "kit/shared-final/18_ceiling_light_fixture.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 0,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -1.0,
+          -0.17999999225139618,
+          -0.20000000298023224
+        ],
+        "max": [
+          1.0,
+          0.0,
+          0.20000000298023224
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/18_ao_uv1.png",
+        "resolution": 512,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.601063660348111,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 3580,
+      "meshes": 7,
+      "materials": [
+        "Cryo_Amber_Status",
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Clear_Inspection_Glass",
+        "Cryo_Cyan_Practical",
+        "Cryo_EPDM_Gasket"
+      ],
+      "glbSHA256": "0a8c8ef458ee8f42e84e304fc3c7dc042b05bac65614d0a196b7fc7eb943185a",
+      "glbBytes": 738968,
+      "fbxSHA256": "5e320008c4d4d818d6fd8e7f1ff3d2b2ed87908cf1753eaa0d8d61d16dd04428",
+      "fbxBytes": 179708,
+      "proof": "evidence/slice-final-kit-18-ceiling_light_fixture.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/18_ceiling_light_fixture/18_ceiling_light_fixture.glb",
+      "collapsedTrianglesRemoved": 0,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Amber_Status": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Cyan_Practical": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Clear_Inspection_Glass": {
+          "authoredMaps": [],
+          "optics": "constant clear transmission.965/roughness.026/IOR1.46; no edge mask on this asset",
+          "AO": "transmission glass excluded"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-18-ceiling_light_fixture.png",
+      "baselineLibraryFileId": "libfile_a63b230f18ec819188193fe0fb33a1c1",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_24f2f1b559c481919e9b51c2dd009f3d"
+    },
+    {
+      "id": "19",
+      "name": "Guarded amber emergency beacon",
+      "slug": "emergency_beacon",
+      "dimensions": [
+        0.25,
+        0.3499999940395355,
+        0.199337437748909
+      ],
+      "nominalDimensions": [
+        0.25,
+        0.35,
+        0.2
+      ],
+      "bounds": {
+        "min": [
+          -0.125,
+          -0.17499999701976776,
+          -0.0
+        ],
+        "max": [
+          0.125,
+          0.17499999701976776,
+          0.199337437748909
+        ],
+        "dimensions": [
+          0.25,
+          0.3499999940395355,
+          0.199337437748909
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "mount-centre"
+      },
+      "snap": 0.05,
+      "source": "New wall beacon; shared amber, glass, enamel and EPDM materials",
+      "distinctPurpose": "Guarded amber emergency beacon",
+      "animation": "static",
+      "glb": "kit/final-exports/19_emergency_beacon/19_emergency_beacon.glb",
+      "fbx": "kit/final-exports/19_emergency_beacon/19_emergency_beacon.fbx",
+      "gltf": "kit/shared-final/19_emergency_beacon.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 0,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -0.125,
+          -0.17499999701976776,
+          -0.0
+        ],
+        "max": [
+          0.125,
+          0.17499999701976776,
+          0.199337437748909
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/19_ao_uv1.png",
+        "resolution": 512,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.7237534462552961,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 8040,
+      "meshes": 7,
+      "materials": [
+        "Cryo_Amber_Status",
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Clear_Inspection_Glass",
+        "Cryo_Cobalt_Enamel",
+        "Cryo_EPDM_Gasket"
+      ],
+      "glbSHA256": "8f97c379d4b6e2e1faf6ae3c9d6c0c7c2a4971227c038be2a668ba85f1473c66",
+      "glbBytes": 1182676,
+      "fbxSHA256": "3b3f05adfc1e1020240ef4c2935eeed02f2617fc37e70f034314c4564d32134f",
+      "fbxBytes": 347884,
+      "proof": "evidence/slice-final-kit-19-emergency_beacon.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/19_emergency_beacon/19_emergency_beacon.glb",
+      "collapsedTrianglesRemoved": 0,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Amber_Status": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Clear_Inspection_Glass": {
+          "authoredMaps": [],
+          "optics": "constant clear transmission.965/roughness.026/IOR1.46; no edge mask on this asset",
+          "AO": "transmission glass excluded"
+        },
+        "Cryo_Cobalt_Enamel": {
+          "authoredMaps": [
+            "cryo_cobalt_enamel_basecolor.png",
+            "cryo_cobalt_enamel_roughness_metallic.png",
+            "cryo_cobalt_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-19-emergency_beacon.png",
+      "baselineLibraryFileId": "libfile_56c554c19ef48191b64ce8f3311cc315",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_856c5d19dd748191875f296851a29089"
+    },
+    {
+      "id": "20",
+      "name": "Fractured pressure-glass and ice breach",
+      "slug": "fractured_cryo_breach",
+      "dimensions": [
+        1.7999999523162842,
+        1.600000023841858,
+        0.8999999761581421
+      ],
+      "nominalDimensions": [
+        1.8,
+        1.6,
+        0.9
+      ],
+      "bounds": {
+        "min": [
+          -0.8999999761581421,
+          0.0,
+          -0.44999998807907104
+        ],
+        "max": [
+          0.8999999761581421,
+          1.600000023841858,
+          0.44999998807907104
+        ],
+        "dimensions": [
+          1.7999999523162842,
+          1.600000023841858,
+          0.8999999761581421
+        ]
+      },
+      "pivot": {
+        "position": [
+          0,
+          0,
+          0
+        ],
+        "convention": "ground-centre"
+      },
+      "snap": 0.1,
+      "source": "New closed-thickness broken-sheet geometry; no pod or character",
+      "distinctPurpose": "Fractured pressure-glass and ice breach",
+      "animation": "static",
+      "glb": "kit/final-exports/20_fractured_cryo_breach/20_fractured_cryo_breach.glb",
+      "fbx": "kit/final-exports/20_fractured_cryo_breach/20_fractured_cryo_breach.fbx",
+      "gltf": "kit/shared-final/20_fractured_cryo_breach.gltf",
+      "status": "Geometry, materials, CPU AO, exports and actual WebGL proof complete; awaiting user art review",
+      "uv0CollapsedFaceRepairs": 0,
+      "geometryApproved": false,
+      "lods": {
+        "LOD0": "exported",
+        "additional": "not authored or validated in this kit"
+      },
+      "collision": {
+        "type": "intended envelope only; no runtime collider included",
+        "min": [
+          -0.8999999761581421,
+          0.0,
+          -0.44999998807907104
+        ],
+        "max": [
+          0.8999999761581421,
+          1.600000023841858,
+          0.44999998807907104
+        ]
+      },
+      "ao": {
+        "baked": true,
+        "texture": "kit/textures/20_ao_uv1.png",
+        "resolution": 1024,
+        "samples": 32,
+        "CPUThreads": 4,
+        "UVChannel": 1,
+        "summedUVTriangleArea": 0.7735341838112785,
+        "gutterPixels": 3,
+        "scope": "local mesh contact AO, no ground or lighting painted into basecolor"
+      },
+      "tangentFramesRepaired": 0,
+      "triangles": 2936,
+      "meshes": 6,
+      "materials": [
+        "Cryo_Anodized_Frame",
+        "Cryo_Brushed_Steel",
+        "Cryo_Ceramic_Enamel",
+        "Cryo_Clear_Inspection_Glass",
+        "Cryo_EPDM_Gasket",
+        "Cryo_Selective_Frost"
+      ],
+      "glbSHA256": "10bc5399037c171c004de2f196ba014e48702f4c38edc9b10ce05c12a984f984",
+      "glbBytes": 1095972,
+      "fbxSHA256": "6ec501a60c8374e8bc5d89986d7027fa870fc63290d6b087b04bdd9d6c58e60c",
+      "fbxBytes": 166780,
+      "proof": "evidence/slice-final-kit-20-fractured_cryo_breach.png",
+      "validation": {
+        "independentGLB": "passed",
+        "BlenderFBXReload": "passed geometry/axes/UV/images; shader parity unverified",
+        "WebGL": "rendered without reported warnings/errors",
+        "Unity": "blocked by package authentication",
+        "phone": "unmeasured"
+      },
+      "baselineGLB": "kit/exports/20_fractured_cryo_breach/20_fractured_cryo_breach.glb",
+      "collapsedTrianglesRemoved": 0,
+      "materialVersion": "Pod benchmark propagated; authored physical coating maps, glass refinements, original UV1 AO",
+      "materialMapCoverage": {
+        "Cryo_Brushed_Steel": {
+          "authoredMaps": [
+            "cryo_brushed_steel_basecolor.png",
+            "cryo_brushed_steel_roughness_metallic.png",
+            "cryo_brushed_steel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Clear_Inspection_Glass": {
+          "authoredMaps": [],
+          "optics": "constant clear transmission.965/roughness.026/IOR1.46; no edge mask on this asset",
+          "AO": "transmission glass excluded"
+        },
+        "Cryo_Selective_Frost": {
+          "authoredMaps": "existing signage/display/semantic normal maps where present; otherwise scalar PBR",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Ceramic_Enamel": {
+          "authoredMaps": [
+            "cryo_ceramic_enamel_basecolor.png",
+            "cryo_ceramic_enamel_roughness_metallic.png",
+            "cryo_ceramic_enamel_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_Anodized_Frame": {
+          "authoredMaps": [
+            "cryo_anodized_frame_basecolor.png",
+            "cryo_anodized_frame_roughness_metallic.png",
+            "cryo_anodized_frame_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        },
+        "Cryo_EPDM_Gasket": {
+          "authoredMaps": [
+            "cryo_epdm_gasket_basecolor.png",
+            "cryo_epdm_gasket_roughness_metallic.png",
+            "cryo_epdm_gasket_normal.png"
+          ],
+          "normalBake": "No high-to-low bake; independent material-height normal data where provided",
+          "AO": "per-object UV1 CPU bake"
+        }
+      },
+      "baselineProof": "evidence/slice-kit-20-fractured_cryo_breach.png",
+      "baselineLibraryFileId": "libfile_e02cc71c197881918ab636df872a37dc",
+      "uv0PrecisionPolicy": "Microscopic planar faces place short coordinate inU to preserve float32 glTFVflip; UV1 unchanged",
+      "library_file_id": "libfile_4c3510bfceb8819194988feb61f855ee"
+    }
+  ],
+  "geometryCleanup": "Removed only source triangles with area below1e-12m\u00b2; original export diagnostics classify426 exactlycollapsed faces. Source vertices and visible surfaces are preserved."
+}

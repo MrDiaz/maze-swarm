@@ -1,0 +1,138 @@
+{
+ "layout": "cryo-c",
+ "anchors": [
+  {
+   "prop": "cryo-blast-door",
+   "x": 22,
+   "y": 0.0,
+   "z": -1.0,
+   "yaw": 180,
+   "name": "blast_door",
+   "fw": 0,
+   "fd": 0,
+   "maxh": 3.4
+  },
+  {
+   "prop": "cryo-gun-turret",
+   "x": 13.0,
+   "y": 0.33,
+   "z": -8.0,
+   "yaw": 180,
+   "name": "gun_turret",
+   "fw": 1.9,
+   "fd": 1.9,
+   "maxh": 2.2
+  },
+  {
+   "prop": "cryo-supply-crate",
+   "x": 11.1,
+   "y": 0.33,
+   "z": -8.0,
+   "yaw": 170,
+   "name": "turret_crate",
+   "fw": 1.6,
+   "fd": 1.6,
+   "maxh": 3.4
+  },
+  {
+   "prop": "cryo-coolant-pumping-station",
+   "x": 36.0,
+   "y": 0.33,
+   "z": -8.0,
+   "yaw": 180,
+   "name": "cryo-coolant-pumping-station",
+   "fw": 3.1,
+   "fd": 3.1,
+   "maxh": 3.4
+  },
+  {
+   "prop": "cryo-flamethrower-turret",
+   "x": 13.0,
+   "y": 0.33,
+   "z": -24.0,
+   "yaw": 180,
+   "name": "flame_turret",
+   "fw": 1.9,
+   "fd": 1.9,
+   "maxh": 2.2
+  },
+  {
+   "prop": "cryo-supply-crate",
+   "x": 11.1,
+   "y": 0.33,
+   "z": -24.0,
+   "yaw": 170,
+   "name": "turret_crate",
+   "fw": 1.6,
+   "fd": 1.6,
+   "maxh": 3.4
+  },
+  {
+   "prop": "cryo-maintenance-cart",
+   "x": 35.52,
+   "y": 0.33,
+   "z": -24.0,
+   "yaw": 200,
+   "name": "cart",
+   "fw": 2.17,
+   "fd": 2.48,
+   "maxh": 3.4
+  },
+  {
+   "prop": "cryo-freeze-canister",
+   "x": 37.36,
+   "y": 0.33,
+   "z": -25.0,
+   "yaw": 180,
+   "name": "canister",
+   "fw": 1.0,
+   "fd": 1.0,
+   "maxh": 1.8
+  },
+  {
+   "prop": "cryo-supply-crate",
+   "x": 17.0,
+   "y": 0.33,
+   "z": -3.12,
+   "yaw": 180,
+   "name": "cargo_crate",
+   "fw": 1.3,
+   "fd": 1.3,
+   "maxh": 3.4
+  },
+  {
+   "prop": "cryo-freeze-canister",
+   "x": 17.0,
+   "y": 0.33,
+   "z": -5.12,
+   "yaw": 180,
+   "name": "cargo_canister",
+   "fw": 1.0,
+   "fd": 1.0,
+   "maxh": 1.8
+  },
+  {
+   "prop": "cryo-supply-crate",
+   "x": 27.0,
+   "y": 0.33,
+   "z": -3.12,
+   "yaw": 180,
+   "name": "cargo_crate",
+   "fw": 1.3,
+   "fd": 1.3,
+   "maxh": 3.4
+  },
+  {
+   "prop": "cryo-freeze-canister",
+   "x": 27.0,
+   "y": 0.33,
+   "z": -5.12,
+   "yaw": 180,
+   "name": "cargo_canister",
+   "fw": 1.0,
+   "fd": 1.0,
+   "maxh": 1.8
+  }
+ ],
+ "door_x": 22
+}

@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 16__Cryo_Safety_Paint
+  m_Shader: {fileID: 4800000, guid: be6af675c7aef45c686c5b368cfed379, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 2000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _AOMap:
+        m_Texture: {fileID: 2800000, guid: 1f4e713ee13f14f19a5ff8ecbee459c3, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BaseMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RMMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TransmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AOMap_UV: 1
+    - _AOStrength: 1
+    - _BaseMap_UV: 0
+    - _Clearcoat: 0
+    - _ClearcoatRoughness: 0
+    - _Cull: 0
+    - _DstBlend: 0
+    - _EmissionMap_UV: 0
+    - _IsGlass: 0
+    - _Metallic: 0
+    - _NormalMap_UV: 0
+    - _NormalScale: 1
+    - _RMMap_UV: 0
+    - _Roughness: 0.63
+    - _SrcBlend: 1
+    - _Transmission: 0
+    - _TransmissionMap_UV: 0
+    - _UseAOMap: 1
+    - _UseBaseMap: 0
+    - _UseEmissionMap: 0
+    - _UseNormalMap: 0
+    - _UseRMMap: 0
+    - _UseTransmissionMap: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _AOMap_Rotation: {r: 0, g: 0, b: 0, a: 0}
+    - _BaseColor: {r: 0.73, g: 0.41, b: 0.065, a: 1}
+    - _BaseMap_Rotation: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionMap_Rotation: {r: 0, g: 0, b: 0, a: 0}
+    - _NormalMap_Rotation: {r: 0, g: 0, b: 0, a: 0}
+    - _RMMap_Rotation: {r: 0, g: 0, b: 0, a: 0}
+    - _TransmissionMap_Rotation: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1

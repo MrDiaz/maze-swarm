@@ -83,3 +83,10 @@ Cryo Station ambience (Oct 13, 2026): generated with ElevenLabs Sound Effects on
   (Sounds/batches/cryo.json, amb_cryo_station 2 takes x 30 s = 60 s of sound-effect credits, loop on).
   Originals Sounds/Cryo/amb_cryo_station_take1/2.mp3.
   License: ElevenLabs output, commercial use allowed on a paid plan.
+
+Cargo Depot Leaper Foley (Oct17,2026): existing owned Forge & Fantasy - Weapon SFX Pack, Case Portman Audio.
+  cargo_leaper_windup      WAV/Whip/Whip_Whoosh_10.wav, bounded region, high-pass/filter/fade/gain derivative, mono48kHz PCM16.
+  cargo_leaper_pounce      WAV/Whip/Whip_Whoosh_05.wav, bounded region, high-pass/filter/fade/gain derivative, mono48kHz PCM16.
+  Exact source/output hashes, cut frames, processing and objective levels: Assets/Maze/CohesiveZone/Documentation/cargo-leaper-audio-source.json.
+  Original library and license unchanged; game integration/editing allowed. No standalone sound distribution.
+  Cargo-only two-voice playback replaces the old code-generated hiss/pounce; AI and telegraph timing unchanged.

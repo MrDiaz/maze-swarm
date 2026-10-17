@@ -90,9 +90,10 @@ namespace Maze
             foreach (var kv in MazeMap.marks)
             {
                 if (!Look.TryGetValue(kv.Key, out var l)) continue;
-                if (VfxKit.I != null && (kv.Key == 'a' || kv.Key == '*' || kv.Key == 'f'))
-                {   // acid pools, molten slag and fire get real surfaces (one per letter, cells merge into blobs)
-                    var v = VfxKit.I.Cells(root, kv.Value, kv.Key == 'a' ? VfxKit.AcidPool : kv.Key == '*' ? VfxKit.Slag : VfxKit.Char);
+                if (kv.Key == 'i' && CohesiveZone.For(game)) { CargoEnvironment.TractionPlates(root, kv.Value); continue; }
+                if (VfxKit.I != null && "a*fqi".IndexOf(kv.Key) >= 0 && !(kv.Key == 'i' && (FirstCryoFx.Active || ReadabilityFx.IceFinish && CryoSoftEnvironment.Active)))   // Cryo keeps its approved ice tiles (F1, and every CryoSoft room with ReadabilityFx.IceFinish)
+                {   // acid pools, molten slag, fire, radiation and ice get real surfaces (one per letter, cells merge into blobs)
+                    var v = VfxKit.I.Cells(root, kv.Value, kv.Key == 'a' ? VfxKit.AcidPool : kv.Key == '*' ? VfxKit.Slag : kv.Key == 'f' ? VfxKit.Char : kv.Key == 'q' ? VfxKit.Radiation : VfxKit.Ice, kv.Key == 'i' ? 0.025f : 0.03f);
                     if (v != null) surfaces.Add(v);
                     continue;
                 }
@@ -225,7 +226,7 @@ namespace Maze
             {
                 foreach (var e in g.swarm.enemies) if (!e.dead && !e.type.nest && (e.p - v.p).magnitude < r + e.r) { if (cryo) { e.frozen = Mathf.Max(e.frozen, freezeS); Frozen++; } else { e.hp -= ZoneCells.RH(g) * 4f; e.flash = 1; } }
                 if ((g.player.p - v.p).magnitude < 1.5f + g.cfg.player.radius && g.player.dashT <= 0) g.player.frozenT = Mathf.Max(g.player.frozenT, 0.8f);
-                if (!Sim) Fx.I.Smoke(MazeMap.ToWorld(v.p, 0.3f), 18, Color.Lerp(col, Color.white, 0.5f), r * 0.6f, 0.8f, 0.5f, 1);
+                if (!Sim) { if (FirstCryoFx.Active) FirstCryoFx.Get().FreezeBurst(MazeMap.ToWorld(v.p, .2f), r, false); else Fx.I.Smoke(MazeMap.ToWorld(v.p, 0.3f), 18, Color.Lerp(col, Color.white, 0.5f), r * 0.6f, 0.8f, 0.5f, 1); }
             }
             g.AddShake(0.3f); Haptics.Heavy();
             if (vents.Count > 0) { var pts = new List<Vector3>(); foreach (var v in vents) pts.Add(MazeMap.ToWorld(v.p, 0.3f)); HazardAudio.Shot(cryo ? "sfx_cryo_vent_burst" : "sfx_vent_burst", HazardAudio.Nearest(pts, pts[0]), cryo ? 0.8f : 0.7f); }   // FLASH FREEZE: once, not per vent
@@ -237,8 +238,9 @@ namespace Maze
             foreach (var c in MazeMap.Marks('o'))
             {
                 var p = MazeMap.Center(c.x, c.y);
-                Box(new Color(0.12f, 0.13f, 0.15f), p, new Vector3(1.5f, 0.08f, 1.5f), 0.04f);
+                if (FirstCryoFx.Active) FirstCryoFx.VentHardware(root, p); else Box(new Color(0.12f, 0.13f, 0.15f), p, new Vector3(1.5f, 0.08f, 1.5f), 0.04f);
                 var (tr, m) = Flat(Fx.Ring, col * new Color(1, 1, 1, 0.2f), p, R, 0.08f);
+                if (FirstCryoFx.Active) { Object.Destroy(m); m = Mats.Fade(new Color(.16f, .45f, .6f, .3f)); tr.GetComponent<MeshRenderer>().sharedMaterial = m; }
                 vents.Add(new Vent { p = p, group = c.x & 1, ring = tr, m = m });
             }
             t = 0;
@@ -252,13 +254,15 @@ namespace Maze
             {
                 float ph = (t + (v.group == 1 ? Cycle * 0.5f : 0)) % Cycle;
                 bool warn = !idleFloor && ph >= Idle && ph < Idle + Warn, on = !idleFloor && ph >= Idle + Warn;
-                v.m.SetColor("_BaseColor", col * new Color(1, 1, 1, on ? 0.9f : warn ? 0.35f + 0.5f * Mathf.PingPong(t * 6, 1) : 0.15f));
-                if (warn && !Sim && Random.value < dt * 8) Fx.I.Smoke(MazeMap.ToWorld(v.p, 0.2f), 1, Color.Lerp(col, Color.white, 0.6f), 0.6f, 0.6f, 0.25f, 1.5f);
+                v.m.SetColor("_BaseColor", FirstCryoFx.Active ? (on ? new Color(.12f, .58f, .78f, .8f) : warn ? new Color(.86f, .47f, .11f, .55f + .2f * Mathf.PingPong(t * 4, 1)) : new Color(.12f, .35f, .46f, .3f)) : col * new Color(1, 1, 1, on ? 0.9f : warn ? 0.35f + 0.5f * Mathf.PingPong(t * 6, 1) : 0.15f));
+                bool kitVent = VfxKit.I != null && !FirstCryoFx.Active;   // CryoSoft keeps its own vent look
+                if (kitVent) { if (!Sim) VfxKit.I.Vent(MazeMap.ToWorld(v.p, 0), cryo ? VfxKit.VentKind.Cryo : skin == "toxic" ? VfxKit.VentKind.Toxic : VfxKit.VentKind.Steam, warn, on, on && !v.wasOn, dt); }   // wisps, then a plume
+                else if (warn && !Sim) { if (FirstCryoFx.Active) FirstCryoFx.Get().VentStream(MazeMap.ToWorld(v.p, .2f), true, dt); else if (Random.value < dt * 8) Fx.I.Smoke(MazeMap.ToWorld(v.p, 0.2f), 1, Color.Lerp(col, Color.white, 0.6f), 0.6f, 0.6f, 0.25f, 1.5f); }
                 if (on && !v.wasOn) HazardAudio.Shot(cryo ? "sfx_cryo_vent_burst" : "sfx_vent_burst", MazeMap.ToWorld(v.p, 0.3f), cryo ? 0.8f : 0.7f);
                 v.wasOn = on;
                 if (!on) { v.hitHero = false; continue; }
                 if (skin == "toxic") HazardAudio.Loop("amb_toxic_gas", v, MazeMap.ToWorld(v.p, 0.3f));
-                if (!Sim && Random.value < dt * 30) Fx.I.Smoke(MazeMap.ToWorld(v.p + Random.insideUnitCircle * 0.4f, 0.3f), 1, Color.Lerp(col, Color.white, 0.5f), 1.2f, 0.7f, 0.5f, 7f);
+                if (!Sim && !kitVent) { if (FirstCryoFx.Active) FirstCryoFx.Get().VentStream(MazeMap.ToWorld(v.p, .2f), false, dt); else if (Random.value < dt * 30) Fx.I.Smoke(MazeMap.ToWorld(v.p + Random.insideUnitCircle * 0.4f, 0.3f), 1, Color.Lerp(col, Color.white, 0.5f), 1.2f, 0.7f, 0.5f, 7f); }
                 bool heroIn = (g.player.p - v.p).magnitude < R + g.cfg.player.radius;
                 if (cryo)
                 {
@@ -499,8 +503,11 @@ namespace Maze
         {
             base.Begin(game); Dirty = true;
             for (int z = 0; z < MazeMap.H; z++) for (int x = 0; x < MazeMap.W; x++) if (MazeMap.Walkable(x, z)) walkable++;
-            creepMesh = Make("Creep", new Color(0.16f, 0.06f, 0.2f, 0.92f), false);
-            scorchMesh = Make("Scorched", new Color(0.1f, 0.1f, 0.1f, 0.9f), false);
+            if (VfxKit.I == null)
+            {
+                creepMesh = Make("Creep", new Color(0.16f, 0.06f, 0.2f, 0.92f), false);
+                scorchMesh = Make("Scorched", new Color(0.1f, 0.1f, 0.1f, 0.9f), false);
+            }
         }
         Mesh Make(string n, Color c, bool glow)
         {
@@ -517,7 +524,11 @@ namespace Maze
                 for (int k = 0; k < live && creep < walkable * 0.4f; k++) if (GrowOne()) creep++;
             }
             if (Dirty && (drawT -= dt) <= 0) { drawT = 0.25f; Dirty = false; Rebuild(); }
+            creepV?.Ambient(dt);
         }
+        // VfxKit surfaces: wet biomass with glowing veins, soot. Rebuilt when the creep spreads (same seed, so the pattern holds still)
+        VfxPool creepV, sootV;
+        public override void End() { creepV?.Kill(); sootV?.Kill(); creepV = sootV = null; base.End(); }
         bool GrowOne()
         {
             for (int tries = 0; tries < 30; tries++)
@@ -534,7 +545,10 @@ namespace Maze
         {
             var c = new List<Vector2Int>(); var s = new List<Vector2Int>();
             for (int z = 0; z < MazeMap.H; z++) for (int x = 0; x < MazeMap.W; x++) { char t = MazeMap.tag[z, x]; if (t == 'c') c.Add(new Vector2Int(x, z)); else if (t == 's') s.Add(new Vector2Int(x, z)); }
-            Fill(creepMesh, c, 0.026f); Fill(scorchMesh, s, 0.024f);
+            if (VfxKit.I == null) { Fill(creepMesh, c, 0.026f); Fill(scorchMesh, s, 0.024f); return; }
+            float cs = creepV != null ? creepV.Seed : -1f, ss = sootV != null ? sootV.Seed : -1f;
+            creepV?.Kill(); sootV?.Kill();
+            creepV = VfxKit.I.Cells(root, c, VfxKit.Creep, 0.026f, cs); sootV = VfxKit.I.Cells(root, s, VfxKit.Soot, 0.024f, ss);
         }
         static void Fill(Mesh m, List<Vector2Int> cells, float y) { var q = ZoneCells.Quads(cells, y); m.Clear(); m.SetVertices(new List<Vector3>(q.vertices)); m.SetUVs(0, new List<Vector2>(q.uv)); m.SetTriangles(q.triangles, 0); m.RecalculateBounds(); Object.Destroy(q); }
     }

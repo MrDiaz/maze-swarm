@@ -11,7 +11,7 @@ namespace Maze
         static RunMusic I;
         public static System.Action<string> Log;   // (editor checks)
         AudioSource music, bed; Game game; int floorSeen = -1; bool ended; float duckT, endT; string playing;
-        const float MusicVol = 0.35f, BedVol = 0.25f, PauseVol = 0.15f;
+        const float MusicVol = 0.35f, BedVol = 0.25f, PauseVol = 0.15f, CombatDuck = 0.6f; float combatK;
 
         public static void Init(Game g)
         {
@@ -39,10 +39,13 @@ namespace Maze
                 playing = want; music.clip = Clip("mus_run_cryo"); bed.clip = Clip("amb_cryo_station");
             }
             duckT -= dt;
-            float k = g.state == Game.State.Paused ? PauseVol / MusicVol : 1f;
+            float k = g.state == Game.State.Paused ? PauseVol / MusicVol : FirstCryoAudio.Active(g) && g.state == Game.State.Choosing ? .5f : 1f;
             float duck = duckT > 0 ? 0.5f : 1f;   // -6 dB
-            Fade(music, on ? MusicVol * k * duck : 0, MusicVol / 2f, MusicVol / 1.5f, dt);
-            Fade(bed, inRun ? (g.state == Game.State.Paused ? PauseVol : BedVol) : 0, BedVol / 2f, BedVol / 1f, dt);   // the bed: through floor ends and floor changes, 15% paused, out over 1 s on leaving, no ducking
+            // (2026-10-15 polish) combat duck: while the hero is firing, music and bed sit at 60% (-4.4 dB), in over 0.15 s, back over 1.2 s
+            bool fighting = Time.unscaledTime - CombatAudio.LastFire < 0.3f && g.state == Game.State.Playing;
+            combatK = Mathf.MoveTowards(combatK, fighting ? 1f : 0f, dt / (fighting ? 0.15f : 1.2f)); float cd = Mathf.Lerp(1f, CombatDuck, combatK);
+            Fade(music, on ? MusicVol * k * duck * cd : 0, MusicVol / 2f, MusicVol / 1.5f, dt);
+            Fade(bed, inRun ? (g.state == Game.State.Paused ? PauseVol : BedVol * cd * (FirstCryoAudio.Active(g) && g.state == Game.State.Choosing ? .4f : 1f)) : 0, BedVol / 2f, BedVol / 1f, dt);   // the bed: through floor ends and floor changes, 15% paused, out over 1 s on leaving, no ducking
         }
         static void Fade(AudioSource s, float target, float upRate, float downRate, float dt)
         {

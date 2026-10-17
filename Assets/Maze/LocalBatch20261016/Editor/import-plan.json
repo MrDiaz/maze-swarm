@@ -1,0 +1,1761 @@
+{
+  "version": 1,
+  "assetRoot": "Assets/Maze/LocalBatch20261016",
+  "assets": [
+    {
+      "id": "local-20261016-charging-brute",
+      "slug": "charging-brute",
+      "label": "Charging Brute",
+      "category": "Enemies \u00b7 unrigged previews",
+      "unrigged": true,
+      "selectedVersion": "001",
+      "mobileFirstLevel": 1,
+      "textureLimit": 1024,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 10000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/charging-brute/polish-001/LOD0/charging-brute_LOD0.glb",
+          "sourceSha256": "1b73214414a24007c56406c5ca64da726b348956c76d9d993a3660832e98aff0",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/charging-brute/LOD0/charging-brute_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/charging-brute/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/charging-brute/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/charging-brute/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/charging-brute/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.10372599959373474,
+            0.12055301666259766
+          ],
+          "dimensions": [
+            2.3411026000976562,
+            2.0026516914367676,
+            3.161271095275879
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 5000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/charging-brute/polish-001/LOD1/charging-brute_LOD1.glb",
+          "sourceSha256": "def2fd7f2c056924f16f37c09cf01c9c54bbdbc64a1b213dea880a38860fae15",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/charging-brute/LOD1/charging-brute_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/charging-brute/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/charging-brute/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/charging-brute/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/charging-brute/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.3995732069015503,
+            0.8730291724205017
+          ],
+          "dimensions": [
+            2.3397961854934692,
+            2.004548080265522,
+            3.1543898582458496
+          ]
+        },
+        {
+          "level": 2,
+          "triangles": 2500,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/charging-brute/polish-001/LOD2/charging-brute_LOD2.glb",
+          "sourceSha256": "94a51aaad06fc5669aca1d66915b8ae4c8c68daaeac5ec38eca399b26cef41b8",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/charging-brute/LOD2/charging-brute_LOD2.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/charging-brute/LOD2/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/charging-brute/LOD2/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/charging-brute/LOD2/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/charging-brute/LOD2/mr.png",
+          "sourceFirstUV": [
+            0.40225476026535034,
+            0.8741604089736938
+          ],
+          "dimensions": [
+            2.342298746109009,
+            2.000752974068746,
+            3.1540902853012085
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -1.1705513000488281,
+          0.0,
+          -1.5806355476379395
+        ],
+        [
+          1.1705513000488281,
+          2.0026516914367676,
+          1.5806355476379395
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "Unrigged; weights, locomotion, attacks, sockets and game import remain undone.",
+        "The generated head horn is shorter and blunter than the concept. Close views show soft armor edges, pale streaks and smeared paint; the unseen rear is inferred and includes orange foot markings.",
+        "The 12-triangle collision box is a separate review placeholder and overblocks empty space between the legs. Gameplay colliders have not been validated.",
+        "Self-intersections and actual engine/device performance were not tested. Texture compression and mip generation remain engine import decisions.",
+        "Orange areas are base-color paint, with no emissive or gameplay weakpoint material.",
+        "LOD1 shares the common root: floor minimum -2.347 mm; measured pivot delta X/Z +1.931 / -0.249 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending.",
+        "LOD2 shares the common root: floor minimum -2.267 mm; measured pivot delta X/Z -0.964 / +2.009 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending."
+      ]
+    },
+    {
+      "id": "local-20261016-ranged-spitter",
+      "slug": "ranged-spitter",
+      "label": "Ranged Spitter",
+      "category": "Enemies \u00b7 unrigged previews",
+      "unrigged": true,
+      "selectedVersion": "002",
+      "mobileFirstLevel": 1,
+      "textureLimit": 1024,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 7998,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/ranged-spitter/polish-002/LOD0/ranged-spitter_LOD0.glb",
+          "sourceSha256": "ad91378c439a0b708bcfcd9cce5a7e19aad19a05d182598cf81d0c69dd72f87d",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/ranged-spitter/LOD0/ranged-spitter_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/ranged-spitter/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/ranged-spitter/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/ranged-spitter/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/ranged-spitter/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.10557299852371216,
+            0.8116909861564636
+          ],
+          "dimensions": [
+            1.2948014736175537,
+            1.7019132375717163,
+            1.8946276903152466
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 4000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/ranged-spitter/polish-002/LOD1/ranged-spitter_LOD1.glb",
+          "sourceSha256": "f7089f53f699c97c3a5238a217eb969b13153af39354a6d3a6e42425f648c408",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/ranged-spitter/LOD1/ranged-spitter_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/ranged-spitter/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/ranged-spitter/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/ranged-spitter/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/ranged-spitter/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.10557299852371216,
+            0.8116909861564636
+          ],
+          "dimensions": [
+            1.297210931777954,
+            1.7028250554576516,
+            1.8967726230621338
+          ]
+        },
+        {
+          "level": 2,
+          "triangles": 2000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/ranged-spitter/polish-002/LOD2/ranged-spitter_LOD2.glb",
+          "sourceSha256": "c13d9df9cddb760e0f24a69c16517edf0cc26bc314c5543f321703cd93e32722",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/ranged-spitter/LOD2/ranged-spitter_LOD2.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/ranged-spitter/LOD2/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/ranged-spitter/LOD2/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/ranged-spitter/LOD2/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/ranged-spitter/LOD2/mr.png",
+          "sourceFirstUV": [
+            0.10557299852371216,
+            0.8116909861564636
+          ],
+          "dimensions": [
+            1.2963117361068726,
+            1.7103221961297095,
+            1.8990051746368408
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -0.6474007368087769,
+          0.0,
+          -0.9473138451576233
+        ],
+        [
+          0.6474007368087769,
+          1.7019132375717163,
+          0.9473138451576233
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "Unrigged; skin weights, locomotion, attack animation, sockets and game import remain undone.",
+        "Several armor/leg-joint paint transitions are pale or smeared in close views. Fine throat-vein detail and some sharper concept edges were not reproduced.",
+        "The standalone 12-triangle collision box is a review placeholder and overblocks empty space around the legs and neck; gameplay colliders must be chosen during integration.",
+        "Self-intersections and actual engine/device performance were not tested. GPU texture compression and mip generation are left to engine import.",
+        "No emissive throat or eye material was generated; bright colors are baked into base color.",
+        "Independent closeup review still finds an irregular mouth rim, crowded/lumpy shoulders and hips, and compressed neck/muzzle proportions. Watertight metrics do not establish deformation suitability.",
+        "LOD2 shares the common root: floor minimum -6.129 mm; measured pivot delta X/Z -0.186 / -1.168 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending."
+      ]
+    },
+    {
+      "id": "local-20261016-nest-carrier",
+      "slug": "nest-carrier",
+      "label": "Nest Carrier",
+      "category": "Enemies \u00b7 unrigged previews",
+      "unrigged": true,
+      "selectedVersion": "003",
+      "mobileFirstLevel": 1,
+      "textureLimit": 1024,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 12000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/nest-carrier/polish-003/LOD0/nest-carrier_LOD0.glb",
+          "sourceSha256": "9fe8a9ee8e4dc5aa8398558164d5332a775a219aef72acb0b174a7860056229a",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/nest-carrier/LOD0/nest-carrier_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/nest-carrier/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/nest-carrier/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/nest-carrier/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/nest-carrier/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.06507153809070587,
+            0.8822928071022034
+          ],
+          "dimensions": [
+            2.665086269378662,
+            1.9012458324432373,
+            2.572068214416504
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 6000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/nest-carrier/polish-003/LOD1/nest-carrier_LOD1.glb",
+          "sourceSha256": "efa1abf50c01e7829ac8b2f2687a1a7edf9a48962ebe92c1cd491ae69fc85d3c",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/nest-carrier/LOD1/nest-carrier_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/nest-carrier/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/nest-carrier/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/nest-carrier/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/nest-carrier/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.04111677035689354,
+            0.7269290685653687
+          ],
+          "dimensions": [
+            2.667482852935791,
+            1.90388657245785,
+            2.5763286352157593
+          ]
+        },
+        {
+          "level": 2,
+          "triangles": 3000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/nest-carrier/polish-003/LOD2/nest-carrier_LOD2.glb",
+          "sourceSha256": "f8cb66ce680246e89f5b97f0fcf2f207085f5459703c3045bb822b7b7e339fbf",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/nest-carrier/LOD2/nest-carrier_LOD2.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/nest-carrier/LOD2/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/nest-carrier/LOD2/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/nest-carrier/LOD2/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/nest-carrier/LOD2/mr.png",
+          "sourceFirstUV": [
+            0.11204203963279724,
+            0.9078551530838013
+          ],
+          "dimensions": [
+            2.6674171686172485,
+            1.9077929933555424,
+            2.5736308097839355
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -1.332543134689331,
+          0.0,
+          -1.286034107208252
+        ],
+        [
+          1.332543134689331,
+          1.9012458324432373,
+          1.286034107208252
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "Nest cavities are shallower and softer than the concept; some inner-rim paint is stretched/jagged. Horns and shell edges need manual finishing.",
+        "Rear plates are inferred and paler/more pink than the concept. Pink openings are baked appearance, with no emission, spawning, weakpoint, hitbox or damage behavior.",
+        "Joined armor/limb sculpt has no rig, skin weights, animation, deformation topology validation or motion-clearance testing.",
+        "Lower levels share the root withLOD0:LOD1 penetrates the floor2.64mm andLOD2 by5.12mm. Pivot offsets stay below4.3mm and meet existing offline limits.",
+        "Review-box collision, self-intersections, engine import/compression/mips, actual draw passes and device performance remain untested.",
+        "LOD1 shares the common root: floor minimum -2.641 mm; measured pivot delta X/Z -1.784 / -1.753 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending.",
+        "LOD2 shares the common root: floor minimum -5.124 mm; measured pivot delta X/Z -4.261 / -3.102 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending."
+      ]
+    },
+    {
+      "id": "local-20261016-cryo-relay-cabinet",
+      "slug": "cryo-relay-cabinet",
+      "label": "Cryo Electrical Relay Cabinet",
+      "category": "Cryo \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "003",
+      "mobileFirstLevel": 0,
+      "textureLimit": 1024,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 3000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-relay-cabinet/polish-003/LOD0/cryo-relay-cabinet_LOD0.glb",
+          "sourceSha256": "b5ca6a1b353990508512d1fe096d4315ba82b22498b90c3a36fe864fdcbf5b78",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-relay-cabinet/LOD0/cryo-relay-cabinet_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-relay-cabinet/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-relay-cabinet/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-relay-cabinet/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-relay-cabinet/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.15081563591957092,
+            0.6871394515037537
+          ],
+          "dimensions": [
+            1.4127743244171143,
+            1.599993348121643,
+            1.474299430847168
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 1500,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-relay-cabinet/polish-003/LOD1/cryo-relay-cabinet_LOD1.glb",
+          "sourceSha256": "0c4a49201a913849a265099b3df0e72df7dbd0e13e0d9c57dbc1177e08009003",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-relay-cabinet/LOD1/cryo-relay-cabinet_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-relay-cabinet/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-relay-cabinet/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-relay-cabinet/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-relay-cabinet/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.15081563591957092,
+            0.6871394515037537
+          ],
+          "dimensions": [
+            1.4110710620880127,
+            1.5965185523964465,
+            1.471807599067688
+          ]
+        },
+        {
+          "level": 2,
+          "triangles": 750,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-relay-cabinet/polish-003/LOD2/cryo-relay-cabinet_LOD2.glb",
+          "sourceSha256": "d3137641e6e8deb40bdcc7f831b92bcf0ad6572abb3cc482fbbb74c8e984baad",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-relay-cabinet/LOD2/cryo-relay-cabinet_LOD2.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-relay-cabinet/LOD2/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-relay-cabinet/LOD2/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-relay-cabinet/LOD2/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-relay-cabinet/LOD2/mr.png",
+          "sourceFirstUV": [
+            0.15081563591957092,
+            0.6871394515037537
+          ],
+          "dimensions": [
+            1.3889918327331543,
+            1.5841279970481992,
+            1.4762439727783203
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -0.7063871622085571,
+          0.0,
+          -0.737149715423584
+        ],
+        [
+          0.7063871622085571,
+          1.599993348121643,
+          0.737149715423584
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "The inferred rear repeats the door/handle motif. The body appears deeper than the concept, and close-up corners, vent relief and trim remain softer than deliberately modeled hard surfaces.",
+        "LOD2 loses some base detail and has a minimum Y approximately 10 mm above the shared floor origin. LOD transition/contact behavior has not been tested in an engine.",
+        "Doors, handles, vents and indicator lights are static geometry/paint with no articulation or emissive channel.",
+        "The separate 12-triangle box collider is a review placeholder. No game import, interaction, navigation or device performance testing was performed.",
+        "Self-intersections were not tested; engine texture compression and mip generation remain pending.",
+        "The cyan indicators remain base-color graphics without emission. Material consistency is improved, while geometric corner/trim irregularities remain visible.",
+        "LOD2 shares the common root: floor minimum +10.013 mm; measured pivot delta X/Z +0.665 / +3.389 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending."
+      ]
+    },
+    {
+      "id": "local-20261016-cryo-diagnostic-console",
+      "slug": "cryo-diagnostic-console",
+      "label": "Cryo Diagnostic Console",
+      "category": "Cryo \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "011",
+      "mobileFirstLevel": 0,
+      "textureLimit": 1024,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 4000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-diagnostic-console/polish-011/LOD0/cryo-diagnostic-console_LOD0.glb",
+          "sourceSha256": "976aa88b7fc7dc513138abaf250c2f0dd3d1baebc9f2880037e754a00861d92a",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-diagnostic-console/LOD0/cryo-diagnostic-console_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-diagnostic-console/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-diagnostic-console/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-diagnostic-console/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-diagnostic-console/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.05568466708064079,
+            0.1525791883468628
+          ],
+          "dimensions": [
+            1.2786409854888916,
+            1.1458864212036133,
+            0.9682387709617615
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 2000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-diagnostic-console/polish-011/LOD1/cryo-diagnostic-console_LOD1.glb",
+          "sourceSha256": "0a9a1d4b766323a86cc722813db539fa09c280e2b47f482af01aa5644732c10b",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-diagnostic-console/LOD1/cryo-diagnostic-console_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-diagnostic-console/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-diagnostic-console/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-diagnostic-console/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-diagnostic-console/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.2162732034921646,
+            0.6596465110778809
+          ],
+          "dimensions": [
+            1.2649584412574768,
+            1.1414642205127166,
+            0.9682151973247528
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -0.6393204927444458,
+          0.0,
+          -0.48411938548088074
+        ],
+        [
+          0.6393204927444458,
+          1.1458864212036133,
+          0.48411938548088074
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "The inferred rear is visibly wavy and several pedestal/trim transitions are lumpy. This is a useful prototype, not finished hard-surface artwork.",
+        "The screen is baked base color with pale graphics, no emissive channel, interactive content, readable small text or working controls.",
+        "Reprojected trim shows paint mottling in close views. Self-intersections have not been tested.",
+        "The 1K-triangle failed candidate had 22.9% invalid covered UV texels under the prior UV approach; the guard was not relaxed. A revised 1K version has not been approved.",
+        "The separate 12-triangle box collider is a review placeholder; game import, interaction, navigation and device performance remain untested.",
+        "The rear panel is flatter but still not manufactured-flat; beveled trim, corner geometry and paint transitions remain irregular. Candidates006/007 are retained and not selected.",
+        "LOD1 shares the common root: floor minimum -0.094 mm; measured pivot delta X/Z +2.109 / -0.012 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending."
+      ]
+    },
+    {
+      "id": "local-20261016-cryo-ventilation-unit",
+      "slug": "cryo-ventilation-unit",
+      "label": "Cryo Ventilation Unit",
+      "category": "Cryo \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "002",
+      "mobileFirstLevel": 0,
+      "textureLimit": 512,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 2000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-ventilation-unit/polish-002/LOD0/cryo-ventilation-unit_LOD0.glb",
+          "sourceSha256": "718473d62f9f66f8b3d510660987ff97f8abc71fb5d90e2cd7fdd62390afb9d2",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-ventilation-unit/LOD0/cryo-ventilation-unit_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-ventilation-unit/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-ventilation-unit/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-ventilation-unit/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-ventilation-unit/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.3500432074069977,
+            0.05976933240890503
+          ],
+          "dimensions": [
+            1.2614758014678955,
+            0.6953517198562622,
+            0.7852234840393066
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 1000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-ventilation-unit/polish-002/LOD1/cryo-ventilation-unit_LOD1.glb",
+          "sourceSha256": "2aea717ae15731f016bea2b1ee081b576a325ca304a7590ad981a14486b00f5b",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-ventilation-unit/LOD1/cryo-ventilation-unit_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-ventilation-unit/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-ventilation-unit/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-ventilation-unit/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-ventilation-unit/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.6537353992462158,
+            0.09509354829788208
+          ],
+          "dimensions": [
+            1.2579454183578491,
+            0.6910734963603318,
+            0.785042941570282
+          ]
+        },
+        {
+          "level": 2,
+          "triangles": 500,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-ventilation-unit/polish-002/LOD2/cryo-ventilation-unit_LOD2.glb",
+          "sourceSha256": "29ff099e08492006ddcab7f24a53cb58e6ba740db74e1a7e16f270a26a90d37a",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-ventilation-unit/LOD2/cryo-ventilation-unit_LOD2.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-ventilation-unit/LOD2/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-ventilation-unit/LOD2/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-ventilation-unit/LOD2/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-ventilation-unit/LOD2/mr.png",
+          "sourceFirstUV": [
+            0.3317812979221344,
+            0.06796348094940186
+          ],
+          "dimensions": [
+            1.2529726028442383,
+            0.6940415146527812,
+            0.7867319881916046
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -0.6307379007339478,
+          0.0,
+          -0.3926117420196533
+        ],
+        [
+          0.6307379007339478,
+          0.6953517198562622,
+          0.3926117420196533
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "The inferred rear is a closed panel. The model is relatively deep, and corners/trim remain softer and less regular than authored hard-surface art.",
+        "Small dark paint/seam marks remain around some edges and louver contacts in close views. The new rear is cleaner, but this is a prototype rather than finished close-up artwork.",
+        "No fan motion, emissive indicator channel, airflow, open duct bore or modular wall-fitting dimensions were prepared.",
+        "The 12-triangle box collider is a review placeholder. Wall mount depth, collision, navigation and in-engine/device performance have not been tested.",
+        "Lower LOD floor differences remain below 4 mm. Self-intersections were not tested and engine compression/mips remain pending.",
+        "LOD1 shares the common root: floor minimum +3.874 mm; measured pivot delta X/Z +0.483 / +0.090 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending."
+      ]
+    },
+    {
+      "id": "local-20261016-cryo-emergency-cabinet",
+      "slug": "cryo-emergency-cabinet",
+      "label": "Cryo Emergency Wall Cabinet",
+      "category": "Cryo \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "023",
+      "mobileFirstLevel": 0,
+      "textureLimit": 512,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 3534,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-emergency-cabinet/polish-023/LOD0/cryo-emergency-cabinet_LOD0.glb",
+          "sourceSha256": "90688e752d908391a2464e35455508489cc0a8b7d7d23d4070e505b31991d455",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-emergency-cabinet/LOD0/cryo-emergency-cabinet_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-emergency-cabinet/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-emergency-cabinet/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-emergency-cabinet/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-emergency-cabinet/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.8034878969192505,
+            0.6176874041557312
+          ],
+          "dimensions": [
+            0.7599183320999146,
+            0.9002404808998108,
+            0.4828506112098694
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 1808,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-emergency-cabinet/polish-023/LOD1/cryo-emergency-cabinet_LOD1.glb",
+          "sourceSha256": "3cffd5ef3d3b7e8ae022eb154ab29e2082d253af326518b416131f4e2c1791b8",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-emergency-cabinet/LOD1/cryo-emergency-cabinet_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-emergency-cabinet/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-emergency-cabinet/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-emergency-cabinet/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-emergency-cabinet/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.7300341129302979,
+            0.5068522691726685
+          ],
+          "dimensions": [
+            0.7599183320999146,
+            0.900145411491394,
+            0.48208701610565186
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -0.3799591660499573,
+          0.0,
+          -0.2414253056049347
+        ],
+        [
+          0.3799591660499573,
+          0.9002404808998108,
+          0.2414253056049347
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "Outer shell edges, hinges, amber indicators and the junction around the top cap retain generated softness and local paint irregularity. Narrow badge and side-window borders show more faceting or aliasing in the far LOD and closeups.",
+        "The rear motif and top inset are inferred; the source does not certify the rear or top design. Doors and hinges remain fused static geometry with no opening behavior or authored wall-mount sockets.",
+        "Finishing increases triangle counts from2000/1000 to3534/1808. Device LOD distances, texture compression, mipmaps and actual runtime performance require later integration testing.",
+        "No game import, rigging, self-intersection, collision-fit or physical-clearance test. Collision GLB is a simple review box.",
+        "Independent visual review retained this selection: the hinges, latch and outer body remain softer than the rebuilt panels.",
+        "The top inset and repeated rear medical motif are inferred. These surfaces are not established by the single concept image."
+      ]
+    },
+    {
+      "id": "local-20261016-cryo-pipe-riser",
+      "slug": "cryo-pipe-riser",
+      "label": "Cryo Insulated Pipe Riser",
+      "category": "Cryo \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "003",
+      "mobileFirstLevel": 0,
+      "textureLimit": 512,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 3000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-pipe-riser/polish-003/LOD0/cryo-pipe-riser_LOD0.glb",
+          "sourceSha256": "9787acfbdd903033a278a122037913659142178d9e2ba40808d035bada7ffaf9",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-pipe-riser/LOD0/cryo-pipe-riser_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-riser/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-riser/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-riser/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-riser/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.40671077370643616,
+            0.7008600234985352
+          ],
+          "dimensions": [
+            0.7460728883743286,
+            1.7995561361312866,
+            1.045008659362793
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 1500,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-pipe-riser/polish-003/LOD1/cryo-pipe-riser_LOD1.glb",
+          "sourceSha256": "5b4234dc64478d116ef55702a20edfe371c93cada966ed818bf724f45fbf8b69",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-pipe-riser/LOD1/cryo-pipe-riser_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-riser/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-riser/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-riser/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-riser/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.2948831021785736,
+            0.0380592942237854
+          ],
+          "dimensions": [
+            0.7395473718643188,
+            1.7979325636988506,
+            1.043963462114334
+          ]
+        },
+        {
+          "level": 2,
+          "triangles": 750,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-pipe-riser/polish-003/LOD2/cryo-pipe-riser_LOD2.glb",
+          "sourceSha256": "5817b919197110d44a9a31796099372ef9c34819241fc2f3e0b44349a8c2fce3",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-pipe-riser/LOD2/cryo-pipe-riser_LOD2.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-riser/LOD2/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-riser/LOD2/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-riser/LOD2/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-riser/LOD2/mr.png",
+          "sourceFirstUV": [
+            0.6458014249801636,
+            0.046259164810180664
+          ],
+          "dimensions": [
+            0.7069948315620422,
+            1.7920110567938536,
+            1.0245369970798492
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -0.3758164644241333,
+          0.0,
+          -0.4063897728919983
+        ],
+        [
+          0.3702564239501953,
+          1.7995561361312866,
+          0.6386188864707947
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "The collar/outlet is irregular rather than a deliberate circle, and some feet, trim and tube transitions remain soft. It needs geometric finishing beyond triangle reduction.",
+        "512 px paint reprojection shows mottling and jagged trim boundaries in close views. A higher-resolution near variant and consistent painted material are finishing candidates.",
+        "The visible port is shallow/capped; an open through-bore and modular pipe dimensions have not been established.",
+        "The separate 12-triangle review box overblocks open space around the elbow and base. No game import, collision/navigation test or device performance measurement was done.",
+        "Self-intersections were not tested, and engine compression/mip generation remain pending.",
+        "The450mm value is a nominal visual rim guide with residual deviation, not verified socket/bore engineering. Dark recesses do not establish connectable clearance.",
+        "512px paint remains jagged/mottled at close range, and collars retain some irregularity.",
+        "LOD2 shares the common root: floor minimum +1.813 mm; measured pivot delta X/Z -2.864 / +1.884 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending."
+      ]
+    },
+    {
+      "id": "local-20261016-cryo-valve-manifold",
+      "slug": "cryo-valve-manifold",
+      "label": "Cryo Valve Manifold",
+      "category": "Cryo \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "016",
+      "mobileFirstLevel": 1,
+      "textureLimit": 1024,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 7212,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-valve-manifold/polish-016/LOD0/cryo-valve-manifold_LOD0.glb",
+          "sourceSha256": "c5e0e1284b66875f77a1ed9294825798708e2e890a35655a2eb95fbfc7d6cd41",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-valve-manifold/LOD0/cryo-valve-manifold_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-valve-manifold/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-valve-manifold/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-valve-manifold/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-valve-manifold/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.021567298099398613,
+            0.5606060028076172
+          ],
+          "dimensions": [
+            2.3071298599243164,
+            1.34609265709787,
+            1.3516000509262085
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 3000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-valve-manifold/polish-016/LOD1/cryo-valve-manifold_LOD1.glb",
+          "sourceSha256": "ee68b92762ebcf1b60744d44d026d557eeb79fec544babdcee1fcb5222e4545e",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-valve-manifold/LOD1/cryo-valve-manifold_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-valve-manifold/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-valve-manifold/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-valve-manifold/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-valve-manifold/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.7057881355285645,
+            0.5501412153244019
+          ],
+          "dimensions": [
+            2.3123973608016968,
+            1.350703239440918,
+            1.3498663306236267
+          ]
+        },
+        {
+          "level": 2,
+          "triangles": 2200,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-valve-manifold/polish-016/LOD2/cryo-valve-manifold_LOD2.glb",
+          "sourceSha256": "883207d28f6b67583e457c50ed9ad73a499f461a09f010796063b840ecd040be",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-valve-manifold/LOD2/cryo-valve-manifold_LOD2.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-valve-manifold/LOD2/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-valve-manifold/LOD2/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-valve-manifold/LOD2/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-valve-manifold/LOD2/mr.png",
+          "sourceFirstUV": [
+            0.046685200184583664,
+            0.03334987163543701
+          ],
+          "dimensions": [
+            2.3123973608016968,
+            1.350703239440918,
+            1.3498355150222778
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -1.1535649299621582,
+          -7.271766662597656e-06,
+          -0.6758000254631042
+        ],
+        [
+          1.1535649299621582,
+          1.3460854291915894,
+          0.6758000254631042
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "Pipe body paint, collar edges, fasteners and inferred rear forms retain generated softness and local texture irregularity. Far LOD port rims and wheels are visibly more polygonal in closeups.",
+        "Ports are closed decorative recesses: no through bore, fluid path, wall-thickness verification, mating tolerance or true modular socket claim. Valve wheels are fused static geometry, not articulated.",
+        "Finishing raises LOD0 from5000 to7212 triangles; lower levels are3000/2200 instead of2500/1250 to preserve shape. Choose distances and budgets during later device testing.",
+        "No game import, device performance, rigging, self-intersection or physical-clearance test. Collision GLB is a simple review box.",
+        "Independent visual review retained this selection: larger pale collars trade fine bolt detail for readability at small sizes. Body/collar paint remains soft.",
+        "Documented LOD0 exception: 7,212 triangles versus the earlier 5,000-triangle target (+44.24%). Current authored budget is 8,000; this does not erase the exception.",
+        "Lower-cost options are LOD1 at 3,000 triangles and LOD2 at 2,200. Both pass offline mesh/PBR/pivot checks. Existing LOD2 renders demonstrate static 128/64-pixel readability; engine LOD distances and device cost remain untested.",
+        "All three lips have explicitly CLOSED recess floors. Nominal 450 mm circles are visual construction guides, not mating sockets."
+      ]
+    },
+    {
+      "id": "local-20261016-cryo-pipe-elbow",
+      "slug": "cryo-pipe-elbow",
+      "label": "Cryo Pipe Elbow Module",
+      "category": "Cryo \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "005",
+      "mobileFirstLevel": 0,
+      "textureLimit": 512,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 1500,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-pipe-elbow/polish-005/LOD0/cryo-pipe-elbow_LOD0.glb",
+          "sourceSha256": "66665a0c6c550158f5530d869a662b1378d9922c550407e61f519962e941022b",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-pipe-elbow/LOD0/cryo-pipe-elbow_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-elbow/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-elbow/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-elbow/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-elbow/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.0688246339559555,
+            0.13264495134353638
+          ],
+          "dimensions": [
+            0.45374102890491486,
+            0.7278600931167603,
+            0.7411814033985138
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 750,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-pipe-elbow/polish-005/LOD1/cryo-pipe-elbow_LOD1.glb",
+          "sourceSha256": "9c622c01d6d775f8248b92ceb06299d794c23c0a3000cc58f8a0bebe20ba4f03",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-pipe-elbow/LOD1/cryo-pipe-elbow_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-elbow/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-elbow/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-elbow/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-pipe-elbow/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.09986137598752975,
+            0.04093354940414429
+          ],
+          "dimensions": [
+            0.45351754128932953,
+            0.7278879284858704,
+            0.7372732907533646
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -0.22886914620175958,
+          0.0,
+          -0.211734801530838
+        ],
+        [
+          0.22487186780199409,
+          0.7199865579605103,
+          0.5294465720653534
+        ]
+      ],
+      "oldProxyOverflow": [
+        8.847564458847046e-09,
+        0.00787353515625,
+        2.9802322387695312e-08
+      ],
+      "limitations": [
+        "This version has an explicitly closed end cap. It is a decorative pipe element, not an open functional conduit.",
+        "450 mm is a nominal visual guide with residual deviation; no certified mating tolerance, bore or socket clearance.",
+        "Collar paint and panel seams remain uneven. Collision, engine import and device performance are untested.",
+        "LOD1 shares the common root: floor minimum +0.000 mm; measured pivot delta X/Z +11.046 / +3.151 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending.",
+        "LOD0 bounds extend beyond the review-box proxy by up to 7.874 mm. The proxy requires later gameplay fitting."
+      ]
+    },
+    {
+      "id": "local-20261016-cryo-trench-cover",
+      "slug": "cryo-trench-cover",
+      "label": "Cryo Floor Trench Cover",
+      "category": "Cryo \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "005",
+      "mobileFirstLevel": 0,
+      "textureLimit": 512,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 1000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-trench-cover/polish-005/LOD0/cryo-trench-cover_LOD0.glb",
+          "sourceSha256": "c580e93590347f88a265178629922d7a8b3c4fd35b72521482cbb67a105da64f",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-trench-cover/LOD0/cryo-trench-cover_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-trench-cover/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-trench-cover/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-trench-cover/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-trench-cover/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.24086561799049377,
+            0.15851080417633057
+          ],
+          "dimensions": [
+            0.8002005219459534,
+            0.11988085508346558,
+            0.5425374507904053
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 500,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-trench-cover/polish-005/LOD1/cryo-trench-cover_LOD1.glb",
+          "sourceSha256": "cbe32c292d7645061a4c012fedf88aa4505299a5d950145bdbbba617c0831459",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-trench-cover/LOD1/cryo-trench-cover_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-trench-cover/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-trench-cover/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-trench-cover/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-trench-cover/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.5193122029304504,
+            0.1233786940574646
+          ],
+          "dimensions": [
+            0.8005691170692444,
+            0.11887353018391877,
+            0.5397203266620636
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -0.4001002609729767,
+          0.0,
+          -0.27126872539520264
+        ],
+        [
+          0.4001002609729767,
+          0.11988085508346558,
+          0.27126872539520264
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "Grille top bars are visibly wavy/rounded and outer frame edges are softer than the source. Deliberate planar/hard-edge finishing remains.",
+        "Dark spaces form an inferred recessed tray; through-holes, drainage, load rating and mechanical construction are not verified.",
+        "Installation needs top-flush placement in the floor; the default origin is the lower floor center. Placement references provide bounds, not an actual engine socket or collider.",
+        "The separate12-triangle box is a review proxy. Self-intersections, engine import, compression/mips and device performance remain untested."
+      ]
+    },
+    {
+      "id": "local-20261016-cryo-warning-bollard",
+      "slug": "cryo-warning-bollard",
+      "label": "Cryo Warning Beacon Bollard",
+      "category": "Cryo \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "005",
+      "mobileFirstLevel": 0,
+      "textureLimit": 512,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 5992,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/cryo-warning-bollard/polish-005/LOD0/cryo-warning-bollard_LOD0.glb",
+          "sourceSha256": "8bd19e2f215ced9f1045c5d8a7120ff335c31def30917e65481235682f8452c4",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/cryo-warning-bollard/LOD0/cryo-warning-bollard_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-warning-bollard/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-warning-bollard/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-warning-bollard/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/cryo-warning-bollard/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.29087498784065247,
+            0.5607439875602722
+          ],
+          "dimensions": [
+            0.8528421521186829,
+            1.0,
+            0.8652071952819824
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -0.42642107605934143,
+          0.0,
+          -0.4326035976409912
+        ],
+        [
+          0.42642107605934143,
+          1.0,
+          0.4326035976409912
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "This retains a relatively high triangle count for a small prop. Manual retopology and lower LODs remain pending; source topology proved fragile under automatic collapse.",
+        "The cap is opaque orange with baked color; no translucent lens, emitter, flashing animation or light source is prepared.",
+        "Housing trim and corner contours remain soft/irregular, and small white-paint marks remain at the base. Useful prototype, not polished final art.",
+        "Review-box collider, self-intersections, engine import, texture compression/mips and device performance are unverified.",
+        "Only LOD0 is selected. Lower LODs are unavailable; the prior automatic reductions were rejected and remain preserved."
+      ]
+    },
+    {
+      "id": "local-20261016-industrial-cover-barricade",
+      "slug": "industrial-cover-barricade",
+      "label": "Industrial Cover Barricade",
+      "category": "Industrial \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "002",
+      "mobileFirstLevel": 0,
+      "textureLimit": 1024,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 3000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/industrial-cover-barricade/polish-002/LOD0/industrial-cover-barricade_LOD0.glb",
+          "sourceSha256": "51d06ad441a5b57b591ad4065b5288616815f5bf11ed90de3b7183d6a3ddb60a",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/industrial-cover-barricade/LOD0/industrial-cover-barricade_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cover-barricade/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cover-barricade/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cover-barricade/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cover-barricade/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.40648290514945984,
+            0.5234743356704712
+          ],
+          "dimensions": [
+            2.4486188888549805,
+            0.9982778429985046,
+            0.928425133228302
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 1500,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/industrial-cover-barricade/polish-002/LOD1/industrial-cover-barricade_LOD1.glb",
+          "sourceSha256": "58a86c42d542ba0b3ede6c1d380ab388256315509e580b3bccfc156fe14b7d1c",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/industrial-cover-barricade/LOD1/industrial-cover-barricade_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cover-barricade/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cover-barricade/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cover-barricade/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cover-barricade/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.13185487687587738,
+            0.49620944261550903
+          ],
+          "dimensions": [
+            2.44747531414032,
+            0.9964331767696422,
+            0.9275907874107361
+          ]
+        },
+        {
+          "level": 2,
+          "triangles": 750,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/industrial-cover-barricade/polish-002/LOD2/industrial-cover-barricade_LOD2.glb",
+          "sourceSha256": "3fe9ca66a4db88eabf5bc52879800d3762362b042aa717b155196ab383bff44c",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/industrial-cover-barricade/LOD2/industrial-cover-barricade_LOD2.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cover-barricade/LOD2/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cover-barricade/LOD2/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cover-barricade/LOD2/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cover-barricade/LOD2/mr.png",
+          "sourceFirstUV": [
+            0.3291896879673004,
+            0.9703463315963745
+          ],
+          "dimensions": [
+            2.4463772773742676,
+            0.9892478198744357,
+            0.9272081255912781
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -1.2243094444274902,
+          0.0,
+          -0.464212566614151
+        ],
+        [
+          1.2243094444274902,
+          0.9982778429985046,
+          0.464212566614151
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "Small panel grooves and trim corners are softened. Paint transitions at foot/upright joints are irregular in close views and need art finishing.",
+        "The rear repeats front motifs inferred from one reference; this is not verified mechanical construction.",
+        "No snap system, destruction, cover gameplay or game integration is provided. The separate12-triangle box is only a review collision placeholder.",
+        "Self-intersections and actual engine/device performance remain untested; compression/mips are engine import tasks.",
+        "LOD2 shares the common root: floor minimum +4.984 mm; measured pivot delta X/Z +0.411 / -0.070 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending."
+      ]
+    },
+    {
+      "id": "local-20261016-industrial-cable-spool",
+      "slug": "industrial-cable-spool",
+      "label": "Industrial Cable Spool",
+      "category": "Industrial \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "003",
+      "mobileFirstLevel": 0,
+      "textureLimit": 1024,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 3000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/industrial-cable-spool/polish-003/LOD0/industrial-cable-spool_LOD0.glb",
+          "sourceSha256": "7f67a3373b1e0224fa23f295086f3d0c869f6ca6ebee7839078cad7109563759",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/industrial-cable-spool/LOD0/industrial-cable-spool_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cable-spool/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cable-spool/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cable-spool/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cable-spool/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.1979333609342575,
+            0.05339813232421875
+          ],
+          "dimensions": [
+            1.30607008934021,
+            1.1032795906066895,
+            1.2560783624649048
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 1500,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/industrial-cable-spool/polish-003/LOD1/industrial-cable-spool_LOD1.glb",
+          "sourceSha256": "8ce8ac6955fdb17818061d198d7750f3e852503989ff61f657e77554b4694941",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/industrial-cable-spool/LOD1/industrial-cable-spool_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cable-spool/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cable-spool/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cable-spool/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cable-spool/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.12678274512290955,
+            0.6591140031814575
+          ],
+          "dimensions": [
+            1.306747555732727,
+            1.100266651250422,
+            1.2539139986038208
+          ]
+        },
+        {
+          "level": 2,
+          "triangles": 750,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/industrial-cable-spool/polish-003/LOD2/industrial-cable-spool_LOD2.glb",
+          "sourceSha256": "67f78c67dba2aac4b6a105aed788ef83eb665a268febf44e2934250ca71f12ec",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/industrial-cable-spool/LOD2/industrial-cable-spool_LOD2.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cable-spool/LOD2/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cable-spool/LOD2/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cable-spool/LOD2/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-cable-spool/LOD2/mr.png",
+          "sourceFirstUV": [
+            0.47333118319511414,
+            0.897786557674408
+          ],
+          "dimensions": [
+            1.3016639351844788,
+            1.099999907426536,
+            1.2417295575141907
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -0.653035044670105,
+          0.0,
+          -0.6280391812324524
+        ],
+        [
+          0.653035044670105,
+          1.1032795906066895,
+          0.6280391812324524
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "Frame circles, support-foot corners and cable grooves remain somewhat irregular. Rear cable paint is mottled at close range; further art finishing may improve consistency.",
+        "The continuous cable body cannot unwind; the entire object is one static mesh without moving wheels or cable simulation.",
+        "Part of the lowest-LOD paint uses bounded nearest-surface transfer, so small nearby-surface mismatches remain possible despite the actual static review.",
+        "Review-box collider, self-intersections, engine/device performance, compression/mips and placement in a level remain unverified.",
+        "LOD1 shares the common root: floor minimum +3.013 mm; measured pivot delta X/Z -0.339 / -1.082 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending.",
+        "LOD2 shares the common root: floor minimum +8.265 mm; measured pivot delta X/Z -2.465 / -5.710 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending."
+      ]
+    },
+    {
+      "id": "local-20261016-industrial-parts-hopper",
+      "slug": "industrial-parts-hopper",
+      "label": "Industrial Parts Hopper",
+      "category": "Industrial \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "012",
+      "mobileFirstLevel": 0,
+      "textureLimit": 1024,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 4230,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/industrial-parts-hopper/polish-012/LOD0/industrial-parts-hopper_LOD0.glb",
+          "sourceSha256": "8d73c11ba60f445a60f0647f179fb13be0c6385624a069334d30a2cdd910149c",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/industrial-parts-hopper/LOD0/industrial-parts-hopper_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-parts-hopper/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-parts-hopper/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-parts-hopper/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-parts-hopper/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.4768354296684265,
+            0.5543098449707031
+          ],
+          "dimensions": [
+            1.8222675323486328,
+            1.253000020980835,
+            1.501357078552246
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 2000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/industrial-parts-hopper/polish-012/LOD1/industrial-parts-hopper_LOD1.glb",
+          "sourceSha256": "6a4c5fdc9a7a626c3791a352c7f83fcfd4564e18dacc6accd9bd28c983f8d2c2",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/industrial-parts-hopper/LOD1/industrial-parts-hopper_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-parts-hopper/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-parts-hopper/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-parts-hopper/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-parts-hopper/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.023717109113931656,
+            0.5490559339523315
+          ],
+          "dimensions": [
+            1.8229805827140808,
+            1.253000020980835,
+            1.501298427581787
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -0.9111337661743164,
+          0.0,
+          -0.750678539276123
+        ],
+        [
+          0.9111337661743164,
+          1.253000020980835,
+          0.750678539276123
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "Lower-body panel corners, painted side indicators and feet retain generated softness. Thin inner lid border and narrow cap seams can alias at distance; mip/compression settings require engine validation.",
+        "Lid is static and closed; no opening mechanism, storage cavity, physics or gameplay behavior has been prepared.",
+        "Corner blocks reach1.253m against the1.25m author height. LOD0 increases from4000 to4230 triangles and the unsafe1000-triangle level is excluded. Two selected levels replace the prior three-level set.",
+        "No game import, device performance or self-intersection test. Collision GLB is a review box.",
+        "Independent visual review retained this selection: the lid is flatter but cleaner; the lower body and feet remain softer.",
+        "The thin inner outline is near/subpixel scale in the existing 64-pixel still. Temporal flicker cannot be established from a still image. Selection remains unchanged; evaluate mips, compression and far-LOD outline simplification during later engine/device validation."
+      ]
+    },
+    {
+      "id": "local-20261016-industrial-battery-rack",
+      "slug": "industrial-battery-rack",
+      "label": "Industrial Battery Rack",
+      "category": "Industrial \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "003",
+      "mobileFirstLevel": 0,
+      "textureLimit": 1024,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 4000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/industrial-battery-rack/polish-003/LOD0/industrial-battery-rack_LOD0.glb",
+          "sourceSha256": "cf58324e9c3c6c455f3329406781ebbb6dc0c5e1cbd3eeaf723b699400b56dd3",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/industrial-battery-rack/LOD0/industrial-battery-rack_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-battery-rack/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-battery-rack/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-battery-rack/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-battery-rack/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.41955116391181946,
+            0.6715631484985352
+          ],
+          "dimensions": [
+            2.438988208770752,
+            1.4998315572738647,
+            1.2554996013641357
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 2000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/industrial-battery-rack/polish-003/LOD1/industrial-battery-rack_LOD1.glb",
+          "sourceSha256": "684f5cdf1045e2aed9e90761cc6f626089d50715d147e02dfdd05c000280f6fa",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/industrial-battery-rack/LOD1/industrial-battery-rack_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-battery-rack/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-battery-rack/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-battery-rack/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/industrial-battery-rack/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.20621567964553833,
+            0.7955071330070496
+          ],
+          "dimensions": [
+            2.438988208770752,
+            1.4960972305561882,
+            1.2421600818634033
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -1.219494104385376,
+          0.0,
+          -0.6277498006820679
+        ],
+        [
+          1.219494104385376,
+          1.4998315572738647,
+          0.6277498006820679
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "Handles, frame corners and panel borders are rounded/soft relative to the concept. Rear detail is inferred and similar to the front.",
+        "No battery removal, electrical simulation, emission, animation or gameplay function.",
+        "Review-box collision, self-intersections, engine import/compression/mips and device performance remain untested."
+      ]
+    },
+    {
+      "id": "local-20261016-fungal-spore-vent",
+      "slug": "fungal-spore-vent",
+      "label": "Fungal Spore Vent",
+      "category": "Fungal \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "001",
+      "mobileFirstLevel": 0,
+      "textureLimit": 1024,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 4000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/fungal-spore-vent/polish-001/LOD0/fungal-spore-vent_LOD0.glb",
+          "sourceSha256": "5b5bc71063a7c3856042127571723915520e9df18bc9934163a6cea215ba1d11",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/fungal-spore-vent/LOD0/fungal-spore-vent_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-spore-vent/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-spore-vent/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-spore-vent/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-spore-vent/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.03207903355360031,
+            0.6983112692832947
+          ],
+          "dimensions": [
+            1.0568454265594482,
+            1.0996419191360474,
+            0.9528921246528625
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 2000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/fungal-spore-vent/polish-001/LOD1/fungal-spore-vent_LOD1.glb",
+          "sourceSha256": "a28e39d3f4ba229ff422cee2b8a74dd830a7b3b4a3edecc39a4f38bb17762ff2",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/fungal-spore-vent/LOD1/fungal-spore-vent_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-spore-vent/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-spore-vent/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-spore-vent/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-spore-vent/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.226732075214386,
+            0.840039849281311
+          ],
+          "dimensions": [
+            1.06056147813797,
+            1.0983127815416083,
+            0.9564150869846344
+          ]
+        },
+        {
+          "level": 2,
+          "triangles": 1000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/fungal-spore-vent/polish-001/LOD2/fungal-spore-vent_LOD2.glb",
+          "sourceSha256": "6756313673aeadd4654e47050409e764db3e833f26c5d10159d511b5eae08517",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/fungal-spore-vent/LOD2/fungal-spore-vent_LOD2.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-spore-vent/LOD2/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-spore-vent/LOD2/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-spore-vent/LOD2/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-spore-vent/LOD2/mr.png",
+          "sourceFirstUV": [
+            0.277520090341568,
+            0.7693650722503662
+          ],
+          "dimensions": [
+            1.067306399345398,
+            1.0980581504991278,
+            0.9584956169128418
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -0.5284227132797241,
+          0.0,
+          -0.4764460623264313
+        ],
+        [
+          0.5284227132797241,
+          1.0996419191360474,
+          0.4764460623264313
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "Trumpet interiors are shallower and lighter than the source. Cavities, underside shelf geometry and rear details are inferred rather than anatomically or mechanically verified.",
+        "The green regions are baked color; no emissive effect, spores, particles, animation, damage or gameplay behavior is implemented.",
+        "Low-LOD simplification changes small shelf contours and interior shading. This is a useful environment prototype, not a hero asset.",
+        "Review-box collision, self-intersections, engine import, compression/mips and device performance remain unverified."
+      ]
+    },
+    {
+      "id": "local-20261016-fungal-biomass-boulder",
+      "slug": "fungal-biomass-boulder",
+      "label": "Fungal Biomass Boulder",
+      "category": "Fungal \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "001",
+      "mobileFirstLevel": 0,
+      "textureLimit": 1024,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 2000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/fungal-biomass-boulder/polish-001/LOD0/fungal-biomass-boulder_LOD0.glb",
+          "sourceSha256": "7ac82646c1a770d5f3b078ad982649f0613c08c64c474d685335b77b53644de8",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/fungal-biomass-boulder/LOD0/fungal-biomass-boulder_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-biomass-boulder/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-biomass-boulder/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-biomass-boulder/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-biomass-boulder/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.3752279281616211,
+            0.8425578474998474
+          ],
+          "dimensions": [
+            1.1440074443817139,
+            0.8491237163543701,
+            1.2045247554779053
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 1000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/fungal-biomass-boulder/polish-001/LOD1/fungal-biomass-boulder_LOD1.glb",
+          "sourceSha256": "963e4f8c209b779bfa5525073d310f8145fd0d85b66bc53c91d7a6555579c439",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/fungal-biomass-boulder/LOD1/fungal-biomass-boulder_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-biomass-boulder/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-biomass-boulder/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-biomass-boulder/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-biomass-boulder/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.4252963066101074,
+            0.057212233543395996
+          ],
+          "dimensions": [
+            1.1417717933654785,
+            0.8496459722518921,
+            1.2074240446090698
+          ]
+        },
+        {
+          "level": 2,
+          "triangles": 500,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/fungal-biomass-boulder/polish-001/LOD2/fungal-biomass-boulder_LOD2.glb",
+          "sourceSha256": "5eb22df4e179bce24e9faa8955a83f75a0683059c2164c3da77cf476eabef447",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/fungal-biomass-boulder/LOD2/fungal-biomass-boulder_LOD2.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-biomass-boulder/LOD2/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-biomass-boulder/LOD2/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-biomass-boulder/LOD2/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/fungal-biomass-boulder/LOD2/mr.png",
+          "sourceFirstUV": [
+            0.34043002128601074,
+            0.3161095380783081
+          ],
+          "dimensions": [
+            1.128680169582367,
+            0.8410945413634181,
+            1.2114796042442322
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -0.5720037221908569,
+          0.0,
+          -0.6022623777389526
+        ],
+        [
+          0.5720037221908569,
+          0.8491237163543701,
+          0.6022623777389526
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "Green nodules are paler and less distinct than the source. Purple cavities and back folds are inferred; small bumps lose definition at lower detail.",
+        "No emission, growth animation, destructibility or gameplay behavior.",
+        "Review-box collision, self-intersections, engine import/compression/mips and device performance remain untested.",
+        "LOD1 shares the common root: floor minimum +0.000 mm; measured pivot delta X/Z +2.207 / -1.450 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending.",
+        "LOD2 shares the common root: floor minimum +7.155 mm; measured pivot delta X/Z -3.599 / -3.258 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending."
+      ]
+    },
+    {
+      "id": "local-20261016-ruins-reinforced-pillar",
+      "slug": "ruins-reinforced-pillar",
+      "label": "Ruins Reinforced Pillar",
+      "category": "Ruins \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "002",
+      "mobileFirstLevel": 0,
+      "textureLimit": 1024,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 2000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/ruins-reinforced-pillar/polish-002/LOD0/ruins-reinforced-pillar_LOD0.glb",
+          "sourceSha256": "e0b0ce6a9b6092562e9322fe81aace8ce018acd4caf4d01c570ee6043f975052",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/ruins-reinforced-pillar/LOD0/ruins-reinforced-pillar_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-reinforced-pillar/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-reinforced-pillar/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-reinforced-pillar/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-reinforced-pillar/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.34477880597114563,
+            0.24547868967056274
+          ],
+          "dimensions": [
+            1.2354576587677002,
+            2.0044143199920654,
+            1.2404900789260864
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 1000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/ruins-reinforced-pillar/polish-002/LOD1/ruins-reinforced-pillar_LOD1.glb",
+          "sourceSha256": "af72a8ac530fcbeac951b6ac4ad0c1625b0c39637fce148b692db1716c1da7ca",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/ruins-reinforced-pillar/LOD1/ruins-reinforced-pillar_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-reinforced-pillar/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-reinforced-pillar/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-reinforced-pillar/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-reinforced-pillar/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.41352060437202454,
+            0.15390735864639282
+          ],
+          "dimensions": [
+            1.230794370174408,
+            2.005082283518277,
+            1.2291911244392395
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -0.6177288293838501,
+          0.0,
+          -0.6202450394630432
+        ],
+        [
+          0.6177288293838501,
+          2.0044143199920654,
+          0.6202450394630432
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "Pyramid fasteners, chipped-stone borders and metal strips remain soft and asymmetric compared with the concept; gold edge paint is uneven.",
+        "Top/base bounds provide placement aids, not certified load-bearing or seamless stacking surfaces.",
+        "Review-box collision, self-intersections, engine import/compression/mips and device performance remain untested.",
+        "LOD1 shares the common root: floor minimum -0.668 mm; measured pivot delta X/Z +2.113 / -2.596 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending."
+      ]
+    },
+    {
+      "id": "local-20261016-ruins-broken-wall-cover",
+      "slug": "ruins-broken-wall-cover",
+      "label": "Ruins Broken Wall Cover",
+      "category": "Ruins \u00b7 local batch",
+      "unrigged": false,
+      "selectedVersion": "001",
+      "mobileFirstLevel": 0,
+      "textureLimit": 1024,
+      "lods": [
+        {
+          "level": 0,
+          "triangles": 3000,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/ruins-broken-wall-cover/polish-001/LOD0/ruins-broken-wall-cover_LOD0.glb",
+          "sourceSha256": "5a302c4038acfc51c57a485b26e689cf9b6c55cd9479e68f87d909fa10b1dec3",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/ruins-broken-wall-cover/LOD0/ruins-broken-wall-cover_LOD0.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-broken-wall-cover/LOD0/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-broken-wall-cover/LOD0/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-broken-wall-cover/LOD0/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-broken-wall-cover/LOD0/mr.png",
+          "sourceFirstUV": [
+            0.016669170930981636,
+            0.14117807149887085
+          ],
+          "dimensions": [
+            2.9604601860046387,
+            1.1000378131866455,
+            0.8781934976577759
+          ]
+        },
+        {
+          "level": 1,
+          "triangles": 1500,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/ruins-broken-wall-cover/polish-001/LOD1/ruins-broken-wall-cover_LOD1.glb",
+          "sourceSha256": "265b1d7a77822c0751bb9cd2cc65ebb1ed7c811364abff5a104f0dca73a40a9b",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/ruins-broken-wall-cover/LOD1/ruins-broken-wall-cover_LOD1.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-broken-wall-cover/LOD1/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-broken-wall-cover/LOD1/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-broken-wall-cover/LOD1/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-broken-wall-cover/LOD1/mr.png",
+          "sourceFirstUV": [
+            0.2353793829679489,
+            0.4898416996002197
+          ],
+          "dimensions": [
+            2.958199381828308,
+            1.099098801612854,
+            0.8779655694961548
+          ]
+        },
+        {
+          "level": 2,
+          "triangles": 750,
+          "sourceGlb": "/Volumes/T7 Shield/Assets/Maze Swarm/Local Batch 2026-10-16/assets/ruins-broken-wall-cover/polish-001/LOD2/ruins-broken-wall-cover_LOD2.glb",
+          "sourceSha256": "5e774e4128d5d7e7e16e6b80747fcbb3ba34b80bbfa93f46f9265ad145a644eb",
+          "modelPath": "Assets/Maze/LocalBatch20261016/Source/ruins-broken-wall-cover/LOD2/ruins-broken-wall-cover_LOD2.glb",
+          "baseTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-broken-wall-cover/LOD2/base.png",
+          "normalTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-broken-wall-cover/LOD2/normal.png",
+          "maskTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-broken-wall-cover/LOD2/metallic-smoothness.png",
+          "mrTexture": "Assets/Maze/LocalBatch20261016/Textures/ruins-broken-wall-cover/LOD2/mr.png",
+          "sourceFirstUV": [
+            0.4406801462173462,
+            0.4120638370513916
+          ],
+          "dimensions": [
+            2.9501787424087524,
+            1.0965719199739397,
+            0.867239773273468
+          ]
+        }
+      ],
+      "originalProxyBounds": [
+        [
+          -1.4802300930023193,
+          0.0,
+          -0.43909674882888794
+        ],
+        [
+          1.4802300930023193,
+          1.1000378131866455,
+          0.43909674882888794
+        ]
+      ],
+      "oldProxyOverflow": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "limitations": [
+        "The higher broken masonry moves to the opposite end relative to the reference view; generated back and pillar motifs are inferred.",
+        "Stone course and reinforcement borders are softer and more rounded than the source.",
+        "Bounds endpoints are snap references only; no seamless tiling, destruction, navigation or cover gameplay validation.",
+        "Review-box collision, self-intersections, engine import/compression/mips and device performance remain untested.",
+        "LOD2 shares the common root: floor minimum -1.580 mm; measured pivot delta X/Z -2.302 / -3.032 mm. Within the existing offline guard; engine contact/LOD-transition validation is pending."
+      ]
+    }
+  ]
+}

@@ -130,7 +130,7 @@ namespace Maze.EditorTools
         // glTFast: import the hero/barrel/enemies with Legacy animation (the game drives an Animation component).
         static void SetupModels()
         {
-            foreach (var name in new[] { "hero", "hero_vanguard", "hero_vanguard_meshy", "barrel", "drone", "bloater", "leaper" })
+            foreach (var name in new[] { "hero", "hero_vanguard", "hero_vanguard_meshy", "hero_vanguard_chibi", "barrel", "drone", "bloater", "leaper" })
             {
                 string path = $"{Root}/Resources/Models/{name}.glb";
                 var imp = AssetImporter.GetAtPath(path);
@@ -168,13 +168,13 @@ namespace Maze.EditorTools
             foreach (var guid in AssetDatabase.FindAssets("_ms t:Texture2D", new[] { Root + "/Resources/Models" }))
             {
                 string path = AssetDatabase.GUIDToAssetPath(guid);
-                if (!(AssetImporter.GetAtPath(path) is TextureImporter ti) || (System.IO.Path.GetFileName(path).StartsWith("Sentinel") || System.IO.Path.GetFileName(path).StartsWith("Vanguard") || System.IO.Path.GetFileName(path).StartsWith("Minigun") || System.IO.Path.GetFileName(path).StartsWith("Door") || System.IO.Path.GetFileName(path).StartsWith("Leaper") || System.IO.Path.GetFileName(path).StartsWith("CargoCrate"))) continue;
+                if (!(AssetImporter.GetAtPath(path) is TextureImporter ti) || (System.IO.Path.GetFileName(path).StartsWith("Vanguard") || System.IO.Path.GetFileName(path).StartsWith("Minigun") || System.IO.Path.GetFileName(path).StartsWith("Door") || System.IO.Path.GetFileName(path).StartsWith("Leaper") || System.IO.Path.GetFileName(path).StartsWith("CargoCrate"))) continue;
                 ti.textureType = TextureImporterType.Default; ti.sRGBTexture = false; ti.mipmapEnabled = true;
                 ti.alphaSource = TextureImporterAlphaSource.FromInput; ti.alphaIsTransparency = false;
                 ti.maxTextureSize = 1024; ti.textureCompression = TextureImporterCompression.CompressedHQ;
                 ti.SaveAndReimport();
             }
-            // the hero's full-resolution maps (Tools/sentinel.mjs): 2048, ASTC 4x4 on iOS, trilinear + aniso 4, a slight
+            // the Heavy full-resolution maps: 2048, ASTC 4x4 on iOS, trilinear + aniso 4, a slight
             // negative mip bias so the small on-screen hero stays crisp
             // Escape Test start-room floor (Tools/escape_floor.mjs): x2 detail albedo (linear) + normal map, ASTC 4x4 on iOS
             foreach (var (file, normal) in new[] { ("floor_worn_detail", false), ("floor_worn_normal", true) })
@@ -197,7 +197,7 @@ namespace Maze.EditorTools
                 fdi.SaveAndReimport();
             }
             // (also the Iron Vanguard preview, Tools/vanguard.mjs)
-            foreach (var mat in new[] { "SentinelMat", "VanguardMat", "MinigunMat", "DoorFrameMat", "DoorPanelMat", "LeaperMat", "CargoCrateMat", "VanguardMeshyMat", "ScoutMat" })
+            foreach (var mat in new[] { "VanguardMat", "MinigunMat", "DoorFrameMat", "DoorPanelMat", "LeaperMat", "CargoCrateMat", "VanguardMeshyMat" })
             foreach (var (suffix, normal, linear) in new[] { ("_base", false, false), ("_normal", true, true), ("_ms", false, true), ("_emit", false, false) })
             {
                 if (!(AssetImporter.GetAtPath($"{Root}/Resources/Models/{mat}{suffix}.png") is TextureImporter ti)) continue;

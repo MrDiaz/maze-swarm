@@ -1,0 +1,188 @@
+{
+  "utc": "2026-10-17T00:20:19.403180+00:00",
+  "selectedSource": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/mobile-002/LOD0/compact-loading-conveyor_LOD0.glb",
+  "sha256": "cd14cef2678f3f1b7afb418f97e6907aaf7d248bee4fff789d506a18088ad8a4",
+  "manifest": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/deliverables/INTEGRATION.json",
+  "integrationManifest": {
+    "utc": "2026-10-17T00:18:08.009111+00:00",
+    "asset": "compact-loading-conveyor",
+    "name": "Compact Conveyor Loading Unit",
+    "readyForIntegrationReview": true,
+    "root": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor",
+    "selectedVersion": "002",
+    "sourceLibraryId": "libfile_6e4a6994afc881919bf729dbbbc04c93",
+    "sourceOriginalSha256": "b150ed8193c922c262079341e1ec3145e35c87111069be185c4b9527e000526d",
+    "backend": "Existing local Hunyuan3D2.1 AppleMPS / CPU rasterizer",
+    "jobId": "b5c8d049-3099-401a-8606-0af2679516e6",
+    "geometry": {
+      "steps": 40,
+      "density": 256,
+      "triangles": 16000,
+      "seed": 260121
+    },
+    "texture": {
+      "steps": 12,
+      "size": 1024,
+      "enhance": false,
+      "seed": 260121
+    },
+    "geometryWorkerSeconds": 129.44,
+    "textureWorkerSeconds": 219.21,
+    "peakSampledRssGiB": 18.18707275390625,
+    "oneGeometryAndOneTexturePass": true,
+    "noDownloadsInstallsOrCredentials": true,
+    "rawAndOriginalPreserved": true,
+    "heightMeters": 0.85,
+    "orientation": "+Yup/+Zfront author convention; source-quarter camera -45degrees; static prop can be rotated by integration owner",
+    "pivot": "shared base-footprint floor center",
+    "paletteSrgb8": {
+      "orange": [
+        255,
+        129,
+        35
+      ],
+      "cream": [
+        244,
+        232,
+        212
+      ],
+      "navy": [
+        46,
+        61,
+        92
+      ],
+      "cyan": [
+        56,
+        199,
+        231
+      ]
+    },
+    "paletteMethod": "7interior UV samples per reduced triangle vote raw neural hue family; apply shared exact source-style orange/cream/navy/cyan swatches; bounded tank cyan-window cleanup recorded per LOD; no baked light or noise",
+    "textureAndMaterial": "128x128 shared four-color sRGB atlas, intentional1x1 flat tangent normal/ORM linear, roughness184/255 and metallic0; clean vertex-normal shape, no baked albedo lighting or dense noisy normal detail",
+    "lods": [
+      {
+        "level": 0,
+        "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/mobile-002/LOD0/compact-loading-conveyor_LOD0.glb",
+        "sha256": "cd14cef2678f3f1b7afb418f97e6907aaf7d248bee4fff789d506a18088ad8a4",
+        "bytes": 453040,
+        "triangles": 3000,
+        "dimensionsXYZMeters": [
+          1.5782517194747925,
+          0.8491199612617493,
+          1.5578880310058594
+        ],
+        "topology": {
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "degenerateFaces": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2
+        },
+        "sourceSampledShapeMaxErrorMeters": 0.01110815443098545,
+        "sourceShapeP95ErrorMeters": 0.0020564637845382093,
+        "shapeErrorIsSampledNotExactHausdorff": true,
+        "shapeErrorLimitHeightFraction": 0.015,
+        "floorMinY": 0.0,
+        "adjustedFloorVertices": 0,
+        "materialCount": 1,
+        "primitiveCount": 1,
+        "baseColorSize": 128,
+        "normalSize": 1,
+        "ormSize": 1,
+        "paletteFaceCounts": {
+          "orange": 575,
+          "cream": 852,
+          "navy": 1573,
+          "cyan": 0
+        },
+        "textureGpuRgbaWithMipsEstimateBytes": 87392,
+        "pbr": {
+          "maps": [
+            "albedo.png",
+            "normal.png",
+            "roughness.png",
+            "metallic.png",
+            "metallic-roughness.png"
+          ],
+          "normal_embedded": true,
+          "tangents_exported": true,
+          "metallic_roughness_channels": {
+            "roughness": "G",
+            "metallic": "B"
+          }
+        }
+      },
+      {
+        "level": 1,
+        "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/mobile-002/LOD1/compact-loading-conveyor_LOD1.glb",
+        "sha256": "f1e2c93f6acd2cac87d62cb18e2f30b33c2c1febf95efac471f3d19115f0ab3e",
+        "bytes": 228096,
+        "triangles": 1500,
+        "dimensionsXYZMeters": [
+          1.577334225177765,
+          0.8504093289375305,
+          1.5584561228752136
+        ],
+        "topology": {
+          "boundaryEdges": 0,
+          "nonmanifoldEdges": 0,
+          "degenerateFaces": 0,
+          "connectedComponents": 1,
+          "eulerCharacteristic": 2
+        },
+        "sourceSampledShapeMaxErrorMeters": 0.01899717003107071,
+        "sourceShapeP95ErrorMeters": 0.003331458591856062,
+        "shapeErrorIsSampledNotExactHausdorff": true,
+        "shapeErrorLimitHeightFraction": 0.025,
+        "floorMinY": 0.0,
+        "adjustedFloorVertices": 1,
+        "materialCount": 1,
+        "primitiveCount": 1,
+        "baseColorSize": 128,
+        "normalSize": 1,
+        "ormSize": 1,
+        "paletteFaceCounts": {
+          "orange": 261,
+          "cream": 447,
+          "navy": 792,
+          "cyan": 0
+        },
+        "textureGpuRgbaWithMipsEstimateBytes": 87392,
+        "pbr": {
+          "maps": [
+            "albedo.png",
+            "normal.png",
+            "roughness.png",
+            "metallic.png",
+            "metallic-roughness.png"
+          ],
+          "normal_embedded": true,
+          "tangents_exported": true,
+          "metallic_roughness_channels": {
+            "roughness": "G",
+            "metallic": "B"
+          }
+        }
+      }
+    ],
+    "offlineValidation": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/mobile-002/offline-validation.json",
+    "visualReview": {
+      "frontQuarterSideBack": true,
+      "sourceComparison": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/deliverables/compact-loading-conveyor-comparison.png",
+      "actualMultiview": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/compact-loading-conveyor/deliverables/compact-loading-conveyor-multiview.png",
+      "notes": "Actual source-quarter/front/side/back and1500-triangle distant LOD inspected. All four large orange rollers, cream rails and navy frame/bolt forms read clearly in the shared palette. Rounded static silhouette retained. Primary3000tri sampled max error1.31%height under1.5%; distant1500tri2.23% under explicitly recorded2.5%limit. First2500tri export stopped at primary shape gate and remains preserved. Mild asymmetry, slight roller waviness and small polygon-aligned color steps remain close up; all machine parts are fused into one solid, no moving rollers or operational conveyor mechanism. Closed/wound connected topology, embedded maps, exact palette and nondegenerate tiny swatch-UV checks passed. No rig/animation or phone-performance claim."
+    },
+    "limitations": [
+      "Single-view rear inference",
+      "Static mesh; no moving machine or conveyor mechanism",
+      "No rig or animation",
+      "No game edit/import or device profiling",
+      "Self-intersections not formally tested"
+    ],
+    "integrationOwner": "01a13737-9ca8-728a-9baa-fc7ac2c030ee"
+  },
+  "rootReview": "Actual multiview inspected; four static rollers, cream rails and navy body approved for Unity review.",
+  "unityVerified": false,
+  "deviceVerified": false,
+  "originalsPreserved": true
+}

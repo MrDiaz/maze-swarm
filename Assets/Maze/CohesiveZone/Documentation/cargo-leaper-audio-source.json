@@ -1,0 +1,325 @@
+{
+  "candidates": [
+    {
+      "file": "/Volumes/T7 Shield/Assets/Sounds/Forge & Fantasy - Weapon SFX Pack/WAV/Whip/Whip_Whoosh_01.wav",
+      "metrics": {
+        "channels": 1,
+        "clipped_samples": 0,
+        "energy_quantiles_seconds": {
+          "0.01": 0.057166666666666664,
+          "0.1": 0.06760416666666667,
+          "0.5": 0.0855625,
+          "0.9": 0.09760416666666667,
+          "0.99": 0.16058333333333333
+        },
+        "first_sample": 0.0,
+        "frames": 35528,
+        "last_sample": 0.0,
+        "peak_dbfs": -1.9427449540674093,
+        "rms_dbfs": -25.176300037929785,
+        "sample_rate": 48000,
+        "seconds": 0.7401666666666666,
+        "zero_crossing_rate_hz": 3089.8446295879307
+      },
+      "sha256": "2d80a7510fadeb93e0fdf5d33d4fcca1c3f7caa9c4679a96b872ecbffb373996"
+    },
+    {
+      "file": "/Volumes/T7 Shield/Assets/Sounds/Forge & Fantasy - Weapon SFX Pack/WAV/Whip/Whip_Whoosh_02.wav",
+      "metrics": {
+        "channels": 1,
+        "clipped_samples": 0,
+        "energy_quantiles_seconds": {
+          "0.01": 0.022291666666666668,
+          "0.1": 0.026291666666666668,
+          "0.5": 0.03745833333333334,
+          "0.9": 0.050666666666666665,
+          "0.99": 0.099375
+        },
+        "first_sample": 0.0,
+        "frames": 23074,
+        "last_sample": 0.0,
+        "peak_dbfs": -4.3899654662199,
+        "rms_dbfs": -25.152256294147136,
+        "sample_rate": 48000,
+        "seconds": 0.48070833333333335,
+        "zero_crossing_rate_hz": 1822.3108260379647
+      },
+      "sha256": "8f8ca6058dfd1259ee34be826efc5dc40bfe21f98a9a56a86ad68ac386736cb0"
+    },
+    {
+      "file": "/Volumes/T7 Shield/Assets/Sounds/Forge & Fantasy - Weapon SFX Pack/WAV/Whip/Whip_Whoosh_03.wav",
+      "metrics": {
+        "channels": 1,
+        "clipped_samples": 0,
+        "energy_quantiles_seconds": {
+          "0.01": 0.027145833333333334,
+          "0.1": 0.03177083333333333,
+          "0.5": 0.04566666666666667,
+          "0.9": 0.08214583333333333,
+          "0.99": 0.11975
+        },
+        "first_sample": 0.0,
+        "frames": 24231,
+        "last_sample": 0.0,
+        "peak_dbfs": -3.459208064509171,
+        "rms_dbfs": -22.789657745927077,
+        "sample_rate": 48000,
+        "seconds": 0.5048125,
+        "zero_crossing_rate_hz": 752.7547356691841
+      },
+      "sha256": "cd7b103fb3bb1dcbb0c00ad4121764b9ca39d192036e89811a7e109b9d8b3fe5"
+    },
+    {
+      "file": "/Volumes/T7 Shield/Assets/Sounds/Forge & Fantasy - Weapon SFX Pack/WAV/Whip/Whip_Whoosh_04.wav",
+      "metrics": {
+        "channels": 1,
+        "clipped_samples": 0,
+        "energy_quantiles_seconds": {
+          "0.01": 0.026020833333333333,
+          "0.1": 0.0316875,
+          "0.5": 0.04666666666666667,
+          "0.9": 0.08125,
+          "0.99": 0.13575
+        },
+        "first_sample": 0.0,
+        "frames": 21105,
+        "last_sample": 0.0,
+        "peak_dbfs": -1.4720582232962185,
+        "rms_dbfs": -21.41508192900919,
+        "sample_rate": 48000,
+        "seconds": 0.4396875,
+        "zero_crossing_rate_hz": 809.6659559346126
+      },
+      "sha256": "504758a5ad0908d92ddbef6b95f0cb2926738d90d7ab501a45d4740aa872cc94"
+    },
+    {
+      "file": "/Volumes/T7 Shield/Assets/Sounds/Forge & Fantasy - Weapon SFX Pack/WAV/Whip/Whip_Whoosh_05.wav",
+      "metrics": {
+        "channels": 1,
+        "clipped_samples": 0,
+        "energy_quantiles_seconds": {
+          "0.01": 0.030354166666666668,
+          "0.1": 0.033104166666666664,
+          "0.5": 0.0400625,
+          "0.9": 0.05627083333333333,
+          "0.99": 0.12047916666666666
+        },
+        "first_sample": 0.0,
+        "frames": 18195,
+        "last_sample": 0.0,
+        "peak_dbfs": -4.557432018630289,
+        "rms_dbfs": -25.747995279282527,
+        "sample_rate": 48000,
+        "seconds": 0.3790625,
+        "zero_crossing_rate_hz": 1936.3561417971969
+      },
+      "sha256": "4b01a87eca3a015a734b13db9375cbd358793b26a0733094d011042167d30948"
+    },
+    {
+      "file": "/Volumes/T7 Shield/Assets/Sounds/Forge & Fantasy - Weapon SFX Pack/WAV/Whip/Whip_Whoosh_06.wav",
+      "metrics": {
+        "channels": 1,
+        "clipped_samples": 0,
+        "energy_quantiles_seconds": {
+          "0.01": 0.05385416666666667,
+          "0.1": 0.060520833333333336,
+          "0.5": 0.0765,
+          "0.9": 0.10545833333333333,
+          "0.99": 0.1698125
+        },
+        "first_sample": 0.0,
+        "frames": 21835,
+        "last_sample": 0.0,
+        "peak_dbfs": -1.7630734678966362,
+        "rms_dbfs": -24.24708643132802,
+        "sample_rate": 48000,
+        "seconds": 0.45489583333333333,
+        "zero_crossing_rate_hz": 927.6849095488894
+      },
+      "sha256": "8a9dfcb39c88eeaceef67a84ebde4161abb1a7ac0d42727199a8cbb97943b3e8"
+    },
+    {
+      "file": "/Volumes/T7 Shield/Assets/Sounds/Forge & Fantasy - Weapon SFX Pack/WAV/Whip/Whip_Whoosh_07.wav",
+      "metrics": {
+        "channels": 1,
+        "clipped_samples": 0,
+        "energy_quantiles_seconds": {
+          "0.01": 0.017416666666666667,
+          "0.1": 0.028583333333333332,
+          "0.5": 0.03827083333333333,
+          "0.9": 0.05422916666666667,
+          "0.99": 0.1105625
+        },
+        "first_sample": 0.0,
+        "frames": 21397,
+        "last_sample": 0.0,
+        "peak_dbfs": -4.392507851097265,
+        "rms_dbfs": -24.819191801989874,
+        "sample_rate": 48000,
+        "seconds": 0.44577083333333334,
+        "zero_crossing_rate_hz": 489.0405196990232
+      },
+      "sha256": "d6cac8127a4b94118415eb171238062a9c14ed59054434d9b20c99837dc1b3c0"
+    },
+    {
+      "file": "/Volumes/T7 Shield/Assets/Sounds/Forge & Fantasy - Weapon SFX Pack/WAV/Whip/Whip_Whoosh_08.wav",
+      "metrics": {
+        "channels": 1,
+        "clipped_samples": 0,
+        "energy_quantiles_seconds": {
+          "0.01": 0.014583333333333334,
+          "0.1": 0.0230625,
+          "0.5": 0.027854166666666666,
+          "0.9": 0.04014583333333333,
+          "0.99": 0.09214583333333333
+        },
+        "first_sample": 0.0,
+        "frames": 21738,
+        "last_sample": 0.0,
+        "peak_dbfs": -4.80321080983664,
+        "rms_dbfs": -26.754533880057444,
+        "sample_rate": 48000,
+        "seconds": 0.452875,
+        "zero_crossing_rate_hz": 1799.613579906155
+      },
+      "sha256": "ba222f1cebf89fcca2baa73f71659de98608bf2b08887b52f19d794a5698b617"
+    },
+    {
+      "file": "/Volumes/T7 Shield/Assets/Sounds/Forge & Fantasy - Weapon SFX Pack/WAV/Whip/Whip_Whoosh_09.wav",
+      "metrics": {
+        "channels": 1,
+        "clipped_samples": 0,
+        "energy_quantiles_seconds": {
+          "0.01": 0.02666666666666667,
+          "0.1": 0.03358333333333333,
+          "0.5": 0.044145833333333336,
+          "0.9": 0.05545833333333333,
+          "0.99": 0.10945833333333334
+        },
+        "first_sample": 0.0,
+        "frames": 22318,
+        "last_sample": 0.0,
+        "peak_dbfs": -4.846338937581114,
+        "rms_dbfs": -26.656638290414364,
+        "sample_rate": 48000,
+        "seconds": 0.4649583333333333,
+        "zero_crossing_rate_hz": 1114.0783224303254
+      },
+      "sha256": "74077f68c56cb058e0d433c79de9c0cba1d511f6a4c17543b340c51134635b1d"
+    },
+    {
+      "file": "/Volumes/T7 Shield/Assets/Sounds/Forge & Fantasy - Weapon SFX Pack/WAV/Whip/Whip_Whoosh_10.wav",
+      "metrics": {
+        "channels": 1,
+        "clipped_samples": 0,
+        "energy_quantiles_seconds": {
+          "0.01": 0.026375,
+          "0.1": 0.03375,
+          "0.5": 0.0403125,
+          "0.9": 0.06195833333333333,
+          "0.99": 0.15414583333333334
+        },
+        "first_sample": 0.0,
+        "frames": 25998,
+        "last_sample": 0.0,
+        "peak_dbfs": -5.202140647105558,
+        "rms_dbfs": -25.459267651826217,
+        "sample_rate": 48000,
+        "seconds": 0.541625,
+        "zero_crossing_rate_hz": 420.95545811216243
+      },
+      "sha256": "cbc8a2a30b2e68def9f01bfaa0fb27bd99cbedd780c9e688d72f53a12fc8946f"
+    }
+  ],
+  "license": {
+    "author": "Case Portman Audio",
+    "name": "Forge & Fantasy Weapon SFX Pack \u2014 Royalty-Free Sound Effects License",
+    "path": "/Volumes/T7 Shield/Assets/Sounds/Forge & Fantasy - Weapon SFX Pack/license.txt",
+    "permits": "Personal/commercial game use, editing, processing and distribution within the project.",
+    "restriction": "Do not upload source or derivative clips as standalone audio/SFX packs. Internal staging and compiled-game integration only.",
+    "sha256": "03cf2423c1ff04157f555c05f6b32e652c3139f55c17a79fd8ecf121b566a0d3"
+  },
+  "no_canonical_writes": true,
+  "originals_unchanged": true,
+  "outputs": {
+    "cargo_leaper_pounce": {
+      "metrics": {
+        "channels": 1,
+        "clipped_samples": 0,
+        "energy_quantiles_seconds": {
+          "0.01": 0.0143125,
+          "0.1": 0.017083333333333332,
+          "0.5": 0.023958333333333335,
+          "0.9": 0.0395,
+          "0.99": 0.09622916666666667
+        },
+        "first_sample": 0.0,
+        "frames": 8352,
+        "last_sample": 0.0,
+        "peak_dbfs": -8.000117030469568,
+        "rms_dbfs": -25.666481923411606,
+        "sample_rate": 48000,
+        "seconds": 0.174,
+        "zero_crossing_rate_hz": 1436.7816091954023
+      },
+      "output": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/leaper-audio/Audio/cargo_leaper_pounce.wav",
+      "output_sha256": "33cbd737e4e40331117bdc0c000cf212a1782508828de4ca86b84cd26afaecf4",
+      "recipe": {
+        "applied_gain": 0.7017335448288414,
+        "encoding": "signed PCM16 little-endian mono; original 48000 Hz; deterministic round, no dither, no peak boost",
+        "end_frame": 9120,
+        "fade_in_frames": 192,
+        "fade_out_frames": 1200,
+        "first_frame": 768,
+        "high_pass_alpha": 0.9908788735874952,
+        "high_pass_hz": 70,
+        "purpose": "Existing pounce release event; shorter separate plain Foley cue",
+        "source": "WAV/Whip/Whip_Whoosh_05.wav",
+        "target_peak_dbfs": -8
+      },
+      "source": "/Volumes/T7 Shield/Assets/Sounds/Forge & Fantasy - Weapon SFX Pack/WAV/Whip/Whip_Whoosh_05.wav",
+      "source_sha256": "4b01a87eca3a015a734b13db9375cbd358793b26a0733094d011042167d30948"
+    },
+    "cargo_leaper_windup": {
+      "metrics": {
+        "channels": 1,
+        "clipped_samples": 0,
+        "energy_quantiles_seconds": {
+          "0.01": 0.014479166666666666,
+          "0.1": 0.021729166666666667,
+          "0.5": 0.02825,
+          "0.9": 0.049916666666666665,
+          "0.99": 0.14208333333333334
+        },
+        "first_sample": 0.0,
+        "frames": 13824,
+        "last_sample": 0.0,
+        "peak_dbfs": -10.000126940172311,
+        "rms_dbfs": -27.69170736508908,
+        "sample_rate": 48000,
+        "seconds": 0.288,
+        "zero_crossing_rate_hz": 559.0277777777778
+      },
+      "output": "/Users/manuel.diaz/Documents/Codex/2026-10-13/task-2/cohesive-zone-20261016/staging/leaper-audio/Audio/cargo_leaper_windup.wav",
+      "output_sha256": "340388de21e69c9de53f39f48df99944af7f1f7f1444cd3eab0608c26cd744cc",
+      "recipe": {
+        "applied_gain": 0.5731290286943392,
+        "encoding": "signed PCM16 little-endian mono; original 48000 Hz; deterministic round, no dither, no peak boost",
+        "end_frame": 14400,
+        "fade_in_frames": 480,
+        "fade_out_frames": 1680,
+        "first_frame": 576,
+        "high_pass_alpha": 0.9908788735874952,
+        "high_pass_hz": 70,
+        "purpose": "Crouch/windup event; a longer softer plain Foley cue",
+        "source": "WAV/Whip/Whip_Whoosh_10.wav",
+        "target_peak_dbfs": -10
+      },
+      "source": "/Volumes/T7 Shield/Assets/Sounds/Forge & Fantasy - Weapon SFX Pack/WAV/Whip/Whip_Whoosh_10.wav",
+      "source_sha256": "cbc8a2a30b2e68def9f01bfaa0fb27bd99cbedd780c9e688d72f53a12fc8946f"
+    }
+  },
+  "perceptual_listening": false,
+  "schema": "maze-cargo-leaper-foley-v1",
+  "source_selection": "Plain Whip whooshes only; no chain/crack/music/drop_wind. 10 has lower crossing rate and longer energy tail; 05 is shorter with a briefer energy body. Selection uses objective data, not audition."
+}

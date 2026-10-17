@@ -1,0 +1,13 @@
+Cream Orange Short Cover Barrier — LOCAL ASSET HANDOFF
+
+Selected mobile-002; static prop, no animations or rig.
+LOD0: 3500tri, /Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/mobile-002/LOD0/cream-orange-cover-barrier_LOD0.glb
+LOD1: 1500tri, /Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/cream-orange-cover-barrier/mobile-002/LOD1/cream-orange-cover-barrier_LOD1.glb
+Height 0.75m; dimensions and SHA256 in INTEGRATION.json. +Yup, +Zfront; common floor/base-footprint center pivot. Source-quarter rendered at-45degrees. All original sources/raw geometry/raw paint retained. One local Hunyuan geometry pass 151.42s and one separate texture pass 125.72s. No remote/paid inference, installs or downloads.
+
+Final material uses the shared128px four-color palette: orange/cream/navy/cyan. Neural texture color registration selects broad face classes; shared palette removes baked lighting and desaturated shading. Original1024px maps are preserved in raw-texture-job. Actual geometry normals plus deliberate flat1x1 tangent normal; no noisy dense sculpt bake. Matte roughness184/255, metallic0. sRGB base color; linear data maps. Each LOD has textures.zip. ~85KiB uncompressed RGBA+mips per set, before engine-specific formats/deduplication; this is an estimate.
+
+Mesh and map checks pass: finite UVs/unit normals/tangents, one material/primitive, closed consistently wound connected surface, no boundary/nonmanifold/degenerate geometry. Embedded PBR maps match archives exactly. Sampled shape deviation and each LOD author-height error limit are recorded in the manifest; primary limits are1.5%, with any larger distant-LOD limit explicitly recorded. No self-intersection proof, device profiling or game integration.
+
+Visual assessment: Actual front/quarter/side/back and1500-triangle distant LOD inspected. Rounded orange end posts, cream recessed panels/grip and navy plinth match the source silhouette and toy palette. Main3500-triangle mesh max sampled shape error0.61%height; far1500-triangle mesh2.20%height, under its explicitly recorded2.5%limit. Initial2000-triangle export stopped at its strict1.5%primary limit and remains preserved; no extra inference. Slight panel asymmetry/soft grooves and small face-aligned color steps at orange/cream/navy boundaries remain close up. Distant LOD retains the grip and feet at its intended far-view detail. Closed wound one-component topology, PBR maps, palette and nondegenerate tiny-UV checks passed. Static prop, no rig/animation.
+Rear is inferred from a single source. Machine/conveyor parts form one static mesh; moving rollers/operational mechanics are not provided.

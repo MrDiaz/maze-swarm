@@ -26,7 +26,8 @@ namespace Maze
             game = g;
             mpb = new MaterialPropertyBlock();
             var B = g.cfg.barrels;
-            var prefab = Resources.Load<GameObject>("Models/barrel");
+            var prefab = CohesiveZone.For(g) ? Resources.Load<GameObject>("CohesiveZone/Models/cargo-tank") : CryoSoftEnvironment.For(g.run, g.sector, g.floor) ? Resources.Load<GameObject>("LivingEnvironments/CryoExplosiveBarrel") : null;
+            if (prefab == null) prefab = Resources.Load<GameObject>("Models/barrel");
             Material fallback = null;
             if (prefab == null) { Debug.LogWarning("Maze: Resources/Models/barrel not found, using stand-in barrels."); fallback = Mats.Lit(new Color(0.7f, 0.15f, 0.12f), null, null, 0.5f, 0.3f); }
             var rnd = new System.Random(4242);
@@ -58,6 +59,7 @@ namespace Maze
                     b.tr = go.transform;
                     b.rends = go.GetComponentsInChildren<Renderer>();
                     foreach (var r in b.rends) r.shadowCastingMode = ShadowCastingMode.On;
+                    if (CohesiveZone.For(g)) CohesiveExplosiveMarker.Attach(b.tr, B.height);
                     list.Add(b);
                 }
             }

@@ -1,0 +1,232 @@
+{
+  "status": "Approved staged gait after actual imported moving/deformation review; runtime integration/phone approval belongs to canonical owner.",
+  "generatedUtc": "2026-10-17T04:42:30.948826+00:00",
+  "selectedGlb": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/gait-011/hero_engineer_chibi.glb",
+  "sha256": "3904d2d8dae2e1ba9da400274103df480f04fd26a9826640251103c9da5abc5d",
+  "bytes": 4256896,
+  "baseline009Sha256": "67efe1187f47d8706d4910cdfc57f95ded0b56748731ceff323ca01744fc2c93",
+  "triangles": 24190,
+  "joints": 26,
+  "maximumWeightsPerVertex": 3,
+  "heightMeters": 1,
+  "runtimeHeightMeters": 1.65,
+  "axes": "+Y up/+Z forward, floor centered, no authored horizontal Root motion",
+  "clips": {
+    "Walking": {
+      "periodSeconds": 0.8,
+      "nativeRuntimeSpeed": 0.65,
+      "nativeAuthorSpeed": 0.393939393939394,
+      "runtimeDistancePerCycle": 0.52,
+      "stepsPerSecondAtNative": 2.5,
+      "stanceSecondsPerFoot": 0.44000000000000006,
+      "stancePhaseFraction": 0.55
+    },
+    "Jogging": {
+      "periodSeconds": 0.62,
+      "nativeRuntimeSpeed": 2.5,
+      "nativeAuthorSpeed": 1.5151515151515151,
+      "runtimeDistancePerCycle": 1.55,
+      "stepsPerSecondAtNative": 3.2258064516129035,
+      "stanceSecondsPerFoot": 0.124,
+      "stancePhaseFraction": 0.2
+    },
+    "Running": {
+      "periodSeconds": 0.5,
+      "nativeRuntimeSpeed": 6.48,
+      "nativeAuthorSpeed": 3.9272727272727277,
+      "runtimeDistancePerCycle": 3.24,
+      "stepsPerSecondAtNative": 4.0,
+      "stanceSecondsPerFoot": 0.05,
+      "stancePhaseFraction": 0.1
+    }
+  },
+  "unchangedClips": {
+    "Idle": 2,
+    "Attack": 0.4,
+    "Death": 1.5
+  },
+  "Dash": {
+    "duration": 0.16,
+    "nonLocomotionGlide": true
+  },
+  "meshUvNormalsIndicesImagesPreservedByteExact": true,
+  "toeBindingDerivative": {
+    "old": {
+      "Right": [
+        -0.153,
+        0.03,
+        0.095
+      ],
+      "Left": [
+        0.153,
+        0.03,
+        0.095
+      ]
+    },
+    "new": {
+      "Right": [
+        -0.151052325963974,
+        0.02506350353360176,
+        0.07248935550451277
+      ],
+      "Left": [
+        0.14564178884029388,
+        0.02500000037252903,
+        0.01757628396153449
+      ]
+    },
+    "nonToeJointsAndBindMatricesUnchanged": true
+  },
+  "restSurfaceMaxErrorAuthor": 2.4086661828697265e-08,
+  "unchangedClipSurfaceErrors": {
+    "Idle": 8.56218983801193e-09,
+    "Attack": 8.56218983801193e-09,
+    "Death": 1.2717075245721105e-08
+  },
+  "independentBlenderImportMaxErrorAuthor": 6.182497194779874e-05,
+  "betweenKeyAudit": {
+    "rate": 480,
+    "offsetHalfSample": true,
+    "clips": {
+      "Idle": {
+        "durationSeconds": 2,
+        "minimumSkinYAuthor": -9.249362868638324e-09,
+        "maximumGroundPenetrationRuntimeMeters": 1.5261448733253236e-08,
+        "maximumPalmErrorRuntimeMeters": 0.0,
+        "rootTranslationMax": 0,
+        "loopPoseMaxError": 1.2412670766236366e-16
+      },
+      "Walking": {
+        "durationSeconds": 0.8,
+        "minimumSkinYAuthor": -2.116566852783386e-06,
+        "maximumGroundPenetrationRuntimeMeters": 3.4923353070925865e-06,
+        "maximumPalmErrorRuntimeMeters": 8.729575413277736e-08,
+        "rootTranslationMax": 0,
+        "loopPoseMaxError": 2.607722418939317e-08
+      },
+      "Jogging": {
+        "durationSeconds": 0.62,
+        "minimumSkinYAuthor": -6.085097243704483e-05,
+        "maximumGroundPenetrationRuntimeMeters": 0.00010040410452112397,
+        "maximumPalmErrorRuntimeMeters": 1.996806842671209e-06,
+        "rootTranslationMax": 0,
+        "loopPoseMaxError": 2.514569066029992e-08
+      },
+      "Running": {
+        "durationSeconds": 0.5,
+        "minimumSkinYAuthor": -0.0006155647064342202,
+        "maximumGroundPenetrationRuntimeMeters": 0.0010156817656164633,
+        "maximumPalmErrorRuntimeMeters": 4.755880195796149e-06,
+        "rootTranslationMax": 0,
+        "loopPoseMaxError": 1.7901120993147208e-16
+      },
+      "Attack": {
+        "durationSeconds": 0.4,
+        "minimumSkinYAuthor": -9.249362868638324e-09,
+        "maximumGroundPenetrationRuntimeMeters": 1.5261448733253236e-08,
+        "maximumPalmErrorRuntimeMeters": 0.0,
+        "rootTranslationMax": 0,
+        "loopPoseMaxError": 0.0003697743520907252
+      },
+      "Death": {
+        "durationSeconds": 1.5,
+        "minimumSkinYAuthor": -9.249362868638324e-09,
+        "maximumGroundPenetrationRuntimeMeters": 1.5261448733253236e-08,
+        "maximumPalmErrorRuntimeMeters": 0.0,
+        "rootTranslationMax": 0,
+        "loopPoseMaxError": 1.1385368851118145
+      },
+      "Dash": {
+        "durationSeconds": 0.16,
+        "minimumSkinYAuthor": 0.025000010986814307,
+        "maximumGroundPenetrationRuntimeMeters": 0,
+        "maximumPalmErrorRuntimeMeters": 1.2717637684832832e-08,
+        "rootTranslationMax": 0,
+        "loopPoseMaxError": 3.576224061345498e-18
+      }
+    }
+  },
+  "bounds": {
+    "center": [
+      0,
+      0.5,
+      0.14
+    ],
+    "extents": [
+      0.46,
+      0.57,
+      0.67
+    ]
+  },
+  "contactManifest": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/gait-011/CONTACT-MANIFEST.json",
+  "sourceAuthoringContacts": "/Volumes/T7 Shield/Assets/Heroes/Purple Engineer 2026-10-16/gait-011/CONTACTS.json",
+  "weapon": {
+    "sameSharedMinigun": true,
+    "runtimeLengthMeters": 0.82,
+    "rightPalmUnityRootAuthor": [
+      0.06,
+      0.35,
+      0.13
+    ],
+    "leftPalmUnityRootAuthor": [
+      -0.06,
+      0.35,
+      0.15
+    ],
+    "bobFormula": "Root-relative palmY=.35+.35*(Hips localY-.29); palmX/Z stay fixed while Hips sways. Apply same damped Y to gun; do not parent gun directly to moving Hips or WeaponGrip helper.",
+    "nativeGunRearGrip": [
+      -0.04,
+      -0.14,
+      0
+    ],
+    "unityGunRearGrip": [
+      0.04,
+      -0.14,
+      0
+    ],
+    "unityGunSupport": [
+      -0.003038414,
+      -0.14,
+      -0.258230484
+    ],
+    "unityGunMuzzle": [
+      -0.919999958,
+      0,
+      0
+    ],
+    "helperNames": [
+      "RightPalm",
+      "LeftPalm"
+    ],
+    "handChainsUnchanged": true
+  },
+  "playback": {
+    "direction": "positive phase only; moving body follows post-collision actual displacement.",
+    "normalPhoneAim": "Spine/weapon bounded\u00b130deg relative travel; handIK preserves exact weapon sockets.",
+    "manual180": "Unsupported sustained spine twist. Desktop diagnostic may transition whole body; no backward phase/gait claim.",
+    "rateRecommendations": "Use actual distance and adjacent native-speed clips. At normal6.48 Run is1x (4steps/s); at7.2 Run1.111x; at8.424 Run1.30x. Dash uses its separate.16s pose.",
+    "phaseBlending": "Shared normalized strike phase. With adjacent weights w, use phaseHz=actualSpeed/sum(w*nativeSpeed*period); each clip seconds=phase*period. Interpolate contact duty as appropriate; validate blends with actual world anchors.",
+    "safeInitialReviewedRateRange": [
+      0.65,
+      1.4
+    ],
+    "rateRangeLimitation": "Offline deformation/range review only1x native and turns; recommended neighboring rates require owner runtime critique. Starts/stops/collision are not claimed solved by the GLB alone."
+  },
+  "reviews": {
+    "runBeforeAfter": "review/run-comparison-60fps.mp4",
+    "walking": "review/walking-native-30fps.mp4",
+    "jogging": "review/jogging-native-30fps.mp4",
+    "forwardTurn": "review/forward-turn-60fps.mp4",
+    "dash": "review/dash-glide-60fps.mp4",
+    "scope": "Actual imported GLBs moving on measured checker ground; offline asset evidence, not phone or Unity after evidence."
+  },
+  "limitations": [
+    "Toy bounding run uses short.05s contacts and deliberate flight to match6.48m/s with compact legs.",
+    "Worst between-key raw sole floor intrusion about1.016mm runtime before owner contact correction.",
+    "Unchanged Attack is approximated recoil; Death remains old collapse, clamp once.",
+    "Original neural color bleed/soft painted details remain; separate appearance comparison pending."
+  ],
+  "noInference": true,
+  "noCanonicalWrites": true,
+  "sharedLeaseReleased": true
+}

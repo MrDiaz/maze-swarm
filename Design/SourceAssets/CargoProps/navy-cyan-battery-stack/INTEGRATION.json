@@ -1,0 +1,176 @@
+{
+  "utc": "2026-10-16T23:44:04.720401+00:00",
+  "asset": "navy-cyan-battery-stack",
+  "name": "Navy Cyan Battery Stack",
+  "readyForIntegrationReview": true,
+  "root": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack",
+  "selectedVersion": "002",
+  "sourceLibraryId": "libfile_27c58ddc91b881918b9b935978a902fa",
+  "sourceOriginalSha256": "2f3845311135d952f3bdb5f51a1661f86f70b450ab6e800061e89df73b781470",
+  "backend": "Existing local Hunyuan3D2.1 AppleMPS / CPU rasterizer",
+  "jobId": "3b23df76-0517-4532-8d8d-25e71668c151",
+  "geometry": {
+    "steps": 40,
+    "density": 256,
+    "triangles": 16000,
+    "seed": 260118
+  },
+  "texture": {
+    "steps": 12,
+    "size": 1024,
+    "enhance": false,
+    "seed": 260118
+  },
+  "geometryWorkerSeconds": 307.0,
+  "textureWorkerSeconds": 347.56,
+  "peakSampledRssGiB": 17.475311279296875,
+  "oneGeometryAndOneTexturePass": true,
+  "noDownloadsInstallsOrCredentials": true,
+  "rawAndOriginalPreserved": true,
+  "heightMeters": 1.2,
+  "orientation": "+Yup/+Zfront author convention; source-quarter camera -45degrees; static prop can be rotated by integration owner",
+  "pivot": "shared base-footprint floor center",
+  "paletteSrgb8": {
+    "orange": [
+      255,
+      129,
+      35
+    ],
+    "cream": [
+      244,
+      232,
+      212
+    ],
+    "navy": [
+      46,
+      61,
+      92
+    ],
+    "cyan": [
+      56,
+      199,
+      231
+    ]
+  },
+  "paletteMethod": "7interior UV samples per reduced triangle vote raw neural hue family; apply shared exact source-style orange/cream/navy/cyan swatches; no baked light or noise",
+  "textureAndMaterial": "128x128 shared four-color sRGB atlas, intentional1x1 flat tangent normal/ORM linear, roughness184/255 and metallic0; clean vertex-normal shape, no baked albedo lighting or dense noisy normal detail",
+  "lods": [
+    {
+      "level": 0,
+      "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack/mobile-002/LOD0/navy-cyan-battery-stack_LOD0.glb",
+      "sha256": "a1d734b501f24f1eac76ae5cf9f300a296a1ce3773433cd65c0924f59b77036e",
+      "bytes": 378084,
+      "triangles": 2500,
+      "dimensionsXYZMeters": [
+        1.3450607061386108,
+        1.1985270977020264,
+        0.6857724189758301
+      ],
+      "topology": {
+        "boundaryEdges": 0,
+        "nonmanifoldEdges": 0,
+        "degenerateFaces": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2
+      },
+      "sourceSampledShapeMaxErrorMeters": 0.00712316669523716,
+      "sourceShapeP95ErrorMeters": 0.002310217195190489,
+      "shapeErrorIsSampledNotExactHausdorff": true,
+      "floorMinY": 0.0,
+      "adjustedFloorVertices": 0,
+      "materialCount": 1,
+      "primitiveCount": 1,
+      "baseColorSize": 128,
+      "normalSize": 1,
+      "ormSize": 1,
+      "paletteFaceCounts": {
+        "orange": 309,
+        "cream": 1518,
+        "navy": 248,
+        "cyan": 425
+      },
+      "textureGpuRgbaWithMipsEstimateBytes": 87392,
+      "pbr": {
+        "maps": [
+          "albedo.png",
+          "normal.png",
+          "roughness.png",
+          "metallic.png",
+          "metallic-roughness.png"
+        ],
+        "normal_embedded": true,
+        "tangents_exported": true,
+        "metallic_roughness_channels": {
+          "roughness": "G",
+          "metallic": "B"
+        }
+      }
+    },
+    {
+      "level": 1,
+      "glb": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack/mobile-002/LOD1/navy-cyan-battery-stack_LOD1.glb",
+      "sha256": "639e73bd27d6c6eb2a1da92994496f627f8b416f64b8547d70fbd1ae4c988c2b",
+      "bytes": 183092,
+      "triangles": 1200,
+      "dimensionsXYZMeters": [
+        1.3444432020187378,
+        1.1989631652832031,
+        0.6844436228275299
+      ],
+      "topology": {
+        "boundaryEdges": 0,
+        "nonmanifoldEdges": 0,
+        "degenerateFaces": 0,
+        "connectedComponents": 1,
+        "eulerCharacteristic": 2
+      },
+      "sourceSampledShapeMaxErrorMeters": 0.008750335313379765,
+      "sourceShapeP95ErrorMeters": 0.004200729727745056,
+      "shapeErrorIsSampledNotExactHausdorff": true,
+      "floorMinY": 0.0,
+      "adjustedFloorVertices": 1,
+      "materialCount": 1,
+      "primitiveCount": 1,
+      "baseColorSize": 128,
+      "normalSize": 1,
+      "ormSize": 1,
+      "paletteFaceCounts": {
+        "orange": 135,
+        "cream": 740,
+        "navy": 115,
+        "cyan": 210
+      },
+      "textureGpuRgbaWithMipsEstimateBytes": 87392,
+      "pbr": {
+        "maps": [
+          "albedo.png",
+          "normal.png",
+          "roughness.png",
+          "metallic.png",
+          "metallic-roughness.png"
+        ],
+        "normal_embedded": true,
+        "tangents_exported": true,
+        "metallic_roughness_channels": {
+          "roughness": "G",
+          "metallic": "B"
+        }
+      }
+    }
+  ],
+  "offlineValidation": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack/mobile-002/offline-validation.json",
+  "visualReview": {
+    "frontQuarterSideBack": true,
+    "sourceComparison": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack/deliverables/navy-cyan-battery-stack-comparison.png",
+    "actualMultiview": "/Volumes/T7 Shield/Assets/Maze Swarm/Chibi Cargo Depot 2026-10-16/assets/navy-cyan-battery-stack/deliverables/navy-cyan-battery-stack-multiview.png",
+    "notes": "Two navy battery cylinders with cyan caps, cream rounded frame and orange side pads follow the approved simple concept. Front/quarter/side/back and1200tri lowerLOD were inspected; rear is a coherent inferred cream support panel with orange side returns. Isolated tiny neural color flecks were removed. Color boundaries are intentionally face-aligned and show small steps at extreme close-up. Nondegenerate tiny swatch UVs protect palette colors under minification; no baked shading or noisy sculpt normal."
+  },
+  "limitations": [
+    "Single-view rear inference",
+    "Static mesh; no moving machine or conveyor mechanism",
+    "No rig or animation",
+    "No game edit/import or device profiling",
+    "Self-intersections not formally tested"
+  ],
+  "integrationOwner": "01a13737-9ca8-728a-9baa-fc7ac2c030ee"
+}

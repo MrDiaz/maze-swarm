@@ -1,0 +1,267 @@
+{
+    "units": "metres",
+    "front": "+Z",
+    "up": "+Y",
+    "assets": [
+        {
+            "id": "01",
+            "slug": "wall_module",
+            "name": "Modular service wall",
+            "resource": "CryoKit/Prefabs/01_wall_module",
+            "pivot": "ground-centre",
+            "dimensions": [
+                4.0,
+                3.5999999046325684,
+                0.4000000059604645
+            ],
+            "triangles": 3392
+        },
+        {
+            "id": "02",
+            "slug": "inside_corner",
+            "name": "Inside corner wall junction",
+            "resource": "CryoKit/Prefabs/02_inside_corner",
+            "pivot": "ground-centre",
+            "dimensions": [
+                2.0,
+                3.6000001430511475,
+                2.0
+            ],
+            "triangles": 13572
+        },
+        {
+            "id": "03",
+            "slug": "support_pillar",
+            "name": "Four-face support pillar",
+            "resource": "CryoKit/Prefabs/03_support_pillar",
+            "pivot": "ground-centre",
+            "dimensions": [
+                0.699999988079071,
+                3.799999952316284,
+                0.699999988079071
+            ],
+            "triangles": 1116
+        },
+        {
+            "id": "04",
+            "slug": "floor_panel",
+            "name": "Flush floor panel",
+            "resource": "CryoKit/Prefabs/04_floor_panel",
+            "pivot": "top-centre",
+            "dimensions": [
+                2.0,
+                0.11999999731779099,
+                2.0
+            ],
+            "triangles": 110
+        },
+        {
+            "id": "05",
+            "slug": "floor_trench_grate",
+            "name": "Service trench grate",
+            "resource": "CryoKit/Prefabs/05_floor_trench_grate",
+            "pivot": "top-centre",
+            "dimensions": [
+                2.0,
+                0.1599999964237213,
+                1.2000000476837158
+            ],
+            "triangles": 520
+        },
+        {
+            "id": "06",
+            "slug": "sliding_bulkhead",
+            "name": "Sealed sliding bulkhead",
+            "resource": "CryoKit/Prefabs/06_sliding_bulkhead",
+            "pivot": "ground-centre",
+            "dimensions": [
+                4.0,
+                3.5999999046325684,
+                0.6499999761581421
+            ],
+            "triangles": 17368
+        },
+        {
+            "id": "07",
+            "slug": "hero_pod_cradle",
+            "name": "Approved cryopod and substantial cradle",
+            "resource": "CryoKit/Prefabs/07_hero_pod_cradle",
+            "pivot": "ground-centre",
+            "dimensions": [
+                3.299999952316284,
+                3.9009997844696045,
+                2.2245001792907715
+            ],
+            "triangles": 17508
+        },
+        {
+            "id": "08",
+            "slug": "cryo_service_cabinet",
+            "name": "Cryo isolation service cabinet",
+            "resource": "CryoKit/Prefabs/08_cryo_service_cabinet",
+            "pivot": "ground-centre",
+            "dimensions": [
+                1.0770000219345093,
+                2.049999952316284,
+                0.8480000495910645
+            ],
+            "triangles": 10248
+        },
+        {
+            "id": "09",
+            "slug": "cooling_reservoir_pumps",
+            "name": "Dual-circuit reservoir and pump assembly",
+            "resource": "CryoKit/Prefabs/09_cooling_reservoir_pumps",
+            "pivot": "ground-centre",
+            "dimensions": [
+                3.4800000190734863,
+                3.1481053829193115,
+                2.6559998989105225
+            ],
+            "triangles": 17470
+        },
+        {
+            "id": "10",
+            "slug": "coolant_manifold_elbow",
+            "name": "Coolant elbow and isolation manifold",
+            "resource": "CryoKit/Prefabs/10_coolant_manifold_elbow",
+            "pivot": "ground-centre",
+            "dimensions": [
+                1.940000057220459,
+                1.1549999713897705,
+                0.5730000138282776
+            ],
+            "triangles": 28896
+        },
+        {
+            "id": "11",
+            "slug": "overhead_cable_tray",
+            "name": "Open overhead cable tray",
+            "resource": "CryoKit/Prefabs/11_overhead_cable_tray",
+            "pivot": "mount-centre",
+            "dimensions": [
+                2.0,
+                0.24849998950958252,
+                0.5880000591278076
+            ],
+            "triangles": 14276
+        },
+        {
+            "id": "12",
+            "slug": "vent_fan_unit",
+            "name": "Guarded wall extraction fan",
+            "resource": "CryoKit/Prefabs/12_vent_fan_unit",
+            "pivot": "mount-centre",
+            "dimensions": [
+                1.2000000476837158,
+                1.2000000476837158,
+                0.32200005650520325
+            ],
+            "triangles": 10248
+        },
+        {
+            "id": "13",
+            "slug": "research_workstation",
+            "name": "Life-support research workstation",
+            "resource": "CryoKit/Prefabs/13_research_workstation",
+            "pivot": "ground-centre",
+            "dimensions": [
+                1.340000033378601,
+                1.2463167905807495,
+                0.8371449708938599
+            ],
+            "triangles": 1934
+        },
+        {
+            "id": "14",
+            "slug": "wall_control_terminal",
+            "name": "Wall-mounted cryo control terminal",
+            "resource": "CryoKit/Prefabs/14_wall_control_terminal",
+            "pivot": "mount-centre",
+            "dimensions": [
+                0.800000011920929,
+                0.6000000238418579,
+                0.17649999260902405
+            ],
+            "triangles": 5272
+        },
+        {
+            "id": "15",
+            "slug": "low_cover_cabinet",
+            "name": "Low maintenance drawer cabinet",
+            "resource": "CryoKit/Prefabs/15_low_cover_cabinet",
+            "pivot": "ground-centre",
+            "dimensions": [
+                2.014500141143799,
+                1.124500036239624,
+                0.8289999961853027
+            ],
+            "triangles": 9100
+        },
+        {
+            "id": "16",
+            "slug": "cargo_crate",
+            "name": "Stackable insulated equipment case",
+            "resource": "CryoKit/Prefabs/16_cargo_crate",
+            "pivot": "ground-centre",
+            "dimensions": [
+                1.2000000476837158,
+                0.8585000038146973,
+                0.8330000042915344
+            ],
+            "triangles": 6332
+        },
+        {
+            "id": "17",
+            "slug": "coolant_canister",
+            "name": "Portable coolant pressure canister",
+            "resource": "CryoKit/Prefabs/17_coolant_canister",
+            "pivot": "ground-centre",
+            "dimensions": [
+                0.49399998784065247,
+                0.9300000071525574,
+                0.42399999499320984
+            ],
+            "triangles": 6144
+        },
+        {
+            "id": "18",
+            "slug": "ceiling_light_fixture",
+            "name": "Recessed linear ceiling luminaire",
+            "resource": "CryoKit/Prefabs/18_ceiling_light_fixture",
+            "pivot": "mount-centre",
+            "dimensions": [
+                2.0,
+                0.17999999225139618,
+                0.4000000059604645
+            ],
+            "triangles": 3580
+        },
+        {
+            "id": "19",
+            "slug": "emergency_beacon",
+            "name": "Guarded amber emergency beacon",
+            "resource": "CryoKit/Prefabs/19_emergency_beacon",
+            "pivot": "mount-centre",
+            "dimensions": [
+                0.25,
+                0.3499999940395355,
+                0.199337437748909
+            ],
+            "triangles": 8040
+        },
+        {
+            "id": "20",
+            "slug": "fractured_cryo_breach",
+            "name": "Fractured pressure-glass and ice breach",
+            "resource": "CryoKit/Prefabs/20_fractured_cryo_breach",
+            "pivot": "ground-centre",
+            "dimensions": [
+                1.7999999523162842,
+                1.600000023841858,
+                0.8999999761581421
+            ],
+            "triangles": 2936
+        }
+    ]
+}

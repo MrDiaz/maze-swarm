@@ -42,16 +42,16 @@ namespace Maze
             public static Tele Circle(Vector2 at, float r, float sec, Color c, System.Action onDone, bool ring = false)
             {
                 if (Meta.Difficulty == 2 && G != null && G.run) sec *= 0.7f;   // Nightmare: telegraphs 30% shorter
-                var x = Get(ring ? Fx.Ring : ZoneHazard.Disc); x.tr.position = MazeMap.ToWorld(at, 0.07f); x.tr.rotation = Quaternion.identity;
+                var x = Get(ring ? Fx.Ring : ZoneHazard.Disc); x.tr.position = MazeMap.ToWorld(at, FirstCryoFx.Cargo ? .125f : .07f); x.tr.rotation = Quaternion.identity;
                 x.tr.localScale = Vector3.one * r; x.life = sec; x.t = 0; x.c = c; x.done = onDone; x.ring = ring; live.Add(x);
-                if (G != null && (G.player.p - at).magnitude < r + 0.6f) HazardAudio.Shot("sfx_telegraph_warning", Vector3.zero, 0.45f, 1, null, 0, true);   // aimed at the hero
+                if (G != null && !(FirstCryoFx.Active && ring && c.b > c.r + .1f) && (G.player.p - at).magnitude < r + 0.6f) HazardAudio.Shot("sfx_telegraph_warning", Vector3.zero, 0.45f, 1, null, 0, true);   // aimed at the hero
                 return x;
             }
             public static Tele Lane(Vector2 from, Vector2 dir, float len, float width, float sec, Color c, System.Action onDone)
             {
                 if (Meta.Difficulty == 2 && G != null && G.run && sec < 50f) sec *= 0.7f;
                 var x = Get(Quad); var mid = from + dir * len * 0.5f;
-                x.tr.position = MazeMap.ToWorld(mid, 0.07f); x.tr.rotation = Quaternion.Euler(90, MazeMap.YawDeg(Mathf.Atan2(dir.x, dir.y)), 0);
+                x.tr.position = MazeMap.ToWorld(mid, FirstCryoFx.Cargo ? .125f : .07f); x.tr.rotation = Quaternion.Euler(90, MazeMap.YawDeg(Mathf.Atan2(dir.x, dir.y)), 0);
                 x.tr.localScale = new Vector3(width, len, 1); x.life = sec; x.t = 0; x.c = c; x.done = onDone; x.ring = false; live.Add(x);
                 if (G != null) { var rel = G.player.p - from; float al = Vector2.Dot(rel, dir), sd = Mathf.Abs(rel.x * dir.y - rel.y * dir.x); if (al > -0.5f && al < len + 0.5f && sd < width * 0.5f + 0.6f) HazardAudio.Shot("sfx_telegraph_warning", Vector3.zero, 0.45f, 1, null, 0, true); }   // the hero is in the lane
                 return x;
@@ -66,6 +66,8 @@ namespace Maze
                     go.AddComponent<MeshFilter>(); var mr = go.AddComponent<MeshRenderer>(); x.m = (VfxKit.I != null ? VfxKit.I.TeleMat() : null) ?? Mats.Glow(Color.red); mr.sharedMaterial = x.m;
                     mr.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                 }
+                var shader = FirstCryoFx.Active ? Shader.Find("Maze/FirstCryoTele") : VfxKit.I != null ? Shader.Find("Maze/VfxTele") : null;
+                if (shader != null && x.m.shader != shader) x.m.shader = shader;
                 x.tr.GetComponent<MeshFilter>().sharedMesh = mesh; x.tr.gameObject.SetActive(true);
                 x.m.SetFloat("_Shape", mesh == quad ? 1 : mesh == Fx.Ring ? 2 : 0);   // VfxTele: lane, thin ring (old look), circle
                 return x;
@@ -76,6 +78,7 @@ namespace Maze
                 {
                     if (i >= live.Count) continue;   // a callback ended the run (cleared the list)
                     var x = live[i]; x.t += dt; float k = x.life > 0 ? x.t / x.life : 1;
+                    if (x.m.HasProperty("_Friendly")) x.m.SetFloat("_Friendly", x.ring && x.c.b > x.c.r + .1f ? 1 : 0);
                     x.m.SetFloat("_Progress", Mathf.Clamp01(k));   // VfxTele fill sweeps in toward impact
                     x.m.SetColor("_BaseColor", new Color(x.c.r, x.c.g, x.c.b, x.c.a * (0.35f + 0.55f * k) * (Mathf.PingPong(x.t * 8, 1) > 0.3f || k > 0.7f ? 1 : 0.6f)));
                     if (x.t < x.life) continue;
@@ -90,7 +93,7 @@ namespace Maze
                         {
                             if (marked || (G.player.dashT > 0 && now - perfectAt > 2f && inside > -2.5f))
                             { if (now - perfectAt > 2f) { perfectAt = now; G.OnPerfectDash(); } }
-                            else if (inside > -0.9f && now - closeAt > 1.5f) { closeAt = now; G.OnCloseCall(); }
+                            else if (inside > -0.9f && now - closeAt > 1.5f) { closeAt = now; G.OnCloseCall(); if (FirstCryoFx.Active && x.ring && x.c.b > x.c.r + .1f) G.hud.ShowBanner("FLASH FREEZE"); }
                         }
                         continue;
                     }
@@ -130,9 +133,10 @@ namespace Maze
             VfxPool v = null;
             if (VfxKit.I != null)
             {
-                v = VfxKit.I.Pool(null, at, r, VfxKit.Acid, 0.035f + puddles.Count % 8 * 0.001f);   // tiny y steps: overlapping puddles don't z-fight
+                v = VfxKit.I.Pool(null, at, r, FirstCryoFx.Active ? FirstCryoFx.AcidLook : VfxKit.Acid, (FirstCryoFx.Cargo ? .125f : .035f) + puddles.Count % 8 * .001f);   // Cargo deck top .035m, cyan plate/stripe top .104m: visual-only clearance; original XY/radius/timers unchanged
                 v.SetLife(0);
-                if (r >= 1.3f) { VfxKit.I.Splash(MazeMap.ToWorld(at, 0f), VfxKit.AcidSplash, r); HazardAudio.Shot("sfx_acid_splash", MazeMap.ToWorld(at, 0f), 0.6f); }   // (the toxic elite's 1 m trail drips quietly)
+                if (FirstCryoFx.Active) FirstCryoFx.Get().AcidBoundary(v.tr, r);
+                if (r >= 1.3f) { VfxKit.I.Splash(MazeMap.ToWorld(at, 0f), FirstCryoFx.AcidSplashColor, r); HazardAudio.Shot("sfx_acid_splash", MazeMap.ToWorld(at, 0f), 0.6f); }   // (the toxic elite's 1 m trail drips quietly)
             }
             puddles.Add(new Puddle { p = at, r = r, t = sec, dps = dps, v = v });
         }
@@ -240,14 +244,24 @@ namespace Maze
         // SPITTER: lobs acid at where you'll be (0.5 s lead): green circle 0.7 s, 10 HP, a 5 s puddle
         static void Spitter(Enemy e, Player pl, float dist, float dt)
         {
-            if ((e.aiCd -= dt) > 0 || dist > 16 || e.spawnT < 1 || !Swarm.ClearLine(e.p, pl.p)) return;
+            e.aiCd -= dt;
+            bool eligible = dist <= 16 && e.spawnT >= 1 && Swarm.ClearLine(e.p, pl.p);
+            var motion = CohesiveZone.For(G) && CohesiveCharacterPolicy.HasAuthoredSpitter && e.view?.model != null ? CohesiveSpitterPlayback.Attach(e.view.model.gameObject) : null;
+            motion?.BeforeShot(e.aiCd, eligible);
+            if (e.aiCd > 0 || !eligible) return;
             e.aiCd = 3f * Random.Range(0.9f, 1.1f);
             var at = pl.p + pl.vel * 0.5f; float dmg = U(e, 10);
-            Tele.Circle(at, 1.4f, 0.8f, new Color(0.5f, 1f, 0.2f, 0.8f), () =>
+            if (motion != null)
+            {
+                motion.transform.rotation = Quaternion.LookRotation(MazeMap.ToWorld(at - e.p));
+                motion.ShotReleased(); // Original release, impact and cooldown timing remain unchanged.
+            }
+            ReadabilityFx.Lob(e.p, at, 0.8f, motion != null ? motion.MuzzleWorld : (Vector3?)null);   // (readability: the glob flies to its telegraphed landing spot)
+            Tele.Circle(at, 1.4f, 0.8f, FirstCryoFx.SpitWarningColor, () =>
             {
                 if ((G.player.p - at).magnitude < 1.4f + G.cfg.player.radius) G.HurtPlayer(dmg);
                 AcidPuddle(at, 1.4f, 5f, 6f);
-                if (!Sim) Fx.I.Sparks(MazeMap.ToWorld(at, 0.3f), 8, new Color(0.6f, 1f, 0.2f), 3, 0.5f, 0.1f, 3);
+                if (!Sim) Fx.I.Sparks(MazeMap.ToWorld(at, 0.3f), FirstCryoFx.Cargo ? 5 : 8, FirstCryoFx.Cargo ? FirstCryoFx.AcidSplashColor : new Color(0.6f, 1f, 0.2f), 3, FirstCryoFx.Cargo ? .3f : .5f, .1f, 3);
             });
         }
 

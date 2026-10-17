@@ -132,7 +132,7 @@ namespace Maze
             if (Game.SimRun && (act == "HINT" || act == "SET" || act == "DROP" || act == "SPAWN" && S(p, "enemy", "") == "pool_miniboss")) Debug.Log($"Maze event F{g.floor} t{t:0} {act} {S(p, "text", S(p, "system", ""))}");
             switch (act)
             {
-                case "HINT": g.hud.ShowHint(S(p, "text", "").Replace("{floor}", g.floor.ToString()).Replace("{stage_name}", Stages[Mathf.Clamp((g.floor - 1) / 5, 0, Stages.Length - 1)]).ToUpperInvariant()); break;
+                case "HINT": g.hud.ShowHint((CohesiveZone.For(g) ? S(p, "text", "").Replace("Cryo vents", "Cooling jets").Replace("cryo vents", "cooling jets") : S(p, "text", "")).Replace("{floor}", g.floor.ToString()).Replace("{stage_name}", Stages[Mathf.Clamp((g.floor - 1) / 5, 0, Stages.Length - 1)]).ToUpperInvariant()); break;
                 case "DROP": if (S(p, "kind", "") == "flare") { CellLight.Flares = Mathf.Min(3, CellLight.Flares + 1); g.hud.ShowHint("FLARE +1"); } break;
                 case "SPAWN": Spawn(p); break;
                 case "HATCH_ALL": foreach (var h in Hazards.Live) if (h is CellEggs eg) eg.HatchAll(); break;
@@ -344,7 +344,7 @@ namespace Maze
                 foreach (var e in g.swarm.enemies) if (!e.dead && (e.p - at).magnitude < radius + e.r) { e.hp -= e.boss ? rh * 0.5f : rh; e.flash = 1; if (e.hp <= 0) g.KillEnemy(e); }
                 if (!Game.SimRun)
                 {
-                    if (skin == "lightning") { Fx.I.Sparks(MazeMap.ToWorld(at, 0.5f), 18, new Color(0.8f, 0.9f, 1f), 7, 0.4f, 0.1f, 6); HazardAudio.Shot("sfx_lightning_strike", MazeMap.ToWorld(at, 0.5f), 0.9f); }
+                    if (skin == "lightning") { if (VfxKit.I != null) VfxKit.I.Strike(MazeMap.ToWorld(at, 0)); else Fx.I.Sparks(MazeMap.ToWorld(at, 0.5f), 18, new Color(0.8f, 0.9f, 1f), 7, 0.4f, 0.1f, 6); HazardAudio.Shot("sfx_lightning_strike", MazeMap.ToWorld(at, 0.5f), 0.9f); }   // a bolt from the sky
                     else Fx.I.Debris(MazeMap.ToWorld(at, 0.4f), 14, skin == "press" ? new Color(0.4f, 0.4f, 0.42f) : new Color(0.45f, 0.38f, 0.3f), 5, 0.7f, 0.18f, 5);
                     g.AddShake(0.15f);
                 }
